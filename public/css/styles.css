@@ -3,7 +3,9 @@
 @import 'partials/header.css';
 @import 'partials/generic.css';
 
-
+body{
+    background-color: blueviolet
+}
 
 
 
