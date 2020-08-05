@@ -14,13 +14,13 @@ app.use(methodOverride('_method'));
 app.use(session({secret:'holis'}));
 
 
-
-
-
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+//ROUTERS
+const mainRouter = require('./routes/mainRouter');
 
+app.use('/', mainRouter);
 
 
 app.listen(3000, () => console.log("Servidor corriendo en el puerto 3000"));
