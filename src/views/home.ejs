@@ -4,9 +4,68 @@
     <body>
         <%- include('./partials/header') %> 
         <div class="container-fluid">
-            <video autoplay>
-                <source src="/videos/videoTest.mp4">
-            </video>
+            <div class="row">
+                <div class="col-12 vidContainer homeMedia">
+                    <video autoplay muted loop>
+                        <source src="/videos/videoTest.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="col-12 col-md-6 homeImg homeMedia">
+                    <img class="" src="/images/home/estudiantes.jpg" alt="">
+                    <a href="">
+                        <button class="arrowBtn">
+                            <div class="arrow">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </button>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 homeImg homeMedia">
+                    <img class="" src="/images/otros/imagen.png" alt="">
+                    <a href="">
+                        <button class="arrowBtn">
+                            <div class="arrow">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="instituteCarousel">
+                <section class="customer-logos slider">
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                  <div class="slide"><img src="images/otros/uba_logo.png"></div>
+                </section>
+            </div>
+
+            <div class="help">
+                <h3>¿En que te puedo ayudar?</h3>
+            </div>
+            
         </div>
         <%- include('./partials/scripts.ejs') %>  
     </body>
