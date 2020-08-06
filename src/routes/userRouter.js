@@ -1,10 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const mainController = require(path.join(__dirname, '../controllers/userController.js'));
+const userController = require(path.join(__dirname, '../controllers/userController.js'));
 
 
-router.get('/account', mainController.account);
+router.get('/account', userController.account);
+
+router.get('/register', userController.register);
+
 
 
 module.exports = router;
