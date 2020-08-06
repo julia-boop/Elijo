@@ -2,6 +2,7 @@
 @import 'partials/general.css';
 @import 'partials/header.css';
 @import 'partials/generic.css';
+@import 'partials/conocer.css';
 
 *{
     margin: 0 auto;
