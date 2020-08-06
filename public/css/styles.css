@@ -47,11 +47,11 @@ div.homeImg img{
 /*-------------BOTON CON FLECHAS------------------*/
 button.arrowBtn{
     background-color: black;
-    width: 70px;
+    width: 120px;
     height: 60px;
 
     position: absolute;
-    top: 80%;
+    top: 110%;
     left: 50%;
     transform: translate(-50%,-50%);
 
@@ -62,7 +62,7 @@ button.arrowBtn{
 .arrow{
     position: absolute;
     top: 67%;
-    left: 42%;
+    left: 46%;
     transform: translate(-50%,-50%);
 }
 .arrow span{
@@ -96,6 +96,11 @@ button.arrowBtn{
 }
 /*-------------FIN BOTON CON FLECHAS------------------*/
 
+/*---------DIV DE AYUDA----------------*/
+div.help{
+    margin-top: 25px;
+}
+/*---------FIN DIV DE AYUDA----------------*/
 
 /*ESTE IMPORT VA AL FINAL*/
 @media (min-width: 768px) {
@@ -118,11 +123,11 @@ button.arrowBtn{
     }
     button.arrowBtn{
         background-color: black;
-        width: 70px;
+        width: 120px;
         height: 60px;
     
         position: absolute;
-        top: 90%;
+        top: 110%;
         left: 50%;
         transform: translate(-50%,-50%);
     

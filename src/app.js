@@ -19,8 +19,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 //ROUTERS
 const mainRouter = require('./routes/mainRouter');
+const userRouter = require('./routes/userRouter');
 
 app.use('/', mainRouter);
+app.use('/user', userRouter);
 
 
 app.listen(3000, () => console.log("Servidor corriendo en el puerto 3000"));
