@@ -8,5 +8,8 @@ window.addEventListener('load', function() {
     btn.addEventListener('click', function(){
         btn.classList.toggle('click');
         menuNav.classList.toggle('show');
+
     });
+
 })
+

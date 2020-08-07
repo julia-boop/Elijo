@@ -1,6 +1,7 @@
 header{
     background-color: cornflowerblue;
     height: 70px;
+    transition: height 0.4s ease;
 }
 
 header h1{
@@ -126,6 +127,10 @@ header div.phoneMenu .opened .line3 {
     stroke-dasharray: 90 207;
     stroke-dashoffset: -134;
     stroke-width: 6;
+}
+header.move-up{
+    height: 0px;
+    transition: height 0.4s ease;
 }
 
 

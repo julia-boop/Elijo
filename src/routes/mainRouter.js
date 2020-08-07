@@ -5,7 +5,7 @@ const mainController = require(path.join(__dirname, '../controllers/mainControll
 
 
 router.get('/', mainController.home);
-router.get('/conocer', mainController.meet)
+router.get('/meet', mainController.meet)
 
 
 module.exports = router;

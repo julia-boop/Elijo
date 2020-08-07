@@ -1,7 +1,153 @@
-.container{
-    border: 3px solid red;
+.container-meet{
+    background-color: whitesmoke;
+}
+#slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
 }
 
-article.filter{
-    background-color: red;
+.slide-in {
+    animation: slide-in 0.5s forwards;
+    -webkit-animation: slide-in 0.5s forwards;
 }
+
+.slide-out {
+    animation: slide-out 0.5s forwards;
+    -webkit-animation: slide-out 0.5s forwards;
+}
+    
+@keyframes slide-in {
+    100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in {
+    100% { -webkit-transform: translateX(0%); }
+}
+    
+@keyframes slide-out {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes slide-out {
+    0% { -webkit-transform: translateX(0%); }
+    100% { -webkit-transform: translateX(-100%); }
+}
+
+.div-filter{
+    padding: 3px;
+    width: 100vh;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    z-index: 70;
+}
+
+.arrow {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    position: fixed;
+    top: 25px;
+    left: 25px;
+  }
+
+  .arrow-left {
+    transform: rotate(-135deg);
+  }
+
+.div-filter a {
+    text-decoration: none;
+    color: black;
+}
+
+.div-filter a p{
+    margin: 25px;
+}
+
+.div-filter a p.universidad{
+    margin-top: 65px;
+}
+
+.div-filter div label {
+    font-size: 13px;
+    text-align: start;
+    margin: 5px;
+}
+
+.div-filter div input{
+    margin: 2px;
+}
+
+.div-filter div div {
+    width: 80%;
+}
+
+.estudiante{
+    background-color: white;
+    border-radius: 3px;
+    margin: 15px;
+}
+
+.estudiante img {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    top: -25px;
+    right: -15px;
+    margin: 5px;
+}
+
+.estudiante h3{
+    margin-top: 30px;
+}
+.estudiante{
+    text-align: center;
+}
+.estudiante button{
+    margin: 10px;
+    border: 2px solid teal;
+    background-color: rgba(0, 128, 128, 0.699);
+    border-radius: 2px;
+}
+.estudiante button:hover{
+    background-color: rgba(13, 114, 114, 0.699);
+    border: 2px solid rgb(1, 102, 102);
+}
+.estudiante button:focus{
+    outline: none;
+    background-color: rgba(54, 107, 107, 0.856);
+    border: 2px solid rgb(7, 71, 71);
+}
+
+.hid{
+    display: none;
+}
+.btn-filter{
+    background-color: rgba(224, 189, 123, 0.918);
+    border: 2px solid rgb(238, 206, 147);
+    border-radius: 3px;
+    margin: 5px;
+}
+.btn-filter:hover{
+    background-color: rgba(230, 179, 84, 0.918);
+    border: 2px solid rgb(238, 206, 147);
+}
+.btn-filter:focus{
+    background-color: rgba(233, 165, 38, 0.966);
+    border: 2px solid rgb(238, 206, 147);
+    outline: none;
+}
+
+#meet-title{
+    text-align: center;
+    padding: 15px;
+}
+
+
