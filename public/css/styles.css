@@ -135,5 +135,12 @@ div.help{
         border: none;
         border-radius: 15px;
     }
+    .pcMenu{
+        display: initial;
+    }
+    .phoneMenu{
+        display: none;
+        visibility: hidden;
+    }
 }
 @import 'partials/mediaQuerys.css';

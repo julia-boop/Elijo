@@ -139,8 +139,12 @@ header.move-up{
 
 
 
-div.pcMenu{
+.pcMenu{
     height: 50px;
+    display: none;
+}
+
+div.pcMenu nav{
     background-color: grey;
 }
 
