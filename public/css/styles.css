@@ -52,7 +52,7 @@ button.arrowBtn{
     height: 60px;
 
     position: absolute;
-    top: 110%;
+    top: 75%;
     left: 50%;
     transform: translate(-50%,-50%);
 
@@ -63,7 +63,7 @@ button.arrowBtn{
 .arrow{
     position: absolute;
     top: 67%;
-    left: 46%;
+    left: 50%;
     transform: translate(-50%,-50%);
 }
 .arrow span{
@@ -128,7 +128,7 @@ div.help{
         height: 60px;
     
         position: absolute;
-        top: 110%;
+        top: 90%;
         left: 50%;
         transform: translate(-50%,-50%);
     
