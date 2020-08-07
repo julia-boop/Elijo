@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
 @import 'partials/variables.css';
 @import 'partials/general.css';
 @import 'partials/header.css';
@@ -5,15 +6,16 @@
 @import 'partials/meet.css';
 @import 'partials/carousel.css';
 
+
 *{
     margin: 0 auto;
-    padding: 0 auto;
+    padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 body{
-    background-color: blueviolet
+    background-color: blueviolet;
 }
 
 /*----------HOME--------------*/

@@ -1,0 +1,40 @@
+
+.why-container{
+    margin-top: 50px;
+}
+
+.why-container div {
+    border: 1px solid red;
+    margin: 15px;
+}
+
+.why-container div h3{
+    text-align: center;
+}
+.why-container div h6{
+    text-align: center;
+}
+.why-container div img{
+    width: 130px;
+    height: 130px;
+}
+
+#img{
+    padding-top: calc(50% - 75px);
+}
+
+#text{
+    background-color: rgb(254, 185, 3);
+    border-radius: 3px;
+}
+
+#text1{
+    background-color: rgb(254, 137, 3);
+    border-radius: 3px;
+}
+
+#text2{
+    background-color: rgb(252, 209, 92);
+    border-radius: 3px;
+}
+

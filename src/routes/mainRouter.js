@@ -6,6 +6,7 @@ const mainController = require(path.join(__dirname, '../controllers/mainControll
 
 router.get('/', mainController.home);
 router.get('/meet', mainController.meet)
+router.get('/why', mainController.why)
 
 
 module.exports = router;

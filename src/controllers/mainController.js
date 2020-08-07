@@ -8,5 +8,8 @@ module.exports = {
     },
     meet: function(req, res){
         res.render('meet')
+    },
+    why : function(req, res){
+        res.render('why')
     }
 };

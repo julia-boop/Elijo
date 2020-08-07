@@ -85,7 +85,7 @@
 }
 
 .div-filter div div {
-    width: 80%;
+    width: 90%;
 }
 
 .estudiante{
@@ -111,36 +111,38 @@
     text-align: center;
 }
 .estudiante button{
+    padding: 5px;
     margin: 10px;
-    border: 2px solid teal;
-    background-color: rgba(0, 128, 128, 0.699);
+    border: 2px solid rgb(244, 118, 1);
+    background-color: rgb(246, 145, 1);
     border-radius: 2px;
 }
 .estudiante button:hover{
-    background-color: rgba(13, 114, 114, 0.699);
-    border: 2px solid rgb(1, 102, 102);
+    background-color: rgb(255, 188, 126);
+    border: 2px solid rgb(246, 145, 1);
 }
 .estudiante button:focus{
     outline: none;
-    background-color: rgba(54, 107, 107, 0.856);
-    border: 2px solid rgb(7, 71, 71);
+    background-color: rgba(218, 105, 0, 0.74);
+    border: 2px solid rgb(246, 145, 1);
 }
 
 .hid{
     display: none;
 }
 .btn-filter{
-    background-color: rgba(224, 189, 123, 0.918);
+    background-color: rgba(255, 196, 86, 0.918);
     border: 2px solid rgb(238, 206, 147);
     border-radius: 3px;
     margin: 5px;
+    padding: 5px;
 }
 .btn-filter:hover{
-    background-color: rgba(230, 179, 84, 0.918);
+    background-color: rgb(255, 213, 136);
     border: 2px solid rgb(238, 206, 147);
 }
 .btn-filter:focus{
-    background-color: rgba(233, 165, 38, 0.966);
+    background-color: rgba(236, 157, 9, 0.966);
     border: 2px solid rgb(238, 206, 147);
     outline: none;
 }
