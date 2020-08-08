@@ -1,6 +1,6 @@
 header{
     background-color: cornflowerblue;
-    /*height: 70px;*/
+    /* height: 70px; */
     height: fit-content;
     transition: height 0.4s ease;
 }
