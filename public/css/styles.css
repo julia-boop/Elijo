@@ -5,6 +5,7 @@
 @import 'partials/generic.css';
 @import 'partials/meet.css';
 @import 'partials/carousel.css';
+@import 'partials/_login-register.css';
 
 
 *{
@@ -15,7 +16,7 @@
 }
 
 body{
-    background-color: blueviolet;
+    background-color: #eee;
 }
 
 /*----------HOME--------------*/

@@ -7,5 +7,11 @@ module.exports = {
     },
     register: function(req, res) {
         res.render('register');
+    },
+    save: function(req, res) {
+        res.send('Usuario guardado!!!')
+    },
+    login: function(req, res) {
+        res.render('login')
     }
 };
