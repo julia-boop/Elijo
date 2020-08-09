@@ -27,6 +27,13 @@ div.homeImg img{
 /*----------FIN HOME--------------*/
 
 
+/* -----------GUIA DE USUARIO------------- */
+
+.guide-div{
+    opacity: 0.5;
+}
+
+
 /*-------------BOTON CON FLECHAS------------------*/
 button.arrowBtn{
     background-color: var(--btn-bg-color);
