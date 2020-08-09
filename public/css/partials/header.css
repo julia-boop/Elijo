@@ -7,6 +7,14 @@ header{
 
 header img.logo{
     height: 70px;
+    margin-left: 35px;
+}
+
+header div.logoContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 header h1{
