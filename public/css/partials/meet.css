@@ -2,7 +2,6 @@
     background-color: whitesmoke;
 }
 #slider {
-    position: absolute;
     width: 100%;
     height: 100%;
     transform: translateX(-100%);
@@ -43,6 +42,7 @@
     height: 100%;
     position: absolute;
     background-color: white;
+    position: fixed;
     z-index: 70;
 }
 

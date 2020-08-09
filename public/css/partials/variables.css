@@ -1,0 +1,11 @@
+:root {
+    /*BODY*/
+    --body-bg-color: whitesmoke;
+    /*======
+    BOTONES
+    */
+    --btn-bg-color: rgb(246, 145, 1);
+    --btn-border: 2px solid rgb(244, 118, 1);
+    --btn-border-hover: 2px solid rgb(246, 145, 1);
+    --btn-bg-color-focus: rgba(218, 105, 0, 0.74);
+}

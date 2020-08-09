@@ -1,7 +1,10 @@
 <header>
     <div class="container-fluid">
         <div class="row">
-            <h1 class="col-8">ELIJO</h1>
+
+            <img class="col-1 logo" src="/images/logo.jpeg">
+
+            <h1 class="col-8" hidden>ELIJO</h1>
 
             <div class="phoneMenu">
                 <button class="btnMenu" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
@@ -23,9 +26,9 @@
                         <li><a href="#">Por qué</a></li>
                         <li><a href="#">Quienes somos</a></li>
                         <div class="userOptions">
-                            <li><a href="#">Sing up</a></li>
-                            <li><a href="#">Log In</a></li>
-                            <li><a href="#">Cuenta</a></li>
+                            <li><a href="/user/register">Sing up</a></li>
+                            <li><a href="/user/login">Log In</a></li>
+                            <li><a href="/user/account">Cuenta</a></li>
                         </div>
                         
                     </ul>
@@ -44,8 +47,8 @@
                 <li><a href="/why">Por qué</a></li>
                 <li><a href="">Quienes somos</a></li>
                 <div>
-                    <li><a href="#">Sing up</a></li>
-                    <li><a href="#">Log In</a></li>
+                    <li><a href="/user/register">Sing up</a></li>
+                    <li><a href="/user/login">Log In</a></li>
                     <li><a href="/user/account">Cuenta</a></li>
                 </div>
             </ul>
