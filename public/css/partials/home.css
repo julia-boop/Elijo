@@ -86,7 +86,6 @@ button.arrowBtn{
 div.help{
     margin-top: 25px;
     padding-bottom: 25px;
-    background-color: blue;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -100,6 +99,8 @@ div.help h3{
 }
 
 div.help button{
+    background-color: var(--btn-bg-color);
+    border: var(--btn-border);
     height: 40px;
     padding: 5px 5px;
     margin-left: 5px;
@@ -132,10 +133,12 @@ div.help .orderList{
 
     height: 0;
     transition: height 0.4s ease;
-    background-color: blueviolet;
+    border-top: 2px solid black;
 }
 
 div.help .orderList button{
+    background-color: var(--btn-bg-color-hover);
+    border: var(--btn-border-hover);
     height: 40px;
     padding: 0 0;
     margin-left: 0;
@@ -151,8 +154,6 @@ div.help .orderListOpen{
 
 div.help .orderList{
     width: 70%;
-    /*CON TRANSICION HACER APARECER SI ELIGE ALGO*/
-    background-color: blueviolet;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -162,5 +163,16 @@ div.help h6{
     text-align: center;
     width: 100%;
     margin-top: 25px;
+}
+
+.sendBtnContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sendBtnContainer .sendBtn{
+    margin-left: 495px;
 }
 /*---------FIN DIV DE AYUDA----------------*/
