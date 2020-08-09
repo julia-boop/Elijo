@@ -1,5 +1,7 @@
 .why-main-container{
     background-color: rgb(252, 230, 190);
+    margin-bottom: 20px;
+    border-radius: 5px;
 }
 
 .why-container{
@@ -7,7 +9,7 @@
 }
 
 .why-container div {
-    /* border: 1px solid red; */
+    padding: 5px;
     margin: 15px;
 }
 

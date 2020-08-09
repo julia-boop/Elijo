@@ -17,10 +17,14 @@ window.addEventListener('load', function(){
     let h6_3 = document.querySelector('.why-h6-3')
     let ultimoDiv = document.querySelector('#text2')
 
+    let mainContainer = document.querySelector('.why-main-container')
+
     window.setTimeout(function(){
         h3.classList.remove('d-none')
         h6.classList.remove('d-none')
+        mainContainer.classList.remove('d-none')
         div1.classList.remove('d-none')
+        mainContainer.classList.add('transition')
         div1.classList.add('transition')
     }, 1000)
     window.setTimeout(function(){
