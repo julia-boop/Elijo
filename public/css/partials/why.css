@@ -1,12 +1,26 @@
+.why-main-container{
+    background-color: rgb(252, 230, 190);
+}
 
 .why-container{
     margin-top: 50px;
 }
 
 .why-container div {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 15px;
 }
+
+@keyframes slide {
+    0%   { transform: translate(0px,0px); }
+    100% { transform: translate(0px,10px); }
+  }
+.transition{
+   animation-name: slide;
+   animation-duration: 3s; 
+   animation-fill-mode: forwards;   
+}
+
 
 .why-container div h3{
     text-align: center;
@@ -17,6 +31,19 @@
 .why-container div img{
     width: 130px;
     height: 130px;
+}
+
+.why-container i {
+margin-left: 50%;
+height: 30px !important;
+width: 30px !important;
+}
+
+.heart{
+    transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
 }
 
 /* #img{
