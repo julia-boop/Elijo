@@ -3,6 +3,7 @@ window.addEventListener('load', function() {
     let divFilter = document.querySelector('.div-filter')
     let header = document.querySelector('header')
     let arrow = document.querySelector('.arrow')
+    let pcmenu = document.querySelector('.pcMenu')
 
     
     btnFilter.addEventListener('click', function(){
@@ -14,6 +15,7 @@ window.addEventListener('load', function() {
             divFilter.classList.remove('slide-out')
             divFilter.classList.add('slide-in')
             header.classList.add('move-up')
+            pcmenu.classList.add('d-none')
         }
         
     });
@@ -23,6 +25,8 @@ window.addEventListener('load', function() {
             divFilter.classList.remove('slide-in')
             divFilter.classList.add('slide-out')
             header.classList.remove('move-up')
+            pcmenu.classList.remove('d-none')
+
         }else{
             divFilter.classList.remove('slide-out')
             divFilter.classList.add('slide-in')

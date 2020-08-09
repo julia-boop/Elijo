@@ -1,7 +1,14 @@
 header{
-    background-color: cornflowerblue;
-    /* height: 70px; */
-    height: fit-content;
+    background: url('/images/home/fotonav.jpg');
+    background-color: rgb(179, 179, 179);
+    background-size: cover;
+    background-position: center;
+    height: 70px; 
+    transition: height 0.4s ease;
+}
+
+header.move-up{
+    height: 0px;
     transition: height 0.4s ease;
 }
 
@@ -74,7 +81,6 @@ header div.phoneMenu nav  li a{
 header div.phoneMenu nav  li a:hover{
     text-decoration: none;
     color: black;
-    background-color: grey;
     border-right-color: blue;
     width: 100%;
 }
@@ -107,7 +113,7 @@ header div.phoneMenu .btnMenu {
 }
 
 header div.phoneMenu svg{
-    margin-left: -7px;
+    padding: 0 auto;
 }
 
 header div.phoneMenu .line {
@@ -144,10 +150,7 @@ header div.phoneMenu .opened .line3 {
     stroke-dashoffset: -134;
     stroke-width: 6;
 }
-header.move-up{
-    height: 0px;
-    transition: height 0.4s ease;
-}
+
 
 
 
@@ -193,14 +196,15 @@ div.pcMenu nav ul li a{
     font-weight: 500;
     width: 100%;
     height: 100%;
+    transition: 0.2s ease-in-out;
 }
 
 div.pcMenu nav ul li a:hover{
     text-decoration: none;
     color: black;
-    background-color: grey;
     padding-bottom: 5px;
     border-bottom: 5px solid blue;
+    transform: border-bottom 0.2s ease-in-out;
     width: 100%;
 }
 
@@ -223,9 +227,9 @@ div.pcMenu nav ul div li a{
 div.pcMenu nav ul div li a:hover{
     text-decoration: none;
     color: black;
-    background-color: grey;
     padding-bottom: 5px;
     border-bottom: 5px solid blue;
+    transition: border-bottom 0.4 ease-in-out;
     width: 100%;
 }
 
