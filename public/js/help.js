@@ -21,7 +21,6 @@ function btnAction(id, btn){
             btn.remove();
             break;
         default:
-            console.log('default');
     }
 }
 
@@ -89,5 +88,7 @@ window.addEventListener('load', function(){
             helpSelectBtn4 = event.target.children[3];
             checkBtnSelectedEvent(helpSelectBtn4);
         }
+
+        
     });
 });
