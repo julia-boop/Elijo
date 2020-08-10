@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head') %>
+    <body>
+        <%- include('./partials/header') %>
+        <h1>La posta sobre...</h1>
+        <button>
+            Universidades
+            <a class="arrow-icon">
+                <span class="left-bar"></span>
+                <span class="right-bar"></span>
+            </a>
+        </button>
+        <button>Carreras</button>
+        <button>Cursos</button>
+        <button>Programas</button>
+        <div class="posta-filtro">
+            <h6>la busqueda</h6>
+        </div>
+
+        <input type="text" placeholder="Buscar...">
+
+        <div class="filtrosAplicados">
+
+        </div>
+
+        <button>General</button>
+        <button>Preguntas/Tips</button>
+        <button>Clases</button>
+
+        <div class="row">
+            <div class="col-8">
+            
+            </div>
+            <div class="col-4">
+                
+            </div>
+        </div>
+       
+
+        <%- include('./partials/scripts.ejs') %>  
+    </body>
+</html>

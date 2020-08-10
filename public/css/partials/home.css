@@ -29,9 +29,9 @@ div.homeImg img{
 
 /* -----------GUIA DE USUARIO------------- */
 
-.guide-div{
+/* .guide-div{
     opacity: 0.5;
-}
+} */
 
 
 /*-------------BOTON CON FLECHAS------------------*/
@@ -179,7 +179,5 @@ div.help h6{
     justify-content: center;
 }
 
-.sendBtnContainer .sendBtn{
-    margin-left: 495px;
-}
+
 /*---------FIN DIV DE AYUDA----------------*/

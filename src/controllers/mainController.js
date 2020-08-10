@@ -11,5 +11,8 @@ module.exports = {
     },
     why : function(req, res){
         res.render('why')
+    },
+    posta: function(req, res) {
+        res.render('posta')
     }
 };
