@@ -173,10 +173,10 @@ div.help h6{
 }
 
 .sendBtnContainer{
-    width: 100%;
+    width: 99%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: right;
 }
 
 
