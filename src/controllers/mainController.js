@@ -9,6 +9,9 @@ module.exports = {
     meet: function(req, res){
         res.render('meet')
     },
+    detail: function(req, res, next) {
+        res.render('detail')
+    },
     why : function(req, res){
         res.render('why')
     },

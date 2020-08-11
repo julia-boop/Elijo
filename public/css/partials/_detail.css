@@ -1,0 +1,69 @@
+/*=================================
+        TITLE
+=================================*/
+
+
+
+
+/*=================================
+        TITLE
+=================================*/
+
+.profile-detail-title {
+    text-align: center;
+}
+
+.wrapper-title h2 {
+    text-transform: uppercase;
+}
+
+.wrapper-title h2 img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin: 5px;
+}
+  
+.wrapper-title p {
+    text-align: center;
+}
+
+
+
+/*=================================
+        DETAIL
+=================================*/
+
+.wrapper-detail-profile {
+    margin: 0;
+    margin-top: 10px;
+}
+
+.profile-experiences h4.uni {
+    text-align: left;
+    background-color: rgb(180, 243, 180);
+    max-width: 450px;
+}
+
+.profile-experiences h4.course {
+    text-align: left;
+    background-color: rgb(253, 253, 152);
+    max-width: 450px;
+}
+
+.profile-interests {
+    width: fit-content;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-interests ul.interests {
+    margin-bottom: 5px;
+}
+
+.profile-interests ul.interests li {
+    list-style: none;
+    margin: 5px;
+    background-color: var(--btn-bg-color-scnd);
+    border: var(--btn-border-scnd);
+}
