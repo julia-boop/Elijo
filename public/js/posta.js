@@ -59,28 +59,27 @@ window.addEventListener('load', function() {
   let lessonsView = document.querySelector('.lessons-container');
 
   /*DEFAULTS*/
-  generalView.style.display = 'initial';
-  faqsTipsView.style.display = 'none';
-  lessonsView.style.display = 'none';
+  // faqsTipsView.classList.add('d-none');
+  // lessonsView.classList.add('d-none');
 
 
   genBtn.addEventListener('click', function(){
-    generalView.style.display = 'initial';
-    faqsTipsView.style.display = 'none';
-    lessonsView.style.display = 'none';
+    generalView.classList.remove('d-none');
+    faqsTipsView.classList.add('d-none');
+    lessonsView.classList.add('d-none');
 
   });
 
   faqsTipsBtn.addEventListener('click', function(){
-    generalView.style.display = 'none';
-    faqsTipsView.style.display = 'initial';
-    lessonsView.style.display = 'none';
+    faqsTipsView.classList.remove('d-none');
+    generalView.classList.add('d-none');
+    lessonsView.classList.add('d-none');
   });
 
   faqsTipsBtn.addEventListener('click', function(){
-    generalView.style.display = 'none';
-    faqsTipsView.style.display = 'none';
-    lessonsView.style.display = 'initial';
+    generalView.classList.add('d-none');
+    faqsTipsView.classList.add('d-none');
+    lessonsView.classList.remove('d-none');
   });
 
 
