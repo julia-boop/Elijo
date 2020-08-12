@@ -52,7 +52,7 @@ window.addEventListener('load', function() {
   /*FUNCIONAMIENTO DE BOTONES NAVEGACION*/
   let genBtn = document.querySelector('.general-btn');
   let faqsTipsBtn = document.querySelector('.faqs-tips-btn');
-  let generalBtn = document.querySelector('.lessons-btn');
+  let lessonsBtn = document.querySelector('.lessons-btn');
 
   let generalView = document.querySelector('.generalFlap');
   let faqsTipsView = document.querySelector('.faqs-tips-container');
@@ -76,7 +76,7 @@ window.addEventListener('load', function() {
     lessonsView.classList.add('d-none');
   });
 
-  faqsTipsBtn.addEventListener('click', function(){
+  lessonsBtn.addEventListener('click', function(){
     generalView.classList.add('d-none');
     faqsTipsView.classList.add('d-none');
     lessonsView.classList.remove('d-none');
