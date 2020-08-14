@@ -2,6 +2,8 @@
     background-color: whitesmoke;
 }
 #slider {
+    /* mediaquery para pc  */
+    /* width: 50%; */
     width: 100%;
     height: 100%;
     transform: translateX(-100%);

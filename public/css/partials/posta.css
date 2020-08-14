@@ -136,7 +136,7 @@ button.categoryDropDown{
 }
 
 .faqs{
-  margin-top: 15px;
+  margin-top: 25px;
   padding: 10px;
 
   /*padding: 15px;
@@ -256,6 +256,11 @@ button.tipsPhoneBtn p {
 
 /* ---------GENERAL FLAP----------- */
 
+.general-btn{
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
 
 .generalFlap{
   position:relative;
@@ -286,6 +291,11 @@ button.tipsPhoneBtn p {
 
 
 /* ---------LESSONS----------- */
+
+.lessons-btn{
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
 
 
 .lessons-container {
