@@ -105,6 +105,7 @@ button.categoryDropDown{
 .posta-filter h6{
   background-color: rgba(179, 179, 179, 0.788);
   padding: 7px;
+  border: 1px solid rgba(128, 128, 128, 0.788);
 }
 
 .posta-sections{
