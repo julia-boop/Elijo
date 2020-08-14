@@ -102,6 +102,11 @@ button.categoryDropDown{
 
 }
 
+.posta-filter h6{
+  background-color: rgba(179, 179, 179, 0.788);
+  padding: 7px;
+}
+
 .posta-sections{
   display: flex;
   flex-wrap: wrap;
