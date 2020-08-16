@@ -181,3 +181,131 @@ div.help h6{
 
 
 /*---------FIN DIV DE AYUDA----------------*/
+
+
+/*POP UP AYUDA*/
+.pop-up-background{
+    display: flex;
+    justify-content: center;
+
+    
+    height: 0%;
+    width: 0%;
+    transition: width 1s ease;
+}
+
+.pop-up-background .pop-up{
+    background-color: var(--body-bg-color);
+    position: absolute;
+    top: 150px;
+
+    height: fit-content;
+    width: 60%;
+    z-index: 500;
+    padding: 15px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.pop-up-background .open{
+    height: fit-content;
+    width: 60%;
+    transition: width 1s ease;
+}
+
+.pop-up-background .close{
+    
+}
+
+div.pop-up h3{
+    text-align: center;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+div.pop-up button{
+    background-color: var(--btn-bg-color);
+    border: var(--btn-border);
+    height: 40px;
+    padding: 5px 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+div.pop-up button i{
+    position: relative;
+    top: 2px;
+}
+
+div.pop-up .optionsContainer{
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div.pop-up .orderList{
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    height: 0;
+    transition: height 0.4s ease;
+    border-top: 2px solid black;
+}
+
+div.pop-up .orderList button{
+    background-color: var(--btn-bg-color-hover);
+    border: var(--btn-border-hover);
+    height: 40px;
+    padding: 0 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+div.pop-up .orderListOpen{
+    height: 190px;
+    transition: height 0.4s ease;
+}
+
+div.pop-up .orderList{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div.pop-up h6{
+    text-align: center;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.pop-up .sendBtnContainer{
+    width: 99%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+}
+
+div.pop-up button.quit-btn{
+    position: absolute;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    left: 15px;
+}
+/*FIN POP UP AYUDA*/
