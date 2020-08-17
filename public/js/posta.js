@@ -21,15 +21,42 @@ function filterFunction() {
 window.addEventListener('load', function() {
 
   /*REVISAR*/
+  let universityInput = document.querySelector('#universities');
+  let carrersInput = document.querySelector('#carrers');
+  let cursesInput = document.querySelector('#curses');
+  let programsInput = document.querySelector('#programs');
+
   let universityBtn = document.querySelector('.universities');
   let carrersBtn = document.querySelector('.carrers');
   let cursesBtn = document.querySelector('.curses');
   let programsBtn = document.querySelector('.programs');
+
+
+
   universityBtn.addEventListener('click', function(){
-    universityBtn.classList.add('show');
-    carrersBtn.classList.remove('show');
-    cursesBtn.classList.remove('show');
-    programsBtn.classList.remove('show');
+    universityInput.style.display = "inherit";
+    carrersInput.style.display = "none";
+    cursesInput.style.display = "none";
+    programsInput.style.display = "none";
+    console.log('entro');
+  });
+  carrersBtn.addEventListener('click', function(){
+    carrersInput.style.display = "inherit";
+    universityInput.style.display = "none";
+    cursesInput.style.display = "none";
+    programsInput.style.display = "none";
+  });
+  cursesBtn.addEventListener('click', function(){
+    cursesInput.style.display = "inherit";
+    carrersInput.style.display = "none";
+    universityInput.style.display = "none";
+    programsInput.style.display = "none";
+  });
+  programsBtn.addEventListener('click', function(){
+    programsInput.style.display = "inherit";
+    carrersInput.style.display = "none";
+    cursesInput.style.display = "none";
+    universityInput.style.display = "none";
   });
   /*FIN REVISAR*/
   
