@@ -168,7 +168,9 @@ div.pcMenu nav{
     background-color: transparent;
     background-image: linear-gradient(180deg, #F7B801 0%, #F35B04 100%);
     opacity: 0.85;
-    transition: background-color 0.5s, border-radius 0.3s, opacity 0.5s; }
+    transition: background-color 0.5s, border-radius 0.3s, opacity 0.5s;
+}
+    
 
 div.pcMenu nav ul{
     list-style: none;
@@ -183,6 +185,7 @@ div.pcMenu nav ul{
 }
 
 div.pcMenu nav ul li{
+    position: relative;
     display:inline-block;
     line-height: 60px;
     height: 100%;
@@ -197,6 +200,7 @@ div.pcMenu nav ul li a{
     width: 100%;
     height: 100%;
     transition: 0.2s ease-in-out;
+    
 }
 
 div.pcMenu nav ul li a:hover{
@@ -243,12 +247,6 @@ div.pcMenu nav div li{
 
 
 /*ANIMACION DE RECUADRO*/
-
-div.pcMenu nav ul li.remainder{
-    
-}
-
-
 #box {
     display: flex;
     align-items: center;
@@ -260,7 +258,7 @@ div.pcMenu nav ul li.remainder{
   .gradient-border {
     --borderWidth: 0px;
     position: relative;
-    border-radius: 1px;
+    border-radius: 3px;
   }
   .gradient-border:after {
     content: '';
@@ -269,12 +267,13 @@ div.pcMenu nav ul li.remainder{
     left: calc(-1 * var(--borderWidth));
     height: calc(100% + var(--borderWidth) * 2);
     width: calc(100% + var(--borderWidth) * 2);
+    
     background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-    /*border: 1px solid linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);*/
     border-radius: calc(2 * var(--borderWidth));
     z-index: -1;
     animation: animatedgradient 3s ease alternate infinite;
     background-size: 300% 300%;
+    
   }
   
   
@@ -290,44 +289,39 @@ div.pcMenu nav ul li.remainder{
       }
   }
   
+/*FIN DE ANIMACION*/
 
-  /* .pulse {
-    margin:100px;
-    display: block;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: #cca92c;
-    cursor: pointer;
-    box-shadow: 0 0 0 rgba(204,169,44, 0.4);
-    animation: pulse 2s infinite;
-  }
-  .pulse:hover {
-    animation: none;
-  }
-  
-  @-webkit-keyframes pulse {
-    0% {
-      -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
-    }
-    70% {
-        -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
-    }
-    100% {
-        -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
-    }
-  }
-  @keyframes pulse {
-    0% {
-      -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
-      box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
-    }
-    70% {
-        -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
-        box-shadow: 0 0 0 10px rgba(204,169,44, 0);
-    }
-    100% {
-        -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
-        box-shadow: 0 0 0 0 rgba(204,169,44, 0);
-    }
-  }  */
+
+
+.text-container{
+    
+}
+
+#la-posta-reminder{
+
+    position: absolute;
+    background-color: grey;
+    top: 17% !important;
+    left: 12.5% !important;
+    height: 20px !important;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 600;
+}
+
+#meet-students-reminder{
+
+    position: absolute;
+    background-color: grey;
+    top: 17% !important;
+    left: 25.1% !important;
+    height: 20px !important;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 600;
+}
+
+
+.text-container p{
+    height: 20px !important;
+}

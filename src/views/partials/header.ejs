@@ -21,7 +21,7 @@
                         Menu
                     </div>
                     <ul>
-                        <li><a href="/">Inicio</a></li>
+                        <li><a href="/">Inicio</a></li>                 
                         <li><a href="/posta">La posta</a></li>
                         <li><a href="#">Conocer estudiantes</a></li>
                         <li><a href="#">Por qué</a></li>
@@ -40,11 +40,17 @@
         </div>        
     </div>
     <div class="pcMenu">
+        <div id="la-posta-reminder" class="text-container d-none">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, minus.</p>
+        </div>
+        <div id="meet-students-reminder" class="text-container d-none">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, minus.</p>
+        </div>
         <nav>
             <ul>
-                <li id="box"><a class="gradient-border" href="/">Inicio</a></li>
-                <li><a href="/posta">La posta</a></li>
-                <li><a href="/meet">Conocer estudiantes</a></li>
+                <li><a href="/">Inicio</a></li>
+                <li id="box" class="posta"><a href="/posta">La posta</a></li>
+                <li id="box" class="meet"><a href="/meet">Conocer estudiantes</a></li>
                 <li><a href="/why">Por qué</a></li>
                 <li><a href="">Quienes somos</a></li>
                 <div>
@@ -55,4 +61,5 @@
             </ul>
         </nav>
     </div>
+    
 </header>

@@ -5,6 +5,7 @@ window.addEventListener('load', function() {
     let arrow = document.querySelector('.arrow')
     let pcmenu = document.querySelector('.pcMenu')
 
+    let sleepBackground = document.querySelector('.sleep-background');
     
     btnFilter.addEventListener('click', function(){
         if(divFilter.classList.contains('slide-in')){
@@ -33,4 +34,13 @@ window.addEventListener('load', function() {
             header.classList.add('move-up')
         }
     })
+    window.addEventListener('click', function(){
+        clearInterval(meetInterval);
+        sleepBackground.classList.add('d-none');
+        sleepBackground.classList.remove('active');
+    })
+    let meetInterval = setInterval(function(){
+        sleepBackground.classList.remove('d-none');
+        sleepBackground.classList.add('active');
+    }, 8000)
 })
