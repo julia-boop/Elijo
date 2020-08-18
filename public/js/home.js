@@ -10,7 +10,6 @@ window.addEventListener('load', function(){
     let postaLI = qs('.posta');
     let meetLI = qs('.meet');
 
-
     var timeoutInMiliseconds = 5000;
     var timeoutId; 
 
@@ -24,16 +23,33 @@ window.addEventListener('load', function(){
     }
     
     function doInactive() {
-        postaLI.classList.add('gradient-border');
-        laPostaReminder.classList.remove('d-none');
+        
+        if(!meetLI.classList.contains('gradient-border')){
+            postaLI.classList.add('gradient-border');
+            laPostaReminder.classList.remove('d-none');
+    
+            window.addEventListener('click', function(){
+                postaLI.classList.remove('gradient-border');
+                laPostaReminder.classList.add('d-none');
+    
+                meetLI.classList.add('gradient-border');
+                meetStudentsReminder.classList.remove('d-none')
+            })
 
-        window.addEventListener('click', function(){
-            postaLI.classList.remove('gradient-border');
-            laPostaReminder.classList.add('d-none');
-
-            meetLI.classList.add('gradient-border');
-            meetStudentsReminder.classList.remove('d-none')
-        })
+            
+        }
+        let inter = setInterval(function(){
+            if(meetLI.classList.contains('gradient-border')){
+                window.addEventListener('click', function(){
+                    meetLI.classList.remove('gradient-border');
+                    meetStudentsReminder.classList.add('d-none')
+                })
+            }
+            
+        }, 2000)
+        
+        
+        
 
 
         console.log('inactividad')

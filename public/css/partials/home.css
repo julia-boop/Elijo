@@ -187,6 +187,10 @@ div.help h6{
 }
 
 
+textarea{
+    width: 100%;
+}
+
 /*---------FIN DIV DE AYUDA----------------*/
 
 
@@ -206,8 +210,10 @@ div.help h6{
     position: absolute;
     top: 150px;
 
-    height: fit-content;
-    width: 60%;
+    height: 0%;
+    width: 0%;/*a 90*/
+    transition: max-height 1s ease;
+
     z-index: 500;
     padding: 5px;
     border-radius: 10px;
@@ -218,14 +224,26 @@ div.help h6{
 
 }
 
-.pop-up-background .open{
+.pop-up-background .pop-up.show{
+    width: 90%;/*a 90*/
+    transition: width 1s ease;
+}
+.pop-up-background .pop-up.show.showHeight{
+    height: 80vh;/*a 90*/
+    transition: height 1s ease;
+}
+
+
+.pop-up-background.open{
     height: fit-content;
     width: 60%;
     transition: width 1s ease;
 }
 
-.pop-up-background .close{
-    
+.pop-up-background.close{
+    display: none;
+    visibility: hidden;
+
 }
 
 div.pop-up h3{
@@ -310,11 +328,16 @@ div.pop-up h6{
 }
 
 div.pop-up button.quit-btn{
-    position: absolute;
     padding: 0;
     width: 60px;
     height: 60px;
-    left: 15px;
 }
+
+.quit-btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
 
 /*FIN POP UP AYUDA*/

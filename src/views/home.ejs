@@ -4,22 +4,24 @@
     <body class="">
         <%- include('./partials/header') %> 
         <div class="container-fluid">
-            <div class="pop-up-background close">
+            <div class="pop-up-background open">
                 <div class="pop-up">
-                    <button class="quit-btn"><i class="far fa-times-circle fa-3x"></i></button>
+                    <div class="quit-btn-container pop-up-child d-none">
+                        <button class="quit-btn"><i class="far fa-times-circle fa-3x"></i></button>
+                    </div>
                     
-                    <h3>¿En que te puedo ayudar?</h3>
-                    <div class="optionsContainer">
+                    <h3 class="pop-up-child d-none">¿En que te puedo ayudar?</h3>
+                    <div class="optionsContainer pop-up-child d-none">
                         <button id="helpBtn1">Qué carrera elijo</button>
                         <button id="helpBtn2">Dónde estudiar</button>
                         <button id="helpBtn3">Hablar con un estudiante</button>
                         <button id="helpBtn4">¿Qué cursos hacer?</button>
                     </div>
                 
-                    <div class="orderList">
+                    <div class="orderList pop-up-child d-none">
                     </div>
 
-                    <div>
+                    <div class="pop-up-child d-none">
                         <h6>¿Tenés alguna otra pregunta que pensas que nosotros te podemos ayudar?</h6>
                         <textarea name="opinion" id="opinion" cols="60" rows="5"></textarea>
                         <div class="sendBtnContainer">
