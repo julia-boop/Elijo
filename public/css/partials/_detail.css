@@ -8,18 +8,36 @@
 /*=================================
         TITLE
 =================================*/
+.wrapper-title {
+    margin-top: 15px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-title{
+    display: flex;
+    align-items: center;
+}
 
 .profile-detail-title {
     text-align: center;
+    display:flex;
+    justify-content: center;
 }
 
-.wrapper-title h2 {
+.main-title h2 {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
     text-transform: uppercase;
+    margin: 0;
+    margin-top: 5px;
 }
 
-.wrapper-title h2 img {
-    height: 40px;
-    width: 40px;
+.main-title img {
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
     margin: 5px;
 }
