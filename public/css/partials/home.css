@@ -202,7 +202,8 @@ div.help h6{
     height: fit-content;
     width: 60%;
     z-index: 500;
-    padding: 15px;
+    padding: 5px;
+    border-radius: 10px;
 
     display: flex;
     flex-wrap: wrap;
@@ -224,7 +225,7 @@ div.pop-up h3{
     text-align: center;
     width: 100%;
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
 }
 
 div.pop-up button{
@@ -308,4 +309,5 @@ div.pop-up button.quit-btn{
     height: 60px;
     left: 15px;
 }
+
 /*FIN POP UP AYUDA*/

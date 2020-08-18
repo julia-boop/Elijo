@@ -179,8 +179,8 @@ button.categoryDropDown{
 }
 
 .tips-container {
-  margin-top: 15px;
-  padding: 15px;
+  margin-top: 25px;
+  padding: 10px;
   border-left: 2px solid grey;
   display: none;
 }
@@ -304,6 +304,19 @@ button.tipsPhoneBtn p {
 }
 
 
-.lessons-container {
-  margin-top: 20px;
+.materias-container {
+  margin-top: 25px;
+  padding: 10px;
+}
+
+.lessons-container button{
+  background-color: var(--btn-bg-color-scnd);
+  border: var(--btn-border-scnd);
+  width: 40px;
+  margin-bottom: 20px;
+}
+
+.lessons-container p{
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
