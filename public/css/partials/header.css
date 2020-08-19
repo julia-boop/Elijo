@@ -1,5 +1,5 @@
 header{
-    background: url('/images/home/fotonav.jpg');
+    background: url('/images/home/fotonavPixel.jpg');
     background-color: rgb(179, 179, 179);
     background-size: cover;
     background-position: center;
@@ -298,24 +298,26 @@ div.pcMenu nav div li{
 }
 
 #la-posta-reminder{
-
+    padding: 7px;
     position: absolute;
-    background-color: grey;
+    background-color: rgb(241, 191, 134);
     top: 17% !important;
     left: 12.5% !important;
-    height: 20px !important;
+    height: 30px !important;
+    border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
     z-index: 600;
 }
 
 #meet-students-reminder{
-
+    padding: 7px;
     position: absolute;
-    background-color: grey;
+    background-color:  rgb(241, 191, 134);
     top: 17% !important;
     left: 25.1% !important;
-    height: 20px !important;
+    height: 30px !important;
+    border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
     z-index: 600;

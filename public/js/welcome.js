@@ -1,4 +1,7 @@
 window.addEventListener('load', function(){
+
+    let orderList = qs('.orderListv2');
+
     let popUpBg = document.querySelector('.pop-up-background');
     let popUpCross = document.querySelector('.quit-btn');
     let popUpSend = document.querySelector('.pop-up-send-btn');
@@ -24,12 +27,14 @@ window.addEventListener('load', function(){
         popUpBg.classList.remove('open');
         popUpBg.classList.add('close');
         popUp.classList.toggle('show');
+        orderList.classList.add('d-none');
     });
 
     popUpSend.addEventListener('click', function(){
         popUpBg.classList.remove('open');
         popUpBg.classList.add('close');
         popUp.classList.toggle('show');
+        orderList.classList.add('d-none');
         //ENVIA INFO
     });
 })

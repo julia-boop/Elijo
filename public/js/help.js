@@ -34,6 +34,8 @@ function checkBtnSelectedEvent(btn){
 
 window.addEventListener('load', function(){
 
+    
+
     let helpBtn1 = qs('#helpBtn1');
     let helpBtn2 = qs('#helpBtn2');
     let helpBtn3 = qs('#helpBtn3');

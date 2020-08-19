@@ -34,6 +34,9 @@ window.addEventListener('load', function() {
 
 
   universityBtn.addEventListener('click', function(){
+    if($(universityInput).is(":inherit")){
+      universityInput.style.display = "none";
+    }
     universityInput.style.display = "inherit";
     carrersInput.style.display = "none";
     cursesInput.style.display = "none";
@@ -41,18 +44,27 @@ window.addEventListener('load', function() {
     console.log('entro');
   });
   carrersBtn.addEventListener('click', function(){
+    if($(carrersInput).is(":inherit")){
+      carrersInput.style.display = "none";
+    }
     carrersInput.style.display = "inherit";
     universityInput.style.display = "none";
     cursesInput.style.display = "none";
     programsInput.style.display = "none";
   });
   cursesBtn.addEventListener('click', function(){
+    if($(cursesInput).is(":inherit")){
+      cursesInput.style.display = "none";
+    }
     cursesInput.style.display = "inherit";
     carrersInput.style.display = "none";
     universityInput.style.display = "none";
     programsInput.style.display = "none";
   });
   programsBtn.addEventListener('click', function(){
+    if($(programsInput).is(":inherit")){
+      programsInput.style.display = "none";
+    }
     programsInput.style.display = "inherit";
     carrersInput.style.display = "none";
     cursesInput.style.display = "none";

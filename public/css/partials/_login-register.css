@@ -11,7 +11,7 @@
             REGISTER
 ===============================*/
 
-.register-container  {
+.register-container, .login-container  {
     max-width: 600px;
     background-color: aliceblue;
 }
