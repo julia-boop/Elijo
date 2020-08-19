@@ -5,13 +5,19 @@
         <%- include('./partials/header') %> 
 
         <div class="container">
-            <h1>Hola, <b>(Nombre de Usuario)</b></h1>
+            <h1>Hola, <b>Juan</b></h1>
+            
             <div class="main-info row">
-                <img class="col-6 col-md-4" src="/images/otros/avatar.png" alt="Avatar">
+                <div class="img-container col-6 col-md-4">
+                    <img class="" src="/images/otros/avatar.png" alt="Avatar">
+                    <button class="edit-photo-btn"><i class="fas fa-camera fa-3x"></i></button>
+                </div>
+                
+                
                 <div class="col-12 col-md-8">
                     <h4>Nombre: Juan</h4>
                     <h4>Apellido: Kotlin</h4>
-                    <h5>Whatsapp: +54 11 45781231</h5>
+                    <h5>Whatsapp: +54 11 4578-1231</h5>
                     <h5>E-mail: mi@mail.com</h5>
                 </div>
             </div>
@@ -68,5 +74,6 @@
                 </form>
             </div>
         </div>
+        <%- include('./partials/footer') %>
     </body>
 </html>

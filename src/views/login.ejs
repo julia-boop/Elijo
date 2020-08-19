@@ -4,6 +4,7 @@
 <body>
     <%- include('./partials/header') %>
     <!-- Default form login -->
+    <div class="login-container">
     <form class="text-center justify-content-center border border-light p-5" action="#!">
         
         <p class="h4 mb-4">Ingresar</p>
@@ -36,17 +37,19 @@
         </div>
 
         <!-- Register -->
-        <p>Not a member?
-            <a href="">Register</a>
+        <p>No estas registrado?
+            <a href="">Registrate aca</a>
         </p>
         
         <!-- Social login -->
-        <p>or sign in with:</p>
+        <p>o ingresa con:</p>
         
         <a href="#" class="mx-2" role="button"><i class="fab fa-google light-blue-text"></i></a>
         
     </form>
+    </div>
     <!-- Default form login -->
-    <%- include('./partials/scripts.ejs') %>  
+    <%- include('./partials/scripts.ejs') %>
+    <%- include('./partials/footer') %>  
 </body>
 </html>

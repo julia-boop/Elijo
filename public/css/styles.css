@@ -23,6 +23,10 @@ body{
     background-color: var(--body-bg-color);
 }
 
+.guide-div{
+    opacity: 0.3;
+    background-color: rgb(131, 131, 131);
+}
 
 /*ESTE IMPORT VA AL FINAL*/
 @media (min-width: 768px) {
@@ -53,7 +57,7 @@ body{
         height: 60px;
     
         position: absolute;
-        top: 90%;
+        top: 65%;
         left: 50%;
         transform: translate(-50%,-50%);
     

@@ -4,6 +4,7 @@
     <body class="">
         <%- include('./partials/header') %> 
         <div class="container-fluid">
+            <!--
             <div class="pop-up-background open">
                 <div class="pop-up">
                     <div class="quit-btn-container pop-up-child d-none">
@@ -12,13 +13,13 @@
                     
                     <h3 class="pop-up-child d-none">¿En que te puedo ayudar?</h3>
                     <div class="optionsContainer pop-up-child d-none">
-                        <button id="helpBtn1">Qué carrera elijo</button>
-                        <button id="helpBtn2">Dónde estudiar</button>
-                        <button id="helpBtn3">Hablar con un estudiante</button>
-                        <button id="helpBtn4">¿Qué cursos hacer?</button>
+                        <button id="helpBtn1v2">Qué carrera elijo</button>
+                        <button id="helpBtn2v2">Dónde estudiar</button>
+                        <button id="helpBtn3v2">Hablar con un estudiante</button>
+                        <button id="helpBtn4v2">¿Qué cursos hacer?</button>
                     </div>
                 
-                    <div class="orderList pop-up-child d-none">
+                    <div class="orderListv2 pop-up-child d-none">
                     </div>
 
                     <div class="pop-up-child d-none">
@@ -30,7 +31,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            -->
+            <div class="row mainHomeContainer">
                 <div class="col-12 vidContainer homeMedia">
                     <video autoplay muted loop>
                         <source src="/videos/videoTest.mp4" type="video/mp4">
@@ -119,5 +121,7 @@
         <script src="/js/help.js"></script>
         <script src="/js/home.js"></script>
         <script src="/js/welcome.js"></script>
+        <script src="/js/helpPopUp.js"></script>
+        <%- include('./partials/footer') %>
     </body>
 </html>
