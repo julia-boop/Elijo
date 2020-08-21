@@ -34,13 +34,19 @@ window.addEventListener('load', function() {
             header.classList.add('move-up')
         }
     })
-    window.addEventListener('click', function(){
-        clearInterval(meetInterval);
-        sleepBackground.classList.add('d-none');
-        sleepBackground.classList.remove('active');
-    })
-    let meetInterval = setInterval(function(){
-        sleepBackground.classList.remove('d-none');
-        sleepBackground.classList.add('active');
-    }, 8000)
+    
+    if(screen.width > 768){  
+        window.addEventListener('click', function(){
+            clearInterval(meetInterval);
+            sleepBackground.classList.add('d-none');
+            sleepBackground.classList.remove('active');
+        })
+
+        let meetInterval = setInterval(function(){
+            sleepBackground.classList.remove('d-none');
+            sleepBackground.classList.add('active');
+        }, 4000)
+    }
+    
+    
 })

@@ -3,7 +3,7 @@ function qs(element){
 }
 
 window.addEventListener('load', function(){
-
+    
     let body = qs('body')
     let laPostaReminder = qs('#la-posta-reminder');
     let meetStudentsReminder = qs('#meet-students-reminder');
@@ -75,7 +75,11 @@ window.addEventListener('load', function(){
         startTimer();
     }
     
-    $(document).ready(function(){     
-        setupTimers();
-    })
+        $(document).ready(function(){   
+            if(screen.width > 768){  
+                setupTimers();
+            }
+        })
+    
+    
 })    
