@@ -113,8 +113,6 @@ div.help h3{
 }
 
 div.help button{
-    background-color: var(--btn-bg-color);
-    border: var(--btn-border);
     height: 40px;
     padding: 5px 5px;
     margin-left: 5px;
@@ -135,6 +133,13 @@ div.help .optionsContainer{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+div.help .optionsContainer button.help-btn-anchor {
+    border-radius: 10px;
+    padding: 3px;
+    background-color: cyan;
+    margin-bottom: 5px;
 }
 
 div.help .orderList{
@@ -200,9 +205,6 @@ textarea{
     display: flex;
     justify-content: center;
 
-    
-    height: 0%;
-    width: 0%;
     transition: width 1s ease;
 }
 
@@ -216,7 +218,7 @@ textarea{
     transition: max-height 1s ease;
 
     z-index: 500;
-    padding: 5px;
+    padding: 10px;
     border-radius: 10px;
 
     display: flex;
@@ -228,11 +230,11 @@ textarea{
 }
 
 .pop-up-background .pop-up.show{
-    width: 90%;/*a 90*/
+    width: 50%;/*a 90*/
     transition: width 1s ease;
 }
 .pop-up-background .pop-up.show.showHeight{
-    height: 80vh;/*a 90*/
+    height: 60vh;/*a 90*/
     transition: height 1s ease;
 }
 
@@ -252,19 +254,14 @@ textarea{
 div.pop-up h3{
     text-align: center;
     width: 100%;
-    margin-top: 15px;
-    margin-bottom: 0px;
+    margin: 0;
 }
 
 div.pop-up button{
-    background-color: var(--btn-bg-color);
-    border: var(--btn-border);
     height: 40px;
-    padding: 5px 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 3px;
-    margin-bottom: 3px;
+    padding: 0;
+    margin: 0;
+    border: none;
 }
 
 div.pop-up button i{
@@ -274,8 +271,7 @@ div.pop-up button i{
 
 div.pop-up .optionsContainer{
     width: 100%;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin: 0px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -283,13 +279,11 @@ div.pop-up .optionsContainer{
 
 div.pop-up .orderListv2{
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin: 0;
     width: 75%;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
 
-    height: 0;
+    height: fit-content;
     transition: height 0.4s ease;
     border-top: 2px solid black;
 }
@@ -314,7 +308,7 @@ div.pop-up .orderListOpen{
 div.pop-up h6{
     text-align: center;
     width: 100%;
-    margin-top: 25px;
+    margin: 0;
 }
 
 .pop-up .sendBtnContainer{
@@ -324,16 +318,34 @@ div.pop-up h6{
     justify-content: right;
 }
 
-div.pop-up button.quit-btn{
+div.pop-up div.quit-btn-container button.quit-btn{
     padding: 0;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: inherit;
 }
 
 .quit-btn-container{
-    width: 100%;
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+}
+
+div.pop-up-child {
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pop-up-child button.pop-up-send-btn {
+    background: inherit;
+    margin-left: 5px;
 }
 
 

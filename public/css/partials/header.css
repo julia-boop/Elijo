@@ -1,27 +1,19 @@
+/*=================================
+            PHONE
+=================================*/
+
+
 header{
-    background: url('/images/home/fotonavPixel.jpg');
     background-color: rgb(179, 179, 179);
     background-size: cover;
     background-position: center;
-    height: 70px; 
+    height: 0px; 
     transition: height 0.4s ease;
 }
 
 header.move-up{
     height: 0px;
     transition: height 0.4s ease;
-}
-
-header img.logo{
-    height: 70px;
-    margin-left: 35px;
-}
-
-header div.logoContainer{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
 }
 
 header h1{
@@ -83,6 +75,10 @@ header div.phoneMenu nav  li a:hover{
     color: black;
     border-right-color: blue;
     width: 100%;
+}
+
+header div.phoneMenu nav  li a img {
+    width: 100px;
 }
 
 header div.phoneMenu .sidebar .text{
@@ -155,7 +151,9 @@ header div.phoneMenu .opened .line3 {
 
 
 
-
+/*=================================
+            -PC-
+=================================*/
 
 
 .pcMenu{
@@ -177,8 +175,6 @@ div.pcMenu nav ul{
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 50px;
-
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -200,7 +196,7 @@ div.pcMenu nav ul li a{
     width: 100%;
     height: 100%;
     transition: 0.2s ease-in-out;
-    
+    height: 50px;
 }
 
 div.pcMenu nav ul li a:hover{
@@ -212,29 +208,12 @@ div.pcMenu nav ul li a:hover{
     width: 100%;
 }
 
+div.pcMenu nav ul li a img{
+    width: 90px;
+}
 
 div.pcMenu nav ul div{
     height: 100%;
-}
-
-
-div.pcMenu nav ul div li a{
-    display: inline-block;
-    text-decoration: none;
-    color: black;
-    font-size: 18px;
-    font-weight: 500;
-    width: 100%;
-    height: 100%;
-}
-
-div.pcMenu nav ul div li a:hover{
-    text-decoration: none;
-    color: black;
-    padding-bottom: 5px;
-    border-bottom: 5px solid blue;
-    transition: border-bottom 0.4 ease-in-out;
-    width: 100%;
 }
 
 div.pcMenu nav div li{
@@ -301,7 +280,7 @@ div.pcMenu nav div li{
     padding: 7px;
     position: absolute;
     background-color: rgb(241, 191, 134);
-    top: 17% !important;
+    top: 9.5% !important;
     left: 12.5% !important;
     height: 30px !important;
     border-radius: 5px;
@@ -314,7 +293,7 @@ div.pcMenu nav div li{
     padding: 7px;
     position: absolute;
     background-color:  rgb(241, 191, 134);
-    top: 17% !important;
+    top: 9.5% !important;
     left: 25.1% !important;
     height: 30px !important;
     border-radius: 5px;
