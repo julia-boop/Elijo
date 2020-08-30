@@ -15,6 +15,7 @@ button.categoryDropDown{
   height: 40px;
   width:135px;
   margin-bottom: 5px;
+  border-radius: var(--btn-border-radius);
 }
 
 .pcDropDown{
@@ -157,6 +158,14 @@ button.categoryDropDown{
 
 .faqs .question-container{
   margin-top: 15px;
+}
+
+.faqs .question-container:nth-child(odd){
+  background-color: blue;
+}
+
+.faqs .question-container:nth-child(even){
+  background-color: red;
 }
 
 .faqs .question-container h6{
@@ -331,10 +340,16 @@ button.tipsPhoneBtn p {
   border-right: 2px solid grey; 
 }
 
-.lessons-container button{
+.lessons-container .materias-container button{
   background-color: var(--btn-bg-color-scnd);
   border: var(--btn-border-scnd);
   width: 40px;
+  margin-bottom: 20px;
+}
+
+.lessons-container button{
+  background-color: var(--btn-bg-color-scnd);
+  border: var(--btn-border-scnd);
   margin-bottom: 20px;
 }
 

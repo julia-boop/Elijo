@@ -24,12 +24,12 @@ window.addEventListener('load', function() {
   let universityInput = document.querySelector('#universities');
   let carrersInput = document.querySelector('#carrers');
   let cursesInput = document.querySelector('#curses');
-  let programsInput = document.querySelector('#programs');
+  let programsInput = document.querySelector('#region');
 
   let universityBtn = document.querySelector('.universities');
   let carrersBtn = document.querySelector('.carrers');
   let cursesBtn = document.querySelector('.curses');
-  let programsBtn = document.querySelector('.programs');
+  let programsBtn = document.querySelector('.region');
 
 
 
