@@ -95,6 +95,10 @@ body{
         margin-top: 3px;
         margin-bottom: 3px;
     }
+
+    #slider{
+        width: 30% !important
+    }
     
 }
 @import 'partials/mediaQuerys.css';
