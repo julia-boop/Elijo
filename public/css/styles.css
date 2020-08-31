@@ -98,6 +98,10 @@ body{
         margin-top: 3px;
         margin-bottom: 3px;
     }
+
+    #slider{
+        width: 30% !important
+    }
     
     div.pop-up div.quit-btn-container button.quit-btn{
         left: 94%;
