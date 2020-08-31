@@ -84,6 +84,9 @@ body{
     .tipsPhoneBtn {
         display: none;
     }
+    div.pop-up div.quit-btn-container button.quit-btn{
+        left: 96%!important;
+    }
 }
 
 @media (min-width: 430px) {
@@ -96,5 +99,8 @@ body{
         margin-bottom: 3px;
     }
     
+    div.pop-up div.quit-btn-container button.quit-btn{
+        left: 94%;
+    }    
 }
 @import 'partials/mediaQuerys.css';

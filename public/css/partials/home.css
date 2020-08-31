@@ -140,6 +140,7 @@ div.help .optionsContainer button.help-btn-anchor {
     padding: 3px;
     background-color: cyan;
     margin-bottom: 5px;
+    height: fit-content;
 }
 
 div.help .orderList{
@@ -318,22 +319,22 @@ div.pop-up h6{
     justify-content: right;
 }
 
-div.pop-up div.quit-btn-container button.quit-btn{
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    background: inherit;
-}
-
-.quit-btn-container{
+div.pop-up div.quit-btn-container{
     width: fit-content;
     height: fit-content;
     margin: 0;
     display: flex;
     justify-content: center;
+}
+
+div.pop-up div.quit-btn-container button.quit-btn{
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 85%;
+    top: 0%;
+    background: inherit;
 }
 
 div.pop-up-child {

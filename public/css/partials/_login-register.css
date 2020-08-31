@@ -11,6 +11,14 @@
             REGISTER
 ===============================*/
 
+p.register-title {
+    margin-bottom: 5px!important;
+}
+
+div #my-signin2 {
+    margin-bottom: 15px;
+}
+
 .register-container, .login-container  {
     max-width: 600px;
     background-color: aliceblue;
