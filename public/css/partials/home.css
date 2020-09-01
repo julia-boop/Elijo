@@ -113,12 +113,26 @@ div.help h3{
 }
 
 div.help button{
-    height: 40px;
+    height: fit-content;
     padding: 5px 5px;
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 3px;
     margin-bottom: 3px;
+    background-color: var(--btn-bg-color);
+    border: var(--btn-border);
+    border-radius: 8px;
+    
+}
+
+div.help button:hover{
+    background-color: var(--btn-bg-color-hover);
+    border: var(--btn-border-hover)
+}
+
+div.help button:focus{
+    background-color: var(--btn-bg-color-focus);
+    border: var(--btn-border-focus)
 }
 
 div.help button i{
@@ -138,7 +152,7 @@ div.help .optionsContainer{
 div.help .optionsContainer button.help-btn-anchor {
     border-radius: 10px;
     padding: 3px;
-    background-color: cyan;
+    background-color: var(--color-3);
     margin-bottom: 5px;
     height: fit-content;
 }
@@ -205,12 +219,11 @@ textarea{
 .pop-up-background{
     display: flex;
     justify-content: center;
-
     transition: width 1s ease;
 }
 
 .pop-up-background .pop-up{
-    background-color: var(--body-bg-color);
+    background-color: white;
     position: fixed;
     top: 80px;
 

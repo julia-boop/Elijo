@@ -1,5 +1,5 @@
 .container-meet{
-    background-color: whitesmoke;
+    background-color: var(--color-2)
 }
 #slider {
     /* mediaquery para pc  */
@@ -43,7 +43,7 @@
     width: 100vh;
     height: 100%;
     position: absolute;
-    background-color: white;
+    background-color: var(--color-2);
     position: fixed;
     z-index: 70;
 }
@@ -92,7 +92,8 @@
 
 .estudiante{
     background-color: white;
-    border-radius: 3px;
+    border: 1px solid var(--color-3);
+    border-radius: 8px;
     margin: 15px;
 }
 
@@ -115,37 +116,37 @@
 .estudiante button{
     padding: 5px;
     margin: 10px;
-    border: 2px solid rgb(244, 118, 1);
-    background-color: rgb(246, 145, 1);
-    border-radius: 2px;
+    border: var(--btn-border);
+    background-color: var(--btn-bg-color);
+    border-radius: 8px;
 }
 .estudiante button:hover{
-    background-color: rgb(255, 188, 126);
-    border: 2px solid rgb(246, 145, 1);
+    background-color:  var(--btn-bg-color-hover);
+    border: var(--btn-border-hover);
 }
 .estudiante button:focus{
     outline: none;
-    background-color: rgba(218, 105, 0, 0.74);
-    border: 2px solid rgb(246, 145, 1);
+    background-color: var(--btn-bg-color-focus);
+    border: var(--btn-bg-color-focus);
 }
 
 .hid{
     display: none;
 }
 .btn-filter{
-    background-color: rgba(255, 196, 86, 0.918);
-    border: 2px solid rgb(238, 206, 147);
+    background-color: var(--btn-bg-color-scnd);
+    border: var(--btn-border-scnd);
     border-radius: 3px;
     margin: 5px;
     padding: 5px;
 }
 .btn-filter:hover{
-    background-color: rgb(255, 213, 136);
-    border: 2px solid rgb(238, 206, 147);
+    background-color: var(--btn-bg-color-scnd-hover);
+    border:var(--btn-border-scnd-hover);
 }
 .btn-filter:focus{
-    background-color: rgba(236, 157, 9, 0.966);
-    border: 2px solid rgb(238, 206, 147);
+    background-color: var(--btn-bg-color-scnd-focus);
+    border:var(--btn-border-scnd-focus);
     outline: none;
 }
 
