@@ -6,7 +6,15 @@
 
         <div class="container">
             <h1>Hola, <b>Juan</b></h1>
-            
+            <div class="notifications dropdown">
+                <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Notificaciones <i class="fas fa-exclamation-circle "></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Ayudanos a mejorar... Aqui</a>
+                </div>
+            </div>
+
             <div class="main-info row">
                 <div class="img-container col-6 col-md-4">
                     <img class="" src="/images/otros/avatar.png" alt="Avatar">
@@ -51,9 +59,17 @@
                         <input type="text" name="startDate" id="startDate">
                     </div>
 
-                    <div class="col-12">
-                        <label class="col-12" for="courseDate">Curso (fechas):</label>
+                    <div class="col-12 col-md-4">
+                        <label class="col-12" for="courseDate">Curso:</label>
                         <input type="text" name="courseDate" id="courseDate">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <label class="col-12" for="courseDate">Instituto del curso:</label>
+                        <input type="text" name="courseDate" id="courseDate">
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <label class="col-12" for="startDate">Año de inicio (curso):</label>
+                        <input type="text" name="startDate" id="startDate">
                     </div>
 
 
@@ -74,5 +90,6 @@
             </div>
         </div>
         <%- include('./partials/footer') %>
+        <%- include('./partials/scripts') %>
     </body>
 </html>
