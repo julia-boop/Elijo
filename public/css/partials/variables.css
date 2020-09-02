@@ -20,7 +20,7 @@
     --btn-border-radius: 8px;
     /*BTN SECUNDARY*/
     --btn-bg-color-scnd:rgba(185, 233, 247, 0.897);
-    --btn-border-scnd:2px solid rgb(185,233,247);
+    --btn-border-scnd:2px solid rgb(123,216,240);
 
     --btn-bg-color-scnd-hover : rgb(123,216,240);
     --btn-border-scnd-hover : 2px solid rgb(109,216,254);

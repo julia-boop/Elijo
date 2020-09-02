@@ -11,8 +11,8 @@ window.addEventListener('load', function() {
             labels: ['Precio', 'Salida Laboral', 'Horas de Estudio', 'Dificultad', 'Años'],
             datasets: [{
                 label: 'Universidad del Salvador',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgb(14,155,218)',
+                borderColor: 'rgb(124,191,182)',
                 data: [15, 15, 15, 15, 15]
             }]
         },
