@@ -31,47 +31,128 @@
 
             <div class="extra-info">
                 <form class="row" action="">
-                    <div class="col-12">
-                        <label class="col-12" for="">Genero:</label>
+                    <div class="m-0">
+                        <label for="">Genero:</label>
                         <select name="genero" id="genero">
                             <option value="female">Femenino</option>
                             <option value="male">Masculino</option>
                             <option value="other">Otro</option>
                         </select>
-                    </div>
-                    <div class="col-12">
-                        <label class="col-12" for="age">Edad:</label>
-                        <input id="age" name="age" type="Number">
-                    </div>
-
-                    <div class="col-12 col-md-4">
-                        <label class="col-12" for="university">Universidad:</label>
-                        <input id="university" type="text">
+                        <label for="age">Edad:</label>
+                        <select name="edad" id="edad">
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                        </select>
                     </div>
 
-                    <div class="col-12 col-md-4">
-                        <label class="col-12" for="carrer">Carrera:</label>
-                        <input id="carrer" type="text">
-                    </div>
+                    <div class="row">
 
-                    <div class="col-12 col-md-4">
-                        <label class="col-12" for="startDate">Año de inicio:</label>
-                        <input type="text" name="startDate" id="startDate">
-                    </div>
+                        <div class="col-12 col-md-4">
+                            <label class="col-12" for="university">Universidad:</label>
+                            <script type="text/javascript">
+                                function CheckUniv(val){
+                                let element=document.getElementById('university');
+                                if(val=='pick a university'||val=='others')
+                                element.style.display='block';
+                                else  
+                                element.style.display='none';
+                                }
+                            </script> 
+                            <select name="university" onchange='CheckUniv(this.value);'> 
+                                <option>Selecciona una Universidad</option>  
+                                <option value="Di Tella">Universidad Torcuato Di Tella</option>
+                                <option value="UBA">Universidad de Buenos Aires</option>
+                                <option value="UNLP">Universidad Nacional de La Plata</option>
+                                <option value="others">Otra</option>
+                            </select>
+                            <input style="display: none;" id="university" type="text" name="university" placeholder="Escribí tu universidad">  
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label class="col-12" for="carrer">Carrera:</label>
+                            <script type="text/javascript">
+                                function CheckCarrer(val){
+                                let element=document.getElementById('carrer');
+                                if(val=='pick a carrer'||val=='others')
+                                element.style.display='block';
+                                else  
+                                element.style.display='none';
+                                }
+                            </script> 
+                            <select name="carrer" onchange='CheckCarrer(this.value);'> 
+                                <option>Selecciona una Carrera</option>  
+                                <option value="Medicina">Medicina</option>
+                                <option value="Sociologia">Sociologia</option>
+                                <option value="Ciencias Politicas">Ciencias Politicas</option>
+                                <option value="others">Otra</option>
+                            </select>
+                            <input style="display: none;" id="carrer" type="text" name="carrer" placeholder="Escribí tu carrera">  
+                        </div>
 
-                    <div class="col-12 col-md-4">
-                        <label class="col-12" for="courseDate">Curso:</label>
-                        <input type="text" name="courseDate" id="courseDate">
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <label class="col-12" for="courseDate">Instituto del curso:</label>
-                        <input type="text" name="courseDate" id="courseDate">
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <label class="col-12" for="startDate">Año de inicio (curso):</label>
-                        <input type="text" name="startDate" id="startDate">
-                    </div>
+                        <div class="col-12 col-md-4">
+                            <label class="col-12" for="startDate">Año de inicio:</label>
+                            <select name="startDate" id="startDate">
+                                <option>Selecciona un año</option>  
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                            </select>
+                        </div>
 
+                        <div class="col-12 col-md-4">
+                            <label class="col-12" for="course">Curso:</label>
+                            <script type="text/javascript">
+                                function CheckCourse(val){
+                                let element=document.getElementById('course');
+                                if(val=='pick a course'||val=='others')
+                                element.style.display='block';
+                                else  
+                                element.style.display='none';
+                                }
+                            </script> 
+                            <select name="course" onchange='CheckCourse(this.value);'> 
+                                <option>Selecciona un Curso</option>  
+                                <option value="Diseño UX">Diseño UX</option>
+                                <option value="Data Science">Data Science</option>
+                                <option value="Marketing Digital">Marketing Digital</option>
+                                <option value="others">Otro</option>
+                            </select>
+                            <input style="display: none;" id="course" type="text" name="course" placeholder="Escribí tu carrera">  
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <label class="col-12" for="courseDate">Instituto del curso:</label>
+                            <script type="text/javascript">
+                                function CheckInstitute(val){
+                                let element=document.getElementById('institute');
+                                if(val=='pick a institute'||val=='others')
+                                element.style.display='block';
+                                else  
+                                element.style.display='none';
+                                }
+                            </script> 
+                            <select name="university" onchange='CheckInstitute(this.value);'> 
+                                <option>Selecciona una institucion</option>  
+                                <option value="Digital House">Digital House</option>
+                                <option value="Acamica">Acamica</option>
+                                <option value="Egg">Egg</option>
+                                <option value="others">Otra</option>
+                            </select>
+                            <input style="display: none;" id="institute" type="text" name="institute" placeholder="Escribí una institucion">  
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <label class="col-12" for="courseStartDate">Año de inicio (curso):</label>
+                            <select name="courseStartDate" id="courseStartDate">
+                                <option>Selecciona un año</option>  
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                            </select>
+                        </div>
+
+                    </div>
 
                     <div class="col-12">
                         <label class="col-12" for="interests">Intereses: (Separar con comas. Ej: Futbol, gastronomia, etc.)</label>
@@ -82,8 +163,8 @@
                         <label class="col-12" for="experiences">Experiencias:</label>
                         <textarea name="experiences" id="experiences" cols="40" rows="5"></textarea>
                     </div>
-                    <div class="btn-container col-12">
-                        <button type="submit">Guardar información</button>
+                    <div class="btn-container mt-auto p-2">
+                        <button class="" type="submit">Guardar información</button>
                     </div>
                     
                 </form>
