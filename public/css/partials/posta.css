@@ -351,6 +351,7 @@ button.tipsPhoneBtn p {
   border: var(--btn-border-scnd);
   width: 40px;
   margin-bottom: 20px;
+  border-radius: 5px;
 }
 
 .lessons-container button{

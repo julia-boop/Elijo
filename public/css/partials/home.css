@@ -362,5 +362,11 @@ div.pop-up-child {
     margin-left: 5px;
 }
 
+ #opinion {
+    border-radius: 4px;
+}
 
+textarea:focus, #opinion:focus{
+    outline: var(--color-6) solid 2px;
+}
 /*FIN POP UP AYUDA*/
