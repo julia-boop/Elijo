@@ -222,7 +222,7 @@ textarea{
     height: 100vh;
     width: 100vw;
     filter: blur(5px);
-    position: fixed;
+    position: absolute;
     padding: 0;
     margin: 0;
 }
@@ -266,7 +266,7 @@ textarea{
     transition: width 1s ease;
 }
 .pop-up-background .pop-up.show.showHeight{
-    height: 60vh;/*a 90*/
+    height: 40vh;/*a 90*/
     transition: height 1s ease;
 }
 
@@ -307,6 +307,7 @@ div.pop-up .optionsContainer{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
 }
 
 div.pop-up .orderListv2{
@@ -374,12 +375,13 @@ div.pop-up-child {
     align-items: center;
 }
 
+
 .pop-up-child button.pop-up-send-btn {
     background: inherit;
     margin-left: 5px;
 }
 
- #opinion {
+#opinion {
     border-radius: 4px;
 }
 

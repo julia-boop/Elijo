@@ -387,11 +387,13 @@ button.tipsPhoneBtn p {
 }
 
 .carreers-btn button{
-  width: 60%;
+  width: 15%;
   background-color: var(--btn-bg-color);
   border: var(--btn-border);
   border-radius: var(--btn-border-radius);
   margin-bottom: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .carreers-btn button:hover{
