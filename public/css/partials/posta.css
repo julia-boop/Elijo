@@ -374,6 +374,10 @@ button.tipsPhoneBtn p {
 
 .carreers-container h4{
   width: 100%;
+  text-align: justify !important;
+}
+.carreers-h4-container{
+  width: 100% !important;
 }
 
 .carreers-container div{
