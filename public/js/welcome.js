@@ -9,7 +9,6 @@ window.addEventListener('load', function(){
     let popUpChilds = document.querySelectorAll('.pop-up-child');
 
     let blurBackground = qs('.blur-background');
-    let header = qs('header');
 
     /*window.scroll(false);*/
     popUpBg.classList.remove('close');
@@ -31,8 +30,7 @@ window.addEventListener('load', function(){
         popUpBg.classList.add('close');
         popUp.classList.toggle('show');
         orderList.classList.add('d-none');
-        blurBackground.classList.add('d-none');
-        header.style.filter = 'blur(0px)';
+        blurBackground.style.filter = "none";
     });
 
     popUpSend.addEventListener('click', function(){
@@ -41,7 +39,6 @@ window.addEventListener('load', function(){
         popUp.classList.toggle('show');
         orderList.classList.add('d-none');
         blurBackground.classList.add('d-none');
-        header.style.filter = 'blur(0px)';
         //ENVIA INFO
     });
 })
