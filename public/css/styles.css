@@ -106,7 +106,7 @@ body{
     }
     
     div.pop-up div.quit-btn-container button.quit-btn{
-        left: 93% !important;
+        left: 95% !important;
     }    
 }
 @import 'partials/mediaQuerys.css';

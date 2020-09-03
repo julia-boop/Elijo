@@ -207,10 +207,19 @@ div.help h6{
     margin-bottom: 8px;
 }
 
-
 textarea{
     width: 100%;
 }
+
+/* -BLUR- */
+.blur-background {
+    height: 100vh;
+    width: 100vw;
+    filter: blur(5px);
+}
+
+
+/* -/BLUR- */
 
 /*---------FIN DIV DE AYUDA----------------*/
 
@@ -369,4 +378,5 @@ div.pop-up-child {
 textarea:focus, #opinion:focus{
     outline: var(--color-6) solid 2px;
 }
+
 /*FIN POP UP AYUDA*/

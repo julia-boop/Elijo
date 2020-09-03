@@ -8,6 +8,9 @@ window.addEventListener('load', function(){
     let popUp = document.querySelector('.pop-up');
     let popUpChilds = document.querySelectorAll('.pop-up-child');
 
+    let blurBackground = qs('.blur-background');
+    let header = qs('header');
+
     /*window.scroll(false);*/
     popUpBg.classList.remove('close');
     popUpBg.classList.add('open');
@@ -28,6 +31,8 @@ window.addEventListener('load', function(){
         popUpBg.classList.add('close');
         popUp.classList.toggle('show');
         orderList.classList.add('d-none');
+        blurBackground.classList.add('d-none');
+        header.style.filter = 'blur(0px)';
     });
 
     popUpSend.addEventListener('click', function(){
@@ -35,6 +40,8 @@ window.addEventListener('load', function(){
         popUpBg.classList.add('close');
         popUp.classList.toggle('show');
         orderList.classList.add('d-none');
+        blurBackground.classList.add('d-none');
+        header.style.filter = 'blur(0px)';
         //ENVIA INFO
     });
 })
