@@ -112,6 +112,10 @@ div.help h3{
     margin-bottom: 15px;
 }
 
+.optionsContainer a {
+    margin: 0px;
+}
+
 div.help button{
     height: fit-content;
     padding: 5px 5px;
@@ -154,6 +158,8 @@ div.help .optionsContainer button.help-btn-anchor {
     padding: 3px;
     background-color: var(--color-3);
     margin-bottom: 5px;
+    margin-left: 4px;
+    margin-right: 4px;
     height: fit-content;
 }
 
@@ -350,12 +356,11 @@ div.pop-up div.quit-btn-container{
 }
 
 div.pop-up div.quit-btn-container button.quit-btn{
-    padding: 0;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     position: absolute;
-    left: 85%;
-    top: 0%;
+    left: 83%;
+    top: 3%;
     background: inherit;
 }
 

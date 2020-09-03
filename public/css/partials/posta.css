@@ -372,16 +372,18 @@ button.tipsPhoneBtn p {
 
 /* ---------CARRERAS----------- */
 
-.carreers-container h4{
-  width: 100%;
-  text-align: justify !important;
-}
-.carreers-h4-container{
-  width: 100% !important;
+.carreers-h4-container h4{
+  text-align: center;
 }
 
 .carreers-container div{
   width: 100%;
+}
+
+.carreers-btn{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .carreers-btn button{
@@ -389,6 +391,7 @@ button.tipsPhoneBtn p {
   background-color: var(--btn-bg-color);
   border: var(--btn-border);
   border-radius: var(--btn-border-radius);
+  margin-bottom: 2px;
 }
 
 .carreers-btn button:hover{
