@@ -37,37 +37,14 @@
             </div>
             <div class="blur-background">
                 <div class="row mainHomeContainer">
-                    <div class="col-12 vidContainer homeMedia">
+                    <div class="vidContainer homeMedia">
                         <video autoplay muted loop>
                             <source src="/videos/Elijo-video.mp4" type="video/mp4">
                         </video>
                     </div>
-
-                    <div class="col-12 col-sm-6 homeImg homeMedia">
-                        <!-- <img class="" src="/images/home/home-meet.jpg" alt=""> -->
-                        <h3>Conocer Estudiantes</h3>
-                        <a href="/meet">
-                            <button class="arrowBtn">
-                                <div class="arrow">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </button>
-                        </a>
-                    </div>
-                    <div class="col-12 col-sm-6 homeImg homeMedia">
-                        <!-- <img class="" src="/images/home/home-posta.jpg" alt=""> -->
-                        <h3>La Posta</h3>
-                        <a href="/posta">
-                            <button class="arrowBtn">
-                                <div class="arrow">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                            </button>
-                        </a>
+                    <div class="button-container d-flex justify-content-between">
+                        <a href="/posta"><button class="home-primary-button"><h2>La Posta</h2></button></a>
+                        <a href="/meet"><button class="home-primary-button"><h2>Conocer Estudiantes</h2></button></a>
                     </div>
                 </div>
 
@@ -108,12 +85,12 @@
                     <div>
                         <h6>¿Tenés alguna otra pregunta que pensas que nosotros te podemos ayudar?</h6>
                         <textarea name="opinion" id="opinion" cols="60" rows="5"></textarea>
-                        <div class="sendBtnContainer">
+                        <div class="sendBtnContainer d-flex justify-content-end">
                             <button class="sendBtn"><i class="far fa-paper-plane fa-2x"></i></button>
                         </div>
                     </div>
-                </div>
-            </div>   
+                </div>  
+            </div>
         </div>
         <%- include('./partials/scripts.ejs') %> 
         <script src="/js/instituteCarousel.js"></script>

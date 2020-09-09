@@ -11,7 +11,6 @@ window.addEventListener('load', function(){
     let meetLI = qs('.meet');
     let mainHome = qs('.mainHomeContainer')
     let popUpHelp = qs('.pop-up-background');
-    let blurBackground = qs('.blur-background');
 
 
     var timeoutInMiliseconds = 5000;
@@ -24,7 +23,6 @@ window.addEventListener('load', function(){
 
     function startTimer() { 
         timeoutId = window.setTimeout(doInactive, timeoutInMiliseconds)
-        blurBackground.classList.remove('d-none');
     }
     
     function doInactive() {

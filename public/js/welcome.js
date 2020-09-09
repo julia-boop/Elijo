@@ -10,6 +10,9 @@ window.addEventListener('load', function(){
 
     let blurBackground = qs('.blur-background');
 
+    //Blur background
+    blurBackground.style.filter = "blur(5px)"
+
     /*window.scroll(false);*/
     popUpBg.classList.remove('close');
     popUpBg.classList.add('open');
