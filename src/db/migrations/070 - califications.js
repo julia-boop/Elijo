@@ -44,8 +44,8 @@ module.exports = {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
         allowNull: false,
         references: {
-            model: 'users',
-            key: 'id'
+          model: 'users',
+          key: 'id'
         }
     },
     calification:{

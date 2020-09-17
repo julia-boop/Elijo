@@ -8,24 +8,33 @@ module.exports = (sequelize, dataTypes) => {
         },
         user_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false,
+            allowNull: false
         },
         text:{
-            type: dataTypes.STRING(250)
+            type: dataTypes.STRING(250),
+            allowNull: false
+        },
+        question_id: {
+            type: dataTypes.INTEGER(10).UNSIGNED,
+            allowNull: false
         }
-
     };
     const config = {
         tableName: 'answers',
         timestamps: true,
         underscored: true
     };
+    
     const Answer = sequelize.define(alias, cols, config);  
     
     Answer.associate = function(models) {
         Answer.belongsTo(models.User, {
           as: 'User',
           foreignKey: 'user_id'
+        });
+        Answer.belongsTo(models.Question, {
+            as: 'Question',
+            foreignKey: 'question_id'
         });
     };
     

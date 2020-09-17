@@ -20,7 +20,7 @@ module.exports = (sequelize, dataTypes) => {
     Interest.associate = function(models) {
         Interest.belongsToMany(models.User, {
             as: 'User',
-            through: 'User_interest',
+            through: 'user_interests',
             foreignKey: 'interest_id',
             otherKey: 'user_id',
             timestamps: true

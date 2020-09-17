@@ -8,6 +8,7 @@ module.exports = {
     "host": process.env.DB_HOST,
     "port": process.env.DB_PORT,
     "dialect": "mysql"
+    "timezone": "-03:00"//Para que timestamps figuren en zona horaria Bs As
   },
   "test": {
     "username": "root",
