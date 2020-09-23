@@ -2,33 +2,21 @@ module.exports = (sequelize, dataTypes) => {
     const alias = 'User_study';
     const cols = {
         id: {
-            type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
+            type: dataTypes.INTEGER(10).UNSIGNED,
             primaryKey: true,
             autoIncrement: true
         },
         user_id: {
-            type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false,
-            references: {
-              model: 'users',
-              key: 'id'
-            }
+            type: dataTypes.INTEGER(10).UNSIGNED,
+            allowNull: false
         },
-        university_career_id: {
-            type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false,
-            references: {
-              model: 'universities_careers',
-              key: 'id'
-            }
+        career_id: {
+            type: dataTypes.INTEGER(10).UNSIGNED,
+            allowNull: true
         },
-        institute_course_id: {
-            type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false,
-            references: {
-              model: 'institutes_courses',
-              key: 'id'
-            }
+        course_id: {
+            type: dataTypes.INTEGER(10).UNSIGNED,
+            allowNull: true
         }
     };
     const config = {
@@ -38,5 +26,29 @@ module.exports = (sequelize, dataTypes) => {
     };
     const User_study = sequelize.define(alias, cols, config);  
     
+    User_study.associate = function(models) {
+        User_study.belongsToMany(models.Career, {
+          as: 'Career_study',
+          through: 'user_career_studies',
+          foreignKey: 'career_id',
+          otherKey: 'user_studies_id',
+          timestamps: true
+        });
+
+        User_study.belongsToMany(models.Course, {
+            as: 'Course_study',
+            through: 'User_course_study',
+            foreignKey: 'course_id',
+            otherKey: 'user_studies_id',
+            timestamps: true
+        });
+        
+        User_study.belongsTo(models.User, {
+            as: 'User',
+            foreignKey: 'user_id',
+            timestamps: true
+        });
+      };
+
     return User_study;
 }

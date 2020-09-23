@@ -25,12 +25,15 @@ DROP TABLE IF EXISTS `answers`;
 CREATE TABLE `answers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
-  `text` varchar(250) DEFAULT NULL,
+  `text` varchar(250) NOT NULL,
+  `question_id` int(10) unsigned NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+  KEY `question_id` (`question_id`),
+  CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `answers_ibfk_2` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -293,7 +296,6 @@ CREATE TABLE `questions` (
   `institute_id` int(10) unsigned NOT NULL,
   `course_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
-  `answer_id` int(10) unsigned NOT NULL,
   `state` varchar(50) DEFAULT NULL,
   `text` varchar(250) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -304,13 +306,11 @@ CREATE TABLE `questions` (
   KEY `institute_id` (`institute_id`),
   KEY `course_id` (`course_id`),
   KEY `user_id` (`user_id`),
-  KEY `answer_id` (`answer_id`),
   CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`),
   CONSTRAINT `questions_ibfk_2` FOREIGN KEY (`career_id`) REFERENCES `careers` (`id`),
   CONSTRAINT `questions_ibfk_3` FOREIGN KEY (`institute_id`) REFERENCES `institutes` (`id`),
   CONSTRAINT `questions_ibfk_4` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
-  CONSTRAINT `questions_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `questions_ibfk_6` FOREIGN KEY (`answer_id`) REFERENCES `answers` (`id`)
+  CONSTRAINT `questions_ibfk_5` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -343,7 +343,7 @@ CREATE TABLE `sequelizemeta` (
 
 LOCK TABLES `sequelizemeta` WRITE;
 /*!40000 ALTER TABLE `sequelizemeta` DISABLE KEYS */;
-INSERT INTO `sequelizemeta` VALUES ('005 - genres.js'),('010 - users.js'),('015 - answers.js'),('020 - interests.js'),('025 - notifications.js'),('030 - user_interests.js'),('035 - user_notifications.js'),('040 -  universities.js'),('045 - careers.js'),('050 - universities_careers.js'),('055 - institutes.js'),('060 - courses.js'),('065 - institutes_courses.js'),('070 - califications.js'),('075 - questions.js'),('080 - tips.js'),('085 - user_studies.js');
+INSERT INTO `sequelizemeta` VALUES ('005 - genres.js'),('010 - users.js'),('015 - interests.js'),('020 - notifications.js'),('025 - user_interests.js'),('030 - user_notifications.js'),('035 - universities.js'),('040 - careers.js'),('045 - universities_careers.js'),('050 - institutes.js'),('055 - courses.js'),('060 - institutes_courses.js'),('065 - califications.js'),('070 - questions.js'),('075 - answers.js'),('080 - tips.js'),('085 - user_studies.js'),('090 - user_course_studies.js'),('095 - user_career_studies.js');
 /*!40000 ALTER TABLE `sequelizemeta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -452,6 +452,66 @@ LOCK TABLES `universities_careers` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `user_career_studies`
+--
+
+DROP TABLE IF EXISTS `user_career_studies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_career_studies` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `career_id` int(10) unsigned NOT NULL,
+  `user_studies_id` int(10) unsigned NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `career_id` (`career_id`),
+  KEY `user_studies_id` (`user_studies_id`),
+  CONSTRAINT `user_career_studies_ibfk_1` FOREIGN KEY (`career_id`) REFERENCES `careers` (`id`),
+  CONSTRAINT `user_career_studies_ibfk_2` FOREIGN KEY (`user_studies_id`) REFERENCES `user_studies` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_career_studies`
+--
+
+LOCK TABLES `user_career_studies` WRITE;
+/*!40000 ALTER TABLE `user_career_studies` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_career_studies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_course_studies`
+--
+
+DROP TABLE IF EXISTS `user_course_studies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_course_studies` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `course_id` int(10) unsigned NOT NULL,
+  `user_studies_id` int(10) unsigned NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `course_id` (`course_id`),
+  KEY `user_studies_id` (`user_studies_id`),
+  CONSTRAINT `user_course_studies_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
+  CONSTRAINT `user_course_studies_ibfk_2` FOREIGN KEY (`user_studies_id`) REFERENCES `user_studies` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_course_studies`
+--
+
+LOCK TABLES `user_course_studies` WRITE;
+/*!40000 ALTER TABLE `user_course_studies` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_course_studies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_interests`
 --
 
@@ -521,17 +581,17 @@ DROP TABLE IF EXISTS `user_studies`;
 CREATE TABLE `user_studies` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL,
-  `university_career_id` int(10) unsigned NOT NULL,
-  `institute_course_id` int(10) unsigned NOT NULL,
+  `career_id` int(10) unsigned DEFAULT NULL,
+  `course_id` int(10) unsigned DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
-  KEY `university_career_id` (`university_career_id`),
-  KEY `institute_course_id` (`institute_course_id`),
+  KEY `career_id` (`career_id`),
+  KEY `course_id` (`course_id`),
   CONSTRAINT `user_studies_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `user_studies_ibfk_2` FOREIGN KEY (`university_career_id`) REFERENCES `universities_careers` (`id`),
-  CONSTRAINT `user_studies_ibfk_3` FOREIGN KEY (`institute_course_id`) REFERENCES `institutes_courses` (`id`)
+  CONSTRAINT `user_studies_ibfk_2` FOREIGN KEY (`career_id`) REFERENCES `careers` (`id`),
+  CONSTRAINT `user_studies_ibfk_3` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -595,4 +655,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-14  2:21:20
+-- Dump completed on 2020-09-22 21:17:00

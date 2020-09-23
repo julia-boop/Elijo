@@ -66,14 +66,22 @@ module.exports = (sequelize, dataTypes) => {
   const User = sequelize.define(alias, cols, config);  
   
   User.associate = function(models) {
+    
+    User.hasMany(models.User_study, {
+      as: 'User_study',
+      foreignKey: 'user_id'
+    })
+    
     User.belongsTo(models.Genre, {
       as: 'Genre',
       foreignKey: 'genre_id'
     });
+
     User.hasMany(models.Answer, {
       as: 'Answer',
       foreignKey: 'user_id'
     });
+
     User.belongsToMany(models.Interest, {
       as: 'Interest',
       through: 'user_interests',
@@ -81,6 +89,7 @@ module.exports = (sequelize, dataTypes) => {
       otherKey: 'interest_id',
       timestamps: true
     });
+
     User.belongsToMany(models.Notification, {
       as: 'Notification',
       through: 'user_notifications',
@@ -88,48 +97,25 @@ module.exports = (sequelize, dataTypes) => {
       otherKey: 'notification_id',
       timestamps: true
     });
-    User.belongsToMany(models.University_career, {
-      as: 'University_career',
-      through: 'universities_careers',
+
+    User.hasMany(models.Tip, {
+      as: 'User_tip',
       foreignKey: 'user_id',
-      otherKey: 'university_career_id',
       timestamps: true
     });
-    User.belongsToMany(models.Institute_course, {
-      as: 'Institute_course',
-      through: 'institutes_courses',
+    
+    User.hasMany(models.Question, {
+      as: 'User_question',
       foreignKey: 'user_id',
-      otherKey: 'institute_course_id',
       timestamps: true
     });
-    User.belongsToMany(models.Institute_course, {
-      as: 'University',
-      through: 'tips',
+    
+    User.hasMany(models.Calification, {
+      as: 'User_calification',
       foreignKey: 'user_id',
-      otherKey: 'university_id',
       timestamps: true
     });
-    User.belongsToMany(models.Institute_course, {
-      as: 'Career',
-      through: 'tips',
-      foreignKey: 'user_id',
-      otherKey: 'career_id',
-      timestamps: true
-    });
-    User.belongsToMany(models.Institute_course, {
-      as: 'Institute',
-      through: 'tips',
-      foreignKey: 'user_id',
-      otherKey: 'institute_id',
-      timestamps: true
-    });
-    User.belongsToMany(models.Institute_course, {
-      as: 'Course',
-      through: 'tips',
-      foreignKey: 'user_id',
-      otherKey: 'course_id',
-      timestamps: true
-    });
+    
   };
   
   return User;

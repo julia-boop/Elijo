@@ -2,16 +2,16 @@ module.exports = (sequelize, dataTypes) => {
   const alias = 'Institute_course';
   const cols = {
     id: {
-      type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
+      type: dataTypes.INTEGER(10).UNSIGNED,
       primaryKey: true,
       autoIncrement: true
     },
     institute_id: {
-      type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
+      type: dataTypes.INTEGER(10).UNSIGNED,
       allowNull: false,
     },
     course_id: {
-      type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
+      type: dataTypes.INTEGER(10).UNSIGNED,
       allowNull: false,
     }
   };
