@@ -67,11 +67,22 @@ module.exports = (sequelize, dataTypes) => {
   
   User.associate = function(models) {
     
-    User.hasMany(models.User_study, {
-      as: 'User_study',
-      foreignKey: 'user_id'
-    })
+    User.belongsToMany(models.Carrer, {
+      as: 'User_carrers',
+      through: 'user_carrers',
+      foreignKey: 'user_id',
+      otherKey: 'carrer_id',
+      timestamps: true
+    });
     
+    User.belongsToMany(models.Course, {
+      as: 'User_courses',
+      through: 'user_courses',
+      foreignKey: 'user_id',
+      otherKey: 'course_id',
+      timestamps: true
+    });
+
     User.hasMany(models.Genre, {//NO ESTOY SEGURO DEL CAMBIO ESTE QUE HICE
       as: 'Genre',
       foreignKey: 'genre_id'
@@ -99,7 +110,7 @@ module.exports = (sequelize, dataTypes) => {
     });
 
     User.hasMany(models.Tip, {
-      as: 'User_tip',
+      as: 'User_tips',
       foreignKey: 'user_id',
       timestamps: true
     });

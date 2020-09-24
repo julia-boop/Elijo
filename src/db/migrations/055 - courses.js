@@ -20,6 +20,14 @@ module.exports = {
       calification:{
         type: Sequelize.DataTypes.INTEGER(10)
       },
+      institute_id: {
+        type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
+        allowNull: false,
+        references: {
+          model: 'institutes',
+          key: 'id'
+        }
+      },
       created_at: Sequelize.DataTypes.DATE,
       updated_at: Sequelize.DataTypes.DATE
     })

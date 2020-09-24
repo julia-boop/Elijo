@@ -45,22 +45,16 @@ module.exports = (sequelize, dataTypes) => {
   const University = sequelize.define(alias, cols, config);  
   
   University.associate = function(models) {
-    University.belongsToMany(models.Career, {
-      as: 'University_career',
-      through: 'universities_careers',
+    University.hasMany(models.Career, {
+      as: 'Carrers',
       foreignKey: 'university_id',
-      otherKey: 'career_id',
       timestamps: true
     });
 
-    //CAMBIAR ACA
-    University.belongsToMany(models.User, {
-        as: 'User',
-        through: 'tips',
-        foreignKey: 'university_id',
-        otherKey: 'user_id',
-        timestamps: true
-    });
+    University.hasMany(models.Tip, {
+      as: 'University_tips',
+      foreignKey: 'university_id'
+    })
   };
   return University;
 }

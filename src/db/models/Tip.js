@@ -36,5 +36,32 @@ module.exports = (sequelize, dataTypes) => {
   
   const Tip = sequelize.define(alias, cols, config);  
   
+  Tip.associate = function(models) {
+    Tip.belongsTo(models.Course, {
+      as: 'Course',
+      foreignKey: 'course_id'
+    });
+
+    Tip.belongsTo(models.Carrer, {
+      as: 'Carrer',
+      foreignKey: 'carrer_id'
+    });
+
+    Tip.belongsTo(models.Institute, {
+      as: 'Institute',
+      foreignKey: 'institute_id'
+    });
+
+    Tip.belongsTo(models.University, {
+      as: 'University',
+      foreignKey: 'university_id'
+    });
+
+    Tip.belongsTo(models.User, {
+      as: 'User',
+      foreignKey: 'user_id'
+    });
+  };
+
   return Tip;
 }

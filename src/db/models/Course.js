@@ -17,6 +17,10 @@ module.exports = (sequelize, dataTypes) => {
     },
     calification:{
       type: dataTypes.INTEGER(10)
+    },
+    institute_id: {
+      type: dataTypes.INTEGER(10).UNSIGNED,
+      allowNull: false
     }
   };
   const config = {
@@ -27,23 +31,24 @@ module.exports = (sequelize, dataTypes) => {
   const Course = sequelize.define(alias, cols, config);  
   
   Course.associate = function(models) {
-    Course.belongsToMany(models.Institute, {
+    Course.belongsTo(models.Institute, {
       as: 'Institute_course',
-      through: 'institutes_courses',
-      foreignKey: 'course_id',
-      otherKey: 'institute_id',
+      foreignKey: 'institute_id',
       timestamps: true
     });
 
     Course.belongsToMany(models.User, {
-      as: 'User',
-      through: 'User_course_study',
+      as: 'User_course_study',
+      through: 'user_courses',
       foreignKey: 'course_id',
       otherKey: 'user_id',
       timestamps: true
     });
 
-    //FALTA ASOCIAR CON TIPS
+    Course.hasMany(models.Tip, {
+      as: 'Course_tips',
+      foreignKey: 'course_id'
+    });
   };
   
   return Course;

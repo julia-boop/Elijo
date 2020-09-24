@@ -42,23 +42,16 @@ module.exports = (sequelize, dataTypes) => {
   const Institute = sequelize.define(alias, cols, config);  
   
   Institute.associate = function(models) {
-    Institute.belongsToMany(models.Course, {
-      as: 'Institute_course',
-      through: 'institutes_courses',
+    Institute.hasMany(models.Course, {
+      as: 'Courses',
       foreignKey: 'institute_id',
-      otherKey: 'course_id',
       timestamps: true
     });
 
-    //CAMBIAR ACA
-    Institute.belongsToMany(models.User, {
-      as: 'User',
-      through: 'tips',
-      foreignKey: 'institute_id',
-      otherKey: 'user_id',
-      timestamps: true
-    });
-
+    Institute.hasMany(models.Tip, {
+      as: 'Institute_tips',
+      foreignKey: 'institute_id'
+    })
   };
   return Institute;
 }
