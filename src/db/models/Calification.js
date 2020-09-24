@@ -8,19 +8,19 @@ module.exports = (sequelize, dataTypes) => {
         },
         university_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false
+            allowNull: true
         },
         career_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false
+            allowNull: true
         },
         institute_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false
+            allowNull: true
         },
         courses_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false
+            allowNull: true
         },
         user_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,

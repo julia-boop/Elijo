@@ -18,7 +18,7 @@ module.exports = (sequelize, dataTypes) => {
     const Genre = sequelize.define(alias, cols, config);  
     
     Genre.associate = function(models) {
-        Genre.hasMany(models.User, {
+        Genre.belongsTo(models.User, {
           as: 'User',
           foreignKey: 'genre_id'
         });

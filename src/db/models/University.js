@@ -52,6 +52,8 @@ module.exports = (sequelize, dataTypes) => {
       otherKey: 'career_id',
       timestamps: true
     });
+
+    //CAMBIAR ACA
     University.belongsToMany(models.User, {
         as: 'User',
         through: 'tips',

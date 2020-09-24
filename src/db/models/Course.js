@@ -37,12 +37,14 @@ module.exports = (sequelize, dataTypes) => {
 
     Course.belongsToMany(models.User, {
       as: 'User',
-      through: 'tips',
+      through: 'User_course_study',
       foreignKey: 'course_id',
       otherKey: 'user_id',
       timestamps: true
-  });
+    });
 
+    //FALTA ASOCIAR CON TIPS
   };
+  
   return Course;
 }

@@ -23,7 +23,7 @@ module.exports = (sequelize, dataTypes) => {
   };
   
   const Institute_course = sequelize.define(alias, cols, config);  
-  
+  /*
   Institute_course.associate = function(models) {
     Institute_course.belongsToMany(models.User, {
       as: 'User',
@@ -32,7 +32,7 @@ module.exports = (sequelize, dataTypes) => {
       otherKey: 'user_id',
       timestamps: true
     });
-  };
+  };*/
   
   return Institute_course;
 }

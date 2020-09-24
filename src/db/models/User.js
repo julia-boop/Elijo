@@ -72,7 +72,7 @@ module.exports = (sequelize, dataTypes) => {
       foreignKey: 'user_id'
     })
     
-    User.belongsTo(models.Genre, {
+    User.hasMany(models.Genre, {//NO ESTOY SEGURO DEL CAMBIO ESTE QUE HICE
       as: 'Genre',
       foreignKey: 'genre_id'
     });

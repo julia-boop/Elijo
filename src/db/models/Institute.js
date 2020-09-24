@@ -50,13 +50,14 @@ module.exports = (sequelize, dataTypes) => {
       timestamps: true
     });
 
+    //CAMBIAR ACA
     Institute.belongsToMany(models.User, {
       as: 'User',
       through: 'tips',
       foreignKey: 'institute_id',
       otherKey: 'user_id',
       timestamps: true
-  });
+    });
 
   };
   return Institute;
