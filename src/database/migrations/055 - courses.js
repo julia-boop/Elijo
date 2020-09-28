@@ -20,6 +20,18 @@ module.exports = {
       calification:{
         type: Sequelize.DataTypes.INTEGER(10)
       },
+      duration:{
+        type: Sequelize.DataTypes.INTEGER(10)
+      },
+      difficulty:{
+        type: Sequelize.DataTypes.INTEGER(10)
+      },
+      job_exit:{
+        type: Sequelize.DataTypes.INTEGER(10)
+      },
+      study_hours:{
+        type: Sequelize.DataTypes.INTEGER(10)
+      },
       institute_id: {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
         allowNull: false,

@@ -18,6 +18,18 @@ module.exports = (sequelize, dataTypes) => {
     calification:{
       type: dataTypes.INTEGER(10)
     },
+    duration:{
+      type: dataTypes.INTEGER(10)
+    },
+    difficulty:{
+      type: dataTypes.INTEGER(10)
+    },
+    job_exit:{
+      type: dataTypes.INTEGER(10)
+    },
+    study_hours:{
+      type: dataTypes.INTEGER(10)
+    },
     institute_id: {
       type: dataTypes.INTEGER(10).UNSIGNED,
       allowNull: false

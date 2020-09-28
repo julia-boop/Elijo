@@ -18,6 +18,18 @@ module.exports = (sequelize, dataTypes) => {
     calification:{
       type: dataTypes.INTEGER(10)
     },
+    duration:{
+      type: dataTypes.INTEGER(10)
+    },
+    difficulty:{
+      type: dataTypes.INTEGER(10)
+    },
+    job_exit:{
+      type: dataTypes.INTEGER(10)
+    },
+    study_hours:{
+      type: dataTypes.INTEGER(10)
+    },
     university_id: {
       type: dataTypes.INTEGER(10).UNSIGNED,
       allowNull: false
@@ -32,7 +44,7 @@ module.exports = (sequelize, dataTypes) => {
   
   Career.associate = function(models) {
     Career.belongsTo(models.University, {
-      as: 'Univeristies',
+      as: 'Universities',
       foreignKey: 'university_id',
       timestamps: true
     });
@@ -45,12 +57,12 @@ module.exports = (sequelize, dataTypes) => {
       timestamps: true
     });
 
-    Carrer.belongsTo(models.Asignature, {
+    Career.hasMany(models.Asignature, {
       as: 'Asignatures',
-      foreignKey: 'carrer_id'
+      foreignKey: 'career_id'
     });
 
-    Course.hasMany(models.Tip, {
+    Career.hasMany(models.Tip, {
       as: 'Carrer_tips',
       foreignKey: 'course_id'
     });

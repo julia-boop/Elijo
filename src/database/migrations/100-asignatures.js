@@ -12,13 +12,13 @@ module.exports = {
         type: Sequelize.DataTypes.STRING(60),
         allowNull: false
       },
-      carrer_id:{
+      career_id:{
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
         allowNull: false,
         references: {
-            model: 'careers',
-            key: 'id'
-          }
+          model: 'careers',
+          key: 'id'
+        }
       },
       created_at: Sequelize.DataTypes.DATE,
       updated_at: Sequelize.DataTypes.DATE

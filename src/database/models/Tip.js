@@ -8,19 +8,19 @@ module.exports = (sequelize, dataTypes) => {
     },
     university_id: {
       type: dataTypes.INTEGER(10).UNSIGNED,
-      allowNull: false
+      allowNull: true
     },
     career_id: {
       type: dataTypes.INTEGER(10).UNSIGNED,
-      allowNull: false
+      allowNull: true
     },
     institute_id: {
       type: dataTypes.INTEGER(10).UNSIGNED,
-      allowNull: false
+      allowNull: true
     },
     course_id: {
       type: dataTypes.INTEGER(10).UNSIGNED,
-      allowNull: false
+      allowNull: true
     },
     user_id: {
       type: dataTypes.INTEGER(10).UNSIGNED,
@@ -42,9 +42,9 @@ module.exports = (sequelize, dataTypes) => {
       foreignKey: 'course_id'
     });
 
-    Tip.belongsTo(models.Carrer, {
-      as: 'Carrer',
-      foreignKey: 'carrer_id'
+    Tip.belongsTo(models.Career, {
+      as: 'Career',
+      foreignKey: 'career_id'
     });
 
     Tip.belongsTo(models.Institute, {

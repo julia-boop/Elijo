@@ -10,7 +10,7 @@ module.exports = (sequelize, dataTypes) => {
           type: dataTypes.STRING(60),
           allowNull: false
         },
-        carrer_id:{
+        career_id:{
           type: dataTypes.INTEGER(10).UNSIGNED,
           allowNull: false
         }
@@ -24,9 +24,9 @@ module.exports = (sequelize, dataTypes) => {
     const Asignature = sequelize.define(alias, cols, config);  
     
     Asignature.associate = function(models) {
-        Asignature.belongsTo(models.Carrer, {
-            as: 'carrer',
-            foreignKey: 'carrer_id'
+        Asignature.belongsTo(models.Career, {
+            as: 'Career',
+            foreignKey: 'career_id'
         });
     };
 

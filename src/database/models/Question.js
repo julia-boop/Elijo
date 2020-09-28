@@ -54,7 +54,7 @@ module.exports = (sequelize, dataTypes) => {
       foreignKey: 'question_id'
     })
     
-    Question.belongsTo(models.Univerisity, {
+    Question.belongsTo(models.University, {
       as: 'Univeristy',
       foreignKey: 'university_id'
     });
@@ -78,5 +78,5 @@ module.exports = (sequelize, dataTypes) => {
     
   };
   
-  return Answer;
+  return Question;
 }

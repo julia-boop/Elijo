@@ -15,9 +15,21 @@ module.exports = {
         type: Sequelize.DataTypes.STRING(255)
       },
       price:{
-        type: Sequelize.DataTypes.INTEGER(10)
+        type: Sequelize.DataTypes.INTEGER(20)
       },
       calification:{
+        type: Sequelize.DataTypes.INTEGER(10)
+      },
+      duration:{
+        type: Sequelize.DataTypes.INTEGER(10)
+      },
+      difficulty:{
+        type: Sequelize.DataTypes.INTEGER(10)
+      },
+      job_exit:{
+        type: Sequelize.DataTypes.INTEGER(10)
+      },
+      study_hours:{
         type: Sequelize.DataTypes.INTEGER(10)
       },
       university_id: {
