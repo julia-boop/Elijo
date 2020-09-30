@@ -12,6 +12,9 @@ module.exports = (sequelize, dataTypes) => {
     acronym:{
       type: dataTypes.STRING(100)
     },
+    owner_type: {
+      type: dataTypes.STRING(50)
+    },
     link:{
       type: dataTypes.STRING(255)
     },
