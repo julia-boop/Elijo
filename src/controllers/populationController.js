@@ -24,7 +24,7 @@ module.exports = {
             updated_at: new Date()
         };
         let university = await db.University.create(newUniversity);
-        res.redirect('population/addCareerAsignature/' + university.id);
+        res.redirect('/population/addCareerAsignature/' + university.id);
         //return res.send(university);
     },
     showCareerAndAsignatureForm : (req, res) => {
@@ -32,7 +32,7 @@ module.exports = {
         res.render('careerAsignatureForm', {universityId});
     },
     addCareerAndASignatures : async (req, res) => {
-
+        
         let newCareer = {
             name: req.body.career_name,
             plan_link: req.body.career_plan_link,
@@ -59,8 +59,11 @@ module.exports = {
             let asignature = await db.Asignature.create(newAsignature);
         }
 
-        //al final, va un if preguntando si le llego un addOtrher y dependiendo el valor se manda a crear otra carrera, u otra universidad
-        return res.send('ok');
+        if(req.body.newCareer != ''){
+            res.redirect('/population/addCareerAsignature/'+ req.params.universityId);
+        }else{
+            res.redirect('/population/university');
+        }
     },
     showInstituteForm : (req, res) => {
         res.render('instituteForm');
