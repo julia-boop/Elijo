@@ -28,7 +28,8 @@ module.exports = {
         //return res.send(university);
     },
     showCareerAndAsignatureForm : (req, res) => {
-        res.render('careerAsignatureForm');
+        let universityId = req.params.universityId;
+        res.render('careerAsignatureForm', {universityId});
     },
     addCareerAndASignatures : async (req, res) => {
 
@@ -50,6 +51,7 @@ module.exports = {
         for(let i = 0; i < req.body.amount_asignatures; i++){
             let newAsignature = {
                 name: req.body.asignature_name[i],
+                asignature_year: req.body.asignature_year[i],
                 career_id: career.id,
                 created_at: new Date(),
                 updated_at: new Date()

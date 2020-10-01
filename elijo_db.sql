@@ -56,6 +56,7 @@ DROP TABLE IF EXISTS `asignatures`;
 CREATE TABLE `asignatures` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL,
+  `asignature_year` int(10) unsigned NOT NULL,
   `career_id` int(10) unsigned NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -669,4 +670,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-29 22:41:57
+-- Dump completed on 2020-10-01 16:47:35

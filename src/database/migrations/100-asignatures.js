@@ -12,6 +12,10 @@ module.exports = {
         type: Sequelize.DataTypes.STRING(60),
         allowNull: false
       },
+      asignature_year: {
+        type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
+        allowNull: false
+      },
       career_id:{
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
         allowNull: false,
