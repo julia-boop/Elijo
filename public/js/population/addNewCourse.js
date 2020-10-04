@@ -1,20 +1,14 @@
 window.addEventListener('load', function(){
+    console.log("entre");
+    
+    let newCourseBtn = document.querySelector("#addNewCourse");
+    let coursesContainer = document.querySelector("#courseContainer");
+    let course = document.querySelector("#course");
+    let submitBtn = document.querySelector("#BtnSubmitCourse");
+    let newCourseInput = document.querySelector("#newCourse");
+    let form = document.querySelector("form");
 
-
-let addNewCourse = document.querySelector('#addNewCourse');
-    let i = 0;
-    function duplicate() {
-        let courseContainer = document.getElementById('courseContainer' + i);
-        let clone = courseContainer.cloneNode(true); // "deep" clone
-        clone.id = "courseContainer" + ++i; // there can only be one element with an ID
-        addNewCourse.onclick = duplicate; // event handlers are not cloned
-        courseContainer.parentNode.appendChild(clone);
-    }
-
-    addNewCourse.addEventListener('onclick', function() {
-        console.log('Me estas clickeandoooooo')
-        //return duplicate();
-    })
-
-
+    newCourseBtn.addEventListener('click', (event) => {
+        coursesContainer.innerHTML += course.outerHTML;
+    });
 })

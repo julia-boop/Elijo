@@ -101,6 +101,6 @@ module.exports = {
             let course = db.Course.create(newCourse);
         }
         
-        return res.send('ok');
+        res.redirect('/population/institute');
     }
 }

@@ -20,6 +20,10 @@
             text-align: center;
             background-color: lawngreen;
         }
+        #course:nth-child(even){
+            padding: 5px;
+            background-color: grey;
+        }
     </style>
     <body>
         <form action="/population/institute" method="POST" enctype="multipart/form-data" class="ml-5" id="courseForm">
@@ -59,36 +63,42 @@
             <input name="courses_amount" type="number">
 
             <div id="courseContainer">
-                <h4 class="mt-3 ">Nombre:</h4>
-                <input class="" name="course_name" type="text" placeholder="Digital House">
+                <div id="course">
+                    <h4 class="mt-3 ">Nombre:</h4>
+                    <input class="" name="course_name" type="text" placeholder="Digital House">
+    
+                    <h4 class="mt-3 ">Link de la pagina:</h4>
+                    <input class="" name="course_plan_link" type="text" placeholder="www.digitalhouse.edu">
+    
+                    <h4 class="mt-3 ">Precio:</h4>
+                    <input class="" name="course_price" type="text" placeholder="10000">
+    
+                    <h4 class="mt-3 ">Calificación:</h4>
+                    <input class="" name="course_calification" type="text" placeholder="De 1 a 10 (stats)">
+    
+                    <h4 class="mt-3 ">Duración:</h4>
+                    <input class="" name="course_duration" type="text" placeholder="Horas de duracion">
+    
+                    <h4 class="mt-3 ">Dificultad:</h4>
+                    <input class="" name="course_difficulty" type="text" placeholder="De 1 a 10 (stats)">
+    
+                    <h4 class="mt-3 ">Salida laboral:</h4>
+                    <input class="" name="course_job_exit" type="text" placeholder="De 1 a 10 (stats)">
+    
+                    <h4 class="mt-3 ">Horas de estudio:</h4>
+                    <input class="" name="course_study_hours" type="text" placeholder="Por ej: 70">
+                </div>
+                
 
-                <h4 class="mt-3 ">Link de la pagina:</h4>
-                <input class="" name="course_plan_link" type="text" placeholder="www.digitalhouse.edu">
-
-                <h4 class="mt-3 ">Precio:</h4>
-                <input class="" name="course_price" type="text" placeholder="10000">
-
-                <h4 class="mt-3 ">Calificación:</h4>
-                <input class="" name="course_calification" type="text" placeholder="De 1 a 10 (stats)">
-
-                <h4 class="mt-3 ">Duración:</h4>
-                <input class="" name="course_duration" type="text" placeholder="Horas de duracion">
-
-                <h4 class="mt-3 ">Dificultad:</h4>
-                <input class="" name="course_difficulty" type="text" placeholder="De 1 a 10 (stats)">
-
-                <h4 class="mt-3 ">Salida laboral:</h4>
-                <input class="" name="course_job_exit" type="text" placeholder="De 1 a 10 (stats)">
-
-                <h4 class="mt-3 ">Horas de estudio:</h4>
-                <input class="" name="course_study_hours" type="text" placeholder="Por ej: 70">
-
-                <br>
-                <button id="addNewCourse" class="new_course my-5">Agregar otro Curso</button>
-                <button id="BtnSubmitCourse" type="submit">Siguiente</button>
+                
             </div>
-
+            <br>
+            
+            <button id="BtnSubmitCourse" type="submit">Siguiente</button>
         </form>
+
+        <button id="addNewCourse" class="new_course my-5">Agregar otro Curso</button>
+
         <%- include('./partials/scripts.ejs') %>
         <script src="/js/population/addNewCourse.js"></script>
     </body>
