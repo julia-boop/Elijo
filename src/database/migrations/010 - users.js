@@ -20,19 +20,10 @@ module.exports = {
       name:{
         type: Sequelize.DataTypes.STRING(255)
       },
-      last_name:{
-        type: Sequelize.DataTypes.STRING(255)
-      },
       age: {
         type: Sequelize.DataTypes.DATE
       },
       telephone: {
-        type: Sequelize.DataTypes.STRING(255)
-      },
-      adress:{
-        type: Sequelize.DataTypes.STRING(255)
-      },
-      location: {
         type: Sequelize.DataTypes.STRING(255)
       },
       experiences: {
@@ -40,9 +31,6 @@ module.exports = {
       },
       province: {
         type: Sequelize.DataTypes.STRING(255)
-      },
-      postal_code: {
-        type: Sequelize.DataTypes.INTEGER(11)
       },
       genre_id: {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,

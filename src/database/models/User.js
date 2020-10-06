@@ -18,19 +18,10 @@ module.exports = (sequelize, dataTypes) => {
     name:{
       type: dataTypes.STRING(255)
     },
-    last_name:{
-      type: dataTypes.STRING(255)
-    },
     age: {
       type: dataTypes.DATE
     },
     telephone: {
-      type: dataTypes.STRING(255)
-    },
-    adress:{
-      type: dataTypes.STRING(255)
-    },
-    location: {
       type: dataTypes.STRING(255)
     },
     experiences: {
@@ -38,9 +29,6 @@ module.exports = (sequelize, dataTypes) => {
     },
     province: {
       type: dataTypes.STRING(255)
-    },
-    postal_code: {
-      type: dataTypes.INTEGER(11)
     },
     genre_id: {
       type: dataTypes.INTEGER(10).UNSIGNED,

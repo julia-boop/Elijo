@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const mainController = require(path.join(__dirname, '../controllers/mainController.js'));
+const mainController = require('../controllers/mainController.js');
 
 
 //HOME
