@@ -4,6 +4,7 @@ const path = require('path');
 const methodOverride =  require('method-override'); 
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
 
 app.use(express.static(path.join(__dirname, '../public')));
@@ -12,6 +13,8 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(session({secret:'holis'}));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 
 app.set('view engine', 'ejs');

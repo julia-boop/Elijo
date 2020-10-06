@@ -6,7 +6,7 @@
             <div class="container register-container">
 
                 <!-- Default form register -->
-                <form class="text-center border border-light p-5" action="">
+                <form class="text-center border border-light p-5" action="/user/register" method="POST">
                 
                 <p class="h4 mb-4 register-title">Súmate a ELIJO</p>
                 <!-- GOOGLE DIV-->
@@ -16,47 +16,40 @@
                 <div class="form-row mb-4">
                     <div class="col">
                         <!-- First name -->
-                        <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Nombre">
+                        <input type="text" id="defaultRegisterFormFirstName" class="form-control" name="name" placeholder="Nombre">
                     </div>
                     <div class="col">
                         <!-- Last name -->
-                        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Apellido">
+                        <input type="text" id="defaultRegisterFormLastName" class="form-control" name="last_name" placeholder="Apellido">
                     </div>
                 </div>
                 
                 <!-- E-mail -->
-                <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+                <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
 
-                <!-- rol  -->
-                <div class="cntr">
-  
-                    <label for="opt1" class="radio">
-                      <input type="radio" name="rdo" id="opt1" value="2" class="hidden"/>
-                      <span class="label"></span>Actual Estudiante
-                    </label>
-                    
-                    <label for="opt2" class="radio">
-                      <input type="radio" name="rdo" id="opt2" value="3" class="hidden"/>
-                      <span class="label"></span>Futuro Estudiante
-                    </label>
-            
-                    
-                  </div>
-                  
-                  <!-- dribbble -->
-                  <a class="credit" href="https://dribbble.com/shots/4647673-Material-Design-Radio-Buttons" target="_blank"><img class="img-radio" src="https://cdn.dribbble.com/assets/logo-footer-hd-a05db77841b4b27c0bf23ec1378e97c988190dfe7d26e32e1faea7269f9e001b.png" alt=""></a>
+       
                 
                 <!-- Password -->
-                <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Contraseña" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Contraseña" aria-describedby="defaultRegisterFormPasswordHelpBlock" name="password">
                 <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                     La contraseña debe contener al menos 8 cáracteres.
                 </small>
                 
                 <!-- Phone number -->
-                <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Telefono" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Telefono" aria-describedby="defaultRegisterFormPhoneHelpBlock" name="telephone">
                 <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
                     Preferentemente celular con whatsapp, para comunicarnos mejor
                 </small>
+
+                <!-- Rol -->
+                <label for="opt1" class="radio">
+                    <input type="radio" id="opt1" value="2" name="rol" class="hidden"/>
+                    <span class="label"></span>Actual Estudiante
+                </label>                            
+                <label for="opt2" class="radio">
+                    <input type="radio" id="opt2" value="3" name="rol" class="hidden"/>
+                    <span class="label"></span>Futuro Estudiante
+                </label>                            
                 
                 <!-- Sign up button -->
                 <button class="btn btn-info my-4 btn-block btn-log-reg" type="submit">Registrarme</button>
