@@ -18,29 +18,32 @@ module.exports = (sequelize, dataTypes) => {
     name:{
       type: dataTypes.STRING(100)
     },
+<<<<<<< HEAD
+=======
     last_name:{
       type: dataTypes.STRING(100)
     },
+>>>>>>> b22820ab5759ef1c0e044921db8f7b0fc4c52321
     age: {
       type: dataTypes.DATE
     },
     telephone: {
       type: dataTypes.STRING(100)
     },
+<<<<<<< HEAD
+=======
     adress:{
       type: dataTypes.STRING(100)
     },
     location: {
       type: dataTypes.STRING(100)
     },
+>>>>>>> b22820ab5759ef1c0e044921db8f7b0fc4c52321
     experiences: {
       type: dataTypes.STRING(255)
     },
     province: {
       type: dataTypes.STRING(100)
-    },
-    postal_code: {
-      type: dataTypes.INTEGER(11)
     },
     genre_id: {
       type: dataTypes.INTEGER(10).UNSIGNED,

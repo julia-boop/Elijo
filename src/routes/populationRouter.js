@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
+const isAdmin = require('../middlewares/isAdmin');
 
 const populationController = require('../controllers/populationController');
 
@@ -15,13 +16,13 @@ let storage = multer.diskStorage({
 });
 let upload = multer({storage:storage});
 
-router.get('/university', populationController.showUniversityForm);
-router.post('/university', upload.any(), populationController.saveNewUniversity);
-router.get('/addCareerAsignature/:universityId', populationController.showCareerAndAsignatureForm);
-router.post('/addCareerAsignature/:universityId', populationController.addCareerAndASignatures);
+router.get('/university', isAdmin, populationController.showUniversityForm);
+router.post('/university', isAdmin, upload.any(), populationController.saveNewUniversity);
+router.get('/addCareerAsignature/:universityId', isAdmin, populationController.showCareerAndAsignatureForm);
+router.post('/addCareerAsignature/:universityId', isAdmin, populationController.addCareerAndASignatures);
 
 
-router.get('/institute', populationController.showInstituteForm);
-router.post('/institute', upload.any(), populationController.saveNewInstitute);
+router.get('/institute', isAdmin, populationController.showInstituteForm);
+router.post('/institute', isAdmin, upload.any(), populationController.saveNewInstitute);
 
 module.exports = router;
