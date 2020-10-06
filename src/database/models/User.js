@@ -18,19 +18,10 @@ module.exports = (sequelize, dataTypes) => {
     name:{
       type: dataTypes.STRING(100)
     },
-    last_name:{
-      type: dataTypes.STRING(100)
-    },
     age: {
       type: dataTypes.DATE
     },
     telephone: {
-      type: dataTypes.STRING(100)
-    },
-    adress:{
-      type: dataTypes.STRING(100)
-    },
-    location: {
       type: dataTypes.STRING(100)
     },
     experiences: {
