@@ -4,12 +4,9 @@ const path = require('path');
 const methodOverride =  require('method-override'); 
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-<<<<<<< HEAD
 const bodyParser = require('body-parser');
-=======
 const createLocals = require('./middlewares/createLocals');
 const hasCookie = require('./middlewares/hasCookie');
->>>>>>> 7170b2b368f66fb434e2d65891b9e2c5ffecadca
 
 
 app.use(express.static(path.join(__dirname, '../public')));

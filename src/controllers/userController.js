@@ -26,7 +26,6 @@ module.exports = {
             location: " ", 
             experiences: " ",
             province: " ", 
-            postal_code: null, 
             genre_id: 3, 
             photo: null, 
             rol: req.body.rol,
