@@ -18,7 +18,7 @@ module.exports = {
             adress: req.body.university_adress,
             location: req.body.university_location,
             region: req.body.university_region,
-            logo: req.files[0].filename,
+            logo: (req.files[0] == undefined) ? 'no-image.jpg' : req.files[0].filename,
             amount_students: req.body.university_amount_students,
             created_at: new Date(),
             updated_at: new Date()
@@ -77,7 +77,7 @@ module.exports = {
             adress: req.body.institute_adress,
             location: req.body.institute_location,
             region: req.body.institute_region,
-            logo: req.files[0].filename,
+            logo: (req.files[0] == undefined) ? 'no-image.jpg' : req.files[0].filename,
             amount_students: req.body.institute_amount_students,
             created_at: new Date(),
             updated_at: new Date()

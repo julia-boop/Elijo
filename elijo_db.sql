@@ -628,16 +628,16 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
+  `email` varchar(150) NOT NULL,
+  `password` varchar(150) NOT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `last_name` varchar(100) DEFAULT NULL,
   `age` datetime DEFAULT NULL,
-  `telephone` varchar(255) DEFAULT NULL,
-  `adress` varchar(255) DEFAULT NULL,
-  `location` varchar(255) DEFAULT NULL,
+  `telephone` varchar(100) DEFAULT NULL,
+  `adress` varchar(100) DEFAULT NULL,
+  `location` varchar(100) DEFAULT NULL,
   `experiences` varchar(255) DEFAULT NULL,
-  `province` varchar(255) DEFAULT NULL,
+  `province` varchar(100) DEFAULT NULL,
   `postal_code` int(11) DEFAULT NULL,
   `genre_id` int(10) unsigned NOT NULL,
   `photo` varchar(100) DEFAULT NULL,
@@ -670,4 +670,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-01 16:47:35
+-- Dump completed on 2020-10-06  0:58:19

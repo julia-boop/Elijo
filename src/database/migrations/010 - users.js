@@ -9,37 +9,37 @@ module.exports = {
         autoIncrement: true
       },
       email: {
-        type: Sequelize.DataTypes.STRING(255),
+        type: Sequelize.DataTypes.STRING(150),
         allowNull: false,
         unique: true
       },
       password: {
-        type: Sequelize.DataTypes.STRING(255),
+        type: Sequelize.DataTypes.STRING(150),
         allowNull: false
       },
       name:{
-        type: Sequelize.DataTypes.STRING(255)
+        type: Sequelize.DataTypes.STRING(100)
       },
       last_name:{
-        type: Sequelize.DataTypes.STRING(255)
+        type: Sequelize.DataTypes.STRING(100)
       },
       age: {
         type: Sequelize.DataTypes.DATE
       },
       telephone: {
-        type: Sequelize.DataTypes.STRING(255)
+        type: Sequelize.DataTypes.STRING(100)
       },
       adress:{
-        type: Sequelize.DataTypes.STRING(255)
+        type: Sequelize.DataTypes.STRING(100)
       },
       location: {
-        type: Sequelize.DataTypes.STRING(255)
+        type: Sequelize.DataTypes.STRING(100)
       },
       experiences: {
         type: Sequelize.DataTypes.STRING(255)
       },
       province: {
-        type: Sequelize.DataTypes.STRING(255)
+        type: Sequelize.DataTypes.STRING(100)
       },
       postal_code: {
         type: Sequelize.DataTypes.INTEGER(11)

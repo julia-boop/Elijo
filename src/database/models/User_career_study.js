@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    const alias = 'User_carrer_study';
+    const alias = 'User_career_study';
     const cols = {
         id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
@@ -10,21 +10,17 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(10).UNSIGNED,
             allowNull: false
           },
-          user_studies_id: {
+          user_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false,
-            references: {
-              model: 'user_studies',
-              key: 'id'
-            }
-          },
+            allowNull: false
+          }
     };
     const config = {
-        tableName: 'user_carrer_studies',
+        tableName: 'user_career_studies',
         timestamps: true,
         underscored: true
     };
-    const User_carrer_study = sequelize.define(alias, cols, config);  
+    const User_career_study = sequelize.define(alias, cols, config);  
     
-    return User_carrer_study;
+    return User_career_study;
 }

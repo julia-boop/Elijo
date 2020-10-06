@@ -1,5 +1,4 @@
 window.addEventListener('load', function(){
-    console.log("entre");
     
     let newCourseBtn = document.querySelector("#addNewCourse");
     let coursesContainer = document.querySelector("#courseContainer");
