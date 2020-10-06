@@ -7,37 +7,37 @@ module.exports = (sequelize, dataTypes) => {
       autoIncrement: true
     },
     email: {
-      type: dataTypes.STRING(255),
+      type: dataTypes.STRING(150),
       allowNull: false,
       unique: true
     },
     password: {
-      type: dataTypes.STRING(255),
+      type: dataTypes.STRING(150),
       allowNull: false
     },
     name:{
-      type: dataTypes.STRING(255)
+      type: dataTypes.STRING(100)
     },
     last_name:{
-      type: dataTypes.STRING(255)
+      type: dataTypes.STRING(100)
     },
     age: {
       type: dataTypes.DATE
     },
     telephone: {
-      type: dataTypes.STRING(255)
+      type: dataTypes.STRING(100)
     },
     adress:{
-      type: dataTypes.STRING(255)
+      type: dataTypes.STRING(100)
     },
     location: {
-      type: dataTypes.STRING(255)
+      type: dataTypes.STRING(100)
     },
     experiences: {
       type: dataTypes.STRING(255)
     },
     province: {
-      type: dataTypes.STRING(255)
+      type: dataTypes.STRING(100)
     },
     postal_code: {
       type: dataTypes.INTEGER(11)

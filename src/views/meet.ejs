@@ -114,13 +114,19 @@
         <h1 id="meet-title">¡Conocé más estudiantes! </h1>
         <button class="btn-filter" id="toggle">Filtrar</button>
             <div class="row d-flex justify-content-center">
-                <div class="col-5 col-md-3 estudiante">
+
+                <% for( let i = 0; i < userStudies.length; i++) { %>
+                    <div class="col-5 col-md-3 estudiante">
                     <img src="/images/otros/avatar.png" alt="">
-                    <h3>Julia</h3>
-                    <p>UTDT</p>
-                    <p>Ciencias Sociales</p>
-                    <a href="/meet/detail/1"><button> Ver Perfil</button></a>
-                </div>
+                    <h3><%= userStudies[i].name %></h3>
+                    <% for( let j = 0; j < userStudies[i].careerResult.length; j++) { %>
+                    <p><%= careerResult[j].Universities.name %> </p>
+                    <p><%= careerResult[j].name %></p>
+                    <% } %> 
+                    <a href="/meet/detail/<%=userStudies[i].id%>"><button> Ver Perfil</button></a>
+                    </div>
+                <% } %>
+                    
                 <div class="col-5 col-md-3 estudiante">
                     <img src="/images/otros/avatar.png" alt="">
                     <h3>Felipe</h3>

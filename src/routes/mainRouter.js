@@ -3,6 +3,8 @@ const router = express.Router();
 const path = require('path');
 const mainController = require(path.join(__dirname, '../controllers/mainController.js'));
 
+//TEST
+router.get('/test', mainController.json);
 
 //HOME
 router.get('/', mainController.home);
