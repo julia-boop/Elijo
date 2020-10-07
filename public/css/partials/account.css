@@ -121,8 +121,18 @@ button.interest-btn{
     border: var(--btn-border);
     height: 40px;
 }
+.university a{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
 .institute{
     position: relative;
+}
+.institute a{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
 }
 .institute button.addCourseBtn{
     position: absolute;

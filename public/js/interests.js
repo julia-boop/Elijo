@@ -1,8 +1,6 @@
 function removeInterest(id){
     let interestsContainer = document.querySelector('#interestsContainer');
     interestsContainer.removeChild(interestsContainer.childNodes[id]);
-    interestsContainer.removeChild(interestsContainer.childNodes[id+1]);
-    //console.log(interestsContainer.childNodes[id]);
 }
 
 window.addEventListener('load', function(){
@@ -12,7 +10,14 @@ window.addEventListener('load', function(){
     let interestsContainer = document.querySelector('#interestsContainer');
     let addInterestButton = document.querySelector('#interestButton');
     
-    let interestsCounter = 0;
+    //#region COUNTING OLDER INTERESTS
+    let olderInterests = document.querySelectorAll('#oldInterests');
+    for(let i = 0; i < olderInterests.length; i++){
+        olderInterests[i].id = i+1;
+    }
+    let interestsCounter = olderInterests.length;
+    //#endregion
+    //#region ADDING BUTTON
     //CUANDO SE TOCA EL BOTON DE AGREGAR
     addInterestButton.addEventListener('click', event => {
         //AGREGO AL CONTAINER DE BOTONES UN BOTON CON UN ID TEMPROAL
@@ -28,20 +33,25 @@ window.addEventListener('load', function(){
         tempIdBtn.value = interestsInput.value;
         tempIdBtn.classList.add('interest-btn');
     });
-
+    //#endregion
+    //#region BUTTON REMOVER
     document.addEventListener('click', event => {
         if(event.target.localName == 'button'){
             for(let i = 0; i < interestsContainer.childNodes.length; i++){
+                console.log(event.target);
                 if(interestsContainer.childNodes[i].id == event.target.id){
                     removeInterest(i);
                 }
             }   
         }
     });
-
+    //#endregion
+    //#region PREVENT DEFAULT FORM
     form.addEventListener('submit', event => {
         event.preventDefault();
     });
+    //#endregion
+    //#region INPUT CREATOR 
     submitBtn.addEventListener('click', event => {
         if(interestsContainer.childNodes.length > 0){
             for(let i = 0; i < interestsContainer.childNodes.length; i++){
@@ -55,4 +65,5 @@ window.addEventListener('load', function(){
         
         form.submit();
     });
+    //#endregion
 });

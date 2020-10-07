@@ -24,6 +24,9 @@ module.exports = {
           key: 'id'
         }
       },
+      start_year: {
+        type: Sequelize.DataTypes.INTEGER(40).UNSIGNED
+      },
       created_at: Sequelize.DataTypes.DATE,
       updated_at: Sequelize.DataTypes.DATE
     })
