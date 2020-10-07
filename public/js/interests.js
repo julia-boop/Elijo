@@ -43,14 +43,11 @@ window.addEventListener('load', function(){
         event.preventDefault();
     });
     submitBtn.addEventListener('click', event => {
-        if(interestsContainer.childNodes.length > 1){
+        if(interestsContainer.childNodes.length > 0){
             for(let i = 0; i < interestsContainer.childNodes.length; i++){
                 if(interestsContainer.childNodes[i].localName == 'button'){
-                    interestsContainer.innerHTML += '<input id="tempID">';
-                    let tempIdBtn = document.querySelector('#tempID');
-                    tempIdBtn.id = i;
-                    tempIdBtn.name = 'interests';
-                    tempIdBtn.value = interestsContainer.childNodes[i].value;
+                    interestsContainer.innerHTML += `<input id="input${i}" name="interests" value="${interestsContainer.childNodes[i].value}">`
+                    let tempIdBtn = document.querySelector('#input'+i);
                     tempIdBtn.style.visibility = 'hidden';
                 }
             }

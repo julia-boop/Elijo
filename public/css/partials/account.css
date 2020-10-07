@@ -106,3 +106,38 @@ button.interest-btn{
 #experiences{
     width: 100%;
 }
+
+.university{
+    position: relative;
+}
+.university button.addCareerBtn{
+    position: absolute;
+    z-index: 200;
+    bottom: -5px;
+    right: 50px;
+    width: 40px;
+    padding-top: 2.5px;
+    background-color: var(--btn-bg-color);
+    border: var(--btn-border);
+    height: 40px;
+}
+.institute{
+    position: relative;
+}
+.institute button.addCourseBtn{
+    position: absolute;
+    z-index: 200;
+    bottom: -5px;
+    right: 50px;
+    width: 40px;
+    padding-top: 2.5px;
+    background-color: var(--btn-bg-color);
+    border: var(--btn-border);
+    height: 40px;
+}
+
+.amountDiv{
+    margin-bottom: 3px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+}
