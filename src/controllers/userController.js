@@ -13,8 +13,19 @@ module.exports = {
             },
             include: [{association: 'User_careers'},{association: 'User_courses'}, {association: 'Interest'}]
         })
+        let genres = await db.Genre.findAll();
+        let user_careers = await db.User_career_study.findAll({
+            where: {
+                user_id: 1
+            }
+        })
+        let user_courses = await db.User_course_study.findAll({
+            where: {
+                user_id: 1
+            }
+        })
         //return res.send(user);
-        res.render('account', {universities, institutes, user});
+        res.render('account', {universities, institutes, user, user_careers, user_courses, genres});
     },
     register: function(req, res) {
         res.render('register');
@@ -53,6 +64,7 @@ module.exports = {
         res.render('login')
     },
     edit: async (req, res) => {
+        return res.send(req.body);
         let user = await db.User.findByPk(1/*req.session.userSession*/)
         .catch(err => {
             return res.send(err);
@@ -64,7 +76,7 @@ module.exports = {
             age: req.body.age,
             telephone: req.body.telephone,
             province: req.body.province,
-            genre: req.body.genre,
+            genre_id: req.body.genre,
             photo: user.photo,
             experiences: req.body.experiences
         }
@@ -85,6 +97,12 @@ module.exports = {
         .catch(err => {
             return res.send(err);
         })
+
+        if(!Array.isArray(req.body.interests)){
+            let tempInfo = req.body.interests;
+            req.body.interests = [];
+            req.body.interests.push(tempInfo);
+        }
 
         let interestsToAdd = [];
         let tempInterestArr = [];
@@ -127,65 +145,35 @@ module.exports = {
         }
 
 
-
-
-        if(req.body.career != null || req.body.career != ''){
-            for(let i = 0; i < req.body.career.length; i++){
+        let destroyCareerStudies = await db.User_career_study.destroy({
+            where: {
+                user_id: 1
+            }
+        })
+        for(let i = 0; i < req.body.career.length; i++){
+            if(req.body.career[i] != "Selecciona una Carrera" && req.body.career[i] != '' && req.body.career[i] != null){
                 let newCareer = await db.User_career_study.create({
                     career_id: req.body.career[i],
                     user_id: 1,
+                    start_year: req.body.startDate[i],
                     updated_at: Date.now()
                 })
-
-            }
+            }                    
         }
 
-        if(req.body.career != null || req.body.career != ''){
-            let destroyStudies = await db.User_career_study.destroy({
-                where: {
-                    user_id: 1
-                }
-            })
-            if(Array.isArray(req.body.career)){
-                for(let i = 0; i < req.body.career.length; i++){
-                    let newCareer = await db.User_career_study.create({
-                        career_id: req.body.career[i],
-                        user_id: 1,
-                        updated_at: Date.now()
-                    })
-                }
-            }else{
-                let newCareer = await db.User_career_study.create({
-                    career_id: req.body.career,
-                    user_id: 1
-                })
-                .catch(err => {
-                    return res.send(err);
-                })
-            }
-        }
 
-        if(req.body.course != null || req.body.course != ''){
-            let destroyStudies = await db.User_course_study.destroy({
-                where: {
-                    user_id: 1
-                }
-            })
-            if(Array.isArray(req.body.course)){
-                for(let i = 0; i < req.body.course.length; i++){
-                    let newCourse = await db.User_course_study.create({
-                        course_id: req.body.course[i],
-                        user_id: 1,
-                        updated_at: Date.now()
-                    })
-                }
-            }else{
+        let destroyCourseStudies = await db.User_course_study.destroy({
+            where: {
+                user_id: 1
+            }
+        })
+        for(let i = 0; i < req.body.course.length; i++){
+            if(req.body.course[i] != "Selecciona un Curso" && req.body.course[i] != null && req.body.course[i] != ''){
                 let newCourse = await db.User_course_study.create({
-                    course_id: req.body.course,
-                    user_id: 1
-                })
-                .catch(err => {
-                    return res.send(err);
+                    course_id: req.body.course[i],
+                    user_id: 1,
+                    start_year: req.body.courseStartDate[i],
+                    updated_at: Date.now()
                 })
             }
         }

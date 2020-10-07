@@ -1,19 +1,22 @@
 module.exports = (sequelize, dataTypes) => {
     const alias = 'User_course_study';
     const cols = {
-        id: {
-            type: dataTypes.INTEGER(10).UNSIGNED,
-            primaryKey: true,
-            autoIncrement: true
-          },
-          course_id: {
-            type: dataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false
-          },
-          user_id: {
-            type: dataTypes.INTEGER(10).UNSIGNED,
-            allowNull: false
-          },
+      id: {
+        type: dataTypes.INTEGER(10).UNSIGNED,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      course_id: {
+        type: dataTypes.INTEGER(10).UNSIGNED,
+        allowNull: false
+      },
+      user_id: {
+        type: dataTypes.INTEGER(10).UNSIGNED,
+        allowNull: false
+      },
+      start_year: {
+        type: dataTypes.INTEGER(40).UNSIGNED
+      }
     };
     const config = {
         tableName: 'user_courses',

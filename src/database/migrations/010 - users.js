@@ -20,8 +20,11 @@ module.exports = {
       name:{
         type: Sequelize.DataTypes.STRING(100)
       },
+      last_name:{
+        type: Sequelize.DataTypes.STRING(100)
+      },
       age: {
-        type: Sequelize.DataTypes.DATE
+        type: Sequelize.DataTypes.INTEGER(40).UNSIGNED
       },
       telephone: {
         type: Sequelize.DataTypes.STRING(100)

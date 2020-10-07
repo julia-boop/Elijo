@@ -18,8 +18,11 @@ module.exports = (sequelize, dataTypes) => {
     name:{
       type: dataTypes.STRING(100)
     },
+    last_name:{
+      type: dataTypes.STRING(100)
+    },
     age: {
-      type: dataTypes.DATE
+      type: dataTypes.INTEGER(40).UNSIGNED
     },
     telephone: {
       type: dataTypes.STRING(100)
@@ -71,7 +74,7 @@ module.exports = (sequelize, dataTypes) => {
       timestamps: true
     });
 
-    User.hasMany(models.Genre, {//NO ESTOY SEGURO DEL CAMBIO ESTE QUE HICE
+    User.belongsTo(models.Genre, {
       as: 'Genre',
       foreignKey: 'genre_id'
     });
