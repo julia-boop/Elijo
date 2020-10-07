@@ -17,15 +17,21 @@
 
             <div class="main-info row">
                 <div class="img-container col-6 col-md-4">
-                    <img class="" src="/images/otros/avatar.png" alt="Avatar">
+                    <img class="" src="/images/users/ponceguido@gmail.com-1602021006502.jpg" alt="Avatar">
                     <button id="visualBtn" class="edit-photo-btn"><i class="fas fa-camera fa-3x"></i></button>
                 </div>
                 
                 
                 <div class="col-12 col-md-8">
                     <h4>Juan Kotlin</h4>
-                    <h5><i class="fab fa-whatsapp"></i> +54 11 4578-1231</h5>
-                    <h5><i class="fas fa-at"></i> mi@mail.com</h5>
+                    <h5><i class="fab fa-whatsapp"></i> <%= user.telephone %></h5>
+                    <h5><i class="fas fa-at"></i> <%= user.email %>  </h5>
+                    <h6> <u>Intereses:</u>
+                        <% for(let i = 0; i < user.Interest.length; i++){ %>
+                            <%= user.Interest[i].interest_name%>
+                            <%= (i+1 < user.Interest.length) ? '-' : '' %> 
+                        <% } %> 
+                    </h6>
                 </div>
             </div>
 
@@ -36,7 +42,7 @@
                             <div class="col-12 col-md-4">
                                 <div class="row">
                                     <label class="col-12" for="name">Nombre:</label>
-                                    <input class="ml-3" name="name" type="text" value="">
+                                    <input class="ml-3" name="name" type="text" value="<%=(user.name != null && user.name != '') ? user.name : ''%>">
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
@@ -48,7 +54,7 @@
                             <div class="col-12 col-md-4">
                                 <div class="row">
                                     <label class="col-12" for="email">E-mail:</label>
-                                    <input class="ml-3" name="email" type="text" value="">
+                                    <input class="ml-3" name="email" type="text" value="<%=(user.email != null && user.email != '') ? user.email : ''%>">
                                 </div>
                             </div>
                         </div>
@@ -60,9 +66,9 @@
                                 <div class="row">
                                     <label class="col-12" for="genre">Genero:</label>
                                     <select class="ml-3" name="genre" id="genre">
+                                        <option value="other">Otro</option>
                                         <option value="female">Femenino</option>
                                         <option value="male">Masculino</option>
-                                        <option value="other">Otro</option>
                                     </select>
                                 </div>
                             </div>
@@ -72,7 +78,7 @@
                                     <label class="col-12" for="age">Edad:</label>
                                     <select class="ml-3" name="edad" id="edad">
                                         <% for(let i = 16; i < 50; i++){ %>
-                                            <option value="<%= i %>"><%= i %> </option>
+                                            <option value="<%= i %>" <%=(i == user.age) ? 'selected' : '' %>><%= i %> </option>
                                         <% } %>
                                     </select>
                                 </div>
@@ -82,7 +88,7 @@
                                 <div class="row">
                                     <label class="col-12" for="age">Provincia:</label>
                                     <select class="ml-3" name="province" id="province">
-                                        <option hidden>Selecciona una Provincia</option>
+                                        <option value="" hidden>Selecciona una Provincia</option>
                                     </select>
                                 </div>
                             </div>
@@ -91,82 +97,76 @@
                         <div class="row">
                             <div class="col-12">
                                 <label class="col-12" for="age">Telefono:</label>
-                                <input name="telephone" type="text">
+                                <input name="telephone" type="text" value="<%=(user.telephone != null && user.telephone != '') ? user.telephone : ''%>">
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-12">
+                            
                             <div class="row university">
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-4" id="universitySelect">
                                     <label class="col-12" for="university">Universidad:</label>
                                     <select class="ml-3" name="university" id="universitySelector"> 
-                                        <option hidden>Selecciona una Universidad</option>
+                                        <option value="" hidden>Selecciona una Universidad</option>
                                         <% for(let i = 0; i < universities.length; i++){ %>   
                                             <option value="<%=universities[i].id%>"><%=universities[i].name%></option>
                                         <% } %>   
                                         <option value="others">Otra</option>
                                     </select>
-                                    <input style="display: none;" id="university" type="text" name="university" placeholder="Escribí tu universidad">  
+                                    
                                 </div>
-                                <div class="col-12 col-md-4">
-                                    <label class="col-12" for="carrer">Carrera:</label>
-                                    <select class="ml-3" name="carrer" id="career"> 
-                                        <option hidden>Selecciona una Carrera</option>  
+                                <div class="col-12 col-md-4" id="careerSelect">
+                                    <label class="col-12" for="career">Carrera:</label>
+                                    <select class="ml-3" name="career" id="career"> 
+                                        <option value="" hidden>Selecciona una Carrera</option>
                                         <option value="others">Otra</option>
                                     </select>
-                                    <input style="display: none;" id="carrer" type="text" name="carrer" placeholder="Escribí tu carrera">  
+                                    
                                 </div>
         
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-4" id="careerStartDiv">
                                     <label class="col-12" for="startDate">Año de inicio:</label>
                                     <input class="ml-3" type="number" name="startDate" placeholder="xxxx">
-                                    <!--<select class="ml-3" name="startDate" id="startDate">
-                                        <option>Selecciona un año</option>  
-                                        <option value="2018">2018</option>
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
-                                    </select>-->
                                 </div>
+                                
                             </div>
+                            <a class="ml-3" href="#">¿No encontras la universidad o la carrera que hiciste? haz click aqui</a>
+
+                            <!--<button class="addCareerBtn"><i class="fas fa-plus fa-2x"></i></button>-->
                         </div>
                         
                         <div class="col-12">
-                            <div class="row course">
+                            <div class="row institute">
 
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-4" id="instituteSelect">
                                     <label class="col-12" for="institute">Instituto del curso:</label>
                                     <select class="ml-3" name="institute" id="instituteSelector"> 
-                                        <option hidden>Selecciona una institucion</option>  
+                                        <option value="" hidden>Selecciona una institucion</option>  
                                         <% for(let i = 0; i < institutes.length; i++){ %>   
                                             <option value="<%=institutes[i].id%>"><%=institutes[i].name%></option>
                                         <% } %> 
                                         <option value="others">Otra</option>
                                     </select>
-                                    <input style="display: none;" id="institute" type="text" name="institute" placeholder="Escribí una institucion">  
                                 </div>
 
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-4" id="courseSelect">
                                     <label class="col-12" for="course">Curso:</label> 
                                     <select class="ml-3" name="course" id="course"> 
-                                        <option hidden>Selecciona un Curso</option>  
+                                        <option value="" hidden>Selecciona un Curso</option>  
                                     </select>
-                                    <input style="display: none;" id="course" type="text" name="course" placeholder="Escribí tu carrera">  
                                 </div>
         
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-4" id="courseStartDiv">
                                     <label class="col-12" for="courseStartDate">Año de inicio (curso):</label>
                                     <input class="ml-3" type="number" name="courseStartDate" placeholder="xxxx">
-                                    <!--
-                                    <select class="ml-3" name="courseStartDate" id="courseStartDate">
-                                        <option>Selecciona un año</option>  
-                                        <option value="2018">2018</option>
-                                        <option value="2019">2019</option>
-                                        <option value="2020">2020</option>
-                                    </select>-->
                                 </div>
+                                
+
                             </div>
+                            <a class="ml-3" href="#">¿No encontras el instituto o el curso que hiciste? haz click aqui</a>
+                            <!--<button class="addCourseBtn"><i class="fas fa-plus fa-2x"></i></button>-->
                         </div>
                         
                     </div>
@@ -182,7 +182,7 @@
                         </div>
                         <div class="col-12 mt-3">
                             <label class="col-12" for="experiences">Experiencias:</label>
-                            <textarea class="ml-3" name="experiences" id="experiences" cols="40" rows="5"></textarea>
+                            <textarea class="ml-3" name="experiences" id="experiences" cols="40" rows="5" value=""><%=(user.experiences != null && user.experiences != '') ? user.experiences : ''%></textarea>
                         </div>
                         
                     </div>
@@ -196,6 +196,7 @@
         <%- include('./partials/footer') %>
         <script src="/js/interests.js"></script>
         <script src="/js/account.js"></script>
+        <script src="/js/duplicateStudy.js"></script>
         <%- include('./partials/scripts') %>
     </body>
 </html>

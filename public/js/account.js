@@ -3,7 +3,7 @@ window.addEventListener('load', function(){
     let careerSelected = document.querySelector('#career');
 
     let instituteSelected = document.querySelector('#instituteSelector');
-    let courseSelected = document.querySelector('#course');
+    let courseSelected = document.querySelectorAll('#course');
 
     let provinceSelect = document.querySelector('#province');
     
@@ -13,7 +13,6 @@ window.addEventListener('load', function(){
         return response.json()
     })
     .then(provinces => {
-        console.log(provinces);
         for(let i = 0; i < provinces.provincias.length; i++){
             provinceSelect.innerHTML +=`<option value="${provinces.provincias[i].id}">  ${provinces.provincias[i].nombre} </option>`
         }
@@ -30,8 +29,8 @@ window.addEventListener('load', function(){
             .then(careers => {
                 for(let i = 0; i < careers.length; i++){
                     //careerSelected.innerHTML += '<option value="">' + careers[i] + '</option>'
-                    console.log(careers);
                     careerSelected.innerHTML +=`<option value="${careers[i].id}">  ${careers[i].name} </option>`
+                    
                 }
             })
         }
@@ -47,12 +46,15 @@ window.addEventListener('load', function(){
             })
             .then(courses => {
                 for(let i = 0; i < courses.length; i++){
-                    courseSelected.innerHTML +=`<option value="${courses[i].id}">  ${courses[i].name} </option>`
+                    for(let j = 0; j < courseSelected.length; j++){
+                        courseSelected[j].innerHTML +=`<option value="${courses[i].id}">  ${courses[i].name} </option>`
+                    }
                 }
             })
         }
         
     });
+    
 
     /*FOTO*/
     let botonSeleccionarImg = qs('#visualBtn');
