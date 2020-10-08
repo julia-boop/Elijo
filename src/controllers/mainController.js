@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');   
 const db = require('../database/models');
-const University = require('../database/models/University');
 
 module.exports = {
 
@@ -15,55 +14,19 @@ module.exports = {
     home: function(req, res){
         res.render('home');
     },
-    meet: function(req, res){
-        
-        db.User.findAll({
+    meet: async function(req, res){
+        let userStudies = await db.User.findAll({
             where: {rol: 2},//'2' debe ser reemplazado por el rol que corresponda a estudiantes
             include: [{association: 'User_careers'}, {association: 'User_courses'}]
         })
-        .then(function(userStudies) {
-            //return res.json(userStudies) //Llegan usuarios rol 2 perfectamente como "userStudies"
-            for(i = 0; i < userStudies.length; i++) {
-                if(userStudies[i].User_careers) {
-                    db.Career.findAll({
-                        where: userStudies[i].User_careers.university_id,//se rompe si no tiene career
-                        include: [{association: 'Universities'}]
-                    })
-                    .then(function(careerResult){
-                        //return res.json(careerResult);//llega carrera como array
-                        return res.render('meet', {careerResult:careerResult, userStudies:userStudies})
-                    })
-                } else {
-                    for(i = 0; i < userStudies.length; i++) {
-                    db.Course.findAll({
-                        where: userStudies.User_courses[i].institute_id,//se rompe si no tiene career, ni course
-                        include: [{association: 'Institutes'}]
-                    })
-                    .then(function(courseResult){
-                        return res.render('meet', {courseResult:courseResult, userStudies:userStudies})
-                    })
-                }
-                }
-            }
-            //res.render('meet', {meetUsers:meetUsers});
+        let universityCareers = await db.Career.findAll({
+            include: [{association: 'Universities'}]
         })
-        
-        //         db.User_career_study.findAll({
-        //             where: {
-        //                 user_id: meetUser.id
-        //             }
-        //         })
-        //         .then(function(meetUser) {
-        //             db.User_course_study.findAll({
-        //                 where: {
-        //                     user_id: meetUser.id
-        //                 }
-        //             })
-        //         .then(function(meetUser) {
-        //         })
-        //     })
-        // })
-        // res.render('meet')
+        let instituteCourses = await db.Course.findAll({
+            include: [{association: 'Institutes'}]
+        })
+        //return res.send(userStudies);
+        res.render('meet', {userStudies:userStudies, universityCareers:universityCareers, instituteCourses:instituteCourses});
     },
     detail: function(req, res, next) {
         res.render('detail')

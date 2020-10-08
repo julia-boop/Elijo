@@ -115,67 +115,31 @@
         <button class="btn-filter" id="toggle">Filtrar</button>
             <div class="row d-flex justify-content-center">
 
+
                 <% for( let i = 0; i < userStudies.length; i++) { %>
                     <div class="col-5 col-md-3 estudiante">
-                    <img src="/images/otros/avatar.png" alt="">
-                    <h3><%= userStudies[i].name %></h3>
-                    <% for( let j = 0; j < userStudies[i].careerResult.length; j++) { %>
-                    <p><%= careerResult[j].Universities.name %> </p>
-                    <p><%= careerResult[j].name %></p>
-                    <% } %> 
-                    <a href="/meet/detail/<%=userStudies[i].id%>"><button> Ver Perfil</button></a>
+                        <img src="/images/otros/avatar.png" alt="">
+                        <h3><%= userStudies[i].name %></h3>
+                        <% for( let j = 0; j < universityCareers.length; j++) { %>
+                            <% for( let l = 0; l < instituteCourses.length; l++) { %>
+                                <% for( let k = 0; k < userStudies[i].User_careers.length; k++) { %>
+                                    <% for( let p = 0; p < userStudies[i].User_courses.length ; p++) { %>
+                                    <% if(universityCareers[j].id == userStudies[i].User_careers[k].id) { %>
+                                        <p><%=  universityCareers[j].Universities.name %></p>
+                                        <p><%=  userStudies[i].User_careers[k].name %></p>
+                                    <% } %>
+                                    <% if(instituteCourses[l].id == userStudies[i].User_courses[p].id) { %>
+                                        <p><%=  instituteCourses[l].Institutes.name %></p>
+                                        <p><%=  userStudies[i].User_courses[p].name %></p>
+                                    <% } %>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
+                        <% } %>  
+                        <a href="/meet/detail/1"><button> Ver Perfil</button></a>
                     </div>
                 <% } %>
-                    
-                <div class="col-5 col-md-3 estudiante">
-                    <img src="/images/otros/avatar.png" alt="">
-                    <h3>Felipe</h3>
-                    <p>UDESA</p>
-                    <p>Administracion</p>
-                    <a href="/meet/detail/1"><button> Ver Perfil</button></a>
-                </div>
-                <div class="col-5 col-md-3 estudiante">
-                    <img src="/images/otros/avatar.png" alt="">
-                    <h3>Micaela</h3>
-                    <p>UBA</p>
-                    <p>Comunicacion</p>
-                    <a href="/meet/detail/1"><button> Ver Perfil</button></a>
-                </div>
-                <div class="col-5 col-md-3 estudiante">
-                    <img src="/images/otros/avatar.png" alt="">
-                    <h3>Martin</h3>
-                    <p>ITBA</p>
-                    <p>Ingenieria</p>
-                    <a href="/meet/detail/1"><button> Ver Perfil</button></a>
-                </div>
-                <div class="col-5 col-md-3 estudiante">
-                    <img src="/images/otros/avatar.png" alt="">
-                    <h3>Cala</h3>
-                    <p>UTDT</p>
-                    <p>Arquitectura</p>
-                    <button> Ver Perfil</button>
-                </div>
-                <div class="col-5 col-md-3 estudiante">
-                    <img src="/images/otros/avatar.png" alt="">
-                    <h3>Felipe</h3>
-                    <p>UDESA</p>
-                    <p>Administracion</p>
-                    <a href="/meet/detail/1"><button> Ver Perfil</button></a>
-                </div>
-                <div class="col-5 col-md-3 estudiante">
-                    <img src="/images/otros/avatar.png" alt="">
-                    <h3>Micaela</h3>
-                    <p>UBA</p>
-                    <p>Comunicacion</p>
-                    <a href="/meet/detail/1"><button> Ver Perfil</button></a>
-                </div>
-                <div class="col-5 col-md-3 estudiante">
-                    <img src="/images/otros/avatar.png" alt="">
-                    <h3>Martin</h3>
-                    <p>ITBA</p>
-                    <p>Ingenieria</p>
-                    <a href="/meet/detail/1"><button> Ver Perfil</button></a>
-                </div>
+
                 
             </div>
 
