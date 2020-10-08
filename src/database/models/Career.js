@@ -51,7 +51,7 @@ module.exports = (sequelize, dataTypes) => {
 
     Career.belongsToMany(models.User, {
       as: 'User_carrer_study',
-      through: 'user_carrers',
+      through: 'user_careers',
       foreignKey: 'career_id',
       otherKey: 'user_id',
       timestamps: true
