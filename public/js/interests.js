@@ -32,6 +32,9 @@ window.addEventListener('load', function(){
         tempIdBtn.name = 'interests';
         tempIdBtn.value = interestsInput.value;
         tempIdBtn.classList.add('interest-btn');
+        console.log('go');
+        interestsInput.value = '';
+        interestsInput.innerHTML = '';
     });
     //#endregion
     //#region BUTTON REMOVER
