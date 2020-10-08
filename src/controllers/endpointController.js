@@ -32,5 +32,12 @@ module.exports = {
             return res.status(404).json(err);    
         })
         return res.status(200).json(user);
+    },
+    getInterestsTable: async (req, res) => {
+        let interests = await db.Interest.findAll()
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(interests);
     }
 };

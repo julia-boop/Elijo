@@ -36,7 +36,7 @@
             </div>
 
             <div class="extra-info">
-                <form id="userForm" class="row" action="/user/account" method="POST" enctype="multipart/form-data">
+                <form autocomplete="off" id="userForm" class="row" action="/user/account" method="POST" enctype="multipart/form-data">
                     <div class="col-12">
                         <div class="row">
                             <div class="col-12 col-md-4">
@@ -316,8 +316,17 @@
                     <div class="row">
                         <div class="col-12">
                             <label class="col-12" for="interests">Intereses: (Ej: Futbol, gastronomia, etc.)</label>
-                            <input class="ml-3" id="interests">
-                            <button id="interestButton">Agregar</button>
+                            <div class="row">
+                                <div class="col-12 autocomplete">
+                                    <input class="ml-3" id="interests">
+                                    <button id="interestButton">Agregar</button>
+
+                                </div>
+                                <div class="col-12 ml-3" id="searchFilter">  
+                                                               
+                                </div>
+                            </div>
+                            
                             <div id="interestsContainer" class="container">
                                 <% for(let i = 0; i < user.Interest.length; i++){ %> 
                                     <button class="interest-btn" name="interests" value="<%= user.Interest[i].interest_name %>" id="oldInterests"><%= user.Interest[i].interest_name %></button>

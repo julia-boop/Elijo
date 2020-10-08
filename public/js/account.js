@@ -134,4 +134,47 @@ window.addEventListener('load', function(){
         inputSeleccionarArchivo.click()
     })
     //#endregion
+
+    //#region SEARCH FILTER
+    let searchCard = document.querySelector('#searchFilter');
+    let interestsInput = document.querySelector('#interests');
+    
+    let interests = [];
+    fetch('/endpoints/interests')
+    .then(response => {
+        return response.json();
+    })
+    .then( interestsRepsonse => {
+        interests = interestsRepsonse;
+    })
+
+    interestsInput.addEventListener('input', event => {
+        
+        if(event.target.value == '' || event.target.value == null){
+            searchCard.innerHTML = '';         
+            return;
+        }
+        if(interests.length > 0){
+            let inputData = event.target.value.toLowerCase();
+            for(let i = 0; i < interests.length; i++){
+                let interest = interests[i].interest_name.toLowerCase();
+                if(interest.includes(inputData)){
+                    //searchCard.innerHTML = interests[i].interest_name;
+                    searchCard.innerHTML =`<button id="inputButton" value="${interests[i].interest_name}">  ${interests[i].interest_name} </option>`
+                    
+                    let inputButtonComplete = document.querySelector('#inputButton');
+                    inputButtonComplete.addEventListener('click', event => {
+                        searchCard.innerHTML = '';
+                        interestsInput.value = inputButtonComplete.value;
+                    });
+                }
+                
+            }
+            
+        }
+        
+    });
+    
+
+    //#endregion
 });
