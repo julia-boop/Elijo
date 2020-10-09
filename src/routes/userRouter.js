@@ -16,8 +16,8 @@ let storage = multer.diskStorage({
 });
 let upload = multer({storage:storage});
 
-router.get('/account', userController.account);
-router.post('/account', upload.any() ,userController.edit);
+router.get('/account/:userID', userController.account);
+router.post('/account/:userID', upload.any() ,userController.edit);
 
 //SHOW REGISTER FORM:
 router.get('/register', userController.register);
