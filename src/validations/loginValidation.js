@@ -26,20 +26,5 @@ module.exports = [
                 }
             })
             return emailSearch
-        }),
-    body('password')
-        .custom(function(loginPassword, {req}){
-            let emailSearch = db.User.findOne({
-                where:{
-                    email: req.body.email
-                }
-            })
-            .then(function(result){
-                if(bcrypt.compareSync(loginPassword, result.password)){
-                    return true
-                } else {
-                    return Error('Credenciales inválidas')
-                }
-            })
         })
 ]

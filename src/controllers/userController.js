@@ -80,26 +80,29 @@ module.exports = {
 
         let errors = validationResult(req)
 
-
-        db.User.findOne({
-            where:{
-                email: req.body.email
-            }
-        })
-        .then(function(foundUser){
-            if(bcrypt.compareSync(req.body.password, foundUser.password)){
-                req.session.userSession == foundUser.id
-                if(req.body.remember != undefined){
-                    res.cookie('userId', foundUser.id, {maxAge: 60000})//DESPUES AGREGARLE DURACION
+        if(errors.isEmpty()){
+            db.User.findOne({
+                where:{
+                    email: req.body.email
                 }
-                return res.redirect('/')
-            } else {
-                return res.render('login')
-            }
-        })
-        .catch(function(e){
-            return res.send(e)
-        })
+            })
+            .then(function(foundUser){
+                if(bcrypt.compareSync(req.body.password, foundUser.password)){
+                    req.session.userSession == foundUser.id
+                    if(req.body.remember != undefined){
+                        res.cookie('userId', foundUser.id, {maxAge: 60000})//DESPUES AGREGARLE DURACION
+                    }
+                    return res.redirect('/')
+                } else {
+                    return res.render('login')
+                }
+            })
+            .catch(function(e){
+                return res.send(e)
+            })
+        }else{
+            return res.render('login', {errors:errors.errors})
+        }
     },
     edit: async (req, res) => { //CAMBIAR EL REQ.PARAMS.USERID POR LA SESSION
 
