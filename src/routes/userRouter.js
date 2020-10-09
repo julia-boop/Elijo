@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');   
+const registerValidation = require('../validations/registerValidation');
 
 const userController = require('../controllers/userController.js');
 
@@ -21,7 +22,7 @@ router.post('/account', upload.any() ,userController.edit);
 //SHOW REGISTER FORM:
 router.get('/register', userController.register);
 //SAVE USER
-router.post('/register', userController.save);
+router.post('/register', registerValidation, userController.save);
 
 //LOGIN
 router.get('/login', userController.login);

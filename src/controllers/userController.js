@@ -1,7 +1,9 @@
 const fs = require('fs');
 const path = require('path');   
 const db = require('../database/models');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const registerValidation = require('../validations/registerValidation');
+const {check, validationResult, body} = require('express-validator');
 
 module.exports = {
     account: async function(req, res){
@@ -32,32 +34,42 @@ module.exports = {
     },
     save: function(req, res) {
 
-        let newUser = {
-            email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 10),
-            name: req.body.nombre,
-            last_name: req.body.apellido,
-            age: null, 
-            telephone: req.body.telephone,
-            adress: " ",
-            location: " ", 
-            experiences: " ",
-            province: " ", 
-            genre_id: 3, 
-            photo: null, 
-            rol: req.body.rol,
-            user_confirm: 0, 
-            created_at: new Date,
-            updated_at: new Date
+        let errors = validationResult(req)
+
+        // return res.send(errors)
+
+        if(errors.isEmpty()){
+            let newUser = {
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password, 10),
+                name: req.body.nombre,
+                last_name: req.body.apellido,
+                age: null, 
+                telephone: req.body.telephone,
+                adress: " ",
+                location: " ", 
+                experiences: " ",
+                province: " ", 
+                genre_id: 3, 
+                photo: null, 
+                rol: req.body.rol,
+                user_confirm: 0, 
+                created_at: new Date,
+                updated_at: new Date
+            }
+
+            db.User.create(newUser)
+                .then(function(result){
+                    res.redirect('/')
+                })
+                .catch(function(e){
+                    res.send(e)
+                })
+        }else{
+            res.render('register', {errors:errors.errors})
         }
 
-        db.User.create(newUser)
-            .then(function(result){
-                res.redirect('/')
-            })
-            .catch(function(e){
-                res.send(e)
-            })
+
 
     },
     login: function(req, res) {
