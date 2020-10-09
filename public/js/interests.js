@@ -17,6 +17,7 @@ window.addEventListener('load', function(){
     }
     let interestsCounter = olderInterests.length;
     //#endregion
+    
     //#region ADDING BUTTON
     //CUANDO SE TOCA EL BOTON DE AGREGAR
     addInterestButton.addEventListener('click', event => {
@@ -37,6 +38,7 @@ window.addEventListener('load', function(){
         interestsInput.innerHTML = '';
     });
     //#endregion
+    
     //#region BUTTON REMOVER
     document.addEventListener('click', event => {
         if(event.target.localName == 'button'){
@@ -49,17 +51,30 @@ window.addEventListener('load', function(){
         }
     });
     //#endregion
+    
     //#region PREVENT DEFAULT FORM
     form.addEventListener('submit', event => {
         event.preventDefault();
     });
     //#endregion
+    
     //#region INPUT CREATOR 
     submitBtn.addEventListener('click', event => {
         if(interestsContainer.childNodes.length > 0){
-            for(let i = 0; i < interestsContainer.childNodes.length; i++){
-                if(interestsContainer.childNodes[i].localName == 'button'){
-                    interestsContainer.innerHTML += `<input id="input${i}" name="interests" value="${interestsContainer.childNodes[i].value}">`
+            let aux_array = [];
+            for(let i = 0; i < interestsContainer.childNodes.length; i++){ //COPIO EL interestsContainer.childNodes EN OTRO ARRAY PARA MANEJARLO MEJOR
+                if(interestsContainer.childNodes[i].value != undefined){
+                    aux_array.push(interestsContainer.childNodes[i].value);
+                }
+            }
+            
+            let makeUnique = aux_array.filter(function(item, index, aux_array) { //BORRO LOS REPETIDOS
+                return aux_array.indexOf(item) === index;
+            })
+            
+            for(let i = 0; i < makeUnique.length; i++){//RECORRO PARA CREAR LOS INPUTS CON EL ARRAY CON VALORES UNICOS
+                if(makeUnique[i] != null && makeUnique != ''){//VERIFICACION POR LAS DUDAS
+                    interestsContainer.innerHTML += `<input id="input${i}" name="interests" value="${makeUnique[i]}">`
                     let tempIdBtn = document.querySelector('#input'+i);
                     tempIdBtn.style.visibility = 'hidden';
                 }
