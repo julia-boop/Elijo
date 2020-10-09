@@ -77,6 +77,10 @@ module.exports = {
         res.render('login')
     },
     enter: function(req, res){
+
+        let errors = validationResult(req)
+
+
         db.User.findOne({
             where:{
                 email: req.body.email
