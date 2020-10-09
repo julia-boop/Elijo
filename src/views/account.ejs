@@ -172,7 +172,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a class="ml-3 col-12" href="#">¿No encontras la universidad o la carrera que hiciste? haz click aqui</a>
+                                <a class="ml-3 col-12" href="/user/requestInstitution">¿No encontras la universidad o la carrera que hiciste? haz click aqui</a>
                             </div>
                         </div>
                         
@@ -307,7 +307,7 @@
                                     </div>
                                 </div>
                                 
-                                <a class="ml-3 col-12" href="#">¿No encontras el instituto o el curso que hiciste? haz click aqui</a>
+                                <a class="ml-3 col-12" href="/user/requestInstitution">¿No encontras el instituto o el curso que hiciste? haz click aqui</a>
                             </div>
                         </div>
                         
@@ -318,12 +318,11 @@
                             <label class="col-12" for="interests">Intereses: (Ej: Futbol, gastronomia, etc.)</label>
                             <div class="row">
                                 <div class="col-12 autocomplete">
-                                    <input class="ml-3" id="interests">
-                                    <button id="interestButton">Agregar</button>
+                                    <input class="ml-3" id="interests" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="searchFilter">
+                                    </div>
 
-                                </div>
-                                <div class="col-12 ml-3" id="searchFilter">  
-                                                               
+                                    <button id="interestButton">Agregar</button>
                                 </div>
                             </div>
                             

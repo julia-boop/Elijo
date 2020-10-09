@@ -76,7 +76,6 @@ module.exports = {
         res.render('login')
     },
     edit: async (req, res) => {
-        return res.send(req.body);
         let user = await db.User.findByPk(1/*req.session.userSession*/)
         .catch(err => {
             return res.send(err);
@@ -191,5 +190,19 @@ module.exports = {
         }
 
         return res.redirect('/user/account/'+userUpdated.id);
+    },
+    requestInstitution: (req, res) => {
+        db.User.findByPk(1)
+        .then( user => {
+            //return res.send(user);
+            return res.render('requestNewInstitution', {user});
+        })
+        .catch(error => {
+            return res.send(error);
+        })
+        
+    },
+    sendRequest: (req, res) => {
+        return res.send(req.body);
     }
 };

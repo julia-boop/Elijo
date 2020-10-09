@@ -138,7 +138,7 @@ window.addEventListener('load', function(){
     //#region SEARCH FILTER
     let searchCard = document.querySelector('#searchFilter');
     let interestsInput = document.querySelector('#interests');
-    
+
     let interests = [];
     fetch('/endpoints/interests')
     .then(response => {
@@ -158,9 +158,10 @@ window.addEventListener('load', function(){
             let inputData = event.target.value.toLowerCase();
             for(let i = 0; i < interests.length; i++){
                 let interest = interests[i].interest_name.toLowerCase();
-                if(interest.includes(inputData)){
-                    //searchCard.innerHTML = interests[i].interest_name;
-                    searchCard.innerHTML =`<button id="inputButton" value="${interests[i].interest_name}">  ${interests[i].interest_name} </option>`
+                
+                if(interest.includes(inputData.toLowerCase())){
+                    searchCard.innerHTML =`<option id="inputButton" value="${interests[i].interest_name}">  ${interests[i].interest_name} </option>`
+                    
                     
                     let inputButtonComplete = document.querySelector('#inputButton');
                     inputButtonComplete.addEventListener('click', event => {
