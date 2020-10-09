@@ -6,7 +6,7 @@
     <%- include('./partials/header') %>
     <!-- Default form login -->
     <div class="login-container">
-    <form class="text-center justify-content-center border border-light p-5" action="/user/login" method="POST">
+    <form class="text-center justify-content-center border border-light p-5 loginForm" action="/user/login" method="POST">
         
         <p class="h4 mb-4 register-title">Ingresar</p>
 
@@ -16,10 +16,11 @@
         
         <div id="btn-max-width">
         <!-- Email -->
-        <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" id="btn-max-width" name="email">
+        <input type="email" id="defaultLoginFormEmail" class="form-control mb-4 inputEmail" placeholder="E-mail" id="btn-max-width" name="email">
         
         <!-- Password -->
-        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Contraseña" id="btn-max-width" name="password">
+        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4 inputPassword" placeholder="Contraseña" id="btn-max-width" name="password">
+        <small class="text-danger erEmail"></small>
         <% if(typeof errors != 'undefined'){ %> 
             <small class="text-danger"><%= errors[0].msg %> </small>
             <% } %> 
@@ -41,7 +42,7 @@
         
         <div id="btn-max-width">
         <!-- Sign in button -->
-        <button class="btn btn-info btn-block my-4 btn-log-reg" type="submit" id="btn-max-width">Ingresar</button>
+        <button class="btn btn-info btn-block my-4 btn-log-reg submitBtn" type="submit" id="btn-max-width">Ingresar</button>
         </div>
 
         <!-- Register -->
@@ -92,6 +93,10 @@
         }
     </script>
     <!-- /GOOGLE SCRIPTS -->
+
+    <!-- JS SCRIPTS -->
+    <script src="/js/login.js"></script>
+
     <%- include('./partials/scripts.ejs') %>
     <%- include('./partials/footer') %>  
 </body>
