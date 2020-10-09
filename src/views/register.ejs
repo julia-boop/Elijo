@@ -6,7 +6,7 @@
             <div class="container register-container">
 
                 <!-- Default form register -->
-                <form class="text-center border border-light p-5" action="/user/register" method="POST">
+                <form class="text-center border border-light p-5 sign-up-form" action="/user/register" method="POST">
                 
                 <p class="h4 mb-4 register-title">Súmate a ELIJO</p>
                 <!-- GOOGLE DIV-->
@@ -16,7 +16,8 @@
                 <div class="form-row mb-4">
                     <div class="col">
                         <!-- First name -->
-                        <input type="text" id="defaultRegisterFormFirstName" class="form-control" name="name" placeholder="Nombre">
+                        <input type="text" id="defaultRegisterFormFirstName" class="form-control name" name="name" placeholder="Nombre">
+                        <small class="text-danger erName"></small>
                         <% if(typeof errors != 'undefined') {%>
                             <% for(let i = 0 ; i < errors.length ; i++){ %> 
                                 <% if(errors[i].param == 'name'){ %> 
@@ -27,7 +28,8 @@
                     </div>
                     <div class="col">
                         <!-- Last name -->
-                        <input type="text" id="defaultRegisterFormLastName" class="form-control" name="last_name" placeholder="Apellido">
+                        <input type="text" id="defaultRegisterFormLastName" class="form-control last_name" name="last_name" placeholder="Apellido">
+                        <small class="text-danger erLastName"></small>
                         <% if(typeof errors != 'undefined') {%>
                             <% for(let i = 0 ; i < errors.length ; i++){ %> 
                                 <% if(errors[i].param == 'last_name'){ %> 
@@ -39,7 +41,8 @@
                 </div>
                 
                 <!-- E-mail -->
-                <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
+                <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4 email" placeholder="E-mail" name="email">
+                <small class="text-danger erEmail"></small>
                 <% if(typeof errors != 'undefined') {%>
                     <% for(let i = 0 ; i < errors.length ; i++){ %> 
                         <% if(errors[i].param == 'email'){ %> 
@@ -50,10 +53,11 @@
        
                 
                 <!-- Password -->
-                <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Contraseña" aria-describedby="defaultRegisterFormPasswordHelpBlock" name="password">
+                <input type="password" id="defaultRegisterFormPassword" class="form-control password" placeholder="Contraseña" aria-describedby="defaultRegisterFormPasswordHelpBlock" name="password">
                 <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                     La contraseña debe contener al menos 8 cáracteres.
                 </small>
+                <small class="text-danger erPassword"></small>
                 <% if(typeof errors != 'undefined') {%>
                     <% for(let i = 0 ; i < errors.length ; i++){ %> 
                         <% if(errors[i].param == 'password'){ %> 
@@ -63,10 +67,11 @@
                 <% } %>  
                 
                 <!-- Phone number -->
-                <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Telefono" aria-describedby="defaultRegisterFormPhoneHelpBlock" name="telephone">
+                <input type="text" id="defaultRegisterPhonePassword" class="form-control telephone" placeholder="Telefono" aria-describedby="defaultRegisterFormPhoneHelpBlock" name="telephone">
                 <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
                     Preferentemente celular con whatsapp, para comunicarnos mejor
                 </small>
+                <small class="text-danger erTelephone"></small>
                 <% if(typeof errors != 'undefined') {%>
                     <% for(let i = 0 ; i < errors.length ; i++){ %> 
                         <% if(errors[i].param == 'telephone'){ %> 
@@ -79,13 +84,14 @@
 
                 <!-- Rol -->
                 <label for="opt1" class="radio">
-                    <input type="radio" id="opt1" value="2" name="rol" class="hidden"/>
+                    <input type="radio" id="opt1" value="2" name="rol" class="hidden rol"/>
                     <span class="label"></span>Actual Estudiante
                 </label>                            
                 <label for="opt2" class="radio">
-                    <input type="radio" id="opt2" value="3" name="rol" class="hidden"/>
+                    <input type="radio" id="opt2" value="3" name="rol" class="hidden rol"/>
                     <span class="label"></span>Futuro Estudiante
                 </label>    
+                <small class="text-danger erRol"></small>
                 <% if(typeof errors != 'undefined') {%>
                     <% for(let i = 0 ; i < errors.length ; i++){ %> 
                         <% if(errors[i].param == 'rol'){ %> 
@@ -97,7 +103,7 @@
                 <% } %>                          
                 
                 <!-- Sign up button -->
-                <button class="btn btn-info my-4 btn-block btn-log-reg" type="submit">Registrarme</button>
+                <button class="btn btn-info my-4 btn-block btn-log-reg submitBtn" type="submit">Registrarme</button>
                 
                 <!-- Terms of service -->
                 <p>Al hacer click en
@@ -150,6 +156,8 @@
             </script>
             
             <!-- /GOOGLE SCRIPTS -->
+            <!-- JS SCRIPTS -->
+            <script src="/js/register.js"></script>
             <%- include('./partials/scripts.ejs') %>
             <%- include('./partials/footer') %>  
     </body>

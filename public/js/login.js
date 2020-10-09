@@ -10,6 +10,8 @@ window.addEventListener('load', function(){
     let erEmail = qs('.erEmail');
     let erPassword = qs('.erPassword');
 
+    
+
 
     submitBtn.addEventListener('click', function(e){
         e.preventDefault();
