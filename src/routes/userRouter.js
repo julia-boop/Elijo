@@ -22,10 +22,12 @@ router.post('/account', upload.any() ,userController.edit);
 //SHOW REGISTER FORM:
 router.get('/register', userController.register);
 //SAVE USER
-router.post('/register', registerValidation, userController.save);
+router.post('/register', userController.save);
 
-//LOGIN
+//SHOW LOGIN FORM
 router.get('/login', userController.login);
+//ENTER ACCOUNT
+router.post('/login', userController.enter);
 
 router.get('/requestInstitution', userController.requestInstitution);
 router.post('/requestInstitution', userController.sendRequest);

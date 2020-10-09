@@ -42,8 +42,8 @@ module.exports = {
             let newUser = {
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10),
-                name: req.body.nombre,
-                last_name: req.body.apellido,
+                name: req.body.name,
+                last_name: req.body.last_name,
                 age: null, 
                 telephone: req.body.telephone,
                 adress: " ",
@@ -74,6 +74,27 @@ module.exports = {
     },
     login: function(req, res) {
         res.render('login')
+    },
+    enter: function(req, res){
+        db.User.findOne({
+            where:{
+                email: req.body.email
+            }
+        })
+        .then(function(foundUser){
+            if(bcrypt.compareSync(req.body.password, foundUser.password)){
+                req.session.userSession == foundUser.id
+                if(req.body.remember != undefined){
+                    res.cookie('userId', foundUser.id, {maxAge: 60000})//DESPUES AGREGARLE DURACION
+                }
+                return res.redirect('/')
+            } else {
+                return res.render('login')
+            }
+        })
+        .catch(function(e){
+            return res.send(e)
+        })
     },
     edit: async (req, res) => {
         let user = await db.User.findByPk(1/*req.session.userSession*/)
