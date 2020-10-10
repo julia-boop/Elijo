@@ -137,58 +137,67 @@ module.exports = {
         //#endregion
 
         //#region INTERESTS
-        let interests = await db.Interest.findAll()//TRAIGO INTERESES
-        .catch(err => {
-            return res.send(err);
-        })
-
-        if(!Array.isArray(req.body.interests)){//SI NO ES UN ARRAY EL REQ DE INTERESES, LO HAGO ARRAY
-            let tempInfo = req.body.interests;
-            req.body.interests = [];
-            req.body.interests.push(tempInfo);
-        }
-
-        let interestsToAdd = [];
-        let tempInterestArr = [];
-        tempInterestArr = req.body.interests;
-
-        for(let i = 0; i < interests.length; i++){//SI EL INTERES INGRESADO NO EXITE EN LA DB, LO AGREGO A UN ARRAY
-            for(let j = 0; j < req.body.interests.length; j++){
-
-                if(interests[i].interest_name == req.body.interests[j]){
-                    interestsToAdd.push({
-                        interest_id: interests[i].id,
-                        user_id: req.params.userID
-                    });
-                    tempInterestArr[j] = null;
-                }
-            }
-        }
-
-        for(let i = 0; i < tempInterestArr.length; i++){//AGREGO A LA DB EL INTEREST QUE PREVIAMENTE REVISE QUE NO ESTABA
-
-            if(tempInterestArr[i] != null && tempInterestArr[i] != ''){
-                console.log(tempInterestArr[i]);
-                let interestCreate = await db.Interest.create({
-                    interest_name: tempInterestArr[i],
-                    updated_at: Date.now()
-                })
-                .catch(err => {
-                    return res.send(err);
-                })
-                interestsToAdd.push({
-                    interest_id: interestCreate.id,
-                    user_id: req.params.userID
-                });
-            }
-        }
-        
-        for(let i = 0; i < interestsToAdd.length; i++){//LE ASIGNO EL INTERES AL USUARIO
-            let newUserInterests = await db.User_interest.create(interestsToAdd[i])
+        if(req.body.interests){
+            let interests = await db.Interest.findAll()//TRAIGO INTERESES
             .catch(err => {
                 return res.send(err);
             })
+    
+            if(!Array.isArray(req.body.interests)){//SI NO ES UN ARRAY EL REQ DE INTERESES, LO HAGO ARRAY
+                let tempInfo = req.body.interests;
+                req.body.interests = [];
+                req.body.interests.push(tempInfo);
+            }
+    
+            let interestsToAdd = [];
+            let tempInterestArr = [];
+            tempInterestArr = req.body.interests;
+    
+            for(let i = 0; i < interests.length; i++){//SI EL INTERES INGRESADO NO EXITE EN LA DB, LO AGREGO A UN ARRAY
+                for(let j = 0; j < req.body.interests.length; j++){
+    
+                    if(interests[i].interest_name == req.body.interests[j]){
+                        interestsToAdd.push({
+                            interest_id: interests[i].id,
+                            user_id: req.params.userID
+                        });
+                        tempInterestArr[j] = null;
+                    }
+                }
+            }
+    
+            for(let i = 0; i < tempInterestArr.length; i++){//AGREGO A LA DB EL INTEREST QUE PREVIAMENTE REVISE QUE NO ESTABA
+    
+                if(tempInterestArr[i] != null && tempInterestArr[i] != ''){
+                    console.log(tempInterestArr[i]);
+                    let interestCreate = await db.Interest.create({
+                        interest_name: tempInterestArr[i],
+                        updated_at: Date.now()
+                    })
+                    .catch(err => {
+                        return res.send(err);
+                    })
+                    interestsToAdd.push({
+                        interest_id: interestCreate.id,
+                        user_id: req.params.userID
+                    });
+                }
+            }
+            
+            let interestsDestroyed = await db.User_interest.destroy({
+                where: {
+                    user_id: req.params.userID
+                }
+            });
+
+            for(let i = 0; i < interestsToAdd.length; i++){//LE ASIGNO EL INTERES AL USUARIO
+                let newUserInterests = await db.User_interest.create(interestsToAdd[i])
+                .catch(err => {
+                    return res.send(err);
+                })
+            }
         }
+        
         //#endregion
 
         //#region User_career_study
