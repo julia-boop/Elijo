@@ -119,24 +119,25 @@
                 <% for( let i = 0; i < userStudies.length; i++) { %>
                     <div class="col-5 col-md-3 estudiante">
                         <img src="/images/otros/avatar.png" alt="">
-                        <h3><%= userStudies[i].name %></h3>
-                        <% for( let j = 0; j < universityCareers.length; j++) { %>
-                            <% for( let l = 0; l < instituteCourses.length; l++) { %>
-                                <% for( let k = 0; k < userStudies[i].User_careers.length; k++) { %>
-                                    <% for( let p = 0; p < userStudies[i].User_courses.length ; p++) { %>
-                                    <% if(universityCareers[j].id == userStudies[i].User_careers[k].id) { %>
-                                        <p><%=  universityCareers[j].Universities.name %></p>
-                                        <p><%=  userStudies[i].User_careers[k].name %></p>
-                                    <% } %>
-                                    <% if(instituteCourses[l].id == userStudies[i].User_courses[p].id) { %>
-                                        <p><%=  instituteCourses[l].Institutes.name %></p>
-                                        <p><%=  userStudies[i].User_courses[p].name %></p>
-                                    <% } %>
-                                    <% } %>
+                        <h3><%= userStudies[i].name %></h3> 
+
+                        <% if(userStudies[i].User_careers.length > 0) { %>
+                            <p><%=  userStudies[i].User_careers[0].name %></p>
+                            <% for(let j = 0; j < universityCareers.length; j++) { %>
+                                <% if(userStudies[i].User_careers[0].id == universityCareers[j].id) { %>
+                                    <p><%= universityCareers[j].Universities.name %></p>
+                                <% } %>
+                            <% } %> 
+                        <% } else if(userStudies[i].User_courses.length > 0) { %>
+                            <p><%= userStudies[i].User_courses[0].name %></p>
+                            <% for(let j = 0; j < instituteCourses.length; j++) { %>
+                                <% if(userStudies[i].User_courses[0].id == instituteCourses[j].id) { %>
+                                    <p><%= instituteCourses[j].Institutes.name %></p>
                                 <% } %>
                             <% } %>
-                        <% } %>  
-                        <a href="/meet/detail/1"><button> Ver Perfil</button></a>
+                        <% } %>
+
+                        <a href="/meet/detail/<%= userStudies[i].id %>"><button> Ver Perfil</button></a>
                     </div>
                 <% } %>
 
