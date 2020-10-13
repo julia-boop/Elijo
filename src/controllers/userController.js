@@ -47,12 +47,10 @@ module.exports = {
                 last_name: req.body.last_name,
                 age: null, 
                 telephone: req.body.telephone,
-                adress: " ",
-                location: " ", 
                 experiences: " ",
                 province: " ", 
                 genre_id: 3, 
-                photo: null, 
+                photo: 'user.png',
                 rol: req.body.rol,
                 user_confirm: 0, 
                 created_at: new Date,
@@ -61,7 +59,12 @@ module.exports = {
 
             db.User.create(newUser)
                 .then(function(result){
-                    res.redirect('/')
+                    req.session.userSession == result.id
+                    res.locals.userLoggedIn = {
+                        id: result.id,
+                        rol: result.rol
+                    }
+                    res.redirect('/user/account/'+result.id)
                 })
                 .catch(function(e){
                     res.send(e)
@@ -88,9 +91,13 @@ module.exports = {
             })
             .then(function(foundUser){
                 if(bcrypt.compareSync(req.body.password, foundUser.password)){
-                    req.session.userSession == foundUser.id
+                    req.session.userSession = foundUser.id
                     if(req.body.remember != undefined){
-                        res.cookie('userId', foundUser.id, {maxAge: 60000})//DESPUES AGREGARLE DURACION
+                        res.cookie('Elijo', foundUser.id, {maxAge: 60000*60*24*7*30})
+                    }
+                    res.locals.userLoggedIn = {
+                        id: foundUser.id,
+                        rol: foundUser.rol
                     }
                     return res.redirect('/')
                 } else {
@@ -104,9 +111,9 @@ module.exports = {
             return res.render('login', {errors:errors.errors})
         }
     },
-    edit: async (req, res) => { //CAMBIAR EL REQ.PARAMS.USERID POR LA SESSION
+    edit: async (req, res) => {
 
-        let user = await db.User.findByPk(req.params.userID)
+        let user = await db.User.findByPk(req.session.userSession)
         .catch(err => {
             return res.send(err);
         })
@@ -128,7 +135,7 @@ module.exports = {
 
         let userUpdated = await db.User.update(userUpdate, {
             where: {
-                id: req.params.userID
+                id: req.session.userSession
             }
         })
         .catch(err => {
@@ -159,7 +166,7 @@ module.exports = {
                     if(interests[i].interest_name == req.body.interests[j]){
                         interestsToAdd.push({
                             interest_id: interests[i].id,
-                            user_id: req.params.userID
+                            user_id: req.session.userSession
                         });
                         tempInterestArr[j] = null;
                     }
@@ -179,14 +186,14 @@ module.exports = {
                     })
                     interestsToAdd.push({
                         interest_id: interestCreate.id,
-                        user_id: req.params.userID
+                        user_id: req.session.userSession
                     });
                 }
             }
             
             let interestsDestroyed = await db.User_interest.destroy({
                 where: {
-                    user_id: req.params.userID
+                    user_id: req.session.userSession
                 }
             });
 
@@ -203,14 +210,14 @@ module.exports = {
         //#region User_career_study
         let destroyCareerStudies = await db.User_career_study.destroy({
             where: {
-                user_id: req.params.userID
+                user_id: req.session.userSession
             }
         })
         for(let i = 0; i < req.body.career.length; i++){
             if(req.body.career[i] != "Selecciona una Carrera" && req.body.career[i] != '' && req.body.career[i] != null){
                 let newCareer = await db.User_career_study.create({
                     career_id: req.body.career[i],
-                    user_id: req.params.userID,
+                    user_id: req.session.userSession,
                     start_year: req.body.startDate[i],
                     updated_at: Date.now()
                 })
@@ -221,14 +228,14 @@ module.exports = {
         //#region User_course_study
         let destroyCourseStudies = await db.User_course_study.destroy({
             where: {
-                user_id: req.params.userID
+                user_id: req.session.userSession
             }
         })
         for(let i = 0; i < req.body.course.length; i++){
             if(req.body.course[i] != "Selecciona un Curso" && req.body.course[i] != null && req.body.course[i] != ''){
                 let newCourse = await db.User_course_study.create({
                     course_id: req.body.course[i],
-                    user_id: req.params.userID,
+                    user_id: req.session.userSession,
                     start_year: req.body.courseStartDate[i],
                     updated_at: Date.now()
                 })
@@ -236,7 +243,7 @@ module.exports = {
         }
         //#endregion
 
-        return res.redirect('/user/account/'+req.params.userID);
+        return res.redirect('/user/account/'+req.session.userSession);
     },
     requestInstitution: (req, res) => {
         db.User.findByPk(req.params.userID)
@@ -272,5 +279,10 @@ module.exports = {
             }
         }); 
         return res.send(req.body);
+    },
+    logout: (req, res) => {
+        req.session.destroy();
+        res.cookie('Elijo', '', {maxAge:-1});
+        res.redirect('/');
     }
 };

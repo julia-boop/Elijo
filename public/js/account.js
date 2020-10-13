@@ -107,7 +107,7 @@ window.addEventListener('load', function(){
         return response.json()
     })
     .then(provinces => {
-        fetch('/endpoints/user/'+1)//aca iria el id del user
+        fetch('/endpoints/user/'+userLoggedIn.id)//aca iria el id del user
         .then(userResponse => {
             return userResponse.json();
         })

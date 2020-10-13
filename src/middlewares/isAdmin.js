@@ -9,7 +9,7 @@ function isAdmin(req, res, next){
             if(user.rol == 1 || user.rol == '1'){
                 next();
             }else{
-                return null;
+                return res.redirect('/user/login');
             }
         })
         

@@ -64,7 +64,7 @@ window.addEventListener('load', function(){
             erTelephone.innerText = (errors.telephone) ? errors.telephone : '';
             erRol.innerText = (errors.rol) ? errors.rol : '';
         } else {
-            loginForm.submit();
+            signUpForm.submit();
         }
     })
 })
