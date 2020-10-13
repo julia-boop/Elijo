@@ -3,13 +3,24 @@ const path = require('path');
 const db = require('../database/models');
 
 module.exports = {
-
-    json:function(req, res) {
-        db.Institute.findAll()
+    //TEST
+    jsonInstitutes:function(req, res) {
+        db.Institute.findAll({
+            includes: [{association: 'Courses'}]
+        })
         .then(function(result) {
             res.json(result)
         })
     },
+    jsonUniversities:function(req, res) {
+        db.University.findAll({
+            includes: [{association: 'Careers'}]
+        })
+        .then(function(result) {
+            res.json(result)
+        })
+    },
+    //TEST
 
     home: function(req, res){
         res.render('home');

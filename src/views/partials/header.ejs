@@ -23,7 +23,7 @@
                         <li><a href="/meet">Conocer estudiantes</a></li>
                         <li><a href="/why">Por qué</a></li>
                         <% if(typeof userLoggedIn != 'undefined' && (userLoggedIn.rol == 1 || userLoggedIn.rol == "1")){ %>
-                            <li><a href="population/formsDb">Formularios DB</a></li>
+                            <li><a href="/population/formsDb">Formularios DB</a></li>
                         <% } %>
                         <div class="userOptions">
                             <% if(typeof userLoggedIn == 'undefined') { %>
@@ -56,7 +56,7 @@
                 <li><a href="/why">Por qué</a></li>
                 <li><a href=""></a></li>
                 <%if(typeof userLoggedIn != 'undefined' && (userLoggedIn.rol == 1 || userLoggedIn.rol == "1")){%>
-                    <li><a href="population/formsDb">Formularios DB</a></li>
+                    <li><a href="/population/formsDb">Formularios DB</a></li>
                 <% } %>
                 <div>
                     <% if(typeof userLoggedIn == 'undefined') { %>

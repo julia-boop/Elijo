@@ -48,15 +48,26 @@ module.exports = {
         };
         let career = await db.Career.create(newCareer);
 
-        for(let i = 0; i < req.body.amount_asignatures; i++){
+        if(req.body.amount_asignatures == '1' || req.body.amount_asignatures == 1){
             let newAsignature = {
-                name: req.body.asignature_name[i],
-                asignature_year: req.body.asignature_year[i],
+                name: req.body.asignature_name,
+                asignature_year: req.body.asignature_year,
                 career_id: career.id,
                 created_at: new Date(),
                 updated_at: new Date()
             };
             let asignature = await db.Asignature.create(newAsignature);
+        } else {
+            for(let i = 0; i < req.body.amount_asignatures; i++){
+                let newAsignature = {
+                    name: req.body.asignature_name[i],
+                    asignature_year: req.body.asignature_year[i],
+                    career_id: career.id,
+                    created_at: new Date(),
+                    updated_at: new Date()
+                };
+                let asignature = await db.Asignature.create(newAsignature);
+            }
         }
 
         if(req.body.newCareer != ''){
@@ -84,21 +95,38 @@ module.exports = {
         };
         let institute = await db.Institute.create(newInstitute);
         
-        for(let i = 0; i < req.body.courses_amount; i++){
+        if(req.body.courses_amount == '1' || req.body.courses_amount == 1){
             let newCourse = {
-                name: req.body.course_name[i],
-                plan_link: req.body.course_plan_link[i],
-                price: req.body.course_price[i],
-                calification: req.body.course_calification[i],
-                duration: req.body.course_duration[i],
-                difficulty: req.body.course_difficulty[i],
-                job_exit: req.body.course_job_exit[i],
-                study_hours: req.body.course_study_hours[i],
+                name: req.body.course_name,
+                plan_link: req.body.course_plan_link,
+                price: req.body.course_price,
+                calification: req.body.course_calification,
+                duration: req.body.course_duration,
+                difficulty: req.body.course_difficulty,
+                job_exit: req.body.course_job_exit,
+                study_hours: req.body.course_study_hours,
                 institute_id: institute.id,
                 created_at: new Date(),
                 updated_at: new Date()
             };
             let course = db.Course.create(newCourse);
+        } else {
+            for(let i = 0; i < req.body.courses_amount; i++){
+                let newCourse = {
+                    name: req.body.course_name[i],
+                    plan_link: req.body.course_plan_link[i],
+                    price: req.body.course_price[i],
+                    calification: req.body.course_calification[i],
+                    duration: req.body.course_duration[i],
+                    difficulty: req.body.course_difficulty[i],
+                    job_exit: req.body.course_job_exit[i],
+                    study_hours: req.body.course_study_hours[i],
+                    institute_id: institute.id,
+                    created_at: new Date(),
+                    updated_at: new Date()
+                };
+                let course = db.Course.create(newCourse);
+            }
         }
         
         res.redirect('/population/institute');

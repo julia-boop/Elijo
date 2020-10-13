@@ -45,7 +45,7 @@ window.addEventListener('load', function() {
         let meetInterval = setInterval(function(){
             sleepBackground.classList.remove('d-none');
             sleepBackground.classList.add('active');
-        }, 4000)
+        }, 10000)
     }
     
     
