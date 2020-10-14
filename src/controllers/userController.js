@@ -47,8 +47,6 @@ module.exports = {
                 last_name: req.body.last_name,
                 age: null, 
                 telephone: req.body.telephone,
-                adress: " ",
-                location: " ", 
                 experiences: " ",
                 province: " ", 
                 genre_id: 3, 
