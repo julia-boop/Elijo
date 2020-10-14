@@ -2,16 +2,13 @@ const db = require('../database/models');
 
 async function createLocals(req, res, next) {
     if(req.session.userSession != undefined) {
-        let usuario = await db.User.findByPk(req.session.userSession)
-        .then(function(response) {
+        let user = await db.User.findByPk(req.session.userSession)
+        if(user) {
             res.locals.userLoggedIn = {
-                id: response.id,
-                rol: response.rol
+                id: user.id,
+                rol: user.rol
             }
-        })
-        .catch(function(error) {
-            res.json(error)
-        })
+        }
     }
     next()
 }

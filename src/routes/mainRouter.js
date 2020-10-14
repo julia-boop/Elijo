@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const mainController = require('../controllers/mainController.js');
+const isAdmin = require('../middlewares/isAdmin');
 
 //TEST
-router.get('/test', mainController.json);
+router.get('/institutes', isAdmin, mainController.jsonInstitutes);
+router.get('/universities', isAdmin, mainController.jsonUniversities);
 
 //HOME
 router.get('/', mainController.home);

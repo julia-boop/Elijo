@@ -510,6 +510,7 @@ CREATE TABLE `user_careers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `career_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
+  `start_year` int(40) unsigned DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -540,6 +541,7 @@ CREATE TABLE `user_courses` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `course_id` int(10) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
+  `start_year` int(40) unsigned DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -632,13 +634,10 @@ CREATE TABLE `users` (
   `password` varchar(150) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
   `last_name` varchar(100) DEFAULT NULL,
-  `age` datetime DEFAULT NULL,
+  `age` int(40) unsigned DEFAULT NULL,
   `telephone` varchar(100) DEFAULT NULL,
-  `adress` varchar(100) DEFAULT NULL,
-  `location` varchar(100) DEFAULT NULL,
   `experiences` varchar(255) DEFAULT NULL,
   `province` varchar(100) DEFAULT NULL,
-  `postal_code` int(11) DEFAULT NULL,
   `genre_id` int(10) unsigned NOT NULL,
   `photo` varchar(100) DEFAULT NULL,
   `rol` int(10) NOT NULL,
@@ -670,4 +669,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-06  0:58:19
+-- Dump completed on 2020-10-12  0:34:45

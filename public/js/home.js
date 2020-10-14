@@ -13,7 +13,7 @@ window.addEventListener('load', function(){
     let popUpHelp = qs('.pop-up-background');
 
 
-    var timeoutInMiliseconds = 5000;
+    var timeoutInMiliseconds = 15000;
     var timeoutId; 
 
     function resetTimer() { 

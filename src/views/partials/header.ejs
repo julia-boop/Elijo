@@ -22,13 +22,18 @@
                         <li><a href="/posta">La posta</a></li>
                         <li><a href="/meet">Conocer estudiantes</a></li>
                         <li><a href="/why">Por qué</a></li>
-                        <li><a href="/about">Quienes somos</a></li>
+                        <% if(typeof userLoggedIn != 'undefined' && (userLoggedIn.rol == 1 || userLoggedIn.rol == "1")){ %>
+                            <li><a href="/population/formsDb">Formularios DB</a></li>
+                        <% } %>
                         <div class="userOptions">
-                            <li><a href="/user/register">Sing up</a></li>
-                            <li><a href="/user/login">Log In</a></li>
-                            <li><a href="/user/account">Cuenta</a></li>
+                            <% if(typeof userLoggedIn == 'undefined') { %>
+                                <li><a href="/user/register">Sing up</a></li>
+                                <li><a href="/user/login">Log In</a></li>
+                            <% }else{ %>
+                                <li><a href="/user/account/<%=userLoggedIn.id%>">Cuenta</a></li>
+                                <li><a href="/user/logout">Log out</a></li>
+                            <% } %>
                         </div>
-                        
                     </ul>
                 </nav>
             </div>
@@ -49,11 +54,18 @@
                 <li id="box" class="posta"><a href="/posta">La posta</a></li>
                 <li id="box" class="meet"><a href="/meet">Conocer estudiantes</a></li>
                 <li><a href="/why">Por qué</a></li>
-                <li><a href="">Quienes somos</a></li>
+                <li><a href=""></a></li>
+                <%if(typeof userLoggedIn != 'undefined' && (userLoggedIn.rol == 1 || userLoggedIn.rol == "1")){%>
+                    <li><a href="/population/formsDb">Formularios DB</a></li>
+                <% } %>
                 <div>
-                    <li><a href="/user/register">Sing up</a></li>
-                    <li><a href="/user/login">Log In</a></li>
-                    <li><a href="/user/account">Cuenta</a></li>
+                    <% if(typeof userLoggedIn == 'undefined') { %>
+                        <li><a href="/user/register">Sing up</a></li>
+                        <li><a href="/user/login">Log In</a></li>
+                    <% }else{ %>
+                        <li><a href="/user/account/<%=userLoggedIn.id%>">Cuenta</a></li>
+                        <li><a href="/user/logout">Log out</a></li>
+                    <% } %>
                 </div>
             </ul>
         </nav>

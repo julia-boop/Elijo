@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -7,14 +8,14 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const createLocals = require('./middlewares/createLocals');
 const hasCookie = require('./middlewares/hasCookie');
-
+const isAdmin = require('./middlewares/isAdmin');
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(methodOverride('_method'));
-app.use(session({secret:'holis'}));
+app.use(session({secret:process.env.SESSION}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -32,7 +33,7 @@ const endpointRouter = require('./routes/endpointRouter');
 
 app.use('/', mainRouter);
 app.use('/user', userRouter);
-app.use('/population', populationRouter);
+app.use('/population', isAdmin, populationRouter);
 app.use('/endpoints', endpointRouter);
 
 app.listen(3000, () => console.log("Servidor corriendo en el puerto 3000"));

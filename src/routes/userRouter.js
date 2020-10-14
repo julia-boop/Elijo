@@ -4,6 +4,7 @@ const multer = require('multer');
 const path = require('path');   
 const registerValidation = require('../validations/registerValidation');
 const loginValidation = require('../validations/loginValidation');
+const hasAccess = require('../middlewares/hasAccess');
 
 const userController = require('../controllers/userController.js');
 
@@ -17,8 +18,8 @@ let storage = multer.diskStorage({
 });
 let upload = multer({storage:storage});
 
-router.get('/account/:userID', userController.account);
-router.post('/account/:userID', upload.any() ,userController.edit);
+router.get('/account/:userID', hasAccess, userController.account);
+router.post('/account/:userID', hasAccess, upload.any() ,userController.edit);
 
 //SHOW REGISTER FORM:
 router.get('/register', userController.register);
@@ -30,8 +31,11 @@ router.get('/login', userController.login);
 //ENTER ACCOUNT
 router.post('/login', loginValidation, userController.enter);
 
-router.get('/requestInstitution', userController.requestInstitution);
-router.post('/requestInstitution', userController.sendRequest);
+//
+router.get('/requestInstitution', hasAccess, userController.requestInstitution);
+router.post('/requestInstitution', hasAccess, userController.sendRequest);
 
+//LOGOUT
+router.get('/logout', hasAccess, userController.logout);
 
 module.exports = router;
