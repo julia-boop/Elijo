@@ -18,6 +18,8 @@
 .main-title{
     display: flex;
     align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .profile-detail-title {
@@ -68,14 +70,12 @@
 
 .profile-experiences h4.uni {
     text-align: left;
-    background-color: rgb(180, 243, 180);
-    max-width: 450px;
+    background-color: var(--color-7);
 }
 
 .profile-experiences h4.course {
     text-align: left;
-    background-color: rgb(253, 253, 152);
-    max-width: 450px;
+    background-color: var(--color-5);
 }
 
 .profile-interests {
@@ -84,13 +84,33 @@
     margin-bottom: 20px;
 }
 
+.interests-title{
+    background-color: var(--color-4);
+}
+
+.tips-title{
+    background-color: var(--color-8);
+}
+
+.experiences-title{
+    background-color: var(--color-3);
+}
+
+.profile-interests ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
 .profile-interests ul.interests {
     margin-bottom: 5px;
 }
 
 .profile-interests ul.interests li {
     list-style: none;
+    text-transform: capitalize;
     margin: 5px;
-    background-color: var(--btn-bg-color-scnd);
-    border: var(--btn-border-scnd);
+    padding: 8px;
+    background-color: var(--color-4);
+    border: var(--color-9);
 }

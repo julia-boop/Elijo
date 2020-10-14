@@ -70,7 +70,7 @@ module.exports = {
             }
         }
 
-        if(req.body.newCareer != ''){
+        if(req.body.newCareer == 'si'){
             res.redirect('/population/addCareerAsignature/'+ req.params.universityId);
         }else{
             res.redirect('/population/university');
