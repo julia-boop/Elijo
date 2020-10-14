@@ -14,6 +14,7 @@ window.addEventListener('load', function(){
                 return response.json();
             })
             .then(careers => {
+                careerSelected[0].innerHTML = '<option value="" hidden>Selecciona una Carrera</option>';
                 for(let i = 0; i < careers.length; i++){
                     careerSelected[0].innerHTML +=`<option value="${careers[i].id}">  ${careers[i].name} </option>`
                 }
@@ -28,6 +29,7 @@ window.addEventListener('load', function(){
                 return response.json();
             })
             .then(careers => {
+                careerSelected[1].innerHTML = '<option value="" hidden>Selecciona una Carrera</option>';
                 for(let i = 0; i < careers.length; i++){
                     //careerSelected.innerHTML += '<option value="">' + careers[i] + '</option>'
                     careerSelected[1].innerHTML +=`<option value="${careers[i].id}">  ${careers[i].name} </option>`
@@ -46,6 +48,7 @@ window.addEventListener('load', function(){
                 return response.json();
             })
             .then(courses => {
+                courseSelected[0].innerHTML = '<option value="" hidden>Selecciona un Curso</option>';
                 for(let i = 0; i < courses.length; i++){
                     courseSelected[0].innerHTML +=`<option value="${courses[i].id}">  ${courses[i].name} </option>`
                 }
@@ -61,6 +64,7 @@ window.addEventListener('load', function(){
                 return response.json();
             })
             .then(courses => {
+                courseSelected[1].innerHTML = '<option value="" hidden>Selecciona un Curso</option>';
                 for(let i = 0; i < courses.length; i++){
                     courseSelected[1].innerHTML +=`<option value="${courses[i].id}">  ${courses[i].name} </option>`
                 }
@@ -76,6 +80,7 @@ window.addEventListener('load', function(){
                 return response.json();
             })
             .then(courses => {
+                courseSelected[2].innerHTML = '<option value="" hidden>Selecciona un Curso</option>';
                 for(let i = 0; i < courses.length; i++){
                     courseSelected[2].innerHTML +=`<option value="${courses[i].id}">  ${courses[i].name} </option>`
                 }
@@ -91,6 +96,7 @@ window.addEventListener('load', function(){
                 return response.json();
             })
             .then(courses => {
+                courseSelected[3].innerHTML = '<option value="" hidden>Selecciona un Curso</option>';
                 for(let i = 0; i < courses.length; i++){
                     courseSelected[3].innerHTML +=`<option value="${courses[i].id}">  ${courses[i].name} </option>`
                 }
