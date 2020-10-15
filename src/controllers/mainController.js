@@ -3,7 +3,7 @@ const path = require('path');
 const db = require('../database/models');
 
 module.exports = {
-    //TEST
+    // --> TEST <--
     jsonInstitutes:function(req, res) {
         db.Institute.findAll({
             include: [{association: 'Courses'}]
@@ -12,15 +12,13 @@ module.exports = {
             res.json(result)
         })
     },
-    jsonUniversities:function(req, res) {
-        db.University.findAll({
-            include: [{association: 'Careers'}, {association: 'Asignatures'}]
+    jsonUniversities:async function(req, res) {
+        let universities = await db.University.findAll({
+            include: [{association: 'Careers', include: [{association: 'Asignatures'}]}]
         })
-        .then(function(result) {
-            res.json(result)
-        })
+        res.json(universities)
     },
-    //TEST
+    // --> /TEST <--
 
     home: function(req, res){
         res.render('home');
