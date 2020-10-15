@@ -6,7 +6,7 @@ module.exports = {
     //TEST
     jsonInstitutes:function(req, res) {
         db.Institute.findAll({
-            includes: [{association: 'Courses'}]
+            include: [{association: 'Courses'}]
         })
         .then(function(result) {
             res.json(result)
@@ -14,7 +14,7 @@ module.exports = {
     },
     jsonUniversities:function(req, res) {
         db.University.findAll({
-            includes: [{association: 'Careers'}]
+            include: [{association: 'Careers'}, {association: 'Asignatures'}]
         })
         .then(function(result) {
             res.json(result)
