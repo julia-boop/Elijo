@@ -29,14 +29,16 @@ window.addEventListener('load', function(){
     
     submitBtn.addEventListener('click', (event) => {
         event.preventDefault();
-        let promptInfo = prompt("¿Queres cargar otra carrera?");
+        let promptInfo = prompt("¿Queres cargar otra carrera? SI - NO - CANCELAR = no hace nada");
         
-        if(promptInfo != null){
-            newCareerInput.value += 'checked'
+        if(promptInfo == 'si'){
+            newCareerInput.value = 'si'
             form.submit();
-        }else{
+        }else if(promptInfo == 'no'){
+            console.log('no')
             form.submit();
         }
+        
         
     });
     
