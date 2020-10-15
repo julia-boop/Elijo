@@ -19,16 +19,16 @@
                 <div class="form-row mb-4">
                     <div class="col">
                         <!-- First name -->
-                        <input name="user_name" type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Nombre" value="<%=(typeof user != 'undefined' && user.name != null)? user.name : '' %>">
+                        <input name="user_name" type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Nombre" value="<%=(typeof user != 'undefined' && user.name != null)? user.name : '' %>" required>
                     </div>
                     <div class="col">
                         <!-- Last name -->
-                        <input name="user_last_name" type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Apellido" value="<%=(typeof user != 'undefined' && user.last_name != null)? user.last_name : '' %>">
+                        <input name="user_last_name" type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Apellido" value="<%=(typeof user != 'undefined' && user.last_name != null)? user.last_name : '' %>" required>
                     </div>
                 </div>
     
                 <!-- E-mail -->
-                <input name="user_email" type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" value="<%=(typeof user != 'undefined' && user.email != null)? user.email : '' %>">
+                <input name="user_email" type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" value="<%=(typeof user != 'undefined' && user.email != null)? user.email : '' %>" required>
 
                 <div class="d-flex justify-content-start w-100">
                     <select name="affair" id="options" class="mb-3">
@@ -40,7 +40,7 @@
                     </select>
                 </div>                
 
-                <textarea class="form-control" name="request" id="request" cols="30" rows="5" placeholder="Contanos que lo que falta"></textarea>
+                <textarea class="form-control" name="request" id="request" cols="30" rows="5" placeholder="Contanos que es lo que falta" required></textarea>
                 
                 <button class="btn  my-4 btn-block btn-log-reg" type="submit">Enviar</button>
             </form>

@@ -246,7 +246,7 @@ module.exports = {
         return res.redirect('/user/account/'+req.session.userSession);
     },
     requestInstitution: (req, res) => {
-        db.User.findByPk(req.params.userID)
+        db.User.findByPk(req.session.userSession)
         .then( user => {
             return res.render('requestNewInstitution', {user});
         })
@@ -257,16 +257,16 @@ module.exports = {
     },
     sendRequest: (req, res) => {
         let transporter = nodemailer.createTransport({
-            host: "smtp.mailtrap.io",
-            port: 2525,
+            host: "plesk.ar.conectemos.com",
+            port: 25,
             auth: {
-              user: "0f84bdd144aeaa",
-              pass: "f45a4877632a4c"
+              user: process.env.NODEMAILER_USER,
+              pass: process.env.NODEMAILER_PASS
             }
         });
         let mailOptions = {
-            from: 'ponceguido@gmail.com',
-            to: 'ponceguido@gmail.com',
+            from: req.body.email,
+            to: 'equipo@elijo.org',
             subject: (req.body.affair != '') ? 'Falta mi ' + req.body.affair : 'el usuario no determino que es lo que le falta',
             text: (req.body.request != null || req.body.request != '') ? req.body.request : 'El usuario no adjunto ningun comentario'
         };
