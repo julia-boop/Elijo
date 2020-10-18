@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const registerValidation = require('../validations/registerValidation');
 const {check, validationResult, body} = require('express-validator');
 const nodemailer = require('nodemailer');
+const nodemailerMessenger = require('../ownModules/nodemailerMessenger');
 
 module.exports = {
     account: async function(req, res){
@@ -64,6 +65,14 @@ module.exports = {
                         id: result.id,
                         rol: result.rol
                     }
+                    let body = {
+                        fromEmail: 'equipo@elijo.org',
+                        toEmail: result.email,
+                        affair: 'Confirmación de cuenta',
+                        request: `Hola ${result.name}, bienvenido a Elijo. Te pedimos por favor que para poder usar tu cuenta hagas click en el siguiente link para confirmar tu cuenta:`,
+                        hymlContent: `<a href="elijo.org/user/confirm/${bcrypt.hashSync(result.id, 10)}">Confirmar cuenta</a>`
+                    }
+                    nodemailerMessenger(body);
                     res.redirect('/user/account/'+result.id)
                 })
                 .catch(function(e){
@@ -72,9 +81,6 @@ module.exports = {
         }else{
             res.render('register', {errors:errors.errors})
         }
-
-
-
     },
     login: function(req, res) {
         res.render('login')
@@ -279,6 +285,33 @@ module.exports = {
             }
         }); 
         return res.send(req.body);
+    },
+    confirmUser: (req, res) => {
+        db.User.findAll()
+        .then(users => {
+            for(let i = 0; i < users.length; i++){
+                if(bcrypt.compareSync(users[i].id, users[i].password)){
+                    let confirmMsg = {
+                        msg: 'Gracias por verificar tu cuenta!'
+                    }
+
+                    db.User.update({
+                        user_confirm = 1
+                    }, {
+                        where:{
+                            id: users[i].id
+                        }
+                    })
+                    .then(userUpdated => {
+                        res.render('login', confirmMsg);
+                    })
+                    .catch(error => {
+                        return res.send(error);
+                    })
+                }
+            }
+        })
+        res.render('login');
     },
     logout: (req, res) => {
         req.session.destroy();
