@@ -294,10 +294,8 @@ module.exports = {
                     let confirmMsg = {
                         msg: 'Gracias por verificar tu cuenta!'
                     }
-
-                    db.User.update({
-                        user_confirm = 1
-                    }, {
+                    users[i].user_confirm = 1;
+                    db.User.update(users[i], {
                         where:{
                             id: users[i].id
                         }
