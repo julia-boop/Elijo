@@ -27,7 +27,7 @@ module.exports = {
         return res.status(200).json(courses);
     },
     getActualUser: async (req, res) => {
-        let user = await db.User.findByPk(req.params.userID)
+        let user = await db.User.findByPk(req.session.userSession)
         .catch(err => {
             return res.status(404).json(err);    
         })

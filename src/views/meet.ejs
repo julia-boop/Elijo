@@ -7,34 +7,48 @@
 
                 <div class="div-filter" id="slider">
                     <span class="arrow arrow-left"></span>
-
-                    <a href="#universidad" data-toggle="collapse" ><p class="universidad">Universidad</p></a>
+                    <form action="/meet/filters?" method="GET">
+                        <a href="#universidad" data-toggle="collapse" ><p class="universidad">Universidad</p></a>
                         <div class="collapse" id="universidad">
                             <div class="card">
-                                <label for=""><input type="checkbox" name="" id="">Ditella</label>
-                                
-                                <label for=""><input type="checkbox" name="" id="">UBA</label>
-                                
+                                <% if(typeof universities != 'undefined'){ %>
+                                    <% for(let i = 0; i < universities.length; i++){ %>
+                                        <label for="<%=universities[i].name%>"><input type="checkbox" name="university" id="university" value="<%=universities[i].id%>"><%=universities[i].name%></label>    
+                                    <% } %>                                
+                                <% } %>
                             </div>
                         </div>
 
                     <a href="#carrera" data-toggle="collapse" ><p>Carrera</p></a>
                         <div class="collapse" id="carrera">
                             <div class="card">
-                                <label for=""><input type="checkbox" name="" id="">Ciencias Sociales</label>
-                                
-                                <label for=""><input type="checkbox" name="" id="">Economia</label>
-                                
+                                <% if(typeof careers != 'undefined'){ %>
+                                    <% for(let i = 0; i < careers.length; i++){ %>
+                                        <label for="<%=careers[i].name%>"><input type="checkbox" name="career" id="career" value="<%=careers[i].id%>"><%=careers[i].name%></label>    
+                                    <% } %>                                
+                                <% } %>
+                            </div>
+                        </div>
+
+                    <a href="#institutos" data-toggle="collapse" ><p>Institutos</p></a>
+                        <div class="collapse" id="instituto">
+                            <div class="card">
+                                <% if(typeof institutes != 'undefined'){ %>
+                                    <% for(let i = 0; i < institutes.length; i++){ %>
+                                        <label for="<%=institutes[i].name%>"><input type="checkbox" name="institutes" id="institutes" value="<%=institutes[i].id%>"><%=institutes[i].name%></label>    
+                                    <% } %>                                
+                                <% } %>
                             </div>
                         </div>
 
                     <a href="#cursos" data-toggle="collapse" ><p>Cursos</p></a>
                         <div class="collapse" id="cursos">
                             <div class="card">
-                                <label for=""><input type="checkbox" name="" id="">Programacion</label>
-                                                                
-                                <label for=""><input type="checkbox" name="" id="">Fotografia</label>
-
+                                <% if(typeof courses != 'undefined'){ %> 
+                                    <% for (let i=0; i<courses.length; i++){ %>
+                                    <label for="<%=courses[i].name%>"><input type="checkbox" name="courses" id="courses" value="<%=courses[i].id%>"><%=courses[i].name%></label> 
+                                    <% } %> 
+                                <% } %>
                             </div>
                         </div>
                     
@@ -42,19 +56,20 @@
                     <a href="#intereses" data-toggle="collapse" ><p>Intereses</p></a>
                         <div class="collapse" id="intereses">
                             <div class="card">
-                                <label for=""><input type="checkbox" name="" id="">Futbol</label>
-                                
-                                <label for=""><input type="checkbox" name="" id="">Cine</label>
-                                
+                                <% if(typeof interests != 'undefined'){ %>
+                                    <% for(let i = 0; i < interests.length; i++){ %>
+                                        <label for="<%=interests[i].interest_name%>"><input type="checkbox" name="interest" id="interest" value="<%= interests.id %>" ><%=interests[i].interest_name%></label>    
+                                    <% } %>                                
+                                <% } %>  
                             </div>
                         </div>
 
                     <a href="#region" data-toggle="collapse" ><p>Region</p></a>
                         <div class="collapse" id="region">
                             <div class="card">
-                                <label for=""><input type="checkbox" name="" id="">Buenos Aires</label>
+                                <label for=""><input type="checkbox" name="" value="buenos-aires" id="">Buenos Aires</label>
                                 
-                                <label for=""><input type="checkbox" name="" id="">Cordoba</label>
+                                <label for=""><input type="checkbox" name="" value="cordoba" id="">Cordoba</label>
                                 
                             </div>
                         </div>
@@ -62,45 +77,46 @@
                     <a href="#anio" data-toggle="collapse" ><p>Año de Universidad</p></a>
                         <div class="collapse" id="anio">
                             <div class="card">
-                                <label for=""><input type="checkbox" name="" id="">1</label>
+                                <label for=""><input type="checkbox" name="year" value="1" id="">1</label>
                                 
-                                <label for=""><input type="checkbox" name="" id="">2</label>
+                                <label for=""><input type="checkbox" name="year" value="2" id="">2</label>
                                 
-                                <label for=""><input type="checkbox" name="" id="">3</label>
+                                <label for=""><input type="checkbox" name="year" value="3" id="">3</label>
                                 
-                                <label for=""><input type="checkbox" name="" id="">4</label>
+                                <label for=""><input type="checkbox" name="year" value="4" id="">4</label>
                                 
-                                <label for=""><input type="checkbox" name="" id="">5</label>
+                                <label for=""><input type="checkbox" name="year" value="5" id="">5</label>
                                 
-                                <label for=""><input type="checkbox" name="" id="">6</label>
+                                <label for=""><input type="checkbox" name="year" value="6" id="">6</label>
                                 
                             </div>
                         </div>
                     <a href="#genero" data-toggle="collapse" ><p>Genero</p></a>
                         <div class="collapse" id="genero">
                             <div class="card">
-                                <label for=""><input type="checkbox" name="" id="">Femenino</label>
                                 
-                                <label for=""><input type="checkbox" name="" id="">Masculino</label>
+                                <label for="genre"><input type="checkbox" name="genero" value="1" id="1">Femenino</label>
                                 
-                                <label for=""><input type="checkbox" name="" id="">Otro</label>
+                                <label for="genre"><input type="checkbox" name="genero" value="2" id="2">Masculino</label>
+                                
+                                <label for="genre"><input type="checkbox" name="genero" value="3" id="3">Otro</label>
                                 
                             </div>
                         </div>
                     <a href="#edad" data-toggle="collapse" ><p>Edad</p></a>
                         <div class="collapse" id="edad">
                             <div class="card">
-                                <label for=""><input type="checkbox" name="" id="">18-23</label>
+                                <label for="age"><input type="checkbox" name="age" value="18-23" id="age">18-23</label>
                                 
-                                <label for=""><input type="checkbox" name="" id="">24-29</label>
+                                <label for="age"><input type="checkbox" name="age" value="24-29" id="age">24-29</label>
                                 
-                                <label for=""><input type="checkbox" name="" id="">30-35</label>
+                                <label for="age"><input type="checkbox" name="age" value="30-35" id="age">30-35</label>
 
-                                <label for=""><input type="checkbox" name="" id="">35+</label>
+                                <label for="age"><input type="checkbox" name="age" value="35" id="age">35+</label>
                             </div>
                         </div>
-                    
-                
+                        <button type="submit">Filtrar</button>
+                    </form>
                 </div>
 
     <div class="sleep-background d-none">

@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');   
 const db = require('../database/models');
+const usersFilter = require('../ownModules/filterUsers.js');
 
 module.exports = {
-    //TEST
+    // --> TEST <--
     jsonInstitutes:function(req, res) {
         db.Institute.findAll({
             include: [{association: 'Courses'}]
@@ -12,15 +13,13 @@ module.exports = {
             res.json(result)
         })
     },
-    jsonUniversities:function(req, res) {
-        db.University.findAll({
-            include: [{association: 'Careers'}, {association: 'Asignatures'}]
+    jsonUniversities:async function(req, res) {
+        let universities = await db.University.findAll({
+            include: [{association: 'Careers', include: [{association: 'Asignatures'}]}]
         })
-        .then(function(result) {
-            res.json(result)
-        })
+        res.json(universities)
     },
-    //TEST
+    // --> /TEST <--
 
     home: function(req, res){
         res.render('home');
@@ -36,8 +35,40 @@ module.exports = {
         let instituteCourses = await db.Course.findAll({
             include: [{association: 'Institutes'}]
         })
-        //return res.send(userStudies);
-        res.render('meet', {userStudies:userStudies, universityCareers:universityCareers, instituteCourses:instituteCourses});
+
+        let interests = await db.Interest.findAll();
+        let institutes = await db.Institute.findAll();
+        let courses = await db.Course.findAll();
+        let universities = await db.University.findAll();
+        let careers = await db.Career.findAll();
+        
+        res.render('meet', {userStudies, universityCareers, instituteCourses, interests, institutes, courses, universities, careers});
+    },
+    filterMeet: async (req, res) => {
+        
+        let userStudies = await db.User.findAll({
+            where: {
+                rol: 2
+            },//'2' debe ser reemplazado por el rol que corresponda a estudiantes
+            include: [{association: 'User_careers'}, {association: 'User_courses'}]
+        })
+        let usersFiltered = await usersFilter(userStudies, req.query);
+        return res.send(usersFiltered);
+
+        let universityCareers = await db.Career.findAll({
+            include: [{association: 'Universities'}]
+        })
+        let instituteCourses = await db.Course.findAll({
+            include: [{association: 'Institutes'}]
+        })
+
+        let interests = await db.Interest.findAll();
+        let institutes = await db.Institute.findAll();
+        let courses = await db.Course.findAll();
+        let universities = await db.University.findAll();
+        let careers = await db.Career.findAll();
+
+        res.render('meet', {userStudies, universityCareers, instituteCourses, interests, institutes, courses, universities, careers});
     },
     detail: async function(req, res) {
         let user = await db.User.findOne({
@@ -88,3 +119,4 @@ module.exports = {
         res.render('posta')
     }
 };
+

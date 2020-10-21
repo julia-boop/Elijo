@@ -7,7 +7,7 @@ const hasAcces = require('../middlewares/hasAccess');
 
 router.get('/careers/:universityOwner', endpointController.getCareers);
 router.get('/courses/:instituteOwner', endpointController.getCourses);
-router.get('/user/:userID', hasAcces, endpointController.getActualUser);
+router.get('/user/', hasAcces, endpointController.getActualUser);
 router.get('/interests', endpointController.getInterestsTable);
 
 

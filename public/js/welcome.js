@@ -1,5 +1,4 @@
 window.addEventListener('load', function(){
-
     let orderList = qs('.orderListv2');
 
     let popUpBg = document.querySelector('.pop-up-background');
@@ -8,7 +7,7 @@ window.addEventListener('load', function(){
     let popUp = document.querySelector('.pop-up');
     let popUpChilds = document.querySelectorAll('.pop-up-child');
 
-    let blurBackground = qs('.blur-background');
+    let blurBackground = qs('.blur-background');    
 
     //Blur background
     blurBackground.style.filter = "blur(5px)"

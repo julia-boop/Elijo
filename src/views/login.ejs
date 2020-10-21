@@ -6,6 +6,11 @@
     <%- include('./partials/header') %>
     <!-- Default form login -->
     <div class="login-container">
+    <% if(typeof confirmMsg != 'undefined'){ %> 
+        <div class="alert alert-success" role="alert">
+            <%=confirmMsg.msg%>
+          </div>
+    <% } %> 
     <form class="text-center justify-content-center border border-light p-5 loginForm" action="/user/login" method="POST">
         
         <p class="h4 mb-4 register-title">Ingresar</p>
