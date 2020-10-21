@@ -15,7 +15,7 @@ module.exports = {
     "password": process.env.DB_PASSWORD,
     "database": process.env.DB_DATABASE,
     "host": process.env.DB_HOST,
-    "port": process.env.DB_PORT,
+    "port": process.env.DB_PORT_DEV,
     "dialect": "mysql",
     "timezone": "-03:00"//Para que timestamps figuren en zona horaria Bs As
   },

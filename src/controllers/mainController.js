@@ -29,18 +29,28 @@ module.exports = {
             where: {rol: 2},//'2' debe ser reemplazado por el rol que corresponda a estudiantes
             include: [{association: 'User_careers'}, {association: 'User_courses'}]
         })
+        .catch(error => {
+            res.send(error)
+        })
+
         let universityCareers = await db.Career.findAll({
             include: [{association: 'Universities'}]
+        })
+        .catch(error => {
+            res.send(error)
         })
         let instituteCourses = await db.Course.findAll({
             include: [{association: 'Institutes'}]
         })
+        .catch(error => {
+            res.send(error)
+        })
 
-        let interests = await db.Interest.findAll();
-        let institutes = await db.Institute.findAll();
-        let courses = await db.Course.findAll();
-        let universities = await db.University.findAll();
-        let careers = await db.Career.findAll();
+        let interests = await db.Interest.findAll().catch(error => {res.send(error)});
+        let institutes = await db.Institute.findAll().catch(error => {res.send(error)});
+        let courses = await db.Course.findAll().catch(error => {res.send(error)});
+        let universities = await db.University.findAll().catch(error => {res.send(error)});
+        let careers = await db.Career.findAll().catch(error => {res.send(error)});
         
         res.render('meet', {userStudies, universityCareers, instituteCourses, interests, institutes, courses, universities, careers});
     },

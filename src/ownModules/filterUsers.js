@@ -21,7 +21,21 @@ function filterByAge(users, query){
 //#endregion
 
 function filterByUniversity(users, query){
-    
+
+    let usersByUniversity = [];
+
+        for(let i = 0 ; i < users.length ; i++){
+            for(let j = 0 ; j < query.length ; j++){
+               if(users[i].User_careers != undefined){
+                   for(let k = 0 ; k < users[i].User_careers.length ; k++){
+                       if(users[i].User_careers[k].university_id == Number(query[j])){
+                           usersByUniversity.push(users[i]);
+                       }
+                   }
+               }               
+            }
+        }
+    return usersByUniversity;
 }
 
 function filterByCareer(users, query){
@@ -53,6 +67,7 @@ function filterByGenre(users, query){
 
 function filterByCareerYear(users, query){
 
+ 
 }
 
 
