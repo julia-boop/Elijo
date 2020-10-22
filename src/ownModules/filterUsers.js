@@ -85,6 +85,21 @@ function filterByCareerYear(users, query){
  
 }
 
+//FILTER PROVINCE
+function filterByProvince(users, query){
+    let usersByProvince = [];
+
+    for(let i=0; i<users.length; i++){
+        for(let j=0; j< query.length; j++){
+            if(users[i].province.toLowerCase() == query[j].toLowerCase()){
+                usersByProvince.push(users[i]);
+            }
+        }
+    }
+    return usersByProvince;
+}
+//END FILTER PROVINCE
+
 
 module.exports = function (users, queries){
     let usersFiltered = users;
@@ -102,6 +117,8 @@ module.exports = function (users, queries){
     if(queries.genero != undefined) usersFiltered = filterByGenre(usersFiltered, queries.genero);
 
     if(queries.year != undefined) usersFiltered = filterByCareerYear(usersFiltered, queries.year);
+
+    if(queries.province != undefined) usersFiltered = filterByProvince(usersFiltered, queries.province);
 
 
     return usersFiltered;
