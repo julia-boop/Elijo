@@ -53,15 +53,47 @@ function filterByCareer(users, query){
             }
         }
     }
-    
+
     return usersByCareer;
 }
 
 function filterByInstitute(users, query){
+    let usersByInstitute = [];
 
+    for(let i = 0 ; i < users.length ; i++){
+        for(let j = 0 ; j < query.length ; j++){
+            if(users[i].User_courses != undefined ){                
+                for(let k = 0 ; k < users[i].User_courses.length ; k++){
+                    if(users[i].User_courses[k].institute_id == Number(query[j])){    
+                        console.log('ok');                    
+                        usersByInstitute.push(users[i])
+                    }
+                }
+            }
+        }
+    }
+
+    return usersByInstitute;
 }
 
 function filterByCourse(users, query){
+
+    let usersByCourse = [];
+
+    for(let i = 0 ; i < users.length ; i++){
+        for(let j = 0 ; j < query.length ; j++){
+            if(users[i].User_courses != undefined){
+                for(let k = 0 ; k < users[i].User_courses.length ; k++){
+                    if(users[i].User_courses[j].id == Number(query[j])){
+                        usersByCourse.push(users[i])
+                        console.log('ok')
+                    }
+                }
+            }
+        }
+    }
+
+    return usersByCourse;
     
 }
 
@@ -110,9 +142,9 @@ module.exports = function (users, queries){
 
     if(queries.career != undefined) usersFiltered = filterByCareer(usersFiltered, queries.career);
 
-    if(queries.institute != undefined) usersFiltered = filterByInstitute(usersFiltered, queries.institute);
+    if(queries.institutes != undefined) usersFiltered = filterByInstitute(usersFiltered, queries.institutes);
     
-    if(queries.course != undefined) usersFiltered = filterByCourse(usersFiltered, queries.course);
+    if(queries.courses != undefined) usersFiltered = filterByCourse(usersFiltered, queries.courses);
 
     if(queries.genero != undefined) usersFiltered = filterByGenre(usersFiltered, queries.genero);
 

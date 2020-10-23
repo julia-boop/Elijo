@@ -63,7 +63,7 @@ module.exports = {
             include: [{association: 'User_careers'}, {association: 'User_courses'}]
         })
         let usersFiltered = await usersFilter(userStudies, req.query);
-        return res.send(req.query);
+        return res.send(usersFiltered);
 
         let universityCareers = await db.Career.findAll({
             include: [{association: 'Universities'}]
