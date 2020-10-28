@@ -27,7 +27,7 @@
                         <% } %>
                         <div class="userOptions">
                             <% if(typeof userLoggedIn == 'undefined') { %>
-                                <li><a href="/user/register">Sing up</a></li>
+                                <li><a href="/user/register">Sign up</a></li>
                                 <li><a href="/user/login">Log In</a></li>
                             <% }else{ %>
                                 <li><a href="/user/account/<%=userLoggedIn.id%>">Cuenta</a></li>
@@ -60,7 +60,7 @@
                 <% } %>
                 <div>
                     <% if(typeof userLoggedIn == 'undefined') { %>
-                        <li><a href="/user/register">Sing up</a></li>
+                        <li><a href="/user/register">Sign up</a></li>
                         <li><a href="/user/login">Log In</a></li>
                     <% }else{ %>
                         <li><a href="/user/account/<%=userLoggedIn.id%>">Cuenta</a></li>

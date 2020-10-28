@@ -4,7 +4,9 @@ const db = require('../database/models');
 const usersFilter = require('../ownModules/filterUsers.js');
 
 module.exports = {
-    // --> TEST <--
+
+
+    // --> DATAENTRY <-- \\
     jsonInstitutes:function(req, res) {
         db.Institute.findAll({
             include: [{association: 'Courses'}]
@@ -19,7 +21,8 @@ module.exports = {
         })
         res.json(universities)
     },
-    // --> /TEST <--
+    // --> /DATAENTRY <-- \\
+
 
     home: function(req, res){
         res.render('home');
@@ -46,6 +49,7 @@ module.exports = {
             res.send(error)
         })
 
+        
         let interests = await db.Interest.findAll().catch(error => {res.send(error)});
         let institutes = await db.Institute.findAll().catch(error => {res.send(error)});
         let courses = await db.Course.findAll().catch(error => {res.send(error)});
@@ -63,7 +67,10 @@ module.exports = {
             include: [{association: 'User_careers'}, {association: 'User_courses'}]
         })
         let usersFiltered = await usersFilter(userStudies, req.query);
-        return res.send(usersFiltered);
+        //return res.send(usersFiltered);
+
+        let users = await db.User_career_study.findAll();
+        return res.send(userStudies) // NO TRAE START_YEAR
 
         let universityCareers = await db.Career.findAll({
             include: [{association: 'Universities'}]

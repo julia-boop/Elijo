@@ -112,10 +112,20 @@ function filterByGenre(users, query){
 }
 //#endregion 
 
+//FILTER BY CAREER YEAR
 function filterByCareerYear(users, query){
+    let usersByYear = [];
 
- 
+    for(let i = 0 ; i < users.length ; i++){
+        for(let k = 0 ; k < users[i].User_careers.start_year.length ; k++){
+            if(users[i].User_careers[j].start_year == Number(query[j])){
+                usersByYear.push(users[i])
+            }
+        }
+    }
+//Creo que es  users[i].User_careers[j].user_careers.start_year (no trae start_year ATT!!!)
 }
+// /FILTER BY CAREER YEAR
 
 //FILTER PROVINCE
 function filterByProvince(users, query){
