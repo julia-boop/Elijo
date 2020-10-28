@@ -79,7 +79,6 @@
 }
 
 .profile-interests {
-    width: fit-content;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -113,4 +112,8 @@
     padding: 8px;
     background-color: var(--color-4);
     border: var(--color-9);
+}
+
+.conditional-question-and-tips {
+    margin-top: 10px;
 }

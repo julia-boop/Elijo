@@ -23,9 +23,9 @@
         </div>
             
         <div class="row">
-            <article class="wrapper-detail-profile col-12 col-md-8">
+            <section class="wrapper-detail-profile col-12 col-md-8">
                     
-                <section class="profile-experiences">
+                <article class="profile-experiences">
                     <h4 class="uni">Universidad</h4>
                     <% for(let i = 0 ; i < university_career.length ; i++){ %> 
                         <h5><%= university_career[i].name %></h5>
@@ -43,20 +43,20 @@
                         <% } %>
 
                     <% } %>
-                </section>
-                <section class="profile-interests">
+                </article>
+                <article class="profile-interests">
                     <h4 class="interests-title">Intereses</h4>
                     <ul class="interests d-flex">
                         <% for(let i = 0; i < user.Interest.length; i++){ %>
                             <li><%= user.Interest[i].interest_name %></li>
                         <% } %>
                     </ul>
-                </section>
-                <section class="profile-interests">
+                </article>
+                <article class="profile-interests">
                     <h4 class="experiences-title">Experiencias</h4>
                     <h6><%= user.experiences %></h6>                    
-                </section>
-            </article>
+                </article>
+            </section>
                 
                 <aside class="conditional-question-and-tips col-12 col-md-4">
                     <h4 class="tips-title">Tips</h4>
