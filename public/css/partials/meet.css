@@ -1,5 +1,6 @@
 .container-meet{
-    background-color: var(--color-2)
+    background-color: var(--color-2);
+    width: 70%;
 }
 #slider {
     /* mediaquery para pc  */
@@ -37,6 +38,8 @@
     0% { -webkit-transform: translateX(0%); }
     100% { -webkit-transform: translateX(-100%); }
 }
+
+
 
 .div-filter{
     padding: 3px;
