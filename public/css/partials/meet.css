@@ -1,6 +1,6 @@
 .container-meet{
     background-color: var(--color-2);
-    width: 70%;
+    width: 100vw;
 }
 #slider {
     /* mediaquery para pc  */
