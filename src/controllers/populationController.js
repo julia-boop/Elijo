@@ -4,6 +4,28 @@ const db = require('../database/models');
 
 
 module.exports = {
+    showLoadedUniversities: (req, res) => {
+        db.University.findAll({
+            include: [{association: 'Careers'}]
+        })
+        .then(universities => {
+            res.render('universities', {universities});
+        })
+        .catch(err => {
+            return res.send(err);
+        })
+    },
+    showLoadedInstitutes: (req, res) => {
+        db.Institute.findAll({
+            include: [{association: 'Courses'}]
+        })
+        .then(institutes => {
+            return res.render('institutes', {institutes});  
+        })
+        .catch(err => {
+            return res.send(err);
+        })
+    },
     showUniversityForm : (req, res) => {
         res.render('universityForm');
     },

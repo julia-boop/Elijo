@@ -16,9 +16,16 @@ let storage = multer.diskStorage({
 });
 let upload = multer({storage:storage});
 
-router.get('/formsDb', function(req, res){
-    res.render('formsDb')
-})
+
+
+
+
+router.get('/formsDb', (req, res) => res.render('populationMenu') );
+router.get('/universitiesMenu', isAdmin, populationController.showLoadedUniversities);
+router.get('/institutesMenu', isAdmin, populationController.showLoadedInstitutes);
+
+
+
 
 router.get('/university', isAdmin, populationController.showUniversityForm);
 router.post('/university', isAdmin, upload.any(), populationController.saveNewUniversity);
