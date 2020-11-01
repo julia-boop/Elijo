@@ -54,6 +54,12 @@ module.exports = (sequelize, dataTypes) => {
       timestamps: true
     });
 
+    University.hasMany(models.University_location, {
+      as: 'University_location',
+      foreignKey: 'university_id',
+      timestamps: true
+    });
+
     University.hasMany(models.Tip, {
       as: 'University_tips',
       foreignKey: 'university_id'

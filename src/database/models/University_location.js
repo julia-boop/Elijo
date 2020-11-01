@@ -34,5 +34,13 @@ module.exports = (sequelize, dataTypes) => {
     };
     const University_location = sequelize.define(alias, cols, config);  
     
+    University_location.associate = function(models) {
+        University_location.belongsTo(models.University, {
+          as: 'University_location',
+          foreignKey: 'university_id',
+          timestamps: true
+        });
+    }
+    
     return University_location;
 }
