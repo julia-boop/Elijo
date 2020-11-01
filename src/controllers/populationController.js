@@ -37,17 +37,52 @@ module.exports = {
             link: req.body.university_link,
             price: req.body.university_price,
             calification: req.body.university_calification,
-            adress: req.body.university_adress,
-            location: req.body.university_location,
-            region: req.body.university_region,
             logo: (req.files[0] == undefined) ? 'no-image.jpg' : req.files[0].filename,
             amount_students: req.body.university_amount_students,
             created_at: new Date(),
             updated_at: new Date()
         };
         let university = await db.University.create(newUniversity);
-        res.redirect('/population/addCareerAsignature/' + university.id);
-        //return res.send(university);
+        //res.redirect('/population/addCareerAsignature/' + university.id);
+        res.redirect('/population/addUniversityLocation/' + university.id);
+        
+    },
+    showUniversityLocations: (req, res) => {
+        db.University.findOne({
+            where: {
+                id: req.params.universityId
+            }
+        })
+        .then(university => {
+            return res.render('UnivLocationForm', {university});
+        })
+        
+    },
+    saveUniversityLocations: async (req, res) => {
+        console.log(req.body);
+        if(req.body.locationAmount > 1){
+            for(let i = 0; i < req.body.locationAmount; i++){
+                let newLocation = {
+                    address: req.body.address[i],
+                    province: req.body.province[i],
+                    country: req.body.country[i],
+                    zip_code: Number(req.body.zip_code[i]),
+                    university_id: Number(req.params.universityId)
+                };
+                let location = await db.University_location.create(newLocation);
+            }
+        }else{
+            let newLocation = {
+                adress: req.body.adress,
+                province: req.body.province,
+                country: req.body.country,
+                zip_code: req.body.zip_code,
+                university_id: req.params.universityId
+            };
+            let location = await db.University_location.create(newLocation);
+        }
+        
+        res.redirect('/population/addCareerAsignature/' + req.params.universityId);
     },
     showCareerAndAsignatureForm : (req, res) => {
         let universityId = req.params.universityId;

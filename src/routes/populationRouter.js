@@ -29,6 +29,8 @@ router.get('/institutesMenu', isAdmin, populationController.showLoadedInstitutes
 
 router.get('/university', isAdmin, populationController.showUniversityForm);
 router.post('/university', isAdmin, upload.any(), populationController.saveNewUniversity);
+router.get('/addUniversityLocation/:universityId', isAdmin, populationController.showUniversityLocations);
+router.post('/addUniversityLocation/:universityId', isAdmin, populationController.saveUniversityLocations);
 router.get('/addCareerAsignature/:universityId', isAdmin, populationController.showCareerAndAsignatureForm);
 router.post('/addCareerAsignature/:universityId', isAdmin, populationController.addCareerAndASignatures);
 

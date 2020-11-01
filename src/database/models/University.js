@@ -24,15 +24,6 @@ module.exports = (sequelize, dataTypes) => {
     calification:{
       type: dataTypes.INTEGER(10)
     },
-    adress:{
-      type: dataTypes.STRING(255)
-    },
-    location:{
-      type: dataTypes.STRING(255)
-    },
-    region:{
-      type: dataTypes.STRING(255)
-    },
     logo:{
       type: dataTypes.STRING(100)
     },

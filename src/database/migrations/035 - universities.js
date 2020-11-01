@@ -26,15 +26,6 @@ module.exports = {
       calification:{
         type: Sequelize.DataTypes.INTEGER(10)
       },
-      adress:{
-        type: Sequelize.DataTypes.STRING(255)
-      },
-      location:{
-        type: Sequelize.DataTypes.STRING(255)
-      },
-      region:{
-        type: Sequelize.DataTypes.STRING(255)
-      },
       logo:{
         type: Sequelize.DataTypes.STRING(100)
       },
