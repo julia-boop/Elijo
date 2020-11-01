@@ -70,32 +70,10 @@ module.exports = {
         };
         let career = await db.Career.create(newCareer);
 
-        if(req.body.amount_asignatures == '1' || req.body.amount_asignatures == 1){
-            let newAsignature = {
-                name: req.body.asignature_name,
-                asignature_year: req.body.asignature_year,
-                career_id: career.id,
-                created_at: new Date(),
-                updated_at: new Date()
-            };
-            let asignature = await db.Asignature.create(newAsignature);
-        } else {
-            for(let i = 0; i < req.body.amount_asignatures; i++){
-                let newAsignature = {
-                    name: req.body.asignature_name[i],
-                    asignature_year: req.body.asignature_year[i],
-                    career_id: career.id,
-                    created_at: new Date(),
-                    updated_at: new Date()
-                };
-                let asignature = await db.Asignature.create(newAsignature);
-            }
-        }
-
         if(req.body.newCareer == 'si'){
             res.redirect('/population/addCareerAsignature/'+ req.params.universityId);
         }else{
-            res.redirect('/population/university');
+            res.redirect('/population/universitiesMenu');
         }
     },
     showInstituteForm : (req, res) => {
