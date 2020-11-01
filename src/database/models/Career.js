@@ -57,10 +57,10 @@ module.exports = (sequelize, dataTypes) => {
       timestamps: true
     });
 
-    Career.hasMany(models.Asignature, {
-      as: 'Asignatures',
-      foreignKey: 'career_id'
-    });
+    // Career.hasMany(models.Asignature, {
+    //   as: 'Asignatures',
+    //   foreignKey: 'career_id'
+    // });
 
     Career.hasMany(models.Tip, {
       as: 'Carrer_tips',

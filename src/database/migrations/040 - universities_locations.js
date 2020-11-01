@@ -2,25 +2,29 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.createTable ('asignatures', {
-      id: {
+    return queryInterface.createTable ('universities_locations', {
+      id:{
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
         primaryKey: true,
         autoIncrement: true
       },
-      name: {
-        type: Sequelize.DataTypes.STRING(60),
-        allowNull: false
+      address:{
+        type: Sequelize.DataTypes.STRING(100)
       },
-      asignature_year: {
-        type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
-        allowNull: false
+      province: {
+        type: Sequelize.DataTypes.STRING(100)
       },
-      career_id:{
+      country: {
+        type: Sequelize.DataTypes.STRING(100)
+      },
+      zip_code: {
+        type: Sequelize.DataTypes.INTEGER(10).UNSIGNED
+      },
+      university_id: {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
         allowNull: false,
         references: {
-          model: 'careers',
+          model: 'universities',
           key: 'id'
         }
       },
@@ -28,7 +32,8 @@ module.exports = {
       updated_at: Sequelize.DataTypes.DATE
     })
   },
+
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('asignatures')
+    return queryInterface.dropTable('universities_locations')
   }
 };
