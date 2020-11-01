@@ -35,5 +35,7 @@ router.post('/addCareerAsignature/:universityId', isAdmin, populationController.
 
 router.get('/institute', isAdmin, populationController.showInstituteForm);
 router.post('/institute', isAdmin, upload.any(), populationController.saveNewInstitute);
+router.get('/addCourse/:instituteID', isAdmin, populationController.showCourseForm);
+router.post('/addCourse/:instituteID', isAdmin, populationController.saveNewCourse);
 
 module.exports = router;

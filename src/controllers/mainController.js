@@ -64,7 +64,22 @@ module.exports = {
             where: {
                 rol: 2
             },//'2' debe ser reemplazado por el rol que corresponda a estudiantes
-            include: [{association: 'User_careers'}, {association: 'User_courses'}]
+            include: [
+                {
+                    model: db.Career,
+                    as: 'User_careers',
+                    through: {
+                      model: db.User_career_study
+                    }
+                }, 
+                {
+                    model: db.Course,
+                    as: 'User_courses',
+                    through: {
+                      model: db.User_course_study
+                    }
+                }
+            ]
         })
         let usersFiltered = await usersFilter(userStudies, req.query);
         //return res.send(usersFiltered);

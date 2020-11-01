@@ -117,6 +117,20 @@ module.exports = {
         };
         let institute = await db.Institute.create(newInstitute);
         
+        res.redirect('/population/addCourse/'+institute.id);
+    },
+    showCourseForm: (req, res) => {
+        db.Institute.findOne({
+            where: {
+                id: req.params.instituteID
+            }
+        })
+        .then(institute => {
+            return res.render('courseForm', {institute});
+        })
+        
+    },
+    saveNewCourse: (req, res) => {
         if(req.body.courses_amount == '1' || req.body.courses_amount == 1){
             let newCourse = {
                 name: req.body.course_name,
@@ -127,7 +141,7 @@ module.exports = {
                 difficulty: req.body.course_difficulty,
                 job_exit: req.body.course_job_exit,
                 study_hours: req.body.course_study_hours,
-                institute_id: institute.id,
+                institute_id: req.params.instituteID,
                 created_at: new Date(),
                 updated_at: new Date()
             };
@@ -143,14 +157,13 @@ module.exports = {
                     difficulty: req.body.course_difficulty[i],
                     job_exit: req.body.course_job_exit[i],
                     study_hours: req.body.course_study_hours[i],
-                    institute_id: institute.id,
+                    institute_id: req.params.instituteID,
                     created_at: new Date(),
                     updated_at: new Date()
                 };
                 let course = db.Course.create(newCourse);
             }
         }
-        
-        res.redirect('/population/institute');
+        res.redirect('/population/formsDb');
     }
 }

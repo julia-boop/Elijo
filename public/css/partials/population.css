@@ -10,6 +10,15 @@
     border: none;
 }
 
+#addToInstitution{
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    background-color: var(--btn-bg-color);
+    border: none;
+}
+
 .populationMenu button{
     background-color: var(--btn-bg-color-hover);
     border: var(--btn-border-hover);
