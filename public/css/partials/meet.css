@@ -47,7 +47,7 @@
     height: 100%;
     position: absolute;
     background-color: var(--color-2);
-    position: fixed;
+    position: absolute;
     z-index: 70;
 }
 
