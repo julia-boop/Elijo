@@ -47,35 +47,6 @@ LOCK TABLES `answers` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `asignatures`
---
-
-DROP TABLE IF EXISTS `asignatures`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `asignatures` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) NOT NULL,
-  `asignature_year` int(10) unsigned NOT NULL,
-  `career_id` int(10) unsigned NOT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `career_id` (`career_id`),
-  CONSTRAINT `asignatures_ibfk_1` FOREIGN KEY (`career_id`) REFERENCES `careers` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `asignatures`
---
-
-LOCK TABLES `asignatures` WRITE;
-/*!40000 ALTER TABLE `asignatures` DISABLE KEYS */;
-/*!40000 ALTER TABLE `asignatures` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `califications`
 --
 
@@ -263,7 +234,7 @@ CREATE TABLE `genres` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,6 +243,7 @@ CREATE TABLE `genres` (
 
 LOCK TABLES `genres` WRITE;
 /*!40000 ALTER TABLE `genres` DISABLE KEYS */;
+INSERT INTO `genres` VALUES (1,'Femenino',NULL,NULL),(2,'Masculino',NULL,NULL),(3,'Otro',NULL,NULL);
 /*!40000 ALTER TABLE `genres` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -420,7 +392,7 @@ CREATE TABLE `sequelizemeta` (
 
 LOCK TABLES `sequelizemeta` WRITE;
 /*!40000 ALTER TABLE `sequelizemeta` DISABLE KEYS */;
-INSERT INTO `sequelizemeta` VALUES ('005 - genres.js'),('010 - users.js'),('015 - interests.js'),('020 - notifications.js'),('025 - user_interests.js'),('030 - user_notifications.js'),('035 - universities.js'),('040 - careers.js'),('050 - institutes.js'),('055 - courses.js'),('065 - califications.js'),('070 - questions.js'),('075 - answers.js'),('080 - tips.js'),('090 - user_courses.js'),('095 - user_careers.js'),('100-asignatures.js'),('105-career_stats.js'),('110-course_stats.js');
+INSERT INTO `sequelizemeta` VALUES ('005 - genres.js'),('010 - users.js'),('015 - interests.js'),('020 - notifications.js'),('025 - user_interests.js'),('030 - user_notifications.js'),('035 - universities.js'),('040 - universities_locations.js'),('045 - careers.js'),('050 - institutes.js'),('055 - courses.js'),('065 - califications.js'),('070 - questions.js'),('075 - answers.js'),('080 - tips.js'),('090 - user_courses.js'),('095 - user_careers.js'),('100 - career_stats.js'),('105 - course_stats.js');
 /*!40000 ALTER TABLE `sequelizemeta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -497,6 +469,37 @@ CREATE TABLE `universities` (
 LOCK TABLES `universities` WRITE;
 /*!40000 ALTER TABLE `universities` DISABLE KEYS */;
 /*!40000 ALTER TABLE `universities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `universities_locations`
+--
+
+DROP TABLE IF EXISTS `universities_locations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `universities_locations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `address` varchar(100) DEFAULT NULL,
+  `province` varchar(100) DEFAULT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `zip_code` int(10) unsigned DEFAULT NULL,
+  `university_id` int(10) unsigned NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `university_id` (`university_id`),
+  CONSTRAINT `universities_locations_ibfk_1` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `universities_locations`
+--
+
+LOCK TABLES `universities_locations` WRITE;
+/*!40000 ALTER TABLE `universities_locations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `universities_locations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -648,7 +651,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `email` (`email`),
   KEY `genre_id` (`genre_id`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -669,4 +672,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-12  0:34:45
+-- Dump completed on 2020-11-02 10:51:12
