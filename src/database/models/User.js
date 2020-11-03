@@ -35,7 +35,7 @@ module.exports = (sequelize, dataTypes) => {
     },
     genre_id: {
       type: dataTypes.INTEGER(10).UNSIGNED,
-      allowNull: true,
+      allowNull: true
     },
     photo:{
       type: dataTypes.STRING(100)

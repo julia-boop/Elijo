@@ -10,7 +10,7 @@ window.addEventListener('load', function(){
     let blurBackground = qs('.blur-background');    
 
     //Blur background
-    blurBackground.style.filter = "blur(5px)"
+    // COMENTADO POR PEDIDO DE ANDRES (POPUP) blurBackground.style.filter = "blur(5px)"
 
     /*window.scroll(false);*/
     popUpBg.classList.remove('close');

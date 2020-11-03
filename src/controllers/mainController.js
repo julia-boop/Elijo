@@ -82,10 +82,8 @@ module.exports = {
             ]
         })
         let usersFiltered = await usersFilter(userStudies, req.query);
-        //return res.send(usersFiltered);
 
         let users = await db.User_career_study.findAll();
-        return res.send(userStudies) // NO TRAE START_YEAR
 
         let universityCareers = await db.Career.findAll({
             include: [{association: 'Universities'}]
@@ -100,7 +98,7 @@ module.exports = {
         let universities = await db.University.findAll();
         let careers = await db.Career.findAll();
 
-        res.render('meet', {userStudies, universityCareers, instituteCourses, interests, institutes, courses, universities, careers});
+        res.render('meet', {userStudies:usersFiltered, universityCareers, instituteCourses, interests, institutes, courses, universities, careers});
     },
     detail: async function(req, res) {
         let user = await db.User.findOne({

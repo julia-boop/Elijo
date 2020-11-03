@@ -60,20 +60,20 @@ module.exports = {
 
             db.User.create(newUser)
                 .then(function(result){
-                    req.session.userSession == result.id
+                    req.session.userSession = result.id
                     res.locals.userLoggedIn = {
                         id: result.id,
                         rol: result.rol
-                    }
-                    let body = {
-                        fromEmail: 'equipo@elijo.org',
-                        toEmail: result.email,
-                        affair: 'Confirmación de cuenta',
-                        request: `Hola ${result.name}, bienvenido a Elijo. Te pedimos por favor que para poder usar tu cuenta hagas click en el siguiente link para confirmar tu cuenta:`,
-                        hymlContent: `<a href="elijo.org/user/confirm/${bcrypt.hashSync(result.id, 10)}">Confirmar cuenta</a>`
-                    }
-                    nodemailerMessenger(body);
-                    res.redirect('/user/account/'+result.id)
+                    }                
+                    // let body = {
+                    //     fromEmail: 'equipo@elijo.org',
+                    //     toEmail: result.email,
+                    //     affair: 'Confirmación de cuenta',
+                    //     request: `Hola ${result.name}, bienvenido a Elijo. Te pedimos por favor que para poder usar tu cuenta hagas click en el siguiente link para confirmar tu cuenta:`,
+                    //     htmlContent: `<a href="elijo.org/user/confirm/${bcrypt.hashSync(result.id, 10)}">Confirmar cuenta</a>`
+                    // }
+                    // nodemailerMessenger(body);
+                    res.redirect('/user/account/' + result.id)
                 })
                 .catch(function(e){
                     res.send(e)
