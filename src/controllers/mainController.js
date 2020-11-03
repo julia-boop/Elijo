@@ -63,7 +63,7 @@ module.exports = {
         let userStudies = await db.User.findAll({
             where: {
                 rol: 2
-            },//'2' debe ser reemplazado por el rol que corresponda a estudiantes
+            },
             include: [
                 {
                     model: db.Career,
@@ -147,6 +147,9 @@ module.exports = {
     },
     posta: function(req, res) {
         res.render('posta')
+    },
+    comingSoon: function(req, res){
+        res.render('comingSoon')
     }
 };
 

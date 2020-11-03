@@ -16,10 +16,12 @@ router.get('/meet', mainController.meet);
 router.get('/meet/detail/:ProfileId', mainController.detail);
 router.get('/meet/filters?', mainController.filterMeet);
 //WHY
-router.get('/why', mainController.why);
+// router.get('/why', mainController.why);
 
 //POSTA
 router.get('/posta', mainController.posta);
 
+//COMING SOON 
+router.get('/comingSoon', mainController.comingSoon)
 
 module.exports = router;
