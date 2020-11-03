@@ -85,6 +85,7 @@ module.exports = {
 
         // let users = await db.User_career_study.findAll();
          
+        return res.send(usersFiltered)
 
         let universityCareers = await db.Career.findAll({
             include: [{association: 'Universities'}]
@@ -98,11 +99,6 @@ module.exports = {
         let courses = await db.Course.findAll();
         let universities = await db.University.findAll();
         let careers = await db.Career.findAll();
-
-        userStudies == usersFiltered
-
-        return(res.send(userStudies))
-
 
         res.render('meet', {userStudies, universityCareers, instituteCourses, interests, institutes, courses, universities, careers});
     },

@@ -7,13 +7,13 @@
                 <!-- filter mobile -->
                 <div class="div-filter" id="slider">
                     <span class="arrow arrow-left"></span>
-                    <form action="/meet/filters?" method="GET">
+                    <form action="/meet/filters?" method="GET" class="filter-form" name="filter">
                         <a href="#universidad" data-toggle="collapse" ><p class="universidad">Universidad</p></a>
                         <div class="collapse" id="universidad">
                             <div class="card">
                                 <% if(typeof universities != 'undefined'){ %>
                                     <% for(let i = 0; i < universities.length; i++){ %>
-                                        <label for="<%=universities[i].name%>"><input type="checkbox" name="university" id="university" value="<%=universities[i].id%>"><%=universities[i].name%></label>    
+                                        <label for="<%=universities[i].name%>"><input onclick="testing('HOLA')" type="checkbox" name="university" id="university" value="<%=universities[i].id%>"><%=universities[i].name%></label>    
                                     <% } %>                                
                                 <% } %>
                             </div>
@@ -67,9 +67,9 @@
                     <a href="#region" data-toggle="collapse" ><p>Region</p></a>
                         <div class="collapse" id="region">
                             <div class="card">
-                                <label for=""><input type="checkbox" name="" value="buenos-aires" id="">Buenos Aires</label>
+                                <label for=""><input type="checkbox" name="region" value="buenos-aires" id="">Buenos Aires</label>
                                 
-                                <label for=""><input type="checkbox" name="" value="cordoba" id="">Cordoba</label>
+                                <label for=""><input type="checkbox" name="region" value="cordoba" id="">Cordoba</label>
                                 
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                                 <label for="age"><input type="checkbox" name="age" value="35" id="age">35+</label>
                             </div>
                         </div>
-                        <button type="submit">Filtrar</button>
+                        <button type="submit" class="filter-btn">Filtrar</button>
                     </form>
                 </div>
 
