@@ -1,14 +1,14 @@
 let inputsChecked = [];
-function testing(algo){
+function addInputChecked(data){
     if(inputsChecked.length == 0){
-        inputsChecked.push(algo)
+        inputsChecked.push(data)
     } else {
-        if(inputsChecked.includes(algo)){
+        if(inputsChecked.includes(data)){
             inputsChecked = inputsChecked.filter(function(elemento){
-                return elemento != algo
+                return elemento != data
             })
         } else {
-            inputsChecked.push(algo)
+            inputsChecked.push(data)
         }
     }
 }
@@ -20,16 +20,6 @@ window.addEventListener('load', function() {
     let arrow = document.querySelector('.arrow');
     let pcmenu = document.querySelector('.pcMenu');
     let formFilter = document.querySelector('.filter-form');
-    let filterBtn = document.querySelector('.filter-btn');
-    let uniQuery = document.querySelector('#university');
-    let carreerQuery = document.querySelector('#carreer');
-    let instQuery = document.querySelector("#institutes");
-    let courseQuery = document.querySelector('#courses');
-    let interestQuery = document.querySelector('#interest');
-    let regionQuery = document.querySelectorAll('input[name="region"]');
-    let yearQuery = document.querySelectorAll('input[name="year"]');
-    let genderQuery = document.querySelectorAll('input[name="genero"]');
-    let ageQuery = document.querySelectorAll('input[name="age"]');
 
     let sleepBackground = document.querySelector('.sleep-background');
     
@@ -76,7 +66,9 @@ window.addEventListener('load', function() {
 
     formFilter.addEventListener('submit', function(e){        
         e.preventDefault();        
-        console.log(inputsChecked)
+        if(inputsChecked.length > 0) {
+            formFilter.submit();
+        }
     })
     
     
