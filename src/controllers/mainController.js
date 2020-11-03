@@ -63,7 +63,7 @@ module.exports = {
         let userStudies = await db.User.findAll({
             where: {
                 rol: 2
-            },//'2' debe ser reemplazado por el rol que corresponda a estudiantes
+            },
             include: [
                 {
                     model: db.Career,
@@ -82,10 +82,9 @@ module.exports = {
             ]
         })
         let usersFiltered = await usersFilter(userStudies, req.query);
-        //return res.send(usersFiltered);
 
-        let users = await db.User_career_study.findAll();
-        return res.send(userStudies) // NO TRAE START_YEAR
+        // let users = await db.User_career_study.findAll();
+         
 
         let universityCareers = await db.Career.findAll({
             include: [{association: 'Universities'}]
@@ -99,6 +98,11 @@ module.exports = {
         let courses = await db.Course.findAll();
         let universities = await db.University.findAll();
         let careers = await db.Career.findAll();
+
+        userStudies == usersFiltered
+
+        return(res.send(userStudies))
+
 
         res.render('meet', {userStudies, universityCareers, instituteCourses, interests, institutes, courses, universities, careers});
     },
