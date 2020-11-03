@@ -149,6 +149,9 @@ module.exports = {
     },
     posta: function(req, res) {
         res.render('posta')
+    },
+    comingSoon: function(req, res){
+        res.render('comingSoon')
     }
 };
 
