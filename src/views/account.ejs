@@ -42,19 +42,19 @@
                             <div class="col-12 col-md-4">
                                 <div class="row">
                                     <label class="col-12" for="name">Nombre:</label>
-                                    <input class="ml-3" name="name" type="text" value="<%=(user.name != null) ? user.name : ''%>">
+                                    <input class="ml-3 an-account-input" name="name" type="text" value="<%=(user.name != null) ? user.name : ''%>">
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
                                 <div class="row">
                                     <label class="col-12" for="name">Apellido:</label>
-                                    <input class="ml-3" name="last_name" type="text" value="<%=(user.last_name != null && user.last_name != '') ? user.last_name : ''%>">
+                                    <input class="ml-3 an-account-input" name="last_name" type="text" value="<%=(user.last_name != null && user.last_name != '') ? user.last_name : ''%>">
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
                                 <div class="row">
                                     <label class="col-12" for="email">E-mail:</label>
-                                    <input class="ml-3" name="email" type="text" value="<%=(user.email != null && user.email != '') ? user.email : ''%>">
+                                    <input class="ml-3 an-account-input" name="email" type="text" value="<%=(user.email != null && user.email != '') ? user.email : ''%>">
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             <div class="col-12 col-md-4">
                                 <div class="row">
                                     <label class="col-12" for="genre">Genero:</label>
-                                    <select class="ml-3" name="genre" id="genre">
+                                    <select class="ml-3 an-account-select" name="genre" id="genre">
                                         <% for(let i = 0; i < genres.length; i++){ %> 
                                             <option value="<%=genres[i].id%>" <%=(genres[i].id == user.genre_id) ? 'selected' : ''%>> <%=genres[i].genre_name%> </option>
                                         <% } %> 
@@ -76,7 +76,7 @@
                             <div class="col-12 col-md-4">
                                 <div class="row">
                                     <label class="col-12" for="age">Edad:</label>
-                                    <select class="ml-3" name="age" id="age">
+                                    <select class="ml-3 an-account-select" name="age" id="age">
                                         <option hidden>Edad</option>
                                         <% for(let i = 16; i < 50; i++){ %>
                                             <option value="<%= i %>" <%=(i == user.age) ? 'selected' : '' %>><%= i %> </option>
@@ -88,7 +88,7 @@
                             <div class="col-12 col-md-4">
                                 <div class="row">
                                     <label class="col-12" for="age">Provincia:</label>
-                                    <select class="ml-3" name="province" id="province">
+                                    <select class="ml-3 an-account-select" name="province" id="province">
                                         <option value="" hidden>Selecciona una Provincia</option>
                                     </select>
                                 </div>
@@ -98,7 +98,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <label class="col-12" for="age">Telefono:</label>
-                                <input name="telephone" type="text" value="<%=(user.telephone != null && user.telephone != '') ? user.telephone : ''%>">
+                                <input name="telephone" class="an-account-input" type="text" value="<%=(user.telephone != null && user.telephone != '') ? user.telephone : ''%>">
                             </div>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="universitySelect">
                                             <label class="col-12" for="university">Universidad:</label>
-                                            <select class="ml-3" name="university" id="universitySelector"> 
+                                            <select class="ml-3 an-account-select" name="university" id="universitySelector"> 
                                                 <option value="" hidden>Selecciona una Universidad</option>
                                                 <% for(let i = 0; i < universities.length; i++){ %>   
                                                     <option value="<%=universities[i].id%>"
@@ -125,7 +125,7 @@
                                         </div>
                                         <div class="col-12 col-md-4" id="careerSelect">
                                             <label class="col-12" for="career">Carrera:</label>
-                                            <select class="ml-3" name="career" id="career"> 
+                                            <select class="ml-3 an-account-select" name="career" id="career"> 
                                                 <option value="" hidden>Selecciona una Carrera</option>
                                                 <% if(user.User_careers.length > 0){ %>
                                                     <option value="<%=user.User_careers[0].id%>" selected><%=user.User_careers[0].name%></option>
@@ -136,7 +136,7 @@
                                     
                                         <div class="col-12 col-md-4" id="careerStartDiv">
                                             <label class="col-12" for="startDate">Año de inicio:</label>
-                                            <input class="ml-3" type="number" name="startDate" placeholder="xxxx" value="<%=(typeof user_careers[0] != 'undefined') ? user_careers[0].start_year : '' %>">
+                                            <input class="ml-3 an-account-input" type="number" name="startDate" placeholder="xxxx" value="<%=(typeof user_careers[0] != 'undefined') ? user_careers[0].start_year : '' %>">
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="universitySelect">
                                             <label class="col-12" for="university">Universidad:</label>
-                                            <select class="ml-3" name="university" id="universitySelector"> 
+                                            <select class="ml-3 an-account-select" name="university" id="universitySelector"> 
                                                 <option value="" hidden>Selecciona una Universidad</option>
                                                 <% for(let i = 0; i < universities.length; i++){ %>   
                                                     <option value="<%=universities[i].id%>"
@@ -158,7 +158,7 @@
                                         </div>
                                         <div class="col-12 col-md-4" id="careerSelect">
                                             <label class="col-12" for="career">Carrera:</label>
-                                            <select class="ml-3" name="career" id="career"> 
+                                            <select class="ml-3 an-account-select" name="career" id="career"> 
                                                 <option value="" hidden>Selecciona una Carrera</option>
                                                 <% if(user.User_careers.length > 1){ %>
                                                     <option value="<%=user.User_careers[1].id%>" selected><%=user.User_careers[1].name%></option>
@@ -169,7 +169,7 @@
                                     
                                         <div class="col-12 col-md-4" id="careerStartDiv">
                                             <label class="col-12" for="startDate">Año de inicio:</label>
-                                            <input class="ml-3" type="number" name="startDate" placeholder="xxxx" value="<%=(typeof user_careers[1] != 'undefined') ? user_careers[1].start_year : '' %>">
+                                            <input class="ml-3 an-account-input" type="number" name="startDate" placeholder="xxxx" value="<%=(typeof user_careers[1] != 'undefined') ? user_careers[1].start_year : '' %>">
                                         </div>
                                     </div>
                                 </div>
@@ -183,7 +183,7 @@
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="instituteSelect">
                                             <label class="col-12" for="institute">Instituto del curso:</label>
-                                            <select class="ml-3" name="institute" id="instituteSelector"> 
+                                            <select class="ml-3 an-account-select" name="institute" id="instituteSelector"> 
                                                 <option value="" hidden>Selecciona una institucion</option> 
                                                 <% for(let i = 0; i < institutes.length; i++){ %>   
                                                     <option value="<%=institutes[i].id%>"
@@ -197,7 +197,7 @@
         
                                         <div class="col-12 col-md-4" id="courseSelect">
                                             <label class="col-12" for="course">Curso:</label> 
-                                            <select class="ml-3" name="course" id="course"> 
+                                            <select class="ml-3 an-account-select" name="course" id="course"> 
                                                 <option value="" hidden>Selecciona un Curso</option> 
                                                 <% if(user.User_courses.length > 0){ %>
                                                     <option value="<%=user.User_courses[0].id%>" selected><%=user.User_courses[0].name%></option>
@@ -207,7 +207,7 @@
                 
                                         <div class="col-12 col-md-4" id="courseStartDiv">
                                             <label class="col-12" for="courseStartDate">Año de inicio (curso):</label>
-                                            <input class="ml-3" type="number" name="courseStartDate" placeholder="xxxx" value="<%=(typeof user_courses[0] != 'undefined') ? user_courses[0].start_year : '' %>">
+                                            <input class="ml-3 an-account-input" type="number" name="courseStartDate" placeholder="xxxx" value="<%=(typeof user_courses[0] != 'undefined') ? user_courses[0].start_year : '' %>">
                                         </div>
                                     </div>
                                 </div>
@@ -215,7 +215,7 @@
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="instituteSelect">
                                             <label class="col-12" for="institute">Instituto del curso:</label>
-                                            <select class="ml-3" name="institute" id="instituteSelector"> 
+                                            <select class="ml-3 an-account-select" name="institute" id="instituteSelector"> 
                                                 <option value="" hidden>Selecciona una institucion</option>  
                                                 <% for(let i = 0; i < institutes.length; i++){ %>   
                                                     <option value="<%=institutes[i].id%>"
@@ -229,7 +229,7 @@
         
                                         <div class="col-12 col-md-4" id="courseSelect">
                                             <label class="col-12" for="course">Curso:</label> 
-                                            <select class="ml-3" name="course" id="course"> 
+                                            <select class="ml-3 an-account-select" name="course" id="course"> 
                                                 <option value="" hidden>Selecciona un Curso</option>  
                                                 <% if(user.User_courses.length > 1){ %>
                                                     <option value="<%=user.User_courses[1].id%>" selected><%=user.User_courses[1].name%></option>
@@ -239,7 +239,7 @@
                 
                                         <div class="col-12 col-md-4" id="courseStartDiv">
                                             <label class="col-12" for="courseStartDate">Año de inicio (curso):</label>
-                                            <input class="ml-3" type="number" name="courseStartDate" placeholder="xxxx" value="<%=(typeof user_courses[1] != 'undefined') ? user_courses[1].start_year : '' %>">
+                                            <input class="ml-3 an-account-input" type="number" name="courseStartDate" placeholder="xxxx" value="<%=(typeof user_courses[1] != 'undefined') ? user_courses[1].start_year : '' %>">
                                         </div>
                                     </div>
                                 </div>
@@ -247,7 +247,7 @@
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="instituteSelect">
                                             <label class="col-12" for="institute">Instituto del curso:</label>
-                                            <select class="ml-3" name="institute" id="instituteSelector"> 
+                                            <select class="ml-3 an-account-select" name="institute" id="instituteSelector"> 
                                                 <option value="" hidden>Selecciona una institucion</option>  
                                                 <% for(let i = 0; i < institutes.length; i++){ %>   
                                                     <option value="<%=institutes[i].id%>"
@@ -261,7 +261,7 @@
         
                                         <div class="col-12 col-md-4" id="courseSelect">
                                             <label class="col-12" for="course">Curso:</label> 
-                                            <select class="ml-3" name="course" id="course"> 
+                                            <select class="ml-3 an-account-select" name="course" id="course"> 
                                                 <option value="" hidden>Selecciona un Curso</option> 
                                                 <% if(user.User_courses.length > 2){ %>
                                                     <option value="<%=user.User_courses[2].id%>" selected><%=user.User_courses[2].name%></option>
@@ -271,7 +271,7 @@
                 
                                         <div class="col-12 col-md-4" id="courseStartDiv">
                                             <label class="col-12" for="courseStartDate">Año de inicio (curso):</label>
-                                            <input class="ml-3" type="number" name="courseStartDate" placeholder="xxxx" value="<%=(typeof user_courses[2] != 'undefined') ? user_courses[2].start_year : '' %>">
+                                            <input class="ml-3 an-account-input" type="number" name="courseStartDate" placeholder="xxxx" value="<%=(typeof user_courses[2] != 'undefined') ? user_courses[2].start_year : '' %>">
                                         </div>
                                     </div>
                                 </div>
@@ -279,7 +279,7 @@
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="instituteSelect">
                                             <label class="col-12" for="institute">Instituto del curso:</label>
-                                            <select class="ml-3" name="institute" id="instituteSelector"> 
+                                            <select class="ml-3 an-account-select" name="institute" id="instituteSelector"> 
                                                 <option value="" hidden>Selecciona una institucion</option>  
                                                 <% for(let i = 0; i < institutes.length; i++){ %>   
                                                     <option value="<%=institutes[i].id%>"
@@ -293,7 +293,7 @@
         
                                         <div class="col-12 col-md-4" id="courseSelect">
                                             <label class="col-12" for="course">Curso:</label> 
-                                            <select class="ml-3" name="course" id="course"> 
+                                            <select class="ml-3 an-account-select" name="course" id="course"> 
                                                 <option value="" hidden>Selecciona un Curso</option>  
                                                 <% if(user.User_courses.length > 3){ %>
                                                     <option value="<%=user.User_courses[3].id%>" selected><%=user.User_courses[3].name%></option>
@@ -303,7 +303,7 @@
                 
                                         <div class="col-12 col-md-4" id="courseStartDiv">
                                             <label class="col-12" for="courseStartDate">Año de inicio (curso):</label>
-                                            <input class="ml-3" type="number" name="courseStartDate" placeholder="xxxx" value="<%=(typeof user_courses[3] != 'undefined') ? user_courses[3].start_year : '' %>">
+                                            <input class="ml-3 an-account-input" type="number" name="courseStartDate" placeholder="xxxx" value="<%=(typeof user_courses[3] != 'undefined') ? user_courses[3].start_year : '' %>">
                                         </div>
                                     </div>
                                 </div>
@@ -319,7 +319,7 @@
                             <label class="col-12" for="interests">Intereses: (Ej: Futbol, gastronomia, etc.)</label>
                             <div class="row">
                                 <div class="col-12 autocomplete">
-                                    <input class="ml-3" id="interests" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <input class="ml-3 an-account-input" id="interests" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="searchFilter">
                                     </div>
 
@@ -333,13 +333,13 @@
                                 <% } %> 
                             </div>
                         </div>
-                        <div class="col-12 mt-3">
+                        <div class="col-12 mt-1">
                             <label class="col-12" for="experiences">Experiencias:</label>
                             <textarea class="ml-3" name="experiences" id="experiences" cols="40" rows="5" value=""><%=(user.experiences != null && user.experiences != '') ? user.experiences : ''%></textarea>
                         </div>
                         
                     </div>
-                    <input class="inputSeleccionarArchivo" type="file" name="userImg" hidden>             
+                    <input class="inputSeleccionarArchivo an-account-input" type="file" name="userImg" hidden>             
                 </form>
                 <div class="btn-container mt-2">
                     <button id="submitBtn" type="submit">Guardar información</button>

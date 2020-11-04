@@ -115,6 +115,11 @@ body{
         height: 130px;
     }
 
+    .main-info div.img-container .edit-photo-btn{/*DESKTOP*/
+        position: absolute;
+        bottom: 5%;
+        right: 4%;
+    }
 
   
 }
