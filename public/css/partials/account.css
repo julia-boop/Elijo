@@ -23,7 +23,6 @@
     position: absolute;
     bottom: 5%;
     right: 8%;
-    z-index: 500;
     background-color: var(--btn-bg-color);
     border: var(--btn-border);
     padding: 3px;

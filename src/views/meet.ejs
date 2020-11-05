@@ -133,7 +133,7 @@
             <div class="row d-flex justify-content-center">                              
 
                 <% for( let i = 0; i < userStudies.length; i++) { %>
-                    <div class="col-5 col-md-3 estudiante">
+                    <div class="col-10 col-md-3 estudiante">
                         <img src="/images/users/<%= userStudies[i].photo %>" alt="">
                         <h3><%= userStudies[i].name %></h3> 
 
@@ -163,8 +163,6 @@
     </div>
 
     
-
-
 
     <%- include('./partials/scripts') %>
     <script src="/js/meet.js"></script>
