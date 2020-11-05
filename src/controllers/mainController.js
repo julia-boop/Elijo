@@ -3,9 +3,34 @@ const path = require('path');
 const db = require('../database/models');
 const usersFilter = require('../ownModules/filterUsers.js');
 
+
+function duplicateCleaner(careers, courses){
+    let careersCleaned = [];
+    for(let i=0; i<careers.length; i++){
+        if(!careersCleaned.includes(careers[i].name)){
+            careersCleaned.push(careers[i].name)
+        }
+    }
+    careersCleaned = careersCleaned.map(element => ({name:element}));
+    careers=careersCleaned;
+
+    let coursesCleaned = [];
+    for(let i=0; i<courses.length; i++){
+        if(!coursesCleaned.includes(courses[i].name)){
+            coursesCleaned.push(courses[i].name)
+        }
+    }
+    coursesCleaned = coursesCleaned.map(element => ({name:element}));
+    courses=coursesCleaned;
+
+    return [careers, courses]
+
+}
+
+
 module.exports = {
-
-
+    
+    
     // --> DATAENTRY <-- \\
     jsonInstitutes:function(req, res) {
         db.Institute.findAll({
@@ -22,8 +47,8 @@ module.exports = {
         res.json(universities)
     },
     // --> /DATAENTRY <-- \\
-
-
+    
+    
     home: function(req, res){
         res.render('home');
     },
@@ -35,7 +60,7 @@ module.exports = {
         .catch(error => {
             res.send(error)
         })
-
+        
         let universityCareers = await db.Career.findAll({
             include: [{association: 'Universities'}]
         })
@@ -48,7 +73,6 @@ module.exports = {
         .catch(error => {
             res.send(error)
         })
-
         
         let interests = await db.Interest.findAll().catch(error => {res.send(error)});
         let institutes = await db.Institute.findAll().catch(error => {res.send(error)});
@@ -56,6 +80,8 @@ module.exports = {
         let universities = await db.University.findAll().catch(error => {res.send(error)});
         let careers = await db.Career.findAll().catch(error => {res.send(error)});
         
+        [careers, courses] = duplicateCleaner(careers, courses);
+
         res.render('meet', {userStudies, universityCareers, instituteCourses, interests, institutes, courses, universities, careers});
     },
     filterMeet: async (req, res) => {
@@ -69,34 +95,36 @@ module.exports = {
                     model: db.Career,
                     as: 'User_careers',
                     through: {
-                      model: db.User_career_study
+                        model: db.User_career_study
                     }
                 }, 
                 {
                     model: db.Course,
                     as: 'User_courses',
                     through: {
-                      model: db.User_course_study
+                        model: db.User_course_study
                     }
                 }
             ]
         })
         let usersFiltered = await usersFilter(userStudies, req.query);
-
+        
         let users = await db.User_career_study.findAll();
-
+        
         let universityCareers = await db.Career.findAll({
             include: [{association: 'Universities'}]
         })
         let instituteCourses = await db.Course.findAll({
             include: [{association: 'Institutes'}]
         })
-
+        
         let interests = await db.Interest.findAll();
         let institutes = await db.Institute.findAll();
         let courses = await db.Course.findAll();
         let universities = await db.University.findAll();
         let careers = await db.Career.findAll();
+        
+        [careers, courses] = duplicateCleaner(careers, courses);
 
         res.render('meet', {userStudies:usersFiltered, universityCareers, instituteCourses, interests, institutes, courses, universities, careers});
     },

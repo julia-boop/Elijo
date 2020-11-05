@@ -24,7 +24,9 @@
                             <div class="card">
                                 <% if(typeof careers != 'undefined'){ %>
                                     <% for(let i = 0; i < careers.length; i++){ %>
-                                        <label for="<%=careers[i].name%>"><input onclick="addInputChecked('career<%= i %>')" type="checkbox" name="career" id="career" value="<%=careers[i].id%>"><%=careers[i].name%></label>    
+
+                                        <label for="<%=careers[i].name%>"><input onclick="addInputChecked('career<%= i %>')" type="checkbox" name="career" id="career" value="<%=careers[i].name%>"><%=careers[i].name%></label>    
+
                                     <% } %>                                
                                 <% } %>
                             </div>
@@ -46,7 +48,7 @@
                             <div class="card">
                                 <% if(typeof courses != 'undefined'){ %> 
                                     <% for (let i=0; i<courses.length; i++){ %>
-                                    <label for="<%=courses[i].name%>"><input onclick="addInputChecked('course<%= i %>')" type="checkbox" name="courses" id="courses" value="<%=courses[i].id%>"><%=courses[i].name%></label> 
+                                    <label for="<%=courses[i].name%>"><input onclick="addInputChecked('course<%= i %>')" type="checkbox" name="courses" id="courses" value="<%=courses[i].name%>"><%=courses[i].name%></label> 
                                     <% } %> 
                                 <% } %>
                             </div>

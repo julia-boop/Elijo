@@ -1,5 +1,12 @@
 const db = require('../database/models');
 
+let convertToArray = function(query){
+    if(!Array.isArray(query)) {
+        query=[query]
+    }
+    return query;
+}
+
 //#region FILTER AGE
 function filterByAge(users, query){
     let newQuery = [];
@@ -7,7 +14,7 @@ function filterByAge(users, query){
         newQuery.push(query[i].split('-'));
         
     } 
-
+    
     let usersByAge = [];
     for(let i = 0; i < newQuery.length;i++){
         for(let j = 0; j < users.length; j++){
@@ -21,45 +28,54 @@ function filterByAge(users, query){
 //#endregion
 
 function filterByUniversity(users, query){
+    
+    query = convertToArray(query);
 
     let usersByUniversity = [];
-
-        for(let i = 0 ; i < users.length ; i++){
-            for(let j = 0 ; j < query.length ; j++){
-               if(users[i].User_careers != undefined){
-                   for(let k = 0 ; k < users[i].User_careers.length ; k++){
-                       if(users[i].User_careers[k].university_id == Number(query[j])){
-                           usersByUniversity.push(users[i]);
-                       }
-                   }
-               }               
-            }
+    
+    for(let i = 0 ; i < users.length ; i++){
+        for(let j = 0 ; j < query.length ; j++){
+            if(users[i].User_careers != undefined){
+                for(let k = 0 ; k < users[i].User_careers.length ; k++){
+                    if(users[i].User_careers[k].university_id == Number(query[j])){
+                        usersByUniversity.push(users[i]);
+                    }
+                }
+            }               
         }
+    }
     return usersByUniversity;
 }
 
 function filterByCareer(users, query){
 
-    let usersByCareer = [];
+    query = convertToArray(query);
 
+    let usersByCareer = [];
+    
     for(let i = 0 ; i < users.length ; i++){
         for(let j = 0 ; j < query.length ; j++){
             if(users[i].User_careers != undefined){
                 for(let k = 0 ; k < users[i].User_careers.length ; k++){
-                    if(users[i].User_careers[k].user_careers.career_id == Number(query[j])){
+                    
+                    if(users[i].User_careers[k].dataValues.name == query[j]){
                         usersByCareer.push(users[i]);
                     }
+                    
                 }
             }
         }
     }
-
+    
     return usersByCareer;
 }
 
 function filterByInstitute(users, query){
-    let usersByInstitute = [];
 
+    query = convertToArray(query);
+
+    let usersByInstitute = [];
+    
     for(let i = 0 ; i < users.length ; i++){
         for(let j = 0 ; j < query.length ; j++){
             if(users[i].User_courses != undefined ){                
@@ -72,27 +88,28 @@ function filterByInstitute(users, query){
             }
         }
     }
-
+    
     return usersByInstitute;
 }
 
 function filterByCourse(users, query){
 
+    query = convertToArray(query);
+    
     let usersByCourse = [];
-
+    
     for(let i = 0 ; i < users.length ; i++){
         for(let j = 0 ; j < query.length ; j++){
             if(users[i].User_courses != undefined){
                 for(let k = 0 ; k < users[i].User_courses.length ; k++){
-                    if(users[i].User_courses[j].id == Number(query[j])){
+                    if(users[i].User_courses[j].dataValues.name == query[j]){
                         usersByCourse.push(users[i])
-                        console.log('ok')
                     }
                 }
             }
         }
     }
-
+    
     return usersByCourse;
     
 }
@@ -115,7 +132,7 @@ function filterByGenre(users, query){
 //FILTER BY CAREER YEAR
 function filterByCareerYear(users, query){
     let usersByYear = [];
-
+    
     for(let i = 0 ; i < users.length ; i++){
         for(let k = 0 ; k < users[i].User_careers.start_year.length ; k++){
             if(users[i].User_careers[j].start_year == Number(query[j])){
@@ -123,14 +140,14 @@ function filterByCareerYear(users, query){
             }
         }
     }
-//Creo que es  users[i].User_careers[j].user_careers.start_year (no trae start_year ATT!!!)
+    //Creo que es  users[i].User_careers[j].user_careers.start_year (no trae start_year ATT!!!)
 }
 // /FILTER BY CAREER YEAR
 
 //FILTER PROVINCE
 function filterByProvince(users, query){
     let usersByProvince = [];
-
+    
     for(let i=0; i<users.length; i++){
         for(let j=0; j< query.length; j++){
             if(users[i].province.toLowerCase() == query[j].toLowerCase()){
@@ -146,24 +163,24 @@ function filterByProvince(users, query){
 
 module.exports = function (users, queries){
     let usersFiltered = users;
-
+    
     if(queries.age != undefined) usersFiltered = filterByAge(usersFiltered, queries.age);
-
+    
     if(queries.university != undefined) usersFiltered = filterByUniversity(usersFiltered, queries.university);
-
+    
     if(queries.career != undefined) usersFiltered = filterByCareer(usersFiltered, queries.career);
-
+    
     if(queries.institutes != undefined) usersFiltered = filterByInstitute(usersFiltered, queries.institutes);
     
     if(queries.courses != undefined) usersFiltered = filterByCourse(usersFiltered, queries.courses);
-
+    
     if(queries.genero != undefined) usersFiltered = filterByGenre(usersFiltered, queries.genero);
-
+    
     if(queries.year != undefined) usersFiltered = filterByCareerYear(usersFiltered, queries.year);
-
+    
     if(queries.province != undefined) usersFiltered = filterByProvince(usersFiltered, queries.province);
-
-
+    
+    
     return usersFiltered;
 }
 
