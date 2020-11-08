@@ -9,12 +9,17 @@ let convertToArray = function(query){
 
 //#region FILTER AGE
 function filterByAge(users, query){
+    
+    query = convertToArray(query);
+    
     let newQuery = [];
     for(let i = 0; i < query.length; i++){
         newQuery.push(query[i].split('-'));
         
     } 
     
+    console.log(newQuery);
+
     let usersByAge = [];
     for(let i = 0; i < newQuery.length;i++){
         for(let j = 0; j < users.length; j++){
