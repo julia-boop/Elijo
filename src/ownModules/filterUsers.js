@@ -151,6 +151,9 @@ function filterByCareerYear(users, query){
 
 //FILTER PROVINCE
 function filterByProvince(users, query){
+
+    query = convertToArray(query);
+
     let usersByProvince = [];
     
     for(let i=0; i<users.length; i++){
