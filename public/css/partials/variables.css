@@ -40,6 +40,26 @@
     --color-6 : rgb(2,89,204);
     --color-7 : rgb(108,137,194);
     --color-8 : rgb(124,191,182);
-    
+
+
+
+    /* ==> DETAIL COLORS: <== */
+
+
+    /* UNIVERSITY */
+    --color-10: rgba(108, 137, 194, 0.55);
+
+    /* COURSE */
+    --color-11: rgba(14,155,218, 0.55);
+
+    /* INTEREST */
+    --color-12: rgba(109,216,254, 0.55);
+
+    /* EXPERIENCES */
+    --color-13: rgba(185,233,247, 0.55);
+
+    /* TIPS */
+    --color-14: rgba(124,191,182, 0.55);
+
 
 }

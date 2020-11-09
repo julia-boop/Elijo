@@ -49,8 +49,12 @@ module.exports = {
     // --> /DATAENTRY <-- \\
     
     
-    home: function(req, res){
-        res.render('home');
+    home: async function(req, res){
+
+        let institutes = await db.Institute.findAll();
+        let universities = await db.University.findAll();
+
+        res.render('home', {institutes, universities});
     },
     meet: async function(req, res){
         let userStudies = await db.User.findAll({

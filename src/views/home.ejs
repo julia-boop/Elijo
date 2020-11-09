@@ -50,26 +50,12 @@
 
                 <div class="instituteCarousel">
                     <section class="customer-logos slider">
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
-                    <div class="slide"><a href=""><img src="images/otros/uba_logo.png"></a></div>
+                        <% for(let i=0; i<institutes.length; i++) { %>
+                            <div class="slide"><a href="<%= institutes[i].link %>"><img src="images/logos/<%= institutes[i].logo %>"></a></div>
+                        <% } %>
+                        <% for(let i=0; i<universities.length; i++) { %>
+                            <div class="slide"><a href="<%= universities[i].link %>"><img src="images/logos/<%= universities[i].logo %>"></a></div>
+                        <% } %>
                     </section>
                 </div>
 
