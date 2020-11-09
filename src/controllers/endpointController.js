@@ -1,4 +1,3 @@
-const { response } = require('express');
 const fs = require('fs');
 const path = require('path');   
 const db = require('../database/models');
@@ -25,6 +24,20 @@ module.exports = {
             return res.status(404).json(err);    
         })
         return res.status(200).json(courses);
+    },
+    getUniversities: async (req, res) => {
+        let universities = await db.University.findAll()
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(universities);
+    },
+    getInstitutes: async (req, res) => {
+        let institutes = await db.Institute.findAll()
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(institutes);
     },
     getActualUser: async (req, res) => {
         let user = await db.User.findByPk(req.session.userSession)

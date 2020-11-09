@@ -12,37 +12,61 @@
                     Universidades <i class="far fa-arrow-alt-circle-down"></i>
                 </button>
                 <div id="universities" class="dropdown-content">
-                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                    <div class="results">
+                    <input class="universityInput an-account-input" type="text" placeholder="Search.." id="myInput" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="universityResults dropdown-menu" aria-labelledby="myInput">
 
                     </div>
                 </div>
+
+                
+
             </div>
-            
+            <!--
             <div class="dropdown">
                 <button onclick="myFunction('carrers')" class="categoryDropDown carrers">
                     Carreras <i class="far fa-arrow-alt-circle-down"></i>
                 </button>
                 <div id="carrers" class="dropdown-content">
-                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <input class="careerInput" type="text" placeholder="Search.." id="myInput">
+                    <div class="results">
+
+                    </div>
+                </div>
+            </div>-->
+
+            <div class="dropdown">
+                <button onclick="myFunction('institute')" class="categoryDropDown institute">
+                    Institutos <i class="far fa-arrow-alt-circle-down"></i>
+                </button>
+                <div id="institute" class="dropdown-content">
+                    <input class="instituteInput" type="text" placeholder="Search.." id="myInput">
+                    <div class="instituteResults">
+
+                    </div>
                 </div>
             </div>
-
+            <!--
             <div class="dropdown">
                 <button onclick="myFunction('curses')" class="categoryDropDown curses">
                     Cursos <i class="far fa-arrow-alt-circle-down"></i>
                 </button>
                 <div id="curses" class="dropdown-content">
-                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <input class="courseInput" type="text" placeholder="Search.." id="myInput">
+                    <div class="results">
+
+                    </div>
                 </div>
-            </div>
+            </div>-->
 
             <div class="dropdown">
                 <button onclick="myFunction('region')" class="categoryDropDown region">
                     Región <i class="far fa-arrow-alt-circle-down"></i>
                 </button>
                 <div id="region" class="dropdown-content">
-                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <input class="regionInput" type="text" placeholder="Search.." id="myInput">
+                    <div class="results">
+
+                    </div>
                 </div>
             </div>
 
@@ -223,6 +247,7 @@
     <%- include('./partials/scripts.ejs') %>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="/js/chartJS.js"></script>
+    <script src="/js/posta/postaNav.js"></script>
     <script src="/js/posta.js"></script>
     <script src="/js/googleMaps.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLPIr-4QJtDR-Fw8p3rTarMax1R_bfsBw&callback=initMap"

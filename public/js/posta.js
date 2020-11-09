@@ -22,13 +22,15 @@ window.addEventListener('load', function() {
 
   /*REVISAR*/
   let universityInput = document.querySelector('#universities');
-  let carrersInput = document.querySelector('#carrers');
-  let cursesInput = document.querySelector('#curses');
+  /*let carrersInput = document.querySelector('#carrers');
+  let cursesInput = document.querySelector('#curses');*/
+  let institutesInput = document.querySelector('#institute');
   let programsInput = document.querySelector('#region');
 
   let universityBtn = document.querySelector('.universities');
-  let carrersBtn = document.querySelector('.carrers');
-  let cursesBtn = document.querySelector('.curses');
+  /*let carrersBtn = document.querySelector('.carrers');
+  let cursesBtn = document.querySelector('.curses');*/
+  let institutesBtn = document.querySelector('.institute');
   let programsBtn = document.querySelector('.region');
 
 
@@ -38,37 +40,53 @@ window.addEventListener('load', function() {
       universityInput.style.display = "none";
     }
     universityInput.style.display = "inherit";
-    carrersInput.style.display = "none";
-    cursesInput.style.display = "none";
+    //carrersInput.style.display = "none";
+    //cursesInput.style.display = "none";
+    programsInput.style.display = "none";
+    institutesInput.style.display = "none";
+    console.log('entro');
+  });
+  institutesBtn.addEventListener('click', function(){
+    if($(universityInput).is("inherit")){
+      universityInput.style.display = "none";
+    }
+    institutesInput.style.display = "inherit";
+    universityInput.style.display = "none";
+    //carrersInput.style.display = "none";
+    //cursesInput.style.display = "none";
     programsInput.style.display = "none";
     console.log('entro');
   });
+  /*
   carrersBtn.addEventListener('click', function(){
     if($(carrersInput).is("inherit")){
-      carrersInput.style.display = "none";
+      //carrersInput.style.display = "none";
     }
-    carrersInput.style.display = "inherit";
+    //carrersInput.style.display = "inherit";
     universityInput.style.display = "none";
-    cursesInput.style.display = "none";
+    //cursesInput.style.display = "none";
     programsInput.style.display = "none";
+    institutesInput.style.display = "none";
   });
   cursesBtn.addEventListener('click', function(){
     if($(cursesInput).is("inherit")){
-      cursesInput.style.display = "none";
+      //cursesInput.style.display = "none";
     }
-    cursesInput.style.display = "inherit";
-    carrersInput.style.display = "none";
+    //cursesInput.style.display = "inherit";
+    //carrersInput.style.display = "none";
     universityInput.style.display = "none";
     programsInput.style.display = "none";
-  });
+    institutesInput.style.display = "none";
+  });*/
   programsBtn.addEventListener('click', function(){
     if($(programsInput).is("inherit")){
       programsInput.style.display = "none";
     }
     programsInput.style.display = "inherit";
-    carrersInput.style.display = "none";
-    cursesInput.style.display = "none";
+    //carrersInput.style.display = "none";
+    //cursesInput.style.display = "none";
     universityInput.style.display = "none";
+    institutesInput.style.display = "none";
   });
   /*FIN REVISAR*/
   
