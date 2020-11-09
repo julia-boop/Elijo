@@ -18,7 +18,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(10).UNSIGNED,
             allowNull: true
         },
-        courses_id: {
+        course_id: {
             type: dataTypes.INTEGER(10).UNSIGNED,
             allowNull: true
         },

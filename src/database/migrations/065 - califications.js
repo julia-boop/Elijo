@@ -32,7 +32,7 @@ module.exports = {
           key: 'id'
         }
     },
-    courses_id: {
+    course_id: {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
         allowNull: true,
         references: {

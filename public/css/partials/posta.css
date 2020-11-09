@@ -389,6 +389,7 @@ button.tipsPhoneBtn p {
 
 .carreers-btn button{
   width: 100%;
+  height: 46px;
   background-color: var(--btn-bg-color);
   border: var(--btn-border);
   border-radius: var(--btn-border-radius);
@@ -415,6 +416,15 @@ button.search-btn{
   padding: 2px;
   background-color: var(--btn-bg-color);
   border: var(--btn-border);
+}
+
+option.resultsOption button{
+  padding: 5px;
+  height: 46px;
+  width: 100%;
+  text-align: start;
+  background-color: var(--btn-bg-color-focus);
+  border: var(--btn-border-focus);
 }
 
 @media(min-width: 768px){
