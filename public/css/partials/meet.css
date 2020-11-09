@@ -102,11 +102,11 @@
 
 .estudiante img {
     position: absolute;
-    height: 60px;
-    width: 60px;
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
-    top: -25px;
-    right: -15px;
+    top: -30px;
+    right: -25px;
     margin: 5px;
 }
 
@@ -148,6 +148,25 @@
     border:var(--btn-border-scnd-hover);
 }
 .btn-filter:focus{
+    background-color: var(--btn-bg-color-scnd-focus);
+    border:var(--btn-border-scnd-focus);
+    outline: none;
+}
+
+
+.filter-btn{
+    background-color: var(--btn-bg-color-scnd);
+    border: var(--btn-border-scnd);
+    border-radius: 3px;
+    margin: 5px;
+    padding: 5px;
+    margin-left: 25px;
+}
+.filter-btn:hover{
+    background-color: var(--btn-bg-color-scnd-hover);
+    border:var(--btn-border-scnd-hover);
+}
+.filter-btn:focus{
     background-color: var(--btn-bg-color-scnd-focus);
     border:var(--btn-border-scnd-focus);
     outline: none;

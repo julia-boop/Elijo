@@ -28,7 +28,7 @@ module.exports = {
                 user_id: req.params.userID
             }
         })
-        //return res.send(user);
+        
         res.render('account', {universities, institutes, user, user_careers, user_courses, genres});
     },
     register: function(req, res) {
@@ -128,7 +128,8 @@ module.exports = {
         let userUpdate = {
             name: req.body.name,
             email: req.body.email,
-            age: req.body.age,
+            last_name: req.body.last_name,
+            age: (req.body.age == '')?null : req.body.age,
             telephone: req.body.telephone,
             province: req.body.province,
             genre_id: req.body.genre,
