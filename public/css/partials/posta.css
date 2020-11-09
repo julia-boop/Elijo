@@ -388,7 +388,7 @@ button.tipsPhoneBtn p {
 }
 
 .carreers-btn button{
-  width: 15%;
+  width: 100%;
   background-color: var(--btn-bg-color);
   border: var(--btn-border);
   border-radius: var(--btn-border-radius);
@@ -405,4 +405,20 @@ button.tipsPhoneBtn p {
 .carreers-btn button:focus{
   background-color: var(--btn-bg-color-focus);
   border: var(--btn-border-focus);
+}
+
+button.search-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 46px;
+  padding: 2px;
+  background-color: var(--btn-bg-color);
+  border: var(--btn-border);
+}
+
+@media(min-width: 768px){
+  .carreers-btn button{
+    width: 19%;
+  }
 }

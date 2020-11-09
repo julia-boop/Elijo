@@ -5,6 +5,7 @@
     <%- include('./partials/header') %>
     <div class="container-fluid">
         <h1>La posta sobre...</h1>
+
         <div class="pcDropDown">
 
             <div class="dropdown">
@@ -12,8 +13,9 @@
                     Universidades <i class="far fa-arrow-alt-circle-down"></i>
                 </button>
                 <div id="universities" class="dropdown-content">
-                    <input class="universityInput an-account-input" type="text" placeholder="Search.." id="myInput" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="universityResults dropdown-menu" aria-labelledby="myInput">
+                    <input class="universityInput" type="text" placeholder="Search.." id="myInput">
+                    <button class="search-btn">Buscar</button>
+                    <div class="universityResults">
 
                     </div>
                 </div>
@@ -40,6 +42,7 @@
                 </button>
                 <div id="institute" class="dropdown-content">
                     <input class="instituteInput" type="text" placeholder="Search.." id="myInput">
+                    <button class="search-btn">Buscar</button>
                     <div class="instituteResults">
 
                     </div>
@@ -247,11 +250,12 @@
     <%- include('./partials/scripts.ejs') %>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="/js/chartJS.js"></script>
-    <script src="/js/posta/postaNav.js"></script>
+    
     <script src="/js/posta.js"></script>
     <script src="/js/googleMaps.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLPIr-4QJtDR-Fw8p3rTarMax1R_bfsBw&callback=initMap"
     type="text/javascript"></script>
+    <script src="/js/posta/postaNav.js"></script>
 </body>
 </html>
 <!--AIzaSyBLPIr-4QJtDR-Fw8p3rTarMax1R_bfsBw-->
