@@ -427,6 +427,22 @@ option.resultsOption button{
   border: var(--btn-border-focus);
 }
 
+
+.paginationContainer{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.paginationContainer button{
+  margin: 2px;
+  padding: 5px;
+  height: 46px;
+  background-color: var(--btn-bg-color);
+  border: var(--btn-border);
+  border-radius: var(--btn-border-radius);
+}
+
 @media(min-width: 768px){
   .carreers-btn button{
     width: 19%;

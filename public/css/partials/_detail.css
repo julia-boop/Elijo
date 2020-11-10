@@ -2,7 +2,9 @@
             DETAIL
 =================================*/
 
-
+.user-formation-subtitle {
+    margin-bottom: 0px;
+}
 
 
 /*=================================
@@ -57,6 +59,13 @@
     color: #4FCE5D;
 }
 
+.detail-title-labels {
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0px;
+}
+
 
 
 /*=================================
@@ -67,33 +76,59 @@
     margin: 0;
     margin-top: 10px;
 }
+/*USER - UNIVERSITY*/
+.university-user-wrapper {
+    background-color: var(--color-10);
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
 
-.profile-experiences h4.uni {
+h4.uni {
     text-align: left;
-    background-color: var(--color-7);
+    margin-bottom: 0px;
+}
+
+/*USER - COURSE*/
+
+.course-user-wrapper {
+    background-color: var(--color-11);
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .profile-experiences h4.course {
     text-align: left;
-    background-color: var(--color-5);
 }
 
-.profile-interests {
-    margin-top: 20px;
-    margin-bottom: 20px;
+/* USER INTEREST */
+
+.interest-user-wrapper {
+    background-color: var(--color-12);
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-.interests-title{
-    background-color: var(--color-4);
+/* USER EXPERIENCES */
+
+.experiences-user-wrapper {
+    background-color: var(--color-13);
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-.tips-title{
-    background-color: var(--color-8);
+/* USER TIPS */
+
+.tips-user-wrapper {
+    background-color: var(--color-14);
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-.experiences-title{
-    background-color: var(--color-3);
-}
 
 .profile-interests ul {
     display: flex;
@@ -112,6 +147,10 @@
     padding: 8px;
     background-color: var(--color-4);
     border: var(--color-9);
+}
+
+.conditional-whatsapp {
+    border-radius: 5px;
 }
 
 .conditional-question-and-tips {

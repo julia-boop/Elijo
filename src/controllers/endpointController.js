@@ -62,6 +62,28 @@ module.exports = {
         })
         return res.status(200).json(university);
     },
+    getSpecificCareer: async (req, res) => {
+        let career = await db.Career.findOne({
+            where: {
+                id: req.params.careerID
+            }
+        })
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(career);
+    },
+    getSpecificCourse: async (req, res) => {
+        let course = await db.Course.findOne({
+            where: {
+                id: req.params.courseID
+            }
+        })
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(course);
+    },
     getInstituteOpinions: async (req, res) => {
         let opinions = await db.Calification.findAll({
             where: {
@@ -74,10 +96,33 @@ module.exports = {
         return res.status(200).json(opinions);
     },
     getUniversityOpinions: async (req, res) => {
-        console.log(req.params.universityID);
         let opinions = await db.Calification.findAll({
             where: {
                 university_id: req.params.universityID
+            },
+            include: [{association: 'User'}]
+        })
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(opinions);
+    },
+    getCourseOpinions: async (req, res) => {
+        let opinions = await db.Calification.findAll({
+            where: {
+                curse_id: req.params.courseID
+            },
+            include: [{association: 'User'}]
+        })
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(opinions);
+    },
+    getCareerOpinions: async (req, res) => {
+        let opinions = await db.Calification.findAll({
+            where: {
+                career_id: req.params.careerID
             },
             include: [{association: 'User'}]
         })

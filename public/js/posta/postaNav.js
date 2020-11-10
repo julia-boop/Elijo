@@ -1,5 +1,8 @@
 let universities;
 let institutes;
+let opinionsOnGeneral = [];
+let actualGeneralPage = 0;
+const amountByPage = 5;
 
 //#region  FETCHS
 function loadInstitutions(){
@@ -27,7 +30,7 @@ function fetchInstitution(id, institutionType){
     .then(result => {
         let career = result;
 
-        addToContainer(career);
+        addToContainer(career, institutionType);
 
         fetch(`/endpoints/${institutionType}/${id}`).then(response => {
             return response.json();
@@ -47,12 +50,40 @@ function fetchInstitution(id, institutionType){
         })  
     });    
 }
+
+function fetchCareerData(careerID, institutionType){
+
+    fetch(`/endpoints/${institutionType}/study/${careerID}/opinions`).then(response => {
+        return response.json();
+    })
+    .then(result => {
+        
+        showStudentsOpinions(result);
+
+        let study;
+        (institutionType == 'university') ? study = 'career' : study = 'course';
+
+        fetch(`/endpoints/${study}/${careerID}`).then(response => {
+            return response.json();
+        }) 
+        .then(result => {
+            let linksContainer = document.querySelector('#links-container');
+        
+            linksContainer.innerHTML += `<li><a id="study-plan-link" href="">Plan de estudios</a></li>` ;
+
+            let studyPlanLink = document.querySelector('#study-plan-link');
+            
+            studyPlanLink.href = `${result.plan_link}`;
+        })
+    })
+}
 //#endregion
 
 //#region CAREERS CONTAINER
-function addToContainer(careers){
+function addToContainer(careers, institutionType){
     let container = document.querySelector('.carreers-container');
     if(careers.length > 0){
+        container.innerHTML = '';
         container.innerHTML+= ` <div class="carreers-h4-container">
                                     <h4>Carreras Disponibles</h4>
                                 </div>
@@ -63,10 +94,8 @@ function addToContainer(careers){
     let careersContainer = document.querySelector('#careersContainer');
     careersContainer.innerHTML = '';
 
-    
-
     for(let i = 0; i < careers.length; i++ ){
-        careersContainer.innerHTML += `<button>${careers[i].name}</button>`
+        careersContainer.innerHTML += `<button onclick="fetchCareerData(${careers[i].id}, '${institutionType}')">${careers[i].name}</button>`
     }
     
 }
@@ -74,30 +103,100 @@ function addToContainer(careers){
 
 //#region CHANGE RIGHT INFO
 function changeUsefulInformation(data, career){
+
+    let infoContainer = document.querySelector('.information-container');
+
+    if(data != null){
+        infoContainer.innerHTML = `
+            <h3>Informacion útil</h3>
+            <ul id="links-container">
+                <li><a id="web-page-link" href="">Pagina web</a></li>
+                <li id="adress-data"><a id="map-link" href="">Mapa</a></li>
+            </ul>
+
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105083.85891257568!2d-58.51286837494019!3d-34.60743372073798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb430ebd761df%3A0xe3c33a8b19ce6c7!2sUniversidad%20Torcuato%20Di%20Tella!5e0!3m2!1ses-419!2sar!4v1599014780798!5m2!1ses-419!2sar" width="200" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        `;
+    }
+
     let webPageLink = document.querySelector('#web-page-link');
-    let studyPlanLink = document.querySelector('#study-plan-link');
+    
     let mapLink = document.querySelector('#map-link');
     let adressData = document.querySelector('#adress-data');
     
     webPageLink.href = data.link;
-    studyPlanLink.href = career.plan_link;
 }
 //#endregion
 
 //#region STUDENTS OPINIONS
 function showStudentsOpinions(opinions){
-    //console.log(opinions);
-    let opinionsContainer = document.querySelector('#opinionsContainer')
+    let opinionsDiv = document.querySelector('.opinions');
+    makePagination(opinions);
+    changePage(0);    
+}
+//#endregion
 
-    //console.log(photo);
+//#region PAGINATION
 
-    
-    for(let i = 0; i < opinions.length; i++){
+function makePagination(results){
+    let amountOfPages = Math.ceil(results.length / amountByPage);
+    let index = 0;
+    let condition = amountByPage;
+    opinionsOnGeneral = [];
+    for(let j = 0; j < amountOfPages; j++){
+        let page = [];
+
+        for(let i = index; i <= condition-1; i++){
+            if(results[i] != undefined){
+                page.push(results[i]);
+            }
+        }
+        condition += amountByPage;
+        index += amountByPage;
+        opinionsOnGeneral.push(page);
+        
+    }
+}
+
+function changePage(moveTo){
+
+    (moveTo > 0) ? actualGeneralPage++ : actualGeneralPage--;
+    if(moveTo == 0) actualGeneralPage = 0;
+
+    let opinionsDiv = document.querySelector('.opinions');
+    opinionsDiv.innerHTML = `
+        <h4>Opiniones Estudiantiles</h4>
+        <section id="opinionsContainer">
+        </section>
+        <div class="paginationContainer">
+            
+        </div>
+    `;
+
+    let opinionsContainer = document.querySelector('#opinionsContainer');
+    opinionsContainer.innerHTML = '';
+
+    for(let j = 0; j < opinionsOnGeneral[actualGeneralPage].length; j++){
         opinionsContainer.innerHTML += `
             <article>
-                <h6><img src="/images/users/${opinions[i].User.photo}" alt="">${opinions[i].User.name}</h6>
-                <p>${opinions[i].opinion}</p>
+                <h6><img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" alt="">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h6>
+                <p>${opinionsOnGeneral[actualGeneralPage][j].opinion}</p>
             </article>
+        `;
+    }
+
+    let paginationContainer = document.querySelector('.paginationContainer');
+    
+    console.log(actualGeneralPage + ' PAGINA ACTUALLLLLLLLLLLLLLLLLLLLLLL');
+    if(actualGeneralPage > 0){
+        paginationContainer.innerHTML = `
+            <button onclick="changePage(-1)">Anterior</button>
+        `;
+    }
+    if(actualGeneralPage < opinionsOnGeneral.length-1){
+        paginationContainer.innerHTML = `
+            <button onclick="changePage(1)">Siguiente</button>
         `;
     }
 }
