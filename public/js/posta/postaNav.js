@@ -132,7 +132,6 @@ function changeUsefulInformation(data, career){
 //#region STUDENTS OPINIONS
 function showStudentsOpinions(opinions){
     let opinionsDiv = document.querySelector('.opinions');
-    opinionsForPagination = opinions;
     makePagination(opinions);
     changePage(0);    
 }
@@ -144,7 +143,7 @@ function makePagination(results){
     let amountOfPages = Math.ceil(results.length / amountByPage);
     let index = 0;
     let condition = amountByPage;
-    
+    opinionsOnGeneral = [];
     for(let j = 0; j < amountOfPages; j++){
         let page = [];
 
