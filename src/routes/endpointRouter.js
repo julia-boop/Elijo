@@ -12,9 +12,13 @@ router.get('/university', endpointController.getUniversities);
 
 router.get('/institute/:instituteID', endpointController.getSpecificInstitutes);
 router.get('/university/:universityID', endpointController.getSpecificUniversities);
+router.get('/course/:courseID', endpointController.getSpecificCourse);
+router.get('/career/:careerID', endpointController.getSpecificCareer);
 
 router.get('/institute/:instituteID/opinions', endpointController.getInstituteOpinions);
 router.get('/university/:universityID/opinions', endpointController.getUniversityOpinions);
+router.get('/institute/study/:courseID/opinions', endpointController.getCourseOpinions);
+router.get('/university/study/:careerID/opinions', endpointController.getCareerOpinions);
 
 router.get('/user/', hasAcces, endpointController.getActualUser);
 router.get('/interests', endpointController.getInterestsTable);
