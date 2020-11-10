@@ -4,9 +4,6 @@ const path = require('path');
 const mainController = require('../controllers/mainController.js');
 const isAdmin = require('../middlewares/isAdmin');
 
-//TEST
-router.get('/institutes', isAdmin, mainController.jsonInstitutes);
-router.get('/universities', isAdmin, mainController.jsonUniversities);
 
 //HOME
 router.get('/', mainController.home);

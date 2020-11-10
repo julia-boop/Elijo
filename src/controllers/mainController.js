@@ -29,26 +29,7 @@ function duplicateCleaner(careers, courses){
 
 
 module.exports = {
-    
-    
-    // --> DATAENTRY <-- \\
-    jsonInstitutes:function(req, res) {
-        db.Institute.findAll({
-            include: [{association: 'Courses'}]
-        })
-        .then(function(result) {
-            res.json(result)
-        })
-    },
-    jsonUniversities:async function(req, res) {
-        let universities = await db.University.findAll({
-            include: [{association: 'Careers', include: [{association: 'Asignatures'}]}]
-        })
-        res.json(universities)
-    },
-    // --> /DATAENTRY <-- \\
-    
-    
+
     home: async function(req, res){
 
         let institutes = await db.Institute.findAll();
@@ -174,14 +155,15 @@ module.exports = {
         
         res.render('detail', {user, university_career, institute_courses})
     },
-    why : function(req, res){
+    why: function(req, res){
         res.render('why')
     },
     posta: function(req, res) {
-        res.render('comingSoon')
+        res.render('posta')
     },
     comingSoon: function(req, res){
         res.render('comingSoon')
     }
+    
 };
 
