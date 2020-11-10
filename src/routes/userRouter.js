@@ -35,6 +35,12 @@ router.post('/login', loginValidation, userController.enter);
 router.get('/requestInstitution', hasAccess, userController.requestInstitution);
 router.post('/requestInstitution', hasAccess, userController.sendRequest);
 
+//FORMS
+//router.get('/createQualification/:userID', hasAccess, userController.showQualificationForm );
+//router.post('/createQualification/:userID', hasAccess, userController.saveQualification );
+//router.get('/createTip/:userID', hasAccess, userController.showTipForm );
+//router.post('/createTip/:userID', hasAccess, userController.saveTip );
+
 //LOGOUT
 router.get('/logout', hasAccess, userController.logout);
 
