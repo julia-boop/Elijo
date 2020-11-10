@@ -216,8 +216,7 @@ button.faqs-btn-submit,button.more-info-btn{
 .tips-container {
   margin-top: 25px;
   padding: 10px;
-  border-left: 2px solid grey;
-  display: none;
+  /* display: none; */
 }
 
 .tips-container h3 { 
@@ -232,6 +231,12 @@ button.faqs-btn-submit,button.more-info-btn{
   margin: 5px;
 }
 
+.tips{
+  background-color: var(--color-4);
+  border-radius: var(--btn-border-radius);
+  padding: 5px;
+}
+/* 
 button.tipsPhoneBtn {
   background-color: var(--btn-bg-color-scnd);
   border: var(--btn-border-scnd);
@@ -293,7 +298,7 @@ button.tipsPhoneBtn p {
   width: 20px;
   border-radius: 50%;
   margin: 5px;
-}
+} */
 
 /* ---------GENERAL FLAP----------- */
 
@@ -334,6 +339,10 @@ button.tipsPhoneBtn p {
 
 
 /* ---------LESSONS----------- */
+
+.tips-container h3{
+  text-align: center;
+}
 
 .lessons-btn{
   border-bottom-right-radius: 10px;

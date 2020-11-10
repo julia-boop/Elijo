@@ -41,6 +41,7 @@ module.exports = {
         // return res.send(errors)
 
         if(errors.isEmpty()){
+            
             let newUser = {
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10),

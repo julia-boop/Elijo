@@ -90,18 +90,18 @@ window.addEventListener('load', function() {
   });
   /*FIN REVISAR*/
   
-  let tipsBtn = document.querySelector('.tipsPhoneBtn');
-  let tipsDiv = document.querySelector('.mobileTips');
-  let closeMobBtn = document.querySelector('.mobileTipsCross');
-  tipsBtn.addEventListener('click', function(){
-    tipsBtn.classList.add('d-none')
-    tipsDiv.classList.add('openMobileTips');
-  })
+  // let tipsBtn = document.querySelector('.tipsPhoneBtn');
+  // let tipsDiv = document.querySelector('.mobileTips');
+  // let closeMobBtn = document.querySelector('.mobileTipsCross');
+  // tipsBtn.addEventListener('click', function(){
+  //   tipsBtn.classList.add('d-none')
+  //   tipsDiv.classList.add('openMobileTips');
+  // })
   
-  closeMobBtn.addEventListener('click', function(){
-    tipsBtn.classList.remove('d-none');
-    tipsDiv.classList.remove('openMobileTips');
-  })
+  // closeMobBtn.addEventListener('click', function(){
+  //   tipsBtn.classList.remove('d-none');
+  //   tipsDiv.classList.remove('openMobileTips');
+  // })
 
 
 

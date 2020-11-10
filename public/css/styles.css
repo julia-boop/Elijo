@@ -84,9 +84,9 @@ body{
     .tips-container{
         display: initial;
     }
-    .tipsPhoneBtn {
+    /* .tipsPhoneBtn {
         display: none;
-    }
+    } */
     .pop-up-background .pop-up.show{
         width: 50%;
     }
