@@ -312,6 +312,72 @@ module.exports = {
         })
         res.render('login');
     },
+    showQualificationForm: (req, res) => {
+        db.User.findAll({
+            where: {
+                id: req.params.userID
+            },
+            include: [
+                {
+                    model: db.Career,
+                    as: 'User_careers',
+                    through: {
+                        model: db.User_career_study
+                    },
+                    include: [{association: 'Universities'}]
+                }, 
+                {
+                    model: db.Course,
+                    as: 'User_courses',
+                    through: {
+                        model: db.User_course_study
+                    },
+                    include: [{association: 'Institutes'}]
+                }
+            ]
+        })
+        .then(user => {
+            //return res.send(user);
+            res.render('qualificationForm', {user});
+        })
+        .catch(err => {
+            return res.send(err);
+        })
+    },
+    showTipForm: (req, res) => {
+        db.User.findAll({
+            where: {
+                id: req.params.userID
+            },
+            include: [
+                {
+                    model: db.Career,
+                    as: 'User_careers',
+                    through: {
+                        model: db.User_career_study
+                    },
+                    include: [{association: 'Universities'}]
+                }, 
+                {
+                    model: db.Course,
+                    as: 'User_courses',
+                    through: {
+                        model: db.User_course_study
+                    },
+                    include: [{association: 'Institutes'}]
+                }
+            ]
+        })
+        .then(user => {
+            //return res.send(user);
+            res.render('tipForm', {user});
+        })
+        .catch(err => {
+            return res.send(err);
+        })
+    },
+    saveQualification: (req, res) => {},
+    saveTip: (req, res) => {},
     logout: (req, res) => {
         req.session.destroy();
         res.cookie('Elijo', '', {maxAge:-1});

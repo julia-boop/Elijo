@@ -8,10 +8,11 @@
             <h1>Hola, <b><%= user.name %> </b></h1>
             <div class="notifications dropdown">
                 <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Notificaciones <i class="fas fa-exclamation-circle "></i>
+                    ACCIONES <i class="fas fa-exclamation-circle "></i>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Ayudanos a mejorar... Aqui</a>
+                    <a class="dropdown-item" href="/user/createQualification/<%=user.id%>">CALIFICAR</a>
+                    <a class="dropdown-item" href="/user/createTip/<%=user.id%>">ESCRIBIR TIP</a>
                 </div>
             </div>
 

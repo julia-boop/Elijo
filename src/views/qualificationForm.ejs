@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head') %>
+    <body>
+        <%- include('./partials/header') %>
+        <div class="container">
+            <form class="mt-5" action="/createQualification/<%=user.id%>" method="POST">
+                <label>¿Que queres calificar?</label>
+                <select>
+                    <% for(let i = 0; i < user.User_careers.length; i++){ %>
+                        <option><%= user.User_careers[i].Universities.name %></option>
+                        <option><%= user.User_careers[i].name %></option>
+                    <% } %>
+                    <% for(let j = 0; j < user.User_courses.length; j++){ %>
+                        <option><%= user.User_courses[j].Institutes.name %></option>
+                        <option><%= user.User_courses[j].name %></option>
+                    <% } %>
+                </select>
+            </form>
+            
+        </div>
+        
+        
+        <%- include('./partials/scripts.ejs') %>
+        <%- include('./partials/footer') %>  
+    </body>
+</html>
