@@ -314,7 +314,7 @@ module.exports = {
         res.render('login');
     },
     showQualificationForm: (req, res) => {
-        db.User.findAll({
+        db.User.findOne({
             where: {
                 id: req.params.userID
             },
@@ -338,7 +338,6 @@ module.exports = {
             ]
         })
         .then(user => {
-            //return res.send(user);
             res.render('qualificationForm', {user});
         })
         .catch(err => {
@@ -346,7 +345,7 @@ module.exports = {
         })
     },
     showTipForm: (req, res) => {
-        db.User.findAll({
+        db.User.findOne({
             where: {
                 id: req.params.userID
             },
@@ -370,15 +369,194 @@ module.exports = {
             ]
         })
         .then(user => {
-            //return res.send(user);
+            //return res.send(user.User_careers);
             res.render('tipForm', {user});
         })
         .catch(err => {
             return res.send(err);
         })
     },
-    saveQualification: (req, res) => {},
-    saveTip: (req, res) => {},
+    saveQualification: (req, res) => {
+        let toQualify = req.body.toQualify;
+        let success = true;
+        toQualify = toQualify.split(',');
+        
+        let data = {
+            calification: req.body.qulification,
+            opinion: req.body.opinion,
+            user_id: req.session.userSession,
+            university_id: null,
+            institute_id: null,
+            career_id: null,
+            course_id: null
+        }
+        switch(toQualify[1]){
+            case 'University':
+                data.university_id = Number(toQualify[0])
+                break;
+            case 'Institute':
+                data.institute_id = Number(toQualify[0])
+                break;
+            case 'Career':
+                data.career_id = Number(toQualify[0])
+                break;
+            case 'Course':
+                data.course_id = Number(toQualify[0])
+                break;
+        }
+
+        db.Calification.create(data)
+        .then(response => {
+            success = true;
+            db.User.findOne({
+                where: {
+                    id: req.params.userID
+                },
+                include: [
+                    {
+                        model: db.Career,
+                        as: 'User_careers',
+                        through: {
+                            model: db.User_career_study
+                        },
+                        include: [{association: 'Universities'}]
+                    }, 
+                    {
+                        model: db.Course,
+                        as: 'User_courses',
+                        through: {
+                            model: db.User_course_study
+                        },
+                        include: [{association: 'Institutes'}]
+                    }
+                ]
+            })
+            .then(user => {
+                //return res.send(user.User_careers);
+                res.render('qualificationForm', {user, success});
+            })
+        })
+        .catch(err => {
+            success = false;
+            db.User.findOne({
+                where: {
+                    id: req.params.userID
+                },
+                include: [
+                    {
+                        model: db.Career,
+                        as: 'User_careers',
+                        through: {
+                            model: db.User_career_study
+                        },
+                        include: [{association: 'Universities'}]
+                    }, 
+                    {
+                        model: db.Course,
+                        as: 'User_courses',
+                        through: {
+                            model: db.User_course_study
+                        },
+                        include: [{association: 'Institutes'}]
+                    }
+                ]
+            })
+            .then(user => {
+                //return res.send(user.User_careers);
+                res.render('qualificationForm', {user, success});
+            })
+        })
+
+    },
+    saveTip: (req, res) => {
+        let toQualify = req.body.toQualify;
+        let success = true;
+        toQualify = toQualify.split(',');
+        
+        let data = {
+            tip: req.body.tip,
+            user_id: req.session.userSession,
+            university_id: null,
+            institute_id: null,
+            career_id: null,
+            course_id: null
+        }
+        switch(toQualify[1]){
+            case 'University':
+                data.university_id = Number(toQualify[0])
+                break;
+            case 'Institute':
+                data.institute_id = Number(toQualify[0])
+                break;
+            case 'Career':
+                data.career_id = Number(toQualify[0])
+                break;
+            case 'Course':
+                data.course_id = Number(toQualify[0])
+                break;
+        }
+
+        db.Tip.create(data)
+        .then(response => {
+            success = true;
+            db.User.findOne({
+                where: {
+                    id: req.params.userID
+                },
+                include: [
+                    {
+                        model: db.Career,
+                        as: 'User_careers',
+                        through: {
+                            model: db.User_career_study
+                        },
+                        include: [{association: 'Universities'}]
+                    }, 
+                    {
+                        model: db.Course,
+                        as: 'User_courses',
+                        through: {
+                            model: db.User_course_study
+                        },
+                        include: [{association: 'Institutes'}]
+                    }
+                ]
+            })
+            .then(user => {
+                res.render('tipForm', {user, success});
+            })
+        })
+        .catch(err => {
+            success = false;
+            db.User.findOne({
+                where: {
+                    id: req.params.userID
+                },
+                include: [
+                    {
+                        model: db.Career,
+                        as: 'User_careers',
+                        through: {
+                            model: db.User_career_study
+                        },
+                        include: [{association: 'Universities'}]
+                    }, 
+                    {
+                        model: db.Course,
+                        as: 'User_courses',
+                        through: {
+                            model: db.User_course_study
+                        },
+                        include: [{association: 'Institutes'}]
+                    }
+                ]
+            })
+            .then(user => {
+                //return res.send(user.User_careers);
+                res.render('tipForm', {user, success});
+            })
+        })
+    },
     logout: (req, res) => {
         req.session.destroy();
         res.cookie('Elijo', '', {maxAge:-1});
