@@ -144,5 +144,115 @@ module.exports = {
             return res.status(404).json(err);    
         })
         return res.status(200).json(interests);
+    },
+    getInstituteQuestions: async (req,res) => {
+        let instituteQuestions = await db.Question.findAll({
+            where: {
+                institute_id: req.params.instituteID
+            },
+            include: [{association: 'User'}]
+        })
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(instituteQuestions);
+    },
+    getUniversityQuestions: async (req, res) => {
+        let universityQuestions = await db.Question.findAll({
+            where : {
+                university_id: req.params.universityID
+            },
+            include: [{association: 'User'}]
+        })
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(universityQuestions);
+    },
+    getCareerQuestions: async (req, res) => {
+        let careerQuestions = await db.Question.findAll({
+            where : {
+                career_id : req.params.careerID
+            }, 
+            include: [{association: 'User'}]
+        })        
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(careerQuestions);
+    },
+    getCourseQuestions: async (req, res) => {
+        let courseQuestions = await db.Question.findAll({
+            where : {
+                course_id : req.params.courseID
+            }, 
+            include: [{association: 'User'}]
+        })        
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(courseQuestions);
+    },
+    getInstituteTips: async (req,res) => {
+        let instituteTips = await db.Tips.findAll({
+            where: {
+                institute_id: req.params.instituteID
+            },
+            include: [{association: 'User'}]
+        })
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(instituteTips);
+    },
+    getUniversityTips: async (req, res) => {
+        let universityTips = await db.Tips.findAll({
+            where : {
+                university_id: req.params.universityID
+            },
+            include: [{association: 'User'}]
+        })
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(universityTips);
+    },
+    getCareerTips: async (req, res) => {
+        let careerTips = await db.Tip.findAll({
+            where : {
+                career_id : req.params.careerID
+            }, 
+            include: [{association: 'User'}]
+        })        
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(careerTips);
+    },
+    getCourseTips: async (req, res) => {
+        let courseTips = await db.Tip.findAll({
+            where : {
+                course_id : req.params.courseID
+            }, 
+            include: [{association: 'User'}]
+        })        
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(courseTips);
+    },
+    getQuestions: async (req, res) => {
+        let allQuestions = await db.Question.findAll()
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(allQuestions);
+    },
+    getTips: async (req, res) => {
+        let allTips = await db.Tip.findAll()
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(allTips);
     }
 };

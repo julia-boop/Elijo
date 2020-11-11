@@ -23,5 +23,19 @@ router.get('/university/study/:careerID/opinions', endpointController.getCareerO
 router.get('/user/', hasAcces, endpointController.getActualUser);
 router.get('/interests', endpointController.getInterestsTable);
 
+router.get('/questions', endpointController.getQuestions);
+
+router.get('/institute/:instituteID/questions', endpointController.getInstituteQuestions);
+router.get('/university/:universityID/questions', endpointController.getUniversityQuestions);
+router.get('/university/study/:careerID/questions', endpointController.getCareerQuestions);
+router.get('/institute/study/:courseID/questions', endpointController.getCourseQuestions);
+
+router.get('/tips', endpointController.getTips);
+
+router.get('/institute/:instituteID/tips', endpointController.getInstituteTips);
+router.get('/university/:universityID/tips', endpointController.getUniversityTips);
+router.get('/university/study/:careerID/tips', endpointController.getCareerTips);
+router.get('/institute/study/:courseID/tips', endpointController.getCourseTips);
+
 
 module.exports = router;

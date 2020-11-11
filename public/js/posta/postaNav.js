@@ -25,7 +25,7 @@ function fetchInstitution(id, institutionType){
     let toFind;
     (institutionType == "university") ?  toFind = "careers" : toFind = "courses";
     fetch(`/endpoints/${toFind}/${id}`).then(response => {
-        return response.json();
+        return response.json(); //guido que mierda es esto
     })
     .then(result => {
         let career = result;

@@ -159,7 +159,7 @@ module.exports = {
         res.render('why')
     },
     posta: function(req, res) {
-        res.render('comingSoon')
+        res.render('posta')
     },
     comingSoon: function(req, res){
         res.render('comingSoon')
