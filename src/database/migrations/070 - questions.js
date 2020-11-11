@@ -10,7 +10,7 @@ module.exports = {
       },
       university_id: {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'universities',
           key: 'id'
@@ -18,7 +18,7 @@ module.exports = {
       },
       career_id: {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'careers',
           key: 'id'
@@ -26,7 +26,7 @@ module.exports = {
       },
       institute_id: {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'institutes',
           key: 'id'
@@ -34,7 +34,7 @@ module.exports = {
       },
       course_id: {
         type: Sequelize.DataTypes.INTEGER(10).UNSIGNED,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'courses',
           key: 'id'

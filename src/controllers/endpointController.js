@@ -18,7 +18,7 @@ module.exports = {
     getCourses: async (req, res) => {
         let courses = await db.Course.findAll({
             where: {
-                institute_id: req.params.universityOwner
+                institute_id: req.params.instituteOwner
             }
         })
         .catch(err => {
@@ -247,6 +247,75 @@ module.exports = {
             return res.status(404).json(err);    
         })
         return res.status(200).json(allQuestions);
+    },
+    getAnswers: async (req, res) => {
+        let allAnswers = await db.Answer.findAll({
+            include: [{association: 'User'},{association: 'Question'}]
+        })
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(allAnswers);
+    },
+    getInstituteAnswers: async (req,res) => {
+        let instituteAnswers = await db.Answer.findAll({
+            include: [{association: 'User'}, 
+            {
+                association: 'Question', 
+                where: {
+                    institute_id: req.params.instituteID
+                }
+            }]
+        })
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(instituteAnswers);
+    },
+    getUniversityAnswers: async (req, res) => {
+        let universityAnswers = await db.Answer.findAll({
+            include: [{association: 'User'}, 
+            {
+                association: 'Question', 
+                where: {
+                    university_id: req.params.universityID
+                }
+            }]
+        })   
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(universityAnswers);
+    },
+    getCareerAnswers: async (req, res) => {
+        let careerAnswers = await db.Answer.findAll({
+            include: [{association: 'User'}, 
+            {
+                association: 'Question', 
+                where: {
+                    career_id: req.params.careerID
+                }
+            }]
+        })           
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(careerAnswers);
+    },
+    getCourseAnswers: async (req, res) => {
+        let courseAnswers = await db.Answer.findAll({
+            include: [{association: 'User'}, 
+            {
+                association: 'Question', 
+                where: {
+                    course_id: req.params.courseID
+                }
+            }]
+        })        
+        .catch(err => {
+            return res.status(404).json(err);    
+        })
+        return res.status(200).json(courseAnswers);
     },
     getTips: async (req, res) => {
         let allTips = await db.Tip.findAll()

@@ -73,7 +73,7 @@ module.exports = {
             }
         }else{
             let newLocation = {
-                adress: req.body.adress,
+                address: req.body.address,
                 province: req.body.province,
                 country: req.body.country,
                 zip_code: req.body.zip_code,

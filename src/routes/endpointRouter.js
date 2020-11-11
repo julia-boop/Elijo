@@ -23,6 +23,7 @@ router.get('/university/study/:careerID/opinions', endpointController.getCareerO
 router.get('/user/', hasAcces, endpointController.getActualUser);
 router.get('/interests', endpointController.getInterestsTable);
 
+// **QUESTIONS**
 router.get('/questions', endpointController.getQuestions);
 
 router.get('/institute/:instituteID/questions', endpointController.getInstituteQuestions);
@@ -30,6 +31,18 @@ router.get('/university/:universityID/questions', endpointController.getUniversi
 router.get('/university/study/:careerID/questions', endpointController.getCareerQuestions);
 router.get('/institute/study/:courseID/questions', endpointController.getCourseQuestions);
 
+
+// **ANSWERS**
+router.get('/answers', endpointController.getAnswers);
+
+router.get('/institute/:instituteID/answers', endpointController.getInstituteAnswers);
+router.get('/courses/:courseID/answers', endpointController.getCourseAnswers);
+router.get('/university/:universityID/answers', endpointController.getUniversityAnswers);
+router.get('/careers/:careerID/answers', endpointController.getCareerAnswers);
+
+
+
+// **TIPS**
 router.get('/tips', endpointController.getTips);
 
 router.get('/institute/:instituteID/tips', endpointController.getInstituteTips);
