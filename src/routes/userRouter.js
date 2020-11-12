@@ -40,6 +40,8 @@ router.get('/createQualification/:userID', hasAccess, userController.showQualifi
 router.post('/createQualification/:userID', hasAccess, userController.saveQualification );
 router.get('/createTip/:userID', hasAccess, userController.showTipForm );
 router.post('/createTip/:userID', hasAccess, userController.saveTip );
+router.get('/createStats/:userID', hasAccess, userController.showStatsForm );
+router.post('/createStats/:userID', hasAccess, userController.saveStats );
 
 //LOGOUT
 router.get('/logout', hasAccess, userController.logout);

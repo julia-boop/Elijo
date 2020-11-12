@@ -6,6 +6,8 @@ const registerValidation = require('../validations/registerValidation');
 const {check, validationResult, body} = require('express-validator');
 const nodemailer = require('nodemailer');
 const nodemailerMessenger = require('../ownModules/nodemailerMessenger');
+const updateCalification = require('../ownModules/updateCalification');
+const updateStats = require('../ownModules/updateStats');
 
 module.exports = {
     account: async function(req, res){
@@ -432,7 +434,7 @@ module.exports = {
                 ]
             })
             .then(user => {
-                //return res.send(user.User_careers);
+                updateCalification(toQualify[1], Number(toQualify[0]));
                 res.render('qualificationForm', {user, success});
             })
         })
@@ -556,6 +558,118 @@ module.exports = {
                 res.render('tipForm', {user, success});
             })
         })
+    },
+    showStatsForm: (req, res) => {
+        db.User.findOne({
+            where: {
+                id: req.params.userID
+            },
+            include: [
+                {
+                    model: db.Career,
+                    as: 'User_careers',
+                    through: {
+                        model: db.User_career_study
+                    }
+                }, 
+                {
+                    model: db.Course,
+                    as: 'User_courses',
+                    through: {
+                        model: db.User_course_study
+                    }
+                }
+            ]
+        })
+        .then(user => {
+            //return res.send(user.User_careers);
+            res.render('statsForm', {user});
+        })
+        .catch(err => {
+            return res.send(err);
+        })
+    },
+    saveStats: (req, res) => {
+        let toAddStats = req.body.toAddStats;
+        console.log(toAddStats);
+        let success = true;
+        toAddStats = toAddStats.split(',');
+
+        if(toAddStats[1] == 'Career'){
+            let data = {
+                career_id: toAddStats[0],
+                difficulty_amount: req.body.difficulty,
+                job_exit_amount: req.body.job_exit,
+                study_hours_amount: req.body.study_hours
+            }
+            db.Career_stat.create(data)
+            .then(response => {
+                db.User.findOne({
+                    where: {
+                        id: req.params.userID
+                    },
+                    include: [
+                        {
+                            model: db.Career,
+                            as: 'User_careers',
+                            through: {
+                                model: db.User_career_study
+                            },
+                            include: [{association: 'Universities'}]
+                        }, 
+                        {
+                            model: db.Course,
+                            as: 'User_courses',
+                            through: {
+                                model: db.User_course_study
+                            },
+                            include: [{association: 'Institutes'}]
+                        }
+                    ]
+                })
+                .then(user => {
+                    updateStats(toAddStats[0], toAddStats[1]);
+                    res.render('statsForm', {user, success});
+                })
+            })
+        }else{
+            let data = {
+                course_id: toAddStats[0],
+                difficulty_amount: req.body.difficulty,
+                job_exit_amount: req.body.job_exit,
+                study_hours_amount: req.body.study_hours
+            }
+            db.Course_stat.create(data)
+            .then(response => {
+                db.User.findOne({
+                    where: {
+                        id: req.params.userID
+                    },
+                    include: [
+                        {
+                            model: db.Career,
+                            as: 'User_careers',
+                            through: {
+                                model: db.User_career_study
+                            },
+                            include: [{association: 'Universities'}]
+                        }, 
+                        {
+                            model: db.Course,
+                            as: 'User_courses',
+                            through: {
+                                model: db.User_course_study
+                            },
+                            include: [{association: 'Institutes'}]
+                        }
+                    ]
+                })
+                .then(user => {
+                    updateStats(toAddStats[0], toAddStats[1]);
+                    res.render('statsForm', {user, success});
+                })
+            })
+        }
     },
     logout: (req, res) => {
         req.session.destroy();
