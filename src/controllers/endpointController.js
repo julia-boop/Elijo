@@ -66,7 +66,8 @@ module.exports = {
         let career = await db.Career.findOne({
             where: {
                 id: req.params.careerID
-            }
+            },
+            include: [{association: 'Universities'}]
         })
         .catch(err => {
             return res.status(404).json(err);    
@@ -77,7 +78,8 @@ module.exports = {
         let course = await db.Course.findOne({
             where: {
                 id: req.params.courseID
-            }
+            },
+            include: [{association: 'Institutes'}]
         })
         .catch(err => {
             return res.status(404).json(err);    

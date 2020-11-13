@@ -44,6 +44,10 @@ function fetchInstitution(id, institutionType){
         .then(result => {
             let data = result;
             
+            let chartJSContainer = document.querySelector('.chartJS');
+            chartJSContainer.innerHTML = `Calificación: ${result.calification}`;
+            
+
             changeUsefulInformation(data, career[0]);
             
             fetch(`/endpoints/${institutionType}/${id}/opinions`)
@@ -64,6 +68,8 @@ function fetchStudiesManager(id, institutionType) {
 }
 
 function fetchInstitutionManager(id, institutionType) {
+    let dataPostaContainer = document.querySelector('.data-posta-container');
+    dataPostaContainer.innerHTML = '';
     fetchInstitution(id, institutionType);
     fetchAnswersInstitutesAndUniversities(id, institutionType);
     fetchTipsInstitutesAndUniversities(id, institutionType);
@@ -85,6 +91,8 @@ function fetchCareerData(careerID, institutionType){
             return response.json();
         }) 
         .then(result => {
+            updateChart(result);
+
             let linksContainer = document.querySelector('#links-container');
             
             linksContainer.innerHTML += `<li><a id="study-plan-link" href="">Plan de estudios</a></li>` ;
@@ -124,11 +132,9 @@ function fetchAnswersCareerOrCourse(id, careerOrCourse) {
 function fetchTipsInstitutesAndUniversities(id, instituteOrUniversity) {
     fetch(`/endpoints/${instituteOrUniversity}/${id}/tips`)
     .then(response => {
-        console.log(response)
         return response.json();
     })
     .then(result => {
-        console.log(result);
         addToTipsContainer(result);
         makePaginationTips(result);
         changeTipsPage(0);
@@ -233,7 +239,6 @@ function addToTipsContainer(result) {
     let tipsContainer = document.querySelector('.tips-container');
     tipsContainer.innerHTML =  '<h3>Tips</h3>';
     for(let i=0; i<result.length; i++){
-        console.log(result);
         tipsContainer.innerHTML += `<div class="tips">
             <p><img src="/images/users/${result[i].User.photo}" alt=""><b>${result[i].User.name}:</b></p>
             <p>${result[i].tip}</p>
@@ -421,6 +426,40 @@ function changePage(moveTo){
     }
 }
 //#endregion
+
+
+//#region CHARTJS
+function updateChart(data){
+    let institutionName = '';
+    if(data.Universities != undefined){
+        institutionName = data.Universities.acronym
+    }else{
+        institutionName = data.Institutes.name
+    }
+
+    let title = `${institutionName.toUpperCase()} - ${data.name.toUpperCase()}`;
+
+    let chartJSContainer = document.querySelector('.chartJS');
+
+    chartJSContainer.innerHTML = '<canvas id="myChart"></canvas>';
+
+    let ctx = document.getElementById('myChart').getContext('2d');
+    let chart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['Precio', 'Salida Laboral', 'Horas de Estudio', 'Dificultad', 'Duracion'],
+            datasets: [{
+                label: `${title}`,
+                backgroundColor: 'rgb(14,155,218)',
+                borderColor: 'rgb(124,191,182)',
+                data: [data.price, data.job_exit, data.study_hours, data.difficulty, data.duration]
+            }]
+        },
+        options: {}
+    });
+}
+//#endregion
+
 
 window.addEventListener('load', () => {
     //#region INIT
