@@ -7,6 +7,9 @@ const amountByPage = 5;
 let answerArray = [];
 let actualAnswerPage = 0;
 
+let tipsArray = [];
+let actualTipsPage = 0;
+
 //#region  FETCHS
 function loadInstitutions(){
     fetch('/endpoints/university').then(response => {
@@ -56,14 +59,15 @@ function fetchInstitution(id, institutionType){
 
 function fetchStudiesManager(id, institutionType) {
     fetchCareerData(id, institutionType);
-    fetchAnswersCareerOrCourse(id, institutionType)
+    fetchAnswersCareerOrCourse(id, institutionType);
+    fetchTipsCareerOrCourse(id, institutionType);
 }
 
 function fetchInstitutionManager(id, institutionType) {
     fetchInstitution(id, institutionType);
     fetchAnswersInstitutesAndUniversities(id, institutionType);
+    fetchTipsInstitutesAndUniversities(id, institutionType);
 }
-
 
 function fetchCareerData(careerID, institutionType){
     
@@ -104,7 +108,6 @@ function fetchAnswersInstitutesAndUniversities(id, instituteOrUniversity) {
     })
 }
 
-
 function fetchAnswersCareerOrCourse(id, careerOrCourse) {
     let toFind;
     (careerOrCourse == "university") ?  toFind = "careers" : toFind = "courses";
@@ -115,6 +118,33 @@ function fetchAnswersCareerOrCourse(id, careerOrCourse) {
         addToFaqsContainer(result);
         makePaginationAnswer(result);
         changeAnswerPage(0);
+    })
+}
+
+function fetchTipsInstitutesAndUniversities(id, instituteOrUniversity) {
+    fetch(`/endpoints/${instituteOrUniversity}/${id}/tips`)
+    .then(response => {
+        console.log(response)
+        return response.json();
+    })
+    .then(result => {
+        console.log(result);
+        addToTipsContainer(result);
+        makePaginationTips(result);
+        changeTipsPage(0);
+    })
+}
+
+function fetchTipsCareerOrCourse(id, careerOrCourse) {
+    let toFind;
+    (careerOrCourse == "university") ?  toFind = "careers" : toFind = "courses";
+    fetch(`/endpoints/${toFind}/${id}/tips`).then(response => {
+        return response.json();
+    })
+    .then(result => {
+        addToTipsContainer(result);
+        makePaginationTips(result);
+        changeTipsPage(0);
     })
 }
 //#endregion
@@ -152,7 +182,6 @@ function makePaginationAnswer(results){
                 page.push(results[i]);
             }
         }
-        console.log(page);
         condition += amountByPage;
         index += amountByPage;
         answerArray.push(page);
@@ -197,6 +226,78 @@ function changeAnswerPage(moveTo){
 }
 
 //#endregion
+
+
+//#region TIPS
+function addToTipsContainer(result) {
+    let tipsContainer = document.querySelector('.tips-container');
+    tipsContainer.innerHTML =  '<h3>Tips</h3>';
+    for(let i=0; i<result.length; i++){
+        console.log(result);
+        tipsContainer.innerHTML += `<div class="tips">
+            <p><img src="/images/users/${result[i].User.photo}" alt=""><b>${result[i].User.name}:</b></p>
+            <p>${result[i].tip}</p>
+        </div>
+        `;
+    }
+}
+//#endregion
+
+//#region TIPS PAGINATION
+function makePaginationTips(results){
+    let amountOfPages = Math.ceil(results.length / amountByPage);
+    let index = 0;
+    let condition = amountByPage;
+    tipsArray = [];
+    for(let j = 0; j < amountOfPages; j++){
+        let page = [];
+        for(let i = index; i <= condition-1; i++){
+            if(results[i] != undefined){
+                page.push(results[i]);
+            }
+        }
+        condition += amountByPage;
+        index += amountByPage;
+        tipsArray.push(page);
+    }
+}
+function changeTipsPage(moveTo){
+    if(tipsArray[actualTipsPage] == null || tipsArray[actualTipsPage] == undefined) return ;
+    (moveTo > 0) ? actualTipsPage++ : actualTipsPage--;
+    if(moveTo == 0) actualTipsPage = 0;
+    
+    let tips = document.querySelector('.tips-container');
+    tips.innerHTML = '';
+    
+    for(let i = 0; i < tipsArray[actualTipsPage].length; i++){
+        tips.innerHTML += `<div class="tips">
+        <h5><img src="/images/users/${tipsArray[actualTipsPage][i].User.photo}" alt=""><b>${tipsArray[actualTipsPage][i].User.name}:
+        </b>${tipsArray[actualTipsPage][i].tip}</h5>
+        </div>
+        `;
+    }
+    tips.innerHTML += `<div class="paginationTipsContainer"></div>`;
+    
+    let paginationTipsContainer = document.querySelector('.paginationTipsContainer');
+    
+    if(actualTipsPage > 0){
+        paginationTipsContainer.innerHTML = `
+        <button onclick="changeTipsPage(-1)">Anterior</button>
+        `;
+    }
+    if(actualTipsPage < tipsArray.length-1){
+        paginationTipsContainer.innerHTML = `
+        <button onclick="changeTipsPage(1)">Siguiente</button>
+        `;
+    }
+}
+
+//#endregion
+
+
+
+
+
 
 
 //#region CAREERS CONTAINER
@@ -308,7 +409,6 @@ function changePage(moveTo){
     
     let paginationContainer = document.querySelector('.paginationContainer');
     
-    console.log(actualGeneralPage + ' PAGINA ACTUALLLLLLLLLLLLLLLLLLLLLLL');
     if(actualGeneralPage > 0){
         paginationContainer.innerHTML = `
         <button onclick="changePage(-1)">Anterior</button>

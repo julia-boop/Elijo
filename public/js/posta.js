@@ -44,7 +44,6 @@ window.addEventListener('load', function() {
     //cursesInput.style.display = "none";
     programsInput.style.display = "none";
     institutesInput.style.display = "none";
-    console.log('entro');
   });
   institutesBtn.addEventListener('click', function(){
     if($(universityInput).is("inherit")){
@@ -113,7 +112,7 @@ window.addEventListener('load', function() {
 
   let generalView = document.querySelector('.generalFlap');
   let faqsTipsView = document.querySelector('.faqs-tips-container');
-  let lessonsView = document.querySelector('.lessons-container');
+  let lessonsView = document.querySelector('.tips-container');
 
   /*DEFAULTS*/
   // faqsTipsView.classList.add('d-none');

@@ -47,8 +47,8 @@ router.get('/tips', endpointController.getTips);
 
 router.get('/institute/:instituteID/tips', endpointController.getInstituteTips);
 router.get('/university/:universityID/tips', endpointController.getUniversityTips);
-router.get('/university/study/:careerID/tips', endpointController.getCareerTips);
-router.get('/institute/study/:courseID/tips', endpointController.getCourseTips);
+router.get('/careers/:careerID/tips', endpointController.getCareerTips);
+router.get('/courses/:courseID/tips', endpointController.getCourseTips);
 
 
 module.exports = router;

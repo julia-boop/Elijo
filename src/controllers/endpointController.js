@@ -206,7 +206,7 @@ module.exports = {
         return res.status(200).json(instituteTips);
     },
     getUniversityTips: async (req, res) => {
-        let universityTips = await db.Tips.findAll({
+        let universityTips = await db.Tip.findAll({
             where : {
                 university_id: req.params.universityID
             },
@@ -222,7 +222,7 @@ module.exports = {
             where : {
                 career_id : req.params.careerID
             }, 
-            include: [{association: 'User'}]
+            include: [{association: 'User'}, {association: 'University'}]
         })        
         .catch(err => {
             return res.status(404).json(err);    
@@ -234,7 +234,7 @@ module.exports = {
             where : {
                 course_id : req.params.courseID
             }, 
-            include: [{association: 'User'}]
+            include: [{association: 'User'}, {association: 'Institute'}]
         })        
         .catch(err => {
             return res.status(404).json(err);    
