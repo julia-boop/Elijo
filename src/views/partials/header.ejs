@@ -63,24 +63,25 @@
                         <li><a href="/user/register">Sign up</a></li>
                         <li><a href="/user/login">Log In</a></li>
                     <% }else{ %>
-                        <li><a href="" class="cuentaToggler" data-toggle="collapse" data-target="#cuentaCollapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            Cuenta <i class="fas fa-chevron-down"></i> 
-                        </a></li>
+                        <li>
+                            <div class="dropmenuAccountContainer dropdown">
+                                <a class="" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Cuenta
+                                </a>
+                                <div class="dropdown-menu dropmenuAccount" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/user/account/<%=userLoggedIn.id%>">PERFIL</a>
+                                    <a class="dropdown-item" href="/user/account/<%=userLoggedIn.id%>/createStats">APORTA DATOS</a>
+                                    <a class="dropdown-item" href="/user/account/<%=userLoggedIn.id%>/createQualification">CALIFICAR</a>
+                                    <a class="dropdown-item" href="/user/account/<%=userLoggedIn.id%>/createTip">ESCRIBIR TIP</a>
+                                    <a class="dropdown-item" href="/user/account/<%=userLoggedIn.id%>/answerQuestion">RESPONDER PREGUNTA</a> 
+                                </div>
+                            </div>
+                        </li>
                         <!--<li><a href="/user/account/<%=userLoggedIn.id%>">Cuenta</a></li>-->
                         <li><a href="/user/logout">Log out</a></li>
                     <% } %>
                 </div>
             </ul>
-            <% if(typeof userLoggedIn != 'undefined') { %>
-            
-            <div class="collapse cuentaCollapseAbs w-100" id="cuentaCollapse">
-                <a href="/user/account/<%=userLoggedIn.id%>" class="dropdown-item text-right" type="button">Perfil</a>
-                <a class="dropdown-item  text-right" href="/user/createQualification/<%=userLoggedIn.id%>">Calificar</a>
-                <a class="dropdown-item  text-right" href="/user/createTip/<%=userLoggedIn.id%>">Escribir Tip</a>
-                <a class="dropdown-item  text-right" href="/user/createStats/<%=userLoggedIn.id%>">Aportar Datos</a>
-                <a class="dropdown-item  text-right" href="/user/answerQuestion/<%=userLoggedIn.id%>">Responder Preguntas</a>
-            </div>
-            <% } %>
         </nav>
     </div>
 </header>

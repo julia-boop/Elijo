@@ -149,12 +149,20 @@ header div.phoneMenu .opened .line3 {
 
 
 
-
-
 /*=================================
             -PC-
 =================================*/
 
+.dropmenuAccount {
+    height: fit-content!important;
+    z-index: 400;
+    border-radius: 5px;
+    background-color: var(--color-3);
+}
+
+.dropmenuAccount a:hover {
+    background-color: var(--color-4);
+}
 
 .pcMenu{
     margin: 0 0;
@@ -272,11 +280,6 @@ div.pcMenu nav div li{
   
 /*FIN DE ANIMACION*/
 
-
-
-.text-container{
-    
-}
 
 #la-posta-reminder{
     padding: 7px;
