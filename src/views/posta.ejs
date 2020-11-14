@@ -80,9 +80,7 @@
         
             <div class="postaBtn">
                 <button class="general-btn">General</button>
-                <button c
-                
-                lass="faqs-tips-btn">Preguntas</button>
+                <button class="faqs-tips-btn">Preguntas</button>          
                 <button class="lessons-btn">Tips</button>
             </div>
             
@@ -96,6 +94,17 @@
             </div>
             <div class="faqs col-12 col-md-10">
                 
+            </div>
+            <div class="faqs-question-form">
+                <% if(typeof userLoggedIn != 'undefined'){ %>
+                <div id="question-form" class="d-none">
+                    <h4 class="mt-4">Si no encontraste la respuesta que estabas buscando, dejá tu pregunta.</h4>
+                    <textarea id="textarea-question" name="textarea" rows="3" cols="45" placeholder="Preguntar..."></textarea>
+                    <div class="d-flex justify-content-end">
+                        <button class="faqs-btn-submit" type="button" onClick="sendQuestion()">Enviar pregunta</button>
+                    </div>
+                </div>
+                <% } %>
             </div>
         </div>
         <!-- /PREGUNTAS -->

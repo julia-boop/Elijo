@@ -10,6 +10,8 @@ let actualAnswerPage = 0;
 let tipsArray = [];
 let actualTipsPage = 0;
 
+let questionData = [];
+
 
 //#region  FETCHS
 function loadInstitutions(){
@@ -31,8 +33,12 @@ function loadInstitutions(){
 function fetchInstitution(id, institutionType){
     let toFind;
     (institutionType == "university") ?  toFind = "careers" : toFind = "courses";
+
+    questionData[0] = institutionType;
+    questionData[1] = id;
+
     fetch(`/endpoints/${toFind}/${id}`).then(response => {
-        return response.json(); //guido que mierda es esto
+        return response.json();
     })
     .then(result => {
         let career = result;
@@ -77,7 +83,11 @@ function fetchInstitutionManager(id, institutionType) {
 }
 
 function fetchCareerData(careerID, institutionType){
-    
+    let tempData;
+    (institutionType == "university") ?  tempData = "careers" : tempData = "courses";
+    questionData[0] = tempData;
+    questionData[1] = careerID;
+
     fetch(`/endpoints/${institutionType}/study/${careerID}/opinions`).then(response => {
         return response.json();
     })
@@ -111,6 +121,7 @@ function fetchAnswersInstitutesAndUniversities(id, instituteOrUniversity) {
         return response.json();
     })
     .then(result => {
+        console.log(result);
         addToFaqsContainer(result);
         makePaginationAnswer(result);
         changeAnswerPage(0);
@@ -166,32 +177,27 @@ function addToFaqsContainer(result) {
         <h6>${result[i].text} (RESPUESTA)</h6>
         </div>`
     }
-    
-    let data = 'U:1,C:1'/*onCategories(result[0])*/;
-
-    faqsContainer.innerHTML += `<div id="question-form">
-    <h4 class="mt-4">Si no encontraste la respuesta que estabas buscando, dejá tu pregunta.</h4>
-    <textarea id="textarea-question" name="textarea" rows="3" cols="45" placeholder="Preguntar..."></textarea>
-    <div class="d-flex justify-content-end">
-    <button class="faqs-btn-submit" type="button" onClick="sendQuestion('${data}')">Enviar pregunta</button>
-    </div>
-    </div>`
+    //console.log(userLoggedIn);
+    let questionForm = document.querySelector('#question-form');
+    if(questionForm != null) questionForm.classList.remove('d-none');
+    /*
+    faqsContainer.innerHTML += `
+        <% if(typeof userLoggedIn != 'undefined'){ %>
+            <div id="question-form">
+                <h4 class="mt-4">Si no encontraste la respuesta que estabas buscando, dejá tu pregunta.</h4>
+                <textarea id="textarea-question" name="textarea" rows="3" cols="45" placeholder="Preguntar..."></textarea>
+                <div class="d-flex justify-content-end">
+                    <button class="faqs-btn-submit" type="button" onClick="sendQuestion()">Enviar pregunta</button>
+                </div>
+            </div>
+        <% } %>
+    `;*/
 }
 
-function onCategories(data){
-    let {university_id, career_id, institute_id, course_id} = data;
-    let results = '';
-    if(university_id != null) results += 'U:university_id,';
-    if(institute_id != null) results += 'I:institute_id,';
-    if(career_id != null) results += 'C:career_id,';
-    if(course_id != null) results += 'CO:course_id,';
-
-    return results;
-}
 //#endregion
 
 //#region SEND QUESTION
-function sendQuestion(ids){
+function sendQuestion(){
     let formData = document.querySelector('#textarea-question');
     let postSuccess = document.querySelector('#question-success');
     if(formData.value.trim() !== ''){
@@ -200,7 +206,7 @@ function sendQuestion(ids){
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({data: formData.value, ids: ids})
+            body: JSON.stringify({data: formData.value, questionData: questionData})
         });
         postSuccess.classList.remove('d-none');
         setTimeout(() => {
@@ -228,6 +234,7 @@ function makePaginationAnswer(results){
         index += amountByPage;
         answerArray.push(page);
     }
+    console.log(answerArray);
 }
 function changeAnswerPage(moveTo){
     if(answerArray[actualAnswerPage] == null || answerArray[actualAnswerPage] == undefined) return ;
@@ -245,16 +252,11 @@ function changeAnswerPage(moveTo){
         </div>
         `;
     }
+    let questionForm = document.querySelector('#question-form');
+    if(questionForm != null) questionForm.classList.remove('d-none');
     
-    faqs.innerHTML += `<div class="paginationAnswerContainer"></div>
-        <form action="">
-        <h4 class="mt-4">Si no encontraste la respuesta que estabas buscando, dejá tu pregunta.</h4>
-        <textarea name="textarea" rows="3" cols="45" placeholder="Preguntar..."></textarea>
-        <div class="d-flex justify-content-end">
-        <button class="faqs-btn-submit" type="submit">Enviar pregunta</button>
-        </div>
-    </form>`;
-    
+    faqs.innerHTML += `<div class="paginationAnswerContainer"></div>`;
+        
     let paginationAnswerContainer = document.querySelector('.paginationAnswerContainer');
     
     if(actualAnswerPage > 0){

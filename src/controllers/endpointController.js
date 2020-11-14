@@ -351,16 +351,24 @@ module.exports = {
         }); 
     },
     publishQuestion: async (req, res) => {
-        let ids = req.body.ids;
+        /*let ids = req.body.ids;
 
         ids = ids.split(',');
         console.log(ids);
 
         for(let i = 0; i < ids.length; i++){
             let tempData = ids[i].split(':');
+        }*/
+        let question = {
+            university_id: (req.body.questionData[0] == 'university') ? req.body.questionData[1] : null,
+            institute_id: (req.body.questionData[0] == 'institute') ? req.body.questionData[1] : null,
+            career_id: (req.body.questionData[0] == 'career') ? req.body.questionData[1] : null,
+            course_id: (req.body.questionData[0] == 'course') ? req.body.questionData[1] : null,
+            user_id: req.session.userSession,
+            state: 0,
+            text: req.body.data
         }
-
-        console.log(req.body.data);
-        console.log(req.body.ids);
+        console.log(question);
+        db.Question.create(question)
     }
 };
