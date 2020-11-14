@@ -349,5 +349,18 @@ module.exports = {
               console.log('Email sent: ' + info.response);
             }
         }); 
+    },
+    publishQuestion: async (req, res) => {
+        let ids = req.body.ids;
+
+        ids = ids.split(',');
+        console.log(ids);
+
+        for(let i = 0; i < ids.length; i++){
+            let tempData = ids[i].split(':');
+        }
+
+        console.log(req.body.data);
+        console.log(req.body.ids);
     }
 };

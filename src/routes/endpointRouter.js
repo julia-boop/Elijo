@@ -52,5 +52,7 @@ router.get('/courses/:courseID/tips', endpointController.getCourseTips);
 
 //OPINION FROM USER TO ELIJO
 router.post('/sendOpinion', endpointController.onNewOpinion);
+//PUBLISH QUESTION
+router.post('/publishQuestion', endpointController.publishQuestion);
 
 module.exports = router;

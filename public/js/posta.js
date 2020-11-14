@@ -37,14 +37,18 @@ window.addEventListener('load', function() {
   universityBtn.addEventListener('click', function(){
     universityInput.classList.toggle("show");
     institutesInput.classList.remove("show");
+    programsInput.classList.remove("show");
   });
   institutesBtn.addEventListener('click', function(){
-    universityInput.classList.remove("show");
     institutesInput.classList.toggle("show");
+    universityInput.classList.remove("show");
+    programsInput.classList.remove("show");
   });
 
   programsBtn.addEventListener('click', function(){
-    
+    programsInput.classList.toggle("show");
+    universityInput.classList.remove("show");
+    institutesInput.classList.remove("show");
   });
   /*FIN REVISAR*/
   

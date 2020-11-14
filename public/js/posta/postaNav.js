@@ -10,6 +10,7 @@ let actualAnswerPage = 0;
 let tipsArray = [];
 let actualTipsPage = 0;
 
+
 //#region  FETCHS
 function loadInstitutions(){
     fetch('/endpoints/university').then(response => {
@@ -165,13 +166,48 @@ function addToFaqsContainer(result) {
         <h6>${result[i].text} (RESPUESTA)</h6>
         </div>`
     }
-    faqsContainer.innerHTML += `<form action="">
+    
+    let data = 'U:1,C:1'/*onCategories(result[0])*/;
+
+    faqsContainer.innerHTML += `<div id="question-form">
     <h4 class="mt-4">Si no encontraste la respuesta que estabas buscando, dejá tu pregunta.</h4>
-    <textarea name="textarea" rows="3" cols="45">Preguntar...</textarea>
+    <textarea id="textarea-question" name="textarea" rows="3" cols="45" placeholder="Preguntar..."></textarea>
     <div class="d-flex justify-content-end">
-    <button class="faqs-btn-submit" type="submit">Enviar pregunta</button>
+    <button class="faqs-btn-submit" type="button" onClick="sendQuestion('${data}')">Enviar pregunta</button>
     </div>
-    </form>`
+    </div>`
+}
+
+function onCategories(data){
+    let {university_id, career_id, institute_id, course_id} = data;
+    let results = '';
+    if(university_id != null) results += 'U:university_id,';
+    if(institute_id != null) results += 'I:institute_id,';
+    if(career_id != null) results += 'C:career_id,';
+    if(course_id != null) results += 'CO:course_id,';
+
+    return results;
+}
+//#endregion
+
+//#region SEND QUESTION
+function sendQuestion(ids){
+    let formData = document.querySelector('#textarea-question');
+    let postSuccess = document.querySelector('#question-success');
+    if(formData.value.trim() !== ''){
+        fetch('/endpoints/publishQuestion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({data: formData.value, ids: ids})
+        });
+        postSuccess.classList.remove('d-none');
+        setTimeout(() => {
+            postSuccess.classList.add('d-none');
+            formData.value = '';
+        }, 2000)
+    }
 }
 //#endregion
 
@@ -209,10 +245,11 @@ function changeAnswerPage(moveTo){
         </div>
         `;
     }
+    
     faqs.innerHTML += `<div class="paginationAnswerContainer"></div>
         <form action="">
         <h4 class="mt-4">Si no encontraste la respuesta que estabas buscando, dejá tu pregunta.</h4>
-        <textarea name="textarea" rows="3" cols="45">Preguntar...</textarea>
+        <textarea name="textarea" rows="3" cols="45" placeholder="Preguntar..."></textarea>
         <div class="d-flex justify-content-end">
         <button class="faqs-btn-submit" type="submit">Enviar pregunta</button>
         </div>
@@ -233,7 +270,6 @@ function changeAnswerPage(moveTo){
 }
 
 //#endregion
-
 
 //#region TIPS
 function addToTipsContainer(result) {
@@ -423,7 +459,6 @@ function changePage(moveTo){
 }
 //#endregion
 
-
 //#region CHARTJS
 function updateChart(data){
     let institutionName = '';
@@ -455,7 +490,6 @@ function updateChart(data){
     });
 }
 //#endregion
-
 
 window.addEventListener('load', () => {
     //#region INIT
@@ -515,4 +549,32 @@ window.addEventListener('load', () => {
         }
     });
     //#endregion
+
+
+
+    /*
+    questionForm.addEventListener('submit', event => {
+        event.preventDefault();
+        console.log(formData.value);
+        if(formData.value.trim() !== ''){
+            fetch('/endpoints/publishQuestion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({data: formData.value})
+            })
+            .then(response => {
+                postSuccess.classList.remove('d-none');
+                setTimeout(() => {
+                    postSuccess.classList.add('d-none');
+                }, 2000)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        }
+    });*/
+    
 });
+

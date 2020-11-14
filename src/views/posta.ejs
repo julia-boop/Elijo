@@ -9,7 +9,7 @@
         <div class="pcDropDown">
 
             <div class="dropdown">
-                <button onclick="myFunction('universities')" class="categoryDropDown universities">
+                <button class="categoryDropDown universities">
                     Universidades <i class="far fa-arrow-alt-circle-down"></i>
                 </button>
                 <div id="universities" class="dropdown-content">
@@ -37,7 +37,7 @@
             </div>-->
 
             <div class="dropdown">
-                <button onclick="myFunction('institute')" class="categoryDropDown institute">
+                <button class="categoryDropDown institute">
                     Institutos <i class="far fa-arrow-alt-circle-down"></i>
                 </button>
                 <div id="institute" class="dropdown-content">
@@ -62,7 +62,7 @@
             </div>-->
 
             <div class="dropdown">
-                <button onclick="myFunction('region')" class="categoryDropDown region">
+                <button class="categoryDropDown region">
                     Región <i class="far fa-arrow-alt-circle-down"></i>
                 </button>
                 <div id="region" class="dropdown-content">
@@ -89,7 +89,9 @@
 
         <!-- PREGUNTAS -->
         <div class="row faqs-tips-container d-none">
-
+            <div class="alert alert-success d-none" role="alert" id="question-success">
+                Muchas gracias! Tu opinion nos importa!
+            </div>
             <div class="faqs col-12 col-md-10">
                 
             </div>
@@ -133,7 +135,7 @@
     <%- include('./partials/footer') %>
     <%- include('./partials/scripts.ejs') %>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src="/js/chartJS.js"></script>
+    
     
     <script src="/js/posta.js"></script>
     <script src="/js/googleMaps.js"></script>

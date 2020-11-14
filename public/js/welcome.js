@@ -90,13 +90,7 @@ window.addEventListener('load', function(){
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({data: popUpTextarea.value})
-            })
-            .then(response => {
-                console.log(response);
-            })
-            .catch(err => {
-                console.log(err);
-            })
+            });
         }
     });
 
@@ -111,14 +105,7 @@ window.addEventListener('load', function(){
                 },
                 body: JSON.stringify({data: ordinaryTextarea.value})
             })
-            .then(response => {
-                console.log(response);
-            })
-            .catch(err => {
-                console.log(err);
-            })
         }
-        
     })
 
     window.sessionStorage.setItem('homeSession', 'true');
