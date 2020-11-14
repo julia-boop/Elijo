@@ -512,6 +512,20 @@ option.resultsOption button{
   height: 100%;
 }
 
+
+.regionResults{
+  overflow: auto;
+  max-height: 150px;
+}
+
+.region-btn{
+  width: 100%;
+  background-color: var(--btn-bg-color);
+  border: var(--btn-border);
+  border-radius: var(--btn-border-radius);
+}
+
+
 @media(min-width: 768px){
   .carreers-btn button{
     width: 19%;

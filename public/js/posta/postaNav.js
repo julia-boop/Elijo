@@ -505,9 +505,24 @@ window.addEventListener('load', () => {
     let instituteInput = document.querySelector('.instituteInput');
     let universityResults = document.querySelector('.universityResults');
     let instituteResults = document.querySelector('.instituteResults');
+
+    let regionButton = document.querySelector('#regionButton');
+    let regionResults = document.querySelector('.regionResults');
     //#endregion
     
     //#region NAV INPUTS
+    regionButton.addEventListener('click', event => {
+        fetch('https://apis.datos.gob.ar/georef/api/provincias')
+        .then(response => {
+            return response.json()
+        })
+        .then(regions => {
+            for(let i = 0; i < regions.provincias.length; i++){
+                regionResults.innerHTML += `<button class="region-btn" value="${regions.provincias[i].id}" selected>  ${regions.provincias[i].nombre} </button>`;
+            }
+        });
+    });
+
     universityInput.addEventListener('change', event => {
         let amountOfResults = 0;
         universityResults.innerHTML = ''; 
@@ -552,33 +567,6 @@ window.addEventListener('load', () => {
             if(amountOfResults <= 0) instituteResults.innerHTML = 'No se encontraron resultados';
         }
     });
-    //#endregion
-
-
-
-    /*
-    questionForm.addEventListener('submit', event => {
-        event.preventDefault();
-        console.log(formData.value);
-        if(formData.value.trim() !== ''){
-            fetch('/endpoints/publishQuestion', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({data: formData.value})
-            })
-            .then(response => {
-                postSuccess.classList.remove('d-none');
-                setTimeout(() => {
-                    postSuccess.classList.add('d-none');
-                }, 2000)
-            })
-            .catch(err => {
-                console.log(err);
-            })
-        }
-    });*/
-    
+    //#endregion    
 });
 

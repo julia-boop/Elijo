@@ -2,14 +2,18 @@
     background-color: var(--color-2);
     width: 100vw;
 }
+
 #slider {
-    /* mediaquery para pc  */
-    /* width: 50%; */
+     /*mediaquery para pc  
+     width: 50%; */
     width: 100%;
     height: 100%;
     transform: translateX(-100%);
     -webkit-transform: translateX(-100%);
+    overflow: auto;
+    max-height: 100vh;
 }
+
 
 .slide-in {
     animation: slide-in 0.5s forwards;
