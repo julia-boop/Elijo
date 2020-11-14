@@ -73,13 +73,12 @@
             </ul>
             <% if(typeof userLoggedIn != 'undefined') { %>
             
-            <div class="collapse cuentaCollapseAbs" id="cuentaCollapse">
-                <a href="/user/account/<%=userLoggedIn.id%>" class="dropdown-item" type="button">Perfil</a>
-                <a class="dropdown-item" href="/user/createQualification/<%=userLoggedIn.id%>">Calificar</a>
-                <a class="dropdown-item" href="/user/createTip/<%=userLoggedIn.id%>">Escribir Tip</a>
-                <a class="dropdown-item" href="/user/createStats/<%=userLoggedIn.id%>">Aportar Datos</a>
-                <a class="dropdown-item" href="/user/answerQuestion/<%=userLoggedIn.id%>">Responder Preguntas</a>
-                
+            <div class="collapse cuentaCollapseAbs w-100" id="cuentaCollapse">
+                <a href="/user/account/<%=userLoggedIn.id%>" class="dropdown-item text-right" type="button">Perfil</a>
+                <a class="dropdown-item  text-right" href="/user/createQualification/<%=userLoggedIn.id%>">Calificar</a>
+                <a class="dropdown-item  text-right" href="/user/createTip/<%=userLoggedIn.id%>">Escribir Tip</a>
+                <a class="dropdown-item  text-right" href="/user/createStats/<%=userLoggedIn.id%>">Aportar Datos</a>
+                <a class="dropdown-item  text-right" href="/user/answerQuestion/<%=userLoggedIn.id%>">Responder Preguntas</a>
             </div>
             <% } %>
         </nav>
