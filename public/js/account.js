@@ -120,9 +120,9 @@ window.addEventListener('load', function(){
         .then( user => {
             for(let i = 0; i < provinces.provincias.length; i++){
                 if(user.province == provinces.provincias[i].id){
-                    provinceSelect.innerHTML +=`<option value="${provinces.provincias[i].id}" selected>  ${provinces.provincias[i].nombre} </option>`
+                    provinceSelect.innerHTML +=`<option value="${provinces.provincias[i].nombre}" selected>  ${provinces.provincias[i].nombre} </option>`
                 }else{
-                    provinceSelect.innerHTML +=`<option value="${provinces.provincias[i].id}">  ${provinces.provincias[i].nombre} </option>`
+                    provinceSelect.innerHTML +=`<option value="${provinces.provincias[i].nombre}">  ${provinces.provincias[i].nombre} </option>`
                 }
                 
             }
