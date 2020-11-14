@@ -445,11 +445,71 @@ option.resultsOption button{
 
 .paginationContainer button{
   margin: 2px;
+  margin-top: 2px;
   padding: 5px;
   height: 46px;
   background-color: var(--btn-bg-color);
   border: var(--btn-border);
   border-radius: var(--btn-border-radius);
+}
+
+.paginationAnswerContainer, .paginationTipsContainer {
+  display: flex;
+}
+
+.paginationAnswerContainer button, .paginationTipsContainer button{
+  margin: 2px;
+  margin-top: 10px;
+  padding: 5px;
+  height: 46px;
+  background-color: var(--btn-bg-color);
+  border: var(--btn-border);
+  border-radius: var(--btn-border-radius);
+  justify-content: flex-end;
+}
+
+.question-container{
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.question-container img {
+  text-align: left;
+  float: left;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.question-container h5{
+  margin: 0px;
+  margin-top: 2px!important;
+  height: 100%;
+}
+
+.question-container .response-h5{
+  margin-left: 40px;
+}
+
+.tips {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.tips img {
+  text-align: left;
+  float: left;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.tips h5 {
+  margin: 0%;
+  margin-top: 2px;
+  height: 100%;
 }
 
 @media(min-width: 768px){

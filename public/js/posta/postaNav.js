@@ -196,9 +196,10 @@ function changeAnswerPage(moveTo){
     faqs.innerHTML = '';
     
     for(let i = 0; i < answerArray[actualAnswerPage].length; i++){
-        faqs.innerHTML += `                <div class="question-container">
-        <h5><img src="/images/users/${answerArray[actualAnswerPage][i].User.photo}" alt=""><b>${answerArray[actualAnswerPage][i].User.name}:</b>${answerArray[actualAnswerPage][i].Question.text} (PREGUNTA)</h5>
-        <h6>${answerArray[actualAnswerPage][i].text} (RESPUESTA)</h6>
+        faqs.innerHTML += `<div class="question-container">
+        <img src="/images/users/${answerArray[actualAnswerPage][i].User.photo}" alt="">
+        <h5>P: <b>${answerArray[actualAnswerPage][i].User.name}:</b>${answerArray[actualAnswerPage][i].Question.text}</h5>
+        <h5 class="response-h5">R: ${answerArray[actualAnswerPage][i].text}</h5>
         </div>
         `;
     }
@@ -271,8 +272,9 @@ function changeTipsPage(moveTo){
     
     for(let i = 0; i < tipsArray[actualTipsPage].length; i++){
         tips.innerHTML += `<div class="tips">
-        <h5><img src="/images/users/${tipsArray[actualTipsPage][i].User.photo}" alt=""><b>${tipsArray[actualTipsPage][i].User.name}:
-        </b>${tipsArray[actualTipsPage][i].tip}</h5>
+        <img src="/images/users/${tipsArray[actualTipsPage][i].User.photo}" alt="">
+        <h5>${tipsArray[actualTipsPage][i].User.name}:
+         ${tipsArray[actualTipsPage][i].tip}</h5>
         </div>
         `;
     }
@@ -293,12 +295,6 @@ function changeTipsPage(moveTo){
 }
 
 //#endregion
-
-
-
-
-
-
 
 //#region CAREERS CONTAINER
 function addToContainer(careers, institutionType){

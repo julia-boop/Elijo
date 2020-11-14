@@ -1,6 +1,6 @@
-function myFunction(id) {
-  document.getElementById(id).classList.toggle("show");
-}
+// function myFunction(id) {
+//   document.getElementById(id).classList.toggle("show");
+// }
 
 function filterFunction() {
   var input, filter, ul, li, a, i;
@@ -34,58 +34,17 @@ window.addEventListener('load', function() {
   let programsBtn = document.querySelector('.region');
 
 
-
   universityBtn.addEventListener('click', function(){
-    if($(universityInput).is("inherit")){
-      universityInput.style.display = "none";
-    }
-    universityInput.style.display = "inherit";
-    //carrersInput.style.display = "none";
-    //cursesInput.style.display = "none";
-    programsInput.style.display = "none";
-    institutesInput.style.display = "none";
+    universityInput.classList.toggle("show");
+    institutesInput.classList.remove("show");
   });
   institutesBtn.addEventListener('click', function(){
-    if($(universityInput).is("inherit")){
-      universityInput.style.display = "none";
-    }
-    institutesInput.style.display = "inherit";
-    universityInput.style.display = "none";
-    //carrersInput.style.display = "none";
-    //cursesInput.style.display = "none";
-    programsInput.style.display = "none";
-    console.log('entro');
+    universityInput.classList.remove("show");
+    institutesInput.classList.toggle("show");
   });
-  /*
-  carrersBtn.addEventListener('click', function(){
-    if($(carrersInput).is("inherit")){
-      //carrersInput.style.display = "none";
-    }
-    //carrersInput.style.display = "inherit";
-    universityInput.style.display = "none";
-    //cursesInput.style.display = "none";
-    programsInput.style.display = "none";
-    institutesInput.style.display = "none";
-  });
-  cursesBtn.addEventListener('click', function(){
-    if($(cursesInput).is("inherit")){
-      //cursesInput.style.display = "none";
-    }
-    //cursesInput.style.display = "inherit";
-    //carrersInput.style.display = "none";
-    universityInput.style.display = "none";
-    programsInput.style.display = "none";
-    institutesInput.style.display = "none";
-  });*/
+
   programsBtn.addEventListener('click', function(){
-    if($(programsInput).is("inherit")){
-      programsInput.style.display = "none";
-    }
-    programsInput.style.display = "inherit";
-    //carrersInput.style.display = "none";
-    //cursesInput.style.display = "none";
-    universityInput.style.display = "none";
-    institutesInput.style.display = "none";
+    
   });
   /*FIN REVISAR*/
   
