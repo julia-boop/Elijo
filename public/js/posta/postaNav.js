@@ -332,22 +332,24 @@ function changeUsefulInformation(data, career){
         infoContainer.innerHTML = `
         <h3>Informacion útil</h3>
         <ul id="links-container">
-        <li><a id="web-page-link" href="">Pagina web</a></li>
-        <li id="adress-data"><a id="map-link" href="">Mapa</a></li>
-        </ul>
-        
-        <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105083.85891257568!2d-58.51286837494019!3d-34.60743372073798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb430ebd761df%3A0xe3c33a8b19ce6c7!2sUniversidad%20Torcuato%20Di%20Tella!5e0!3m2!1ses-419!2sar!4v1599014780798!5m2!1ses-419!2sar" width="200" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-        </div>
-        `;
+        <li><a id="web-page-link" href="">Sitio web</a></li>
+        <li id="address-data"><a id="map-link" href="">Mapa</a></li>
+        </ul>`
+    
     }
+
+    // <div class="map-container">
+    // <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105083.85891257568!2d-58.51286837494019!3d-34.60743372073798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb430ebd761df%3A0xe3c33a8b19ce6c7!2sUniversidad%20Torcuato%20Di%20Tella!5e0!3m2!1ses-419!2sar!4v1599014780798!5m2!1ses-419!2sar" width="200" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    // </div>
+    // `;
     
     let webPageLink = document.querySelector('#web-page-link');
     
     let mapLink = document.querySelector('#map-link');
-    let adressData = document.querySelector('#adress-data');
+    let addressData = document.querySelector('#address-data');
     
     webPageLink.href = data.link;
+    addressData.href = data.address;
 }
 //#endregion
 
