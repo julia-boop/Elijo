@@ -236,7 +236,11 @@ textarea{
     width: 100%;
 }
 
-
+.close-pop-up > *{
+    display: none!important;
+    visibility: hidden!important;
+    background-color: yellow;
+}
 /*---------FIN DIV DE AYUDA----------------*/
 
 
@@ -244,6 +248,10 @@ textarea{
 .pop-up-background{
     display: flex;
     justify-content: center;
+    transition: width 1s ease;
+}
+
+.pop-up-background-open{
     transition: width 1s ease;
 }
 

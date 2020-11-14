@@ -288,6 +288,16 @@ module.exports = {
               console.log('Email sent: ' + info.response);
             }
         }); 
+        //CAMBIAR ACA
+        let mensaje = 'Gracias por ayudarnos a mejorar!'
+        db.User.findByPk(req.session.userSession)
+        .then( user => {
+
+            return res.render('requestNewInstitution', {user, mensaje});
+        })
+        .catch(error => {
+            return res.send(error);
+        })
         return res.send(req.body);
     },
     confirmUser: (req, res) => {

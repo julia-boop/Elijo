@@ -5,9 +5,9 @@
         <%- include('./partials/header') %>
         <div class="container-fluid">
             
-            <div class="pop-up-background open">
+            <div class="pop-up-background close-pop-up">
                 
-                <div class="pop-up help d-none"> <!-- Se coloca en d-none a pedido de Andres (POPUP) -->
+                <div class="pop-up help"> <!-- Se coloca en d-none a pedido de Andres (POPUP) -->
                     <div class="quit-btn-container pop-up-child d-none">
                         <button class="quit-btn"><i class="far fa-times-circle fa-2x"></i></button>
                         <h3 class="pop-up-child d-none">¿En que te puedo ayudar?</h3>
@@ -22,16 +22,18 @@
                 
                     <div class="orderListv2 pop-up-child d-none">
                     </div>
-                    
-                    <div class="extraInfo">
+                    <div class="alert alert-success d-none" role="alert" id="thank-you">
+                        Muchas gracias! Tu opinion nos importa!
+                    </div>
+                    <form action="" class="extraInfo" id="pop-up-form">
                         <div class="pop-up-child d-none">
                             <h6>¿En que más te podemos ayudar?</h6>
                         </div>
                         <div class="pop-up-child d-none">
-                            <textarea name="opinion" id="opinion" cols="60" rows="2"></textarea>
-                            <button class="pop-up-send-btn"><i class="far fa-paper-plane fa-2x"></i></button>
+                            <textarea required name="opinion" id="pop-up-opinion" cols="60" rows="2"></textarea>
+                            <button type="submit" class="pop-up-send-btn"><i class="far fa-paper-plane fa-2x"></i></button>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 
             </div>
@@ -68,13 +70,13 @@
                         <a href="comingSoon"><button class="help-btn-anchor">¿Qué cursos hacer?</button></a>  
                     </div>
                     
-                    <div>
+                    <form action="" id="ordinary-form">
                         <h6>¿Tenés alguna otra pregunta que pensas que nosotros te podemos ayudar?</h6>
-                        <textarea name="opinion" id="opinion" cols="60" rows="5"></textarea>
+                        <textarea required name="opinion" id="ordinary-opinion" cols="60" rows="5"></textarea>
                         <div class="sendBtnContainer d-flex justify-content-end">
-                            <button class="sendBtn"><i class="far fa-paper-plane fa-2x"></i></button>
+                            <button type="submit" class="sendBtn"><i class="far fa-paper-plane fa-2x"></i></button>
                         </div>
-                    </div>
+                    </form>
                 </div>  
             </div>
         </div>

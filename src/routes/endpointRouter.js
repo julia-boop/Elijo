@@ -50,5 +50,7 @@ router.get('/university/:universityID/tips', endpointController.getUniversityTip
 router.get('/careers/:careerID/tips', endpointController.getCareerTips);
 router.get('/courses/:courseID/tips', endpointController.getCourseTips);
 
+//OPINION FROM USER TO ELIJO
+router.post('/sendOpinion', endpointController.onNewOpinion);
 
 module.exports = router;

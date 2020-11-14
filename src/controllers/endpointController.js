@@ -66,7 +66,8 @@ module.exports = {
         let career = await db.Career.findOne({
             where: {
                 id: req.params.careerID
-            }
+            },
+            include: [{association: 'Universities'}]
         })
         .catch(err => {
             return res.status(404).json(err);    
@@ -77,7 +78,8 @@ module.exports = {
         let course = await db.Course.findOne({
             where: {
                 id: req.params.courseID
-            }
+            },
+            include: [{association: 'Institutes'}]
         })
         .catch(err => {
             return res.status(404).json(err);    
@@ -323,5 +325,29 @@ module.exports = {
             return res.status(404).json(err);    
         })
         return res.status(200).json(allTips);
+    },
+    onNewOpinion: async (req, res) => {
+        let transporter = nodemailer.createTransport({
+            host: "plesk.ar.conectemos.com",
+            port: 25,
+            auth: {
+              user: process.env.NODEMAILER_USER,
+              pass: process.env.NODEMAILER_PASS
+            }
+        });
+        let mailOptions = {
+            from: 'usuario',
+            to: 'equipo@elijo.org',
+            subject: 'EN que mas te podemos ayudar',
+            text: (req.body.data != '') ? req.body.data : 'EL usuario no agrego ningun mensaje'
+        };
+          
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+        }); 
     }
 };
