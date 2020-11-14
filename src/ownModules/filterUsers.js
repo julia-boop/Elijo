@@ -153,7 +153,7 @@ function filterByCareerYear(users, query){
 function filterByProvince(users, query){
 
     query = convertToArray(query);
-
+    console.log(query);
     let usersByProvince = [];
     
     for(let i=0; i<users.length; i++){
@@ -171,7 +171,7 @@ function filterByProvince(users, query){
 
 module.exports = function (users, queries){
     let usersFiltered = users;
-    
+    console.log(queries);
     if(queries.age != undefined) usersFiltered = filterByAge(usersFiltered, queries.age);
     
     if(queries.university != undefined) usersFiltered = filterByUniversity(usersFiltered, queries.university);

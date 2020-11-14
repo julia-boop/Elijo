@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head') %>
+
+    <body>
+        <%- include('./partials/header') %>
+
+        <form action="/user/answerQuestion/<%= user.id %>" method="POST" class="ml-5 mt-5">
+           
+            <select name="question" id="">
+                <option value="" hidden>Seleccione una pregunta para responder</option>
+                <% for(let i = 0; i < questions.length; i++) { %>
+                    <option value="<%=questions[i].id%>"><%=questions[i].text%></option>
+                <% } %>
+            </select>
+
+            <textarea name="answer" id="answer" cols="30" rows="10"></textarea>
+
+            <br>
+            <button class="my-5" type="submit">Enviar respuesta</button>
+
+        </form>
+        <%- include('./partials/scripts.ejs') %>
+    </body>
+</html>

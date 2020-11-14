@@ -113,13 +113,14 @@ window.addEventListener('load', function(){
         return response.json()
     })
     .then(provinces => {
-        fetch('/endpoints/user/')//aca iria el id del user
+        fetch('/endpoints/user/')
         .then(userResponse => {
             return userResponse.json();
         })
         .then( user => {
+            provinces.provincias.sort((a, b) => a.nombre < b.nombre ? -1 : a.nombre === b.nombre ? 0 : 1)
             for(let i = 0; i < provinces.provincias.length; i++){
-                if(user.province == provinces.provincias[i].id){
+                if(user.province == provinces.provincias[i].nombre){
                     provinceSelect.innerHTML +=`<option value="${provinces.provincias[i].nombre}" selected>  ${provinces.provincias[i].nombre} </option>`
                 }else{
                     provinceSelect.innerHTML +=`<option value="${provinces.provincias[i].nombre}">  ${provinces.provincias[i].nombre} </option>`

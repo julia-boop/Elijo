@@ -42,6 +42,8 @@ router.get('/createTip/:userID', hasAccess, userController.showTipForm );
 router.post('/createTip/:userID', hasAccess, userController.saveTip );
 router.get('/createStats/:userID', hasAccess, userController.showStatsForm );
 router.post('/createStats/:userID', hasAccess, userController.saveStats );
+router.get('/answerQuestion/:userID', hasAccess, userController.showAnswerForm );
+router.post('/answerQuestion/:userID', hasAccess, userController.uploadAnswer );
 
 //LOGOUT
 router.get('/logout', hasAccess, userController.logout);

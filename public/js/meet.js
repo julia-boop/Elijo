@@ -70,6 +70,15 @@ window.addEventListener('load', function() {
             formFilter.submit();
         }
     })
-    
-    
+    let regionCard = document.querySelector('#regionCard')
+    fetch('https://apis.datos.gob.ar/georef/api/provincias')
+    .then(response => {
+        return response.json()
+    })
+    .then(provinces => {
+        provinces.provincias.sort((a, b) => a.nombre < b.nombre ? -1 : a.nombre === b.nombre ? 0 : 1)
+        for(let i = 0; i < provinces.provincias.length; i++){
+            regionCard.innerHTML += `<label for=""><input onclick="addInputChecked('province')" type="checkbox" name="province" value="${provinces.provincias[i].nombre}" id="">${provinces.provincias[i].nombre}</label>`
+        }
+    })
 })

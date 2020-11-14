@@ -6,6 +6,7 @@ function fetchRegions(){
         return response.json()
     })
     .then(provinces => {
+        provinces.provincias.sort((a, b) => a.nombre < b.nombre ? -1 : a.nombre === b.nombre ? 0 : 1)
         for(let i = 0; i < provinces.provincias.length; i++){
             regionSelect.innerHTML +=`<option value="${provinces.provincias[i].nombre}" selected>  ${provinces.provincias[i].nombre} </option>`
         }

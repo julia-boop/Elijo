@@ -8,6 +8,7 @@ const nodemailer = require('nodemailer');
 const nodemailerMessenger = require('../ownModules/nodemailerMessenger');
 const updateCalification = require('../ownModules/updateCalification');
 const updateStats = require('../ownModules/updateStats');
+const sequelize = db.sequelize;
 
 module.exports = {
     account: async function(req, res){
@@ -680,6 +681,79 @@ module.exports = {
                 })
             })
         }
+    },
+    showAnswerForm: async (req, res) => {
+        let user = await db.User.findOne({
+            where: {
+                id: req.params.userID
+            },
+            include: [
+                {
+                    model: db.Career,
+                    as: 'User_careers',
+                    through: {
+                        model: db.User_career_study
+                    },
+                    include: [{association: 'Universities'}]
+                }, 
+                {
+                    model: db.Course,
+                    as: 'User_courses',
+                    through: {
+                        model: db.User_course_study
+                    },
+                    include: [{association: 'Institutes'}]
+                }
+            ]
+        })
+        .catch(err => {
+            return res.send(err);
+        })
+        let questions = await db.Question.findAll({
+            where: {
+                state: 0
+            }
+        })
+        .catch(err => {
+            return res.send(err);
+        })
+
+        let cleanQuestions = [];
+        for(let i = 0; i < user.User_careers.length; i++ ){
+            for(let j = 0; j < questions.length; j++){
+                if(user.User_careers[i].id == questions[j].career_id || user.User_careers[i].Universities.id == questions[j].university_id){
+                    cleanQuestions.push(questions[j]);
+                }
+            }
+        }
+
+        for(let i = 0; i < user.User_courses.length; i++ ){
+            for(let j = 0; j < questions.length; j++){
+                if(user.User_courses[i].id == questions[j].course_id || user.User_courses[i].Institutes.id == questions[j].institute_id){
+                    cleanQuestions.push(questions[j]);
+                }
+            }
+        }
+        questions = cleanQuestions;
+        res.render('answersForm', {user, questions});
+    },
+    uploadAnswer: (req, res) => {
+        console.log(req.body);
+        db.Answer.create({
+            user_id: req.session.userSession,
+            text: req.body.answer,
+            question_id: req.body.question
+
+        })
+        db.Question.update({state:1}, {
+            where: {
+                id: req.body.question
+            }
+        })
+        .then(response => {
+            res.redirect('/user/account/'+ req.session.userSession);
+        })
+        
     },
     logout: (req, res) => {
         req.session.destroy();

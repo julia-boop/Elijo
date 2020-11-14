@@ -517,8 +517,9 @@ window.addEventListener('load', () => {
             return response.json()
         })
         .then(regions => {
+            regions.provincias.sort((a, b) => a.nombre < b.nombre ? -1 : a.nombre === b.nombre ? 0 : 1)
             for(let i = 0; i < regions.provincias.length; i++){
-                regionResults.innerHTML += `<button class="region-btn" value="${regions.provincias[i].id}" selected>  ${regions.provincias[i].nombre} </button>`;
+                regionResults.innerHTML += `<button class="region-btn" value="${regions.provincias[i].nombre}">  ${regions.provincias[i].nombre} </button>`;
             }
         });
     });
