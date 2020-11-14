@@ -63,18 +63,20 @@
                         <li><a href="/user/register">Sign up</a></li>
                         <li><a href="/user/login">Log In</a></li>
                     <% }else{ %>
-                        <li class="btn-group">
-                            <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Cuenta
+                        <li>
+                            <a href="" class="cuentaToggler" type="" data-toggle="collapse" data-target="#cuentaCollapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                Cuenta <i class="fas fa-chevron-down"></i> 
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right card card-body">
-                              <a href="/user/account/<%=userLoggedIn.id%>" class="dropdown-item" type="button">Perfil</a>
-                              <a class="dropdown-item" href="/user/createQualification/<%=userLoggedIn.id%>">Calificar</a>
-                              <a class="dropdown-item" href="/user/createTip/<%=userLoggedIn.id%>">Escribir Tip</a>
-                              <a class="dropdown-item" href="/user/createStats/<%=userLoggedIn.id%>">Aportar Datos</a>
-                              <a class="dropdown-item" href="/user/answerQuestion/<%=userLoggedIn.id%>">Responder Preguntas</a>
+                            <div class="collapse cuentaCollapseAbs" id="cuentaCollapse">
+                                <a href="/user/account/<%=userLoggedIn.id%>" class="dropdown-item" type="button">Perfil</a>
+                                <a class="dropdown-item" href="/user/createQualification/<%=userLoggedIn.id%>">Calificar</a>
+                                <a class="dropdown-item" href="/user/createTip/<%=userLoggedIn.id%>">Escribir Tip</a>
+                                <a class="dropdown-item" href="/user/createStats/<%=userLoggedIn.id%>">Aportar Datos</a>
+                                <a class="dropdown-item" href="/user/answerQuestion/<%=userLoggedIn.id%>">Responder Preguntas</a>
+                                
                             </div>
                         </li>
+                        
                         <!--<li><a href="/user/account/<%=userLoggedIn.id%>">Cuenta</a></li>-->
                         <li><a href="/user/logout">Log out</a></li>
                     <% } %>
