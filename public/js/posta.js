@@ -1,7 +1,3 @@
-// function myFunction(id) {
-//   document.getElementById(id).classList.toggle("show");
-// }
-
 function filterFunction() {
   var input, filter, ul, li, a, i;
   input = document.getElementById("myInput");
@@ -18,21 +14,26 @@ function filterFunction() {
   }
 }
 
+function closeButton(){
+  let universityInput = document.querySelector('#universities');
+  let institutesInput = document.querySelector('#institute');
+  let programsInput = document.querySelector('#region');
+
+  universityInput.classList.remove("show");
+  institutesInput.classList.remove("show");
+  programsInput.classList.remove("show");
+}
+
 window.addEventListener('load', function() {
 
   /*REVISAR*/
   let universityInput = document.querySelector('#universities');
-  /*let carrersInput = document.querySelector('#carrers');
-  let cursesInput = document.querySelector('#curses');*/
   let institutesInput = document.querySelector('#institute');
   let programsInput = document.querySelector('#region');
 
   let universityBtn = document.querySelector('.universities');
-  /*let carrersBtn = document.querySelector('.carrers');
-  let cursesBtn = document.querySelector('.curses');*/
   let institutesBtn = document.querySelector('.institute');
   let programsBtn = document.querySelector('.region');
-
 
   universityBtn.addEventListener('click', function(){
     universityInput.classList.toggle("show");
@@ -50,23 +51,6 @@ window.addEventListener('load', function() {
     universityInput.classList.remove("show");
     institutesInput.classList.remove("show");
   });
-  /*FIN REVISAR*/
-  
-  // let tipsBtn = document.querySelector('.tipsPhoneBtn');
-  // let tipsDiv = document.querySelector('.mobileTips');
-  // let closeMobBtn = document.querySelector('.mobileTipsCross');
-  // tipsBtn.addEventListener('click', function(){
-  //   tipsBtn.classList.add('d-none')
-  //   tipsDiv.classList.add('openMobileTips');
-  // })
-  
-  // closeMobBtn.addEventListener('click', function(){
-  //   tipsBtn.classList.remove('d-none');
-  //   tipsDiv.classList.remove('openMobileTips');
-  // })
-
-
-
 
   /*FUNCIONAMIENTO DE BOTONES NAVEGACION*/
   let genBtn = document.querySelector('.general-btn');
@@ -76,11 +60,6 @@ window.addEventListener('load', function() {
   let generalView = document.querySelector('.generalFlap');
   let faqsTipsView = document.querySelector('.faqs-tips-container');
   let lessonsView = document.querySelector('.tips-container');
-
-  /*DEFAULTS*/
-  // faqsTipsView.classList.add('d-none');
-  // lessonsView.classList.add('d-none');
-
 
   genBtn.addEventListener('click', function(){
     generalView.classList.remove('d-none');
@@ -100,6 +79,4 @@ window.addEventListener('load', function() {
     faqsTipsView.classList.add('d-none');
     lessonsView.classList.remove('d-none');
   });
-
-
 })
