@@ -73,7 +73,7 @@ header div.phoneMenu nav  li a{
 header div.phoneMenu nav  li a:hover{
     text-decoration: none;
     color: black;
-    border-right-color: blue;
+    border-right-color: var(--btn-bg-color-hover);
     width: 100%;
 }
 
@@ -212,7 +212,7 @@ div.pcMenu nav ul li a:hover{
     text-decoration: none;
     color: black;
     padding-bottom: 5px;
-    border-bottom: 5px solid blue;
+    border-bottom: 5px solid var(--btn-bg-color-hover);
     transform: border-bottom 0.2s ease-in-out;
     width: 100%;
 }
@@ -220,10 +220,10 @@ div.pcMenu nav ul li a:hover{
 div.pcMenu nav ul li a img{
     width: 90px;
 }
-
+/*
 div.pcMenu nav ul div{
     height: 100%;
-}
+}*/
 
 div.pcMenu nav div li{
     display:inline-block;
@@ -312,4 +312,8 @@ div.pcMenu nav div li{
 
 .text-container p{
     height: 20px !important;
+}
+
+.headerCuenta{
+    left: 125px !important; 
 }
