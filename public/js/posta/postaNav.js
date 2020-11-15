@@ -69,17 +69,19 @@ function fetchInstitution(id, institutionType){
 }
 
 function fetchStudiesManager(id, institutionType) {
+    closeButton();
     fetchCareerData(id, institutionType);
     fetchAnswersCareerOrCourse(id, institutionType);
     fetchTipsCareerOrCourse(id, institutionType);
 }
 
 function fetchInstitutionManager(id, institutionType) {
+    closeButton();
+
     let dataPostaContainer = document.querySelector('.data-posta-container');
     dataPostaContainer.innerHTML = '';
     let regionsResultsDiv = document.querySelector('.regionsResults');
     regionsResultsDiv.innerHTML = '';
-
 
     fetchInstitution(id, institutionType);
     fetchAnswersInstitutesAndUniversities(id, institutionType);
@@ -125,7 +127,6 @@ function fetchAnswersInstitutesAndUniversities(id, instituteOrUniversity) {
         return response.json();
     })
     .then(result => {
-        console.log(result);
         addToFaqsContainer(result);
         makePaginationAnswer(result);
         changeAnswerPage(0);
@@ -176,7 +177,7 @@ function fetchRegionUniversities(region){
         return response.json();
     })
     .then(results => {
-        //console.log(results);
+        closeButton();
         showRegionResults(results);
     })
 }
@@ -274,7 +275,6 @@ function makePaginationAnswer(results){
         index += amountByPage;
         answerArray.push(page);
     }
-    console.log(answerArray);
 }
 function changeAnswerPage(moveTo){
     if(answerArray[actualAnswerPage] == null || answerArray[actualAnswerPage] == undefined) return ;
@@ -591,6 +591,7 @@ window.addEventListener('load', () => {
                     universityResults.innerHTML +=`<option class="resultsOption" id="inputButton" value="${universities[i].id}" onclick="fetchInstitutionManager(${universities[i].id}, 'university')">  <button>${universities[i].name}</button> </option>`;
                 }
             }
+            console.log(amountOfResults);
             if(amountOfResults <= 0) universityResults.innerHTML = 'No se encontraron resultados';
         }
     });
