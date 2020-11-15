@@ -370,5 +370,8 @@ module.exports = {
         }
         console.log(question);
         db.Question.create(question)
+        .catch(function(e){
+            return res.send(e);
+        })
     }
 };
