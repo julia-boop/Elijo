@@ -10,6 +10,8 @@ router.get('/courses/:instituteOwner', endpointController.getCourses);
 router.get('/institute', endpointController.getInstitutes);
 router.get('/university', endpointController.getUniversities);
 
+router.get('/byRegion/:region', endpointController.getInstitutionByRegion)
+
 router.get('/institute/:instituteID', endpointController.getSpecificInstitutes);
 router.get('/university/:universityID', endpointController.getSpecificUniversities);
 router.get('/course/:courseID', endpointController.getSpecificCourse);
