@@ -737,46 +737,8 @@ module.exports = {
         questions = cleanQuestions;
         res.render('answersForm', {user, questions});
     },
-    uploadAnswer: (req, res) => {
-        console.log(req.body);
-
+    uploadAnswer: async (req, res) => {
         let errors = validationResult(req)
-
-        let user = db.User.findOne({
-            where: {
-                id: req.params.userID
-            },
-            include: [
-                {
-                    model: db.Career,
-                    as: 'User_careers',
-                    through: {
-                        model: db.User_career_study
-                    },
-                    include: [{association: 'Universities'}]
-                }, 
-                {
-                    model: db.Course,
-                    as: 'User_courses',
-                    through: {
-                        model: db.User_course_study
-                    },
-                    include: [{association: 'Institutes'}]
-                }
-            ]
-        })
-        .catch(err => {
-            return res.send(err);
-        })
-
-        let questions = db.Question.findAll({
-            where: {
-                state: 0
-            }
-        })
-        .catch(err => {
-            return res.send(err);
-        })
 
         if(errors.isEmpty()){
             db.Answer.create({
@@ -794,6 +756,41 @@ module.exports = {
                 res.redirect('/user/account/'+ req.session.userSession);
             })
         } else {
+            let user = await db.User.findOne({
+                where: {
+                    id: req.params.userID
+                },
+                include: [
+                    {
+                        model: db.Career,
+                        as: 'User_careers',
+                        through: {
+                            model: db.User_career_study
+                        },
+                        include: [{association: 'Universities'}]
+                    }, 
+                    {
+                        model: db.Course,
+                        as: 'User_courses',
+                        through: {
+                            model: db.User_course_study
+                        },
+                        include: [{association: 'Institutes'}]
+                    }
+                ]
+            })
+            .catch(err => {
+                return res.send(err);
+            })
+
+            let questions = await db.Question.findAll({
+                where: {
+                    state: 0
+                }
+            })
+            .catch(err => {
+                return res.send(err);
+            })
             res.render('answersForm', {errors:errors.errors, user:user, questions:questions})
         }
         
