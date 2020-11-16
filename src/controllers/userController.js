@@ -739,20 +739,63 @@ module.exports = {
     },
     uploadAnswer: (req, res) => {
         console.log(req.body);
-        db.Answer.create({
-            user_id: req.session.userSession,
-            text: req.body.answer,
-            question_id: req.body.question
 
-        })
-        db.Question.update({state:1}, {
+        let errors = validationResult(req)
+
+        let user = db.User.findOne({
             where: {
-                id: req.body.question
+                id: req.params.userID
+            },
+            include: [
+                {
+                    model: db.Career,
+                    as: 'User_careers',
+                    through: {
+                        model: db.User_career_study
+                    },
+                    include: [{association: 'Universities'}]
+                }, 
+                {
+                    model: db.Course,
+                    as: 'User_courses',
+                    through: {
+                        model: db.User_course_study
+                    },
+                    include: [{association: 'Institutes'}]
+                }
+            ]
+        })
+        .catch(err => {
+            return res.send(err);
+        })
+
+        let questions = db.Question.findAll({
+            where: {
+                state: 0
             }
         })
-        .then(response => {
-            res.redirect('/user/account/'+ req.session.userSession);
+        .catch(err => {
+            return res.send(err);
         })
+
+        if(errors.isEmpty()){
+            db.Answer.create({
+                user_id: req.session.userSession,
+                text: req.body.answer,
+                question_id: req.body.question
+
+            })
+            db.Question.update({state:1}, {
+                where: {
+                    id: req.body.question
+                }
+            })
+            .then(response => {
+                res.redirect('/user/account/'+ req.session.userSession);
+            })
+        } else {
+            res.render('answersForm', {errors:errors.errors, user:user, questions:questions})
+        }
         
     },
     logout: (req, res) => {
