@@ -198,6 +198,10 @@ button.categoryDropDown{
   width: 350px;
 }
 
+.make-questions{
+  margin: 30px;
+}
+
 button.more-info-btn{
   margin: 5px;
 }

@@ -5,6 +5,7 @@ const path = require('path');
 const registerValidation = require('../validations/registerValidation');
 const loginValidation = require('../validations/loginValidation');
 const hasAccess = require('../middlewares/hasAccess');
+const answerValidation = require('../validations/answerValidation')
 
 const userController = require('../controllers/userController.js');
 
@@ -43,7 +44,7 @@ router.post('/createTip/:userID', hasAccess, userController.saveTip );
 router.get('/createStats/:userID', hasAccess, userController.showStatsForm );
 router.post('/createStats/:userID', hasAccess, userController.saveStats );
 router.get('/answerQuestion/:userID', hasAccess, userController.showAnswerForm );
-router.post('/answerQuestion/:userID', hasAccess, userController.uploadAnswer );
+router.post('/answerQuestion/:userID', hasAccess, answerValidation, userController.uploadAnswer );
 
 //LOGOUT
 router.get('/logout', hasAccess, userController.logout);

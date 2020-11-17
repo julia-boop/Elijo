@@ -147,6 +147,15 @@ header div.phoneMenu .opened .line3 {
     stroke-width: 6;
 }
 
+.dropMobileAccount{
+    border-radius: 5px;
+    background-color: var(--color-3);
+}
+
+.dropMobileAccount a:hover{
+    background-color: var(--color-4);
+}
+
 
 
 /*=================================
@@ -160,8 +169,8 @@ header div.phoneMenu .opened .line3 {
     background-color: var(--color-3);
 }
 
-.dropmenuAccount a:hover {
-    background-color: var(--color-4);
+.dropmenuAccount a:focus {
+    background-color: var(--color-5);
 }
 
 .pcMenu{
@@ -318,3 +327,4 @@ div.pcMenu nav div li{
 .headerCuenta{
     left: 125px !important; 
 }
+

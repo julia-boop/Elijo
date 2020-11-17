@@ -102,7 +102,9 @@
                         <button class="faqs-btn-submit" type="button" onClick="sendQuestion()">Enviar pregunta</button>
                     </div>
                 </div>
-                <% } %>
+                <% } else {%>
+                    <h4 class="make-questions">¿Tenés preguntas para estudiantes? <a href="/user/login">Inicia Sesión </a> o <a href="/user/register">Registrate</a> para hacerlas</h4>
+                <% } %> 
             </div>
         </div>
         <!-- /PREGUNTAS -->

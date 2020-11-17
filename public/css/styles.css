@@ -135,6 +135,10 @@ body{
         margin-bottom: 3px;
     }
 
+    #stat{
+        padding-left: 27%;
+    }
+
     #slider{
         width: 30% !important
     }
