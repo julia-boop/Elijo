@@ -174,7 +174,7 @@ function filterByInterest(users, query){
     for(let i=0; i<users.length; i++){
         for(let j=0; j< query.length; j++){
             for(let k = 0; k < users[i].Interest.length; k++){
-                if(users[i].Interest[k].toLowerCase() == query[j].toLowerCase()){
+                if(users[i].Interest[k].dataValues.name.toLowerCase() == query[j].toLowerCase()){
                     usersByInterests.push(users[i]);
                 }
             }
