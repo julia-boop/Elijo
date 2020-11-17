@@ -60,7 +60,7 @@
                             <div class="card">
                                 <% if(typeof interests != 'undefined'){ %>
                                     <% for(let i = 0; i < interests.length; i++){ %>
-                                        <label for="<%=interests[i].interest_name%>"><input onclick="addInputChecked('interest<%= i %>')" type="checkbox" name="interest" id="interest" value="<%= interests.id %>" ><%=interests[i].interest_name%></label>    
+                                        <label for="<%=interests[i].interest_name%>"><input onclick="addInputChecked('interest<%= i %>')" type="checkbox" name="interest" id="interest" value="<%= interests[i].id %>" ><%=interests[i].interest_name%></label>    
                                     <% } %>                                
                                 <% } %>  
                             </div>
