@@ -364,13 +364,15 @@ function addToContainer(careers, institutionType){
 //#region CHANGE RIGHT INFO
 function changeUsefulInformation(data, career){
     
+    console.log(data);
+
     let infoContainer = document.querySelector('.information-container');
     
     if(data != null){
         infoContainer.innerHTML = `
         <h3>Informacion útil</h3>
         <ul id="links-container">
-        <li><a id="web-page-link" href="">Sitio web</a></li>
+        <li><a id="web-page-link" href="${data.link}">Sitio web</a></li>
         <li id="address-data"><a id="map-link" href="">Mapa</a></li>
         </ul>`
     
@@ -381,13 +383,10 @@ function changeUsefulInformation(data, career){
     // </div>
     // `;
     
-    let webPageLink = document.querySelector('#web-page-link');
-    
-    let mapLink = document.querySelector('#map-link');
-    let addressData = document.querySelector('#address-data');
-    
-    webPageLink.href = data.link;
-    addressData.href = data.address;
+
+    // https://www.google.com.ar/maps/place/calle+falsa+1234, +Buenos+Aires
+
+
 }
 //#endregion
 
