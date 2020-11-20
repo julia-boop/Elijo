@@ -112,6 +112,7 @@
     top: -30px;
     right: -25px;
     margin: 5px;
+    object-fit: cover;
 }
 
 .estudiante h3{
