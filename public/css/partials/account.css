@@ -39,12 +39,14 @@ div.notifications{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: center;
     position: relative;
     
 }
 
 div.notifications button{
+    margin: 20px;
+    margin-bottom: 40px;
     padding: 5px;
     background-color: blue;
     color: white;

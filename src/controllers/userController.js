@@ -737,22 +737,62 @@ module.exports = {
         questions = cleanQuestions;
         res.render('answersForm', {user, questions});
     },
-    uploadAnswer: (req, res) => {
-        console.log(req.body);
-        db.Answer.create({
-            user_id: req.session.userSession,
-            text: req.body.answer,
-            question_id: req.body.question
+    uploadAnswer: async (req, res) => {
+        let errors = validationResult(req)
 
-        })
-        db.Question.update({state:1}, {
-            where: {
-                id: req.body.question
-            }
-        })
-        .then(response => {
-            res.redirect('/user/account/'+ req.session.userSession);
-        })
+        if(errors.isEmpty()){
+            db.Answer.create({
+                user_id: req.session.userSession,
+                text: req.body.answer,
+                question_id: req.body.question
+
+            })
+            db.Question.update({state:1}, {
+                where: {
+                    id: req.body.question
+                }
+            })
+            .then(response => {
+                res.redirect('/user/account/'+ req.session.userSession);
+            })
+        } else {
+            let user = await db.User.findOne({
+                where: {
+                    id: req.params.userID
+                },
+                include: [
+                    {
+                        model: db.Career,
+                        as: 'User_careers',
+                        through: {
+                            model: db.User_career_study
+                        },
+                        include: [{association: 'Universities'}]
+                    }, 
+                    {
+                        model: db.Course,
+                        as: 'User_courses',
+                        through: {
+                            model: db.User_course_study
+                        },
+                        include: [{association: 'Institutes'}]
+                    }
+                ]
+            })
+            .catch(err => {
+                return res.send(err);
+            })
+
+            let questions = await db.Question.findAll({
+                where: {
+                    state: 0
+                }
+            })
+            .catch(err => {
+                return res.send(err);
+            })
+            res.render('answersForm', {errors:errors.errors, user:user, questions:questions})
+        }
         
     },
     logout: (req, res) => {

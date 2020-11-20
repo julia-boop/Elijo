@@ -69,14 +69,20 @@ function fetchInstitution(id, institutionType){
 }
 
 function fetchStudiesManager(id, institutionType) {
+    closeButton();
     fetchCareerData(id, institutionType);
     fetchAnswersCareerOrCourse(id, institutionType);
     fetchTipsCareerOrCourse(id, institutionType);
 }
 
 function fetchInstitutionManager(id, institutionType) {
+    closeButton();
+
     let dataPostaContainer = document.querySelector('.data-posta-container');
     dataPostaContainer.innerHTML = '';
+    let regionsResultsDiv = document.querySelector('.regionsResults');
+    regionsResultsDiv.innerHTML = '';
+
     fetchInstitution(id, institutionType);
     fetchAnswersInstitutesAndUniversities(id, institutionType);
     fetchTipsInstitutesAndUniversities(id, institutionType);
@@ -121,7 +127,6 @@ function fetchAnswersInstitutesAndUniversities(id, instituteOrUniversity) {
         return response.json();
     })
     .then(result => {
-        console.log(result);
         addToFaqsContainer(result);
         makePaginationAnswer(result);
         changeAnswerPage(0);
@@ -165,18 +170,54 @@ function fetchTipsCareerOrCourse(id, careerOrCourse) {
         changeTipsPage(0);
     })
 }
+
+function fetchRegionUniversities(region){
+    fetch('/endpoints/byRegion/'+region)
+    .then(response => {
+        return response.json();
+    })
+    .then(results => {
+        closeButton();
+        showRegionResults(results);
+    })
+}
+//#endregion
+
+//#region REGION
+function showRegionResults(institutions){
+    let regionsResultsDiv = document.querySelector('.regionsResults');
+    let dataPostaContainer = document.querySelector('.data-posta-container');
+    dataPostaContainer.innerHTML = '';
+    //fetchInstitutionManager(id, institutionType)
+    if(institutions.length <= 0){
+        regionsResultsDiv.innerHTML = '<h3 class="text-center col-12 data-posta-container">No se encontraron instituciones en esta region</h3>';
+        return;
+    }
+    
+    let type = '';
+    for(let i = 0 ; i < institutions.length; i++){
+        (institutions.University_location != null || institutions.University_location != undefined) ? type = 'institute' : type = 'university';
+        regionsResultsDiv.innerHTML += `<button class="region-result-btn" onclick="fetchInstitutionManager(${institutions[i].id}, '${type}')">${institutions[i].name}</button>`
+    }
+    
+}
 //#endregion
 
 //#region ANSWER
 function addToFaqsContainer(result) {
     let faqsContainer = document.querySelector('.faqs');
     faqsContainer.innerHTML =  '<h3>Preguntas</h3>';
-    for(let i=0; i<result.length; i++){
-        faqsContainer.innerHTML += `                <div class="question-container">
-        <h5><img src="/images/users/${result[i].User.photo}" alt=""><b>${result[i].User.name}:</b>${result[i].Question.text} (PREGUNTA)</h5>
-        <h6>${result[i].text} (RESPUESTA)</h6>
-        </div>`
+    if(result.length <= 0){
+        faqsContainer.innerHTML += '<h5>No se han realizado preguntas</h5>'
+    }else{
+        for(let i=0; i<result.length; i++){
+            faqsContainer.innerHTML += `                <div class="question-container">
+            <h5><img src="/images/users/${result[i].User.photo}" alt=""><b>${result[i].User.name}:</b>${result[i].Question.text} (PREGUNTA)</h5>
+            <h6>${result[i].text} (RESPUESTA)</h6>
+            </div>`
+        }
     }
+    
     //console.log(userLoggedIn);
     let questionForm = document.querySelector('#question-form');
     if(questionForm != null) questionForm.classList.remove('d-none');
@@ -234,7 +275,6 @@ function makePaginationAnswer(results){
         index += amountByPage;
         answerArray.push(page);
     }
-    console.log(answerArray);
 }
 function changeAnswerPage(moveTo){
     if(answerArray[actualAnswerPage] == null || answerArray[actualAnswerPage] == undefined) return ;
@@ -277,13 +317,17 @@ function changeAnswerPage(moveTo){
 function addToTipsContainer(result) {
     let tipsContainer = document.querySelector('.tips-container');
     tipsContainer.innerHTML =  '<h3>Tips</h3>';
-    for(let i=0; i<result.length; i++){
-        tipsContainer.innerHTML += `<div class="tips">
-            <p><img src="/images/users/${result[i].User.photo}" alt=""><b>${result[i].User.name}:</b></p>
-            <p>${result[i].tip}</p>
-        </div>
-        `;
-    }
+    if(result <= 0){
+        tipsContainer.innerHTML += '<h5>Todavía no se han publicado tips</h5>'
+    }else{
+        for(let i=0; i<result.length; i++){
+            tipsContainer.innerHTML += `<div class="tips">
+                <p><img src="/images/users/${result[i].User.photo}" alt=""><b>${result[i].User.name}:</b></p>
+                <p>${result[i].tip}</p>
+            </div>
+            `;
+        }
+    }  
 }
 //#endregion
 
@@ -393,8 +437,14 @@ function changeUsefulInformation(data, career){
 //#region STUDENTS OPINIONS
 function showStudentsOpinions(opinions){
     let opinionsDiv = document.querySelector('.opinions');
-    makePagination(opinions);
-    changePage(0);    
+    opinionsDiv.innerHTML =  '<h3>Opiniones</h3>';
+    if(opinions.length <= 0){
+        opinionsDiv.innerHTML += '<h5>Todavía no se han publicado opiniones</h5>'
+    }else{
+        makePagination(opinions);
+        changePage(0);    
+    }
+    
 }
 //#endregion
 
@@ -416,7 +466,6 @@ function makePagination(results){
         condition += amountByPage;
         index += amountByPage;
         opinionsOnGeneral.push(page);
-        
     }
 }
 
@@ -518,7 +567,7 @@ window.addEventListener('load', () => {
         .then(regions => {
             regions.provincias.sort((a, b) => a.nombre < b.nombre ? -1 : a.nombre === b.nombre ? 0 : 1)
             for(let i = 0; i < regions.provincias.length; i++){
-                regionResults.innerHTML += `<button class="region-btn" value="${regions.provincias[i].nombre}">  ${regions.provincias[i].nombre} </button>`;
+                regionResults.innerHTML += `<button class="region-btn" value="${regions.provincias[i].nombre}" onClick="fetchRegionUniversities('${regions.provincias[i].nombre}')">  ${regions.provincias[i].nombre} </button>`;
             }
         });
     });
@@ -541,6 +590,7 @@ window.addEventListener('load', () => {
                     universityResults.innerHTML +=`<option class="resultsOption" id="inputButton" value="${universities[i].id}" onclick="fetchInstitutionManager(${universities[i].id}, 'university')">  <button>${universities[i].name}</button> </option>`;
                 }
             }
+            console.log(amountOfResults);
             if(amountOfResults <= 0) universityResults.innerHTML = 'No se encontraron resultados';
         }
     });

@@ -40,6 +40,29 @@ module.exports = {
         })
         return res.status(200).json(institutes);
     },
+    getInstitutionByRegion: async (req, res) => {
+        let institutions = [];
+        let universities = await db.University.findAll({
+            include: [
+                {
+                    association: 'University_location',
+                    where: {
+                        province: req.params.region
+                    }
+                }
+            ]
+        })
+        let institutes = await db.Institute.findAll({
+            where: {
+                region: req.params.region
+            }
+        })
+        institutions = [
+            ...universities,
+            ...institutes
+        ]
+        return res.status(200).json(institutions);
+    },
     getSpecificInstitutes: async (req, res) => {
         let institute = await db.Institute.findOne({
             where: {
@@ -370,5 +393,8 @@ module.exports = {
         }
         console.log(question);
         db.Question.create(question)
+        .catch(function(e){
+            return res.send(e);
+        })
     }
 };

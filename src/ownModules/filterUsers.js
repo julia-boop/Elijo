@@ -167,7 +167,23 @@ function filterByProvince(users, query){
 }
 //END FILTER PROVINCE
 
+function filterByInterest(users, query){
+    query = convertToArray(query);
+    let usersByInterests = [];
 
+    for(let i=0; i<users.length; i++){
+        for(let j=0; j< query.length; j++){
+            for(let k = 0; k < users[i].Interest.length; k++){
+                
+                if(users[i].Interest[k].dataValues.interest_name.toLowerCase() == query[j].toLowerCase()){
+                    usersByInterests.push(users[i]);
+                }
+            }
+            
+        }
+    }
+    return usersByInterests;
+}
 
 module.exports = function (users, queries){
     let usersFiltered = users;
@@ -188,6 +204,7 @@ module.exports = function (users, queries){
     
     if(queries.province != undefined) usersFiltered = filterByProvince(usersFiltered, queries.province);
     
+    if(queries.interest != undefined) usersFiltered = filterByInterest(usersFiltered, queries.interest);
     
     return usersFiltered;
 }

@@ -89,6 +89,13 @@ module.exports = {
                     through: {
                         model: db.User_course_study
                     }
+                },
+                {
+                    model: db.Interest,
+                    as: 'Interest',
+                    through: {
+                        model: db.User_interest
+                    }
                 }
             ]
         })

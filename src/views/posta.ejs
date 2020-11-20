@@ -84,7 +84,6 @@
             </div>
             
         </div>
-        
 
         <!-- PREGUNTAS -->
         <div class="row faqs-tips-container d-none">
@@ -103,7 +102,9 @@
                         <button class="faqs-btn-submit" type="button" onClick="sendQuestion()">Enviar pregunta</button>
                     </div>
                 </div>
-                <% } %>
+                <% } else {%>
+                    <h4 class="make-questions">¿Tenés preguntas para estudiantes? <a href="/user/login">Inicia Sesión </a> o <a href="/user/register">Registrate</a> para hacerlas</h4>
+                <% } %> 
             </div>
         </div>
         <!-- /PREGUNTAS -->
@@ -112,6 +113,10 @@
         <div class="row generalFlap">
 
             <h3 class="text-center col-12 data-posta-container">Busca para obtener informacion</h3>
+            
+            <div class="regionsResults col-10">
+
+            </div>
 
             <div class="chartJS col-12 col-md-4">
                 
