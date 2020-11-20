@@ -540,6 +540,16 @@ option.resultsOption button{
   padding: 5px;
 }
 
+.filter-button{
+  text-decoration: none;
+  color: black;
+}
+
+.filter-button:hover{
+  text-decoration: none !important;
+  color: black !important;
+}
+
 @media(min-width: 768px){
   .carreers-btn button{
     width: 19%;

@@ -62,7 +62,7 @@ function loadInstitutions(){
         institutes =  institutesRepsonse;
     });
 }
-
+//addToSearchDiv(career.name);-------------------------------------------------------------------------------------
 function fetchInstitution(id, institutionType){
     let toFind;
     (institutionType == "university") ?  toFind = "careers" : toFind = "courses";
@@ -85,7 +85,7 @@ function fetchInstitution(id, institutionType){
             let data = result;
             
             let chartJSContainer = document.querySelector('.chartJS');
-            chartJSContainer.innerHTML = `Calificación: ${result.calification}`;
+            chartJSContainer.innerHTML = `Calificación: ${data.calification}`;
             
 
             changeUsefulInformation(data, career[0]);
@@ -207,6 +207,7 @@ function fetchTipsCareerOrCourse(id, careerOrCourse) {
 }
 
 function fetchRegionUniversities(region){
+    addToSearchDiv(`Region: ${region}`);
     fetch('/endpoints/byRegion/'+region)
     .then(response => {
         return response.json();
@@ -578,6 +579,12 @@ function updateChart(data){
     });
 }
 //#endregion
+
+function addToSearchDiv(stringToAdd){
+    let searchDiv = document.querySelector('.posta-filter');
+    searchDiv.classList.remove('d-none');
+    searchDiv.innerHTML = `<h6><a href="/posta" class="filter-button">${stringToAdd} X</a></h6>`;
+}
 
 window.addEventListener('load', () => {
     //#region INIT
