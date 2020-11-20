@@ -12,6 +12,7 @@ let actualTipsPage = 0;
 
 let questionData = [];
 
+//#region FUNCTION CLEANER
 function cleanDivs(){
     let dataPostaContainer = document.querySelector('.data-posta-container');
     dataPostaContainer.innerHTML = '';
@@ -43,6 +44,7 @@ function cleanDivs(){
     `;
     
 }
+//#endregion
 
 //#region  FETCHS
 function loadInstitutions(){

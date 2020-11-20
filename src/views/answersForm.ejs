@@ -28,7 +28,7 @@
             </div>
 
             <div id="stat">
-                <textarea name="answer" id="answer" cols="30" rows="10"></textarea>
+                <textarea name="answer" id="answer" cols="30" rows="10" maxlength="600"></textarea>
                 <% if(typeof errors != 'undefined'){ %> 
                     <% for(let i = 0 ; i < errors.length ; i++){ %> 
                         <% if(errors[i].param == 'answer') {%>

@@ -30,7 +30,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER(10)
         },
         opinion:{
-            type: dataTypes.STRING(250)
+            type: dataTypes.STRING(600)
         }
     };
     const config = {

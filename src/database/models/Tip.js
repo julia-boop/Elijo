@@ -27,7 +27,7 @@ module.exports = (sequelize, dataTypes) => {
       allowNull: false
     },
     tip: {
-      type: dataTypes.STRING(250)
+      type: dataTypes.STRING(600)
     }
   };
   
