@@ -12,6 +12,37 @@ let actualTipsPage = 0;
 
 let questionData = [];
 
+function cleanDivs(){
+    let dataPostaContainer = document.querySelector('.data-posta-container');
+    dataPostaContainer.innerHTML = '';
+    let regionsResultsDiv = document.querySelector('.regionsResults');
+    regionsResultsDiv.innerHTML = '';
+
+    let chartJSContainer = document.querySelector('.chartJS');
+    chartJSContainer.innerHTML = '';
+
+    let infoContainer = document.querySelector('.information-container');
+    infoContainer.innerHTML = '';
+
+    let opsContainer = document.querySelector('.opinions');
+    opsContainer.innerHTML = '';
+
+    let carreerContainer = document.querySelector('.carreers-container');
+    carreerContainer.innerHTML = '';
+    
+    let faqsCont = document.querySelector('.faqs');
+    faqsCont.innerHTML = `
+        <h3>Tips</h3>
+        <h5>No hay Tips</h5>
+    `;
+
+    let tipsContainer = document.querySelector('.tips-container');
+    tipsContainer.innerHTML = `
+        <h3>Preguntas</h3>
+        <h5>No hay Preguntas</h5>
+    `;
+    
+}
 
 //#region  FETCHS
 function loadInstitutions(){
@@ -69,6 +100,7 @@ function fetchInstitution(id, institutionType){
 }
 
 function fetchStudiesManager(id, institutionType) {
+    cleanDivs();
     closeButton();
     fetchCareerData(id, institutionType);
     fetchAnswersCareerOrCourse(id, institutionType);
@@ -76,6 +108,7 @@ function fetchStudiesManager(id, institutionType) {
 }
 
 function fetchInstitutionManager(id, institutionType) {
+    cleanDivs();
     closeButton();
 
     let dataPostaContainer = document.querySelector('.data-posta-container');
@@ -177,6 +210,7 @@ function fetchRegionUniversities(region){
         return response.json();
     })
     .then(results => {
+        cleanDivs();
         closeButton();
         showRegionResults(results);
     })
