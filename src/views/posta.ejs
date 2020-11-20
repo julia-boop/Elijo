@@ -96,7 +96,7 @@
             <div class="faqs-question-form">
                 <% if(typeof userLoggedIn != 'undefined'){ %>
                 <div id="question-form" class="d-none">
-                    <h4 class="mt-4">Si no encontraste la respuesta que estabas buscando, dejá tu pregunta.</h4>
+                    <h4 class="mt-4">Si no encontraste la respuesta que estabas buscando, dejá tu pregunta.<span style="font-size: small;">(maximo 500 caracteres)</span></h4>
                     <textarea id="textarea-question" name="textarea" rows="3" cols="45" placeholder="Preguntar..." maxlength="500"></textarea>
                     <div class="d-flex justify-content-end">
                         <button class="faqs-btn-submit" type="button" onClick="sendQuestion()">Enviar pregunta</button>
