@@ -550,6 +550,34 @@ option.resultsOption button{
   color: black !important;
 }
 
+/*-------------------------------------------------------------------------------------*/
+.circle.small {
+	border: 8px solid #42f84b;
+	border-radius: 50%;
+	width: 150px;/*220*/
+	height: 150px;
+	z-index: 86;
+}
+
+.circle.filled {
+	background-color: #666666;
+}
+
+.circle h2 {
+    text-align: center;
+    font-weight: 800;
+    font-size: 80px;/*100*/
+    color: #222222;
+    text-decoration: none;
+    display: block;
+    letter-spacing: -0.02em;
+    word-spacing: -0.02em;
+    line-height: 1;
+    margin-top: 25%;/*30*/
+}
+
+
+
 @media(min-width: 768px){
   .carreers-btn button{
     width: 19%;

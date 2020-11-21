@@ -85,7 +85,20 @@ function fetchInstitution(id, institutionType){
             let data = result;
             
             let chartJSContainer = document.querySelector('.chartJS');
-            chartJSContainer.innerHTML = `Calificación: ${data.calification}`;
+            /*
+                <h2 class="text-center">CALIFICACION</h2>
+                <div class="circle small">
+                    <h2>10</h2>
+                </div>
+
+                Calificación: ${data.calification}
+            */
+            chartJSContainer.innerHTML = `
+                <h2 class="text-center">CALIFICACIÓN</h2>
+                <div class="circle small">
+                    <h2>${data.calification}</h2>
+                </div>
+            `;
             
 
             changeUsefulInformation(data, career[0]);
