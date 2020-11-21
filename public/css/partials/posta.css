@@ -552,12 +552,25 @@ option.resultsOption button{
 
 /*-------------------------------------------------------------------------------------*/
 .circle.small {
-	border: 8px solid #42f84b;
 	border-radius: 50%;
 	width: 150px;/*220*/
 	height: 150px;
 	z-index: 86;
 }
+
+.circle.small.makered {
+	border: 8px solid #ff2e2e;
+}
+
+.circle.small.makeyellow {
+	border: 8px solid #f6fa2d;
+}
+
+.circle.small.makegreen {
+	border: 8px solid #42f84b;
+}
+
+
 
 .circle.filled {
 	background-color: #666666;

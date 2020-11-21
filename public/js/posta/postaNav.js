@@ -12,6 +12,19 @@ let actualTipsPage = 0;
 
 let questionData = [];
 
+function getColor(calification){
+    if(calification < 5){
+        return 'makered';
+    }
+    if(calification <= 7){
+        return 'makeyellow';
+    }
+    if(calification > 7){
+        return 'makegreen';
+    }
+}
+
+
 //#region FUNCTION CLEANER
 function cleanDivs(){
     let dataPostaContainer = document.querySelector('.data-posta-container');
@@ -85,17 +98,11 @@ function fetchInstitution(id, institutionType){
             let data = result;
             
             let chartJSContainer = document.querySelector('.chartJS');
-            /*
-                <h2 class="text-center">CALIFICACION</h2>
-                <div class="circle small">
-                    <h2>10</h2>
-                </div>
-
-                Calificación: ${data.calification}
-            */
+            
+            let circleColor = getColor(data.calification);
             chartJSContainer.innerHTML = `
                 <h2 class="text-center">CALIFICACIÓN</h2>
-                <div class="circle small">
+                <div class="circle small ${circleColor}">
                     <h2>${data.calification}</h2>
                 </div>
             `;
