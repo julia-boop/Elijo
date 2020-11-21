@@ -523,6 +523,7 @@ option.resultsOption button{
 }
 
 .region-btn{
+  margin-top: 2px;
   width: 100%;
   background-color: var(--btn-bg-color);
   border: var(--btn-border);
@@ -587,6 +588,17 @@ option.resultsOption button{
     word-spacing: -0.02em;
     line-height: 1;
     margin-top: 25%;/*30*/
+}
+
+
+.universityResults{
+  overflow: auto;
+  max-height: 250px;
+}
+
+.instituteResults{
+  overflow: auto;
+  max-height: 250px;
 }
 
 
