@@ -545,11 +545,26 @@ function changePage(moveTo){
     opinionsContainer.innerHTML = '';
     
     for(let j = 0; j < opinionsOnGeneral[actualGeneralPage].length; j++){
-        opinionsContainer.innerHTML += `
+        /*opinionsContainer.innerHTML += `
         <article>
         <h6><img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" alt="">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h6>
         <p>${opinionsOnGeneral[actualGeneralPage][j].opinion}</p>
         </article>
+        `;*/
+        opinionsContainer.innerHTML += `
+            <div class="card mb-3" >
+                <div class="row no-gutters">
+                    <div class="col-sm-4">
+                        <img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" class="card-img own-img" alt="...">
+                    </div>
+                    <div class="col-sm-8">
+                      <div class="card-body">
+                        <h5 class="card-title">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h5>
+                        <p class="card-text">${opinionsOnGeneral[actualGeneralPage][j].opinion}</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
         `;
     }
     

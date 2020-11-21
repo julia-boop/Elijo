@@ -601,6 +601,10 @@ option.resultsOption button{
   max-height: 250px;
 }
 
+.own-img{
+  max-height: 190px;
+  object-fit: cover;
+}
 
 
 @media(min-width: 768px){
