@@ -395,7 +395,7 @@ module.exports = {
         toQualify = toQualify.split(',');
         
         let data = {
-            calification: req.body.qulification,
+            calification: req.body.qualification,
             opinion: req.body.opinion,
             user_id: req.session.userSession,
             university_id: null,
