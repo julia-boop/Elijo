@@ -168,6 +168,25 @@ function fetchCareerData(careerID, institutionType){
         .then(result => {
             updateChart(result);
 
+            let infoContainer = document.querySelector('.information-container');
+    
+            if(institutionType == 'university'){
+                infoContainer.innerHTML = `
+                <h3>Informacion útil</h3>
+                <ul id="links-container">
+                <li><a id="web-page-link" href="${result.Universities.link}">Sitio web</a></li>
+                <li id="address-data"><a id="map-link" href="">Mapa</a></li>
+                </ul>`
+            
+            }else{
+                infoContainer.innerHTML = `
+                <h3>Informacion útil</h3>
+                <ul id="links-container">
+                <li><a id="web-page-link" href="${result.Institutes.link}">Sitio web</a></li>
+                <li id="address-data"><a id="map-link" href="">Mapa</a></li>
+                </ul>`
+            }
+
             let linksContainer = document.querySelector('#links-container');
             
             linksContainer.innerHTML += `<li><a id="study-plan-link" href="">Plan de estudios</a></li>` ;
@@ -489,9 +508,6 @@ function addToContainer(careers, institutionType){
 
 //#region CHANGE RIGHT INFO
 function changeUsefulInformation(data, career){
-    
-    console.log(data);
-
     let infoContainer = document.querySelector('.information-container');
     
     if(data != null){
@@ -503,16 +519,7 @@ function changeUsefulInformation(data, career){
         </ul>`
     
     }
-
-    // <div class="map-container">
-    // <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105083.85891257568!2d-58.51286837494019!3d-34.60743372073798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb430ebd761df%3A0xe3c33a8b19ce6c7!2sUniversidad%20Torcuato%20Di%20Tella!5e0!3m2!1ses-419!2sar!4v1599014780798!5m2!1ses-419!2sar" width="200" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-    // </div>
-    // `;
-    
-
     // https://www.google.com.ar/maps/place/calle+falsa+1234, +Buenos+Aires
-
-
 }
 //#endregion
 
