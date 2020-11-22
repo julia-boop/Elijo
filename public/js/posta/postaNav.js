@@ -78,7 +78,7 @@ function loadInstitutions(){
         institutes =  institutesRepsonse;
     });
 }
-//addToSearchDiv(career.name);-------------------------------------------------------------------------------------
+
 function fetchInstitution(id, institutionType){
     let toFind;
     (institutionType == "university") ?  toFind = "careers" : toFind = "courses";
@@ -250,7 +250,7 @@ function fetchTipsCareerOrCourse(id, careerOrCourse) {
 }
 
 function fetchRegionUniversities(region){
-    addToSearchDiv(`Region: ${region}`);
+    addToSearchDiv([`Region: ${region}`]);
     fetch('/endpoints/byRegion/'+region)
     .then(response => {
         return response.json();
@@ -684,10 +684,13 @@ function updateChart(data){
 }
 //#endregion
 
-function addToSearchDiv(stringToAdd){
+function addToSearchDiv(dataToAdd){
     let searchDiv = document.querySelector('.posta-filter');
     searchDiv.classList.remove('d-none');
-    searchDiv.innerHTML = `<h6><a href="/posta" class="filter-button">${stringToAdd} X</a></h6>`;
+    for(let i = 0; i < dataToAdd.length; i++){
+        searchDiv.innerHTML = `<h6><button class="filter-button">${dataToAdd[i]} X</button></h6>`;
+    }
+    
 }
 
 window.addEventListener('load', () => {

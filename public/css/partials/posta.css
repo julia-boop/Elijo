@@ -542,14 +542,9 @@ option.resultsOption button{
 }
 
 .filter-button{
-  text-decoration: none;
-  color: black;
+  border: none;
 }
 
-.filter-button:hover{
-  text-decoration: none !important;
-  color: black !important;
-}
 
 /*-------------------------------------------------------------------------------------*/
 .circle.small {
@@ -594,6 +589,13 @@ option.resultsOption button{
 .universityResults{
   overflow: auto;
   max-height: 250px;
+}
+
+.universityResults option button{
+  word-wrap: break-word;
+  text-overflow: inherit;
+  white-space: normal;
+  border: solid 1px #DDDDDD;
 }
 
 .instituteResults{

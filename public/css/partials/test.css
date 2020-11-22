@@ -27,10 +27,6 @@
     width: 80%;
 }
 
-.universityResults{
-    max-height: 50vh;
-    overflow: auto;
-}
 
 .instituteResults{
     max-height: 50vh;
