@@ -756,7 +756,7 @@ window.addEventListener('load', () => {
                 console.log(universitiesToAdd);
                 universityResults.innerHTML = '';
                 for(let i = 0; i < universitiesToAdd.length; i++){
-                    universityResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">  <button>${universitiesToAdd[i].name}</button> </option>`;         
+                    universityResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">  ${universitiesToAdd[i].name} </option>`;         
                 }
                 
                 return;
@@ -771,7 +771,7 @@ window.addEventListener('load', () => {
                 
                 if(univ.includes(inputData.toLowerCase())){
                     amountOfResults++;
-                    universityResults.innerHTML +=`<option class="resultsOption" id="inputButton" value="${universities[i].id}" onclick="fetchInstitutionManager(${universities[i].id}, 'university')">  <button>${universities[i].name}</button> </option>`;
+                    universityResults.innerHTML +=`<option class="resultsOption" id="inputButton" value="${universities[i].id}" onclick="fetchInstitutionManager(${universities[i].id}, 'university')">  ${universities[i].name} </option>`;
                 }
             }
             console.log(amountOfResults);
@@ -788,7 +788,7 @@ window.addEventListener('load', () => {
             .then(institutesToAdd => {
                 instituteResults.innerHTML = '';
                 for(let i = 0; i < institutesToAdd.length; i++){
-                    instituteResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${institutesToAdd[i].id}" onclick="fetchInstitutionManager(${institutesToAdd[i].id}, 'institute')">  <button>${institutesToAdd[i].name}</button> </option>`;         
+                    instituteResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${institutesToAdd[i].id}" onclick="fetchInstitutionManager(${institutesToAdd[i].id}, 'institute')">  ${institutesToAdd[i].name} </option>`;         
                 }
             })       
             return;
@@ -801,7 +801,7 @@ window.addEventListener('load', () => {
                 
                 if(inst.includes(inputData.toLowerCase())){
                     amountOfResults++;
-                    instituteResults.innerHTML +=`<option class="resultsOption" id="inputButton" value="${institutes[i].id}" onclick="fetchInstitutionManager(${institutes[i].id}, 'institute')">  <button>${institutes[i].name}</button> </option>`;
+                    instituteResults.innerHTML +=`<option class="resultsOption" id="inputButton" value="${institutes[i].id}" onclick="fetchInstitutionManager(${institutes[i].id}, 'institute')">  ${institutes[i].name} </option>`;
                 }
             }
             

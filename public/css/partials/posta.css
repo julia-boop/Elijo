@@ -599,6 +599,7 @@ option.resultsOption button{
   white-space: normal;
   word-break: break-all;
   margin-top: 2px;
+  padding: 5px;
   width: 100%;
   border: solid 1px #DDDDDD;
 }
@@ -612,9 +613,8 @@ option.resultsOption button{
   white-space: normal;
   word-break: break-all;
   margin-top: 2px;
+  padding: 5px;
   width: 100%;
-  border: solid 1px #DDDDDD;
-  
   border: solid 1px #DDDDDD;
 }
 
