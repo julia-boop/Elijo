@@ -31,7 +31,7 @@ module.exports = {
                 user_id: req.params.userID
             }
         })
-        
+        return res.send(user)
         res.render('account', {universities, institutes, user, user_careers, user_courses, genres});
     },
     register: function(req, res) {

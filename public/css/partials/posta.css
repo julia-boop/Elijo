@@ -401,7 +401,7 @@ button.tipsPhoneBtn p {
 }
 
 .carreers-btn button{
-  width: 100%;
+  width: min-content;
   height: 46px;
   background-color: var(--btn-bg-color);
   border: var(--btn-border);
@@ -580,7 +580,7 @@ option.resultsOption button{
 .circle h2 {
     text-align: center;
     font-weight: 800;
-    font-size: 80px;/*100*/
+    font-size: 65px;/*100*/
     color: #222222;
     text-decoration: none;
     display: block;
@@ -609,6 +609,6 @@ option.resultsOption button{
 
 @media(min-width: 768px){
   .carreers-btn button{
-    width: 19%;
+    width: min-content;
   }
 }

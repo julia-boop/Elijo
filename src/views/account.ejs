@@ -29,6 +29,17 @@
                     <h4><%=(user.name != null) ? user.name : ''%> <%=(user.last_name != null && user.last_name != '') ? user.last_name : ''%></h4>
                     <h5><i class="fab fa-whatsapp"></i> <%= user.telephone %></h5>
                     <h5><i class="fas fa-at"></i> <%= user.email %>  </h5>
+
+                    <% if(user.User_careers.length > 0){ %> 
+                        <% for(let i = 0 ; i < User_careers.length ; i ++){ %> 
+                        <h5><%= user.User_careers[i].name %> </h5>
+                        <% } %>     
+                    <% } %> 
+                    <% if(user.User_courses.length > 0){ %> 
+                        <% for(let i = 0 ; i < User_courses.length ; i ++){ %> 
+                        <h5><%= user.User_courses[i].name %> </h5>
+                        <% } %>     
+                    <% } %> 
                     <h6> <u>Intereses:</u>
                         <% for(let i = 0; i < user.Interest.length; i++){ %>
                             <%= user.Interest[i].interest_name%>
