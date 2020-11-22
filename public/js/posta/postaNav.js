@@ -459,7 +459,7 @@ function addToContainer(careers, institutionType){
     careersContainer.innerHTML = '';
     
     for(let i = 0; i < careers.length; i++ ){
-        careersContainer.innerHTML += `<button class="col-12 col-md-4" onclick="fetchStudiesManager(${careers[i].id}, '${institutionType}')">${careers[i].name}</button>`
+        careersContainer.innerHTML += `<button class="col-12 col-md-3" onclick="fetchStudiesManager(${careers[i].id}, '${institutionType}')">${careers[i].name}</button>`
     }
     
 }
