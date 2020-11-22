@@ -555,7 +555,7 @@ function changePage(moveTo){
         </article>
         `;*/
         opinionsContainer.innerHTML += `
-            <div class="card mb-3">
+            <div class="card mb-3 own-card">
                 <div class="row no-gutters">
                     <div class="col-12">
                       <div class="card-body">
