@@ -156,7 +156,8 @@ function fetchCareerData(careerID, institutionType){
         return response.json();
     })
     .then(result => {
-        
+        console.log(`/endpoints/${institutionType}/study/${careerID}/opinions`);
+        console.log(result);
         showStudentsOpinions(result);
         
         let study;
@@ -525,6 +526,7 @@ function changeUsefulInformation(data, career){
 
 //#region STUDENTS OPINIONS
 function showStudentsOpinions(opinions){
+    console.log(opinions);
     let opinionsDiv = document.querySelector('.opinions');
     opinionsDiv.innerHTML =  '<h3>Opiniones</h3>';
     if(opinions.length <= 0){
