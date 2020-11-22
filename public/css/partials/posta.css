@@ -598,9 +598,8 @@ option.resultsOption button{
 }
 
 .universityResults option button{
-  word-wrap: break-word;
-  text-overflow: inherit;
-  white-space: normal;
+  word-break: break-all;
+  white-space: pre-wrap;
   border: solid 1px #DDDDDD;
 }
 

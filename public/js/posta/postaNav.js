@@ -266,7 +266,7 @@ function fetchTipsCareerOrCourse(id, careerOrCourse) {
 }
 
 function fetchRegionUniversities(region){
-    addToSearchDiv([`Region: ${region}`]);
+    addToSearchDiv([`${region}`]);
     fetch('/endpoints/byRegion/'+region)
     .then(response => {
         return response.json();
