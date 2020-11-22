@@ -525,9 +525,7 @@ option.resultsOption button{
 .region-btn{
   margin-top: 2px;
   width: 100%;
-  background-color: var(--btn-bg-color);
-  border: var(--btn-border);
-  border-radius: var(--btn-border-radius);
+  border: solid 1px #DDDDDD;
 }
 
 .regionsResults{
@@ -535,9 +533,7 @@ option.resultsOption button{
 }
 
 .region-result-btn{
-  background-color: var(--btn-bg-color);
-  border: var(--btn-border);
-  border-radius: var(--btn-border-radius);
+  border: solid 1px #DDDDDD;
   padding: 5px;
 }
 
