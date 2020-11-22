@@ -603,6 +603,13 @@ option.resultsOption button{
   max-height: 250px;
 }
 
+.instituteResults option button{
+  word-wrap: break-word;
+  text-overflow: inherit;
+  white-space: normal;
+  border: solid 1px #DDDDDD;
+}
+
 .own-img{
   max-height: 190px;
   object-fit: cover;
