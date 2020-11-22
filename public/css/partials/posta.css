@@ -525,6 +525,8 @@ option.resultsOption button{
 .region-btn{
   margin-top: 2px;
   width: 100%;
+  margin-top: 2px;
+  width: 100%;
   border: solid 1px #DDDDDD;
 }
 
@@ -533,12 +535,20 @@ option.resultsOption button{
 }
 
 .region-result-btn{
-  border: solid 1px #DDDDDD;
+  background-color: var(--btn-bg-color);
+  border: var(--btn-border);
+  border-radius: var(--btn-border-radius);
   padding: 5px;
 }
 
 .filter-button{
-  border: none;
+  text-decoration: none;
+  color: black;
+}
+
+.filter-button:hover{
+  text-decoration: none;
+  color: black;
 }
 
 

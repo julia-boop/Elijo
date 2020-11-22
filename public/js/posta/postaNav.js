@@ -12,6 +12,19 @@ let actualTipsPage = 0;
 
 let questionData = [];
 
+
+let dataOnFilter = [];
+
+
+function addToSearchDiv(dataToAdd){
+    let searchDiv = document.querySelector('.posta-filter');
+    searchDiv.classList.remove('d-none');
+    for(let i = 0; i < dataToAdd.length; i++){
+        dataOnFilter = dataToAdd[i];
+        searchDiv.innerHTML = `<h6><a href='/posta' class="filter-button">${dataToAdd[i]} X</a></h6>`;
+    }
+}
+
 function getColor(calification){
     if(calification < 5){
         return 'makered';
@@ -99,6 +112,7 @@ function fetchInstitution(id, institutionType){
         })
         .then(result => {
             let data = result;
+            addToSearchDiv([`${data.name}`]);
             /*
             let chartJSContainer = document.querySelector('.chartJS');
             
@@ -127,6 +141,7 @@ function fetchInstitution(id, institutionType){
 function fetchStudiesManager(id, institutionType) {
     cleanDivs();
     closeButton();
+
     fetchCareerData(id, institutionType);
     fetchAnswersCareerOrCourse(id, institutionType);
     fetchTipsCareerOrCourse(id, institutionType);
@@ -156,8 +171,7 @@ function fetchCareerData(careerID, institutionType){
         return response.json();
     })
     .then(result => {
-        console.log(`/endpoints/${institutionType}/study/${careerID}/opinions`);
-        console.log(result);
+
         showStudentsOpinions(result);
         
         let study;
@@ -167,6 +181,8 @@ function fetchCareerData(careerID, institutionType){
             return response.json();
         }) 
         .then(result => {
+            addToSearchDiv([`${result.name}`]);
+            
             updateChart(result);
 
             let infoContainer = document.querySelector('.information-container');
@@ -395,7 +411,6 @@ function changeAnswerPage(moveTo){
 
 //#region TIPS
 function addToTipsContainer(result) {
-    console.log(result);
     let tipsContainer = document.querySelector('.tips-container');
     tipsContainer.innerHTML =  '<h3>Tips</h3>';
     if(result <= 0){
@@ -526,7 +541,6 @@ function changeUsefulInformation(data, career){
 
 //#region STUDENTS OPINIONS
 function showStudentsOpinions(opinions){
-    console.log(opinions);
     let opinionsDiv = document.querySelector('.opinions');
     opinionsDiv.innerHTML =  '<h3>Opiniones</h3>';
     if(opinions.length <= 0){
@@ -684,14 +698,6 @@ function updateChart(data){
 }
 //#endregion
 
-function addToSearchDiv(dataToAdd){
-    let searchDiv = document.querySelector('.posta-filter');
-    searchDiv.classList.remove('d-none');
-    for(let i = 0; i < dataToAdd.length; i++){
-        searchDiv.innerHTML = `<h6><button class="filter-button">${dataToAdd[i]} X</button></h6>`;
-    }
-    
-}
 
 window.addEventListener('load', () => {
     //#region INIT
