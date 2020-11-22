@@ -55,6 +55,9 @@ function cleanDivs(){
         <h3>Preguntas</h3>
         <h5>No hay Preguntas</h5>
     `;
+    //let chartJSContainer = document.querySelector('.chartJS');
+    chartJSContainer.classList.remove('col-12');
+    chartJSContainer.classList.remove('col-md-3');
     
 }
 //#endregion
@@ -96,7 +99,7 @@ function fetchInstitution(id, institutionType){
         })
         .then(result => {
             let data = result;
-            
+            /*
             let chartJSContainer = document.querySelector('.chartJS');
             
             let circleColor = getColor(data.calification);
@@ -105,7 +108,7 @@ function fetchInstitution(id, institutionType){
                 <div class="circle small ${circleColor}">
                     <h2>${data.calification}</h2>
                 </div>
-            `;
+            `;*/
             
 
             changeUsefulInformation(data, career[0]);
@@ -552,7 +555,38 @@ function changePage(moveTo){
         </article>
         `;*/
         opinionsContainer.innerHTML += `
-            <div class="card mb-3" >
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                      <div class="card-body">
+                        <p class="card-text">${opinionsOnGeneral[actualGeneralPage][j].opinion}</p>
+                        <div class="card-image">
+                            <img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" alt="...">
+                            <h5 class="title-image">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h5>
+                        </div>
+                      </div>
+
+                    </div>
+                </div>
+            </div>
+        `;
+
+        /*
+<div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                      <div class="card-body">
+                        <h5 class="card-title">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h5>
+                        <p class="card-text">${opinionsOnGeneral[actualGeneralPage][j].opinion}</p>
+                        <div class="card-imgage">
+                            <img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" alt="...">
+                        </div>
+                      </div>
+
+                    </div>
+                </div>
+            </div>
+        <div class="card mb-3" >
                 <div class="row no-gutters">
                     <div class="col-sm-4">
                         <img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" class="card-img own-img" alt="...">
@@ -565,7 +599,8 @@ function changePage(moveTo){
                     </div>
                 </div>
             </div>
-        `;
+        
+        */
     }
     
     let paginationContainer = document.querySelector('.paginationContainer');
@@ -595,6 +630,9 @@ function updateChart(data){
     let title = `${institutionName.toUpperCase()} - ${data.name.toUpperCase()}`;
 
     let chartJSContainer = document.querySelector('.chartJS');
+
+    chartJSContainer.classList.add('col-12');
+    chartJSContainer.classList.add('col-md-3');
 
     chartJSContainer.innerHTML = '<canvas id="myChart"></canvas>';
 
