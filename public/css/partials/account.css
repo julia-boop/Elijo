@@ -206,3 +206,8 @@ button.interest-btn{
     border: 2px solid var(--color-6);
     border-radius: 5px;
 }
+
+.interests li {
+    list-style: none;
+    text-transform: capitalize;
+}

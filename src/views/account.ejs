@@ -29,23 +29,36 @@
                     <h4><%=(user.name != null) ? user.name : ''%> <%=(user.last_name != null && user.last_name != '') ? user.last_name : ''%></h4>
                     <h5><i class="fab fa-whatsapp"></i> <%= user.telephone %></h5>
                     <h5><i class="fas fa-at"></i> <%= user.email %>  </h5>
+                    
+                    <h4> <u> Estudios </u></h4>
+                    <% for(let i = 0 ; i < universities.length ; i ++){ %> 
+                        <% for(let j = 0 ; j < user.User_careers.length ; j ++){ %> 
+                            <% if(universities[i].id == user.User_careers[j].university_id){ %> 
+                                <h5><%= universities[i].name %> </h5>
+                                <h5><i class="fas fa-book-open pr-2"></i><%= user.User_careers[j].name %> </h5>
 
-                    <% if(user.User_careers.length > 0){ %> 
-                        <% for(let i = 0 ; i < User_careers.length ; i ++){ %> 
-                        <h5><%= user.User_careers[i].name %> </h5>
-                        <% } %>     
-                    <% } %> 
-                    <% if(user.User_courses.length > 0){ %> 
-                        <% for(let i = 0 ; i < User_courses.length ; i ++){ %> 
-                        <h5><%= user.User_courses[i].name %> </h5>
-                        <% } %>     
-                    <% } %> 
-                    <h6> <u>Intereses:</u>
-                        <% for(let i = 0; i < user.Interest.length; i++){ %>
-                            <%= user.Interest[i].interest_name%>
-                            <%= (i+1 < user.Interest.length) ? '-' : '' %> 
+                             
+
+                            <% } %> 
                         <% } %> 
-                    </h6>
+                    <% } %> 
+
+                    <% for(let i = 0 ; i < institutes.length ; i ++){ %> 
+                        <% for(let j = 0 ; j < user.User_courses.length ; j ++){ %> 
+                            <% if(institutes[i].id == user.User_courses[j].institute_id){ %> 
+                                <h5><%= institutes[i].name %> </h5>
+                                <h5><i class="fas fa-book-open pr-2"></i><%= user.User_courses[j].name %> </h5>
+                            <% } %> 
+                        <% } %> 
+                    <% } %> 
+                    
+                    <h4> <u> Intereses </u></h4>
+                    <ul class="interests">
+                        <% for(let i = 0; i < user.Interest.length; i++){ %>
+                            <li><%= user.Interest[i].interest_name%></li>
+                        <% } %> 
+                    </ul>
+                        
                 </div>
             </div>
 
