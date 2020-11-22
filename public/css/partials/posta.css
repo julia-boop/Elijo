@@ -525,8 +525,6 @@ option.resultsOption button{
 .region-btn{
   margin-top: 2px;
   width: 100%;
-  margin-top: 2px;
-  width: 100%;
   border: solid 1px #DDDDDD;
 }
 
@@ -597,9 +595,11 @@ option.resultsOption button{
   max-height: 250px;
 }
 
-.universityResults option button{
+.universityResults option{
+  white-space: normal;
   word-break: break-all;
-  white-space: pre-wrap;
+  margin-top: 2px;
+  width: 100%;
   border: solid 1px #DDDDDD;
 }
 
@@ -608,10 +608,13 @@ option.resultsOption button{
   max-height: 250px;
 }
 
-.instituteResults option button{
-  word-wrap: break-word;
-  text-overflow: inherit;
+.instituteResults option{
   white-space: normal;
+  word-break: break-all;
+  margin-top: 2px;
+  width: 100%;
+  border: solid 1px #DDDDDD;
+  
   border: solid 1px #DDDDDD;
 }
 

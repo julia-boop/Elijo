@@ -719,7 +719,7 @@ window.addEventListener('load', () => {
     .then(universitiesToAdd => {
         universityResults.innerHTML = '';
         for(let i = 0; i < universitiesToAdd.length; i++){
-            universityResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">  <button>${universitiesToAdd[i].name}</button> </option>`;         
+            universityResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">${universitiesToAdd[i].name} </option>`;         
         }
     })
 
@@ -727,7 +727,7 @@ window.addEventListener('load', () => {
     .then(institutesToAdd => {
         instituteResults.innerHTML = '';
         for(let i = 0; i < institutesToAdd.length; i++){
-            instituteResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${institutesToAdd[i].id}" onclick="fetchInstitutionManager(${institutesToAdd[i].id}, 'institute')">  <button>${institutesToAdd[i].name}</button> </option>`;         
+            instituteResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${institutesToAdd[i].id}" onclick="fetchInstitutionManager(${institutesToAdd[i].id}, 'institute')">  ${institutesToAdd[i].name} </option>`;         
         }
     })
     //#endregion
