@@ -375,15 +375,27 @@ function changeAnswerPage(moveTo){
 
 //#region TIPS
 function addToTipsContainer(result) {
+    console.log(result);
     let tipsContainer = document.querySelector('.tips-container');
     tipsContainer.innerHTML =  '<h3>Tips</h3>';
     if(result <= 0){
         tipsContainer.innerHTML += '<h5>Todavía no se han publicado tips</h5>'
     }else{
         for(let i=0; i<result.length; i++){
-            tipsContainer.innerHTML += `<div class="tips">
-                <p><img src="/images/users/${result[i].User.photo}" alt=""><b>${result[i].User.name}:</b></p>
-                <p>${result[i].tip}</p>
+            tipsContainer.innerHTML += `
+            <div class="card mb-3 own-card-tip">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                      <div class="card-body">
+                        <p class="card-text">${result[i].tip}</p>
+                        <div class="card-image">
+                            <img src="/images/users/${result[i].User.photo}" alt="...">
+                            <h5 class="title-image">${result[i].User.name}</h5>
+                        </div>
+                      </div>
+
+                    </div>
+                </div>
             </div>
             `;
         }
@@ -418,11 +430,21 @@ function changeTipsPage(moveTo){
     tips.innerHTML = '';
     
     for(let i = 0; i < tipsArray[actualTipsPage].length; i++){
-        tips.innerHTML += `<div class="tips">
-        <img src="/images/users/${tipsArray[actualTipsPage][i].User.photo}" alt="">
-        <h5>${tipsArray[actualTipsPage][i].User.name}:
-         ${tipsArray[actualTipsPage][i].tip}</h5>
-        </div>
+        tips.innerHTML += `
+            <div class="card mb-3 own-card-tip">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                      <div class="card-body">
+                        <p class="card-text">${tipsArray[actualTipsPage][i].tip}</p>
+                        <div class="card-image">
+                            <img src="/images/users/${tipsArray[actualTipsPage][i].User.photo}" alt="...">
+                            <h5 class="title-image">${tipsArray[actualTipsPage][i].User.name}</h5>
+                        </div>
+                      </div>
+
+                    </div>
+                </div>
+            </div>
         `;
     }
     tips.innerHTML += `<div class="paginationTipsContainer"></div>`;
@@ -674,6 +696,25 @@ window.addEventListener('load', () => {
     let regionResults = document.querySelector('.regionResults');
     //#endregion
     
+    //#region ONPageStart
+    fetch('/endpoints/university').then(resp => resp.json())
+    .then(universitiesToAdd => {
+        universityResults.innerHTML = '';
+        for(let i = 0; i < universitiesToAdd.length; i++){
+            universityResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">  <button>${universitiesToAdd[i].name}</button> </option>`;         
+        }
+    })
+
+    fetch('endpoints/institute').then(resp => resp.json())
+    .then(institutesToAdd => {
+        instituteResults.innerHTML = '';
+        for(let i = 0; i < institutesToAdd.length; i++){
+            instituteResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${institutesToAdd[i].id}" onclick="fetchInstitutionManager(${institutesToAdd[i].id}, 'institute')">  <button>${institutesToAdd[i].name}</button> </option>`;         
+        }
+    })
+    //#endregion
+
+
     //#region NAV INPUTS
     regionButton.addEventListener('click', event => {
         fetch('https://apis.datos.gob.ar/georef/api/provincias')
@@ -692,8 +733,17 @@ window.addEventListener('load', () => {
         let amountOfResults = 0;
         universityResults.innerHTML = ''; 
         if(event.target.value == '' || event.target.value == null){
-            universityResults.innerHTML = '';         
-            return;
+            fetch('/endpoints/university').then(resp => resp.json())
+            .then(universitiesToAdd => {
+                console.log(universitiesToAdd);
+                universityResults.innerHTML = '';
+                for(let i = 0; i < universitiesToAdd.length; i++){
+                    universityResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">  <button>${universitiesToAdd[i].name}</button> </option>`;         
+                }
+                
+                return;
+            })
+            
         }
         if(universities.length > 0){
             let inputData = event.target.value.toLowerCase();
@@ -715,7 +765,14 @@ window.addEventListener('load', () => {
         let amountOfResults = 0;
         instituteResults.innerHTML = '';
         if(event.target.value == '' || event.target.value == null){
-            instituteResults.innerHTML = '';         
+            instituteResults.innerHTML = '';  
+            fetch('endpoints/institute').then(resp => resp.json())
+            .then(institutesToAdd => {
+                instituteResults.innerHTML = '';
+                for(let i = 0; i < institutesToAdd.length; i++){
+                    instituteResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${institutesToAdd[i].id}" onclick="fetchInstitutionManager(${institutesToAdd[i].id}, 'institute')">  <button>${institutesToAdd[i].name}</button> </option>`;         
+                }
+            })       
             return;
         }
         if(institutes.length > 0){

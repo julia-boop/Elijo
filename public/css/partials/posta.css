@@ -22,7 +22,7 @@ button.categoryDropDown{
   width: 100%;
   display:flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .posta-filter{
