@@ -45,11 +45,12 @@
                         </video>
                     </div>
                     <div class="button-container">
-                        <a href="/comingSoon"><button class="home-primary-button col-sm-12"><h2>La Posta</h2></button></a>
+                        <a href="/posta"><button class="home-primary-button col-sm-12"><h2>La Posta</h2></button></a>
                         <a href="/meet"><button class="home-primary-button col-sm-12"><h2>Conocer Estudiantes</h2></button></a>
                     </div>
                 </div>
 
+                <!--
                 <div class="instituteCarousel">
                     <section class="customer-logos slider">
                         <% for(let i=0; i<institutes.length; i++) { %>
@@ -60,7 +61,7 @@
                         <% } %>
                     </section>
                 </div>
-
+                
                 <div class="help">
                     <h3>¿En que te puedo ayudar?</h3>
                     <div class="optionsContainer pop-up-child">
@@ -77,13 +78,19 @@
                             <button type="submit" class="sendBtn"><i class="far fa-paper-plane fa-2x"></i></button>
                         </div>
                     </form>
-                </div>  
+                </div>  -->
             </div>
+
+            
         </div>
+        <footer>
+            <ul>
+                <a href="/"><li>  <i class="fab fa-facebook-square fa-9x"></i> </li></a>
+                <a href="/"><li>  <i class="fab fa-instagram-square fa-9x"></i> </li></a>
+                <a href="/"><li>  <i class="fab fa-twitter-square fa-9x"></i> </li></a>
+            </ul>
+        </footer>
         <%- include('./partials/scripts.ejs') %> 
-        <script src="/js/instituteCarousel.js"></script>
         <script src="/js/home.js"></script>
-        <script src="/js/welcome.js"></script>
-        <%- include('./partials/footer') %>
     </body>
 </html>

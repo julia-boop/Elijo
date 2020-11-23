@@ -41,13 +41,13 @@ body{
     }
     video{
         width: 100vw;
-        height: 400px;/*pc 400*/
+        height: 100%;/*pc 400*/
         object-fit: cover;
     }
     div.homeMedia{
         margin-top: 0;
         width: 100vw;
-        height: 400px;/*pc 400*/
+        height: 500px;/*pc 400*/
         padding: 0 0;
     }
     div.homeImg img{
@@ -91,8 +91,7 @@ body{
     }
 
     .button-container {
-        width: 100% !important;
-        margin: 25px;
+        width: 100%;
         display: flex;
         justify-content: center;
     }
@@ -108,10 +107,9 @@ body{
 
     .home-primary-button {
         border-radius: 15px;
-        padding: 15px;
         background-color: var(--color-3);
-        width: 100%;
-        height: 130px;
+        width: 300px;
+        height: 80px;
     }
 
     .main-info div.img-container .edit-photo-btn{/*DESKTOP*/
