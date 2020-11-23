@@ -307,11 +307,28 @@ function addToFaqsContainer(result) {
         faqsContainer.innerHTML += '<h5>No se han realizado preguntas</h5>'
     }else{
         for(let i=0; i<result.length; i++){
-            faqsContainer.innerHTML += `                <div class="question-container">
+            console.log(result[i]);
+            faqsContainer.innerHTML += `  
+                <div class="card mb-3 own-card">
+                    <div class="row no-gutters">
+                        <div class="col-12">
+                          <div class="card-body">
+                            <p class="card-text">Pregunta: ${result[i].Question.text}</p>
+                            <div class="card-image">
+                                <h5 class="card-text">Respuesta: ${result[i].text} - ${result[i].User.name}</h5>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        }
+        /*
+        <div class="question-container">
             <h5><img src="/images/users/${result[i].User.photo}" alt=""><b>${result[i].User.name}:</b>${result[i].Question.text} (PREGUNTA)</h5>
             <h6>${result[i].text} (RESPUESTA)</h6>
-            </div>`
-        }
+            </div>
+        */
     }
     
     //console.log(userLoggedIn);
@@ -381,11 +398,19 @@ function changeAnswerPage(moveTo){
     faqs.innerHTML = '';
     
     for(let i = 0; i < answerArray[actualAnswerPage].length; i++){
-        faqs.innerHTML += `<div class="question-container">
-        <img src="/images/users/${answerArray[actualAnswerPage][i].User.photo}" alt="">
-        <h5>P: <b>${answerArray[actualAnswerPage][i].User.name}:</b>${answerArray[actualAnswerPage][i].Question.text}</h5>
-        <h5 class="response-h5">R: ${answerArray[actualAnswerPage][i].text}</h5>
-        </div>
+        faqs.innerHTML += `
+            <div class="card mb-3 own-card">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                      <div class="card-body">
+                        <p class="card-text">Pregunta: ${answerArray[actualAnswerPage][i].Question.text}</p>
+                        <div class="card-image">
+                            <h5 class="card-text">Respuesta: ${answerArray[actualAnswerPage][i].text} - ${answerArray[actualAnswerPage][i].User.name}</h5>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
         `;
     }
     let questionForm = document.querySelector('#question-form');
@@ -593,12 +618,6 @@ function changePage(moveTo){
     opinionsContainer.innerHTML = '';
     
     for(let j = 0; j < opinionsOnGeneral[actualGeneralPage].length; j++){
-        /*opinionsContainer.innerHTML += `
-        <article>
-        <h6><img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" alt="">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h6>
-        <p>${opinionsOnGeneral[actualGeneralPage][j].opinion}</p>
-        </article>
-        `;*/
         opinionsContainer.innerHTML += `
             <div class="card mb-3 own-card">
                 <div class="row no-gutters">
@@ -615,37 +634,6 @@ function changePage(moveTo){
                 </div>
             </div>
         `;
-
-        /*
-<div class="card mb-3">
-                <div class="row no-gutters">
-                    <div class="col-12">
-                      <div class="card-body">
-                        <h5 class="card-title">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h5>
-                        <p class="card-text">${opinionsOnGeneral[actualGeneralPage][j].opinion}</p>
-                        <div class="card-imgage">
-                            <img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" alt="...">
-                        </div>
-                      </div>
-
-                    </div>
-                </div>
-            </div>
-        <div class="card mb-3" >
-                <div class="row no-gutters">
-                    <div class="col-sm-4">
-                        <img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" class="card-img own-img" alt="...">
-                    </div>
-                    <div class="col-sm-8">
-                      <div class="card-body">
-                        <h5 class="card-title">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h5>
-                        <p class="card-text">${opinionsOnGeneral[actualGeneralPage][j].opinion}</p>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        
-        */
     }
     
     let paginationContainer = document.querySelector('.paginationContainer');
