@@ -665,7 +665,7 @@ window.addEventListener('load', () => {
                 
                 if(univ.includes(inputData.toLowerCase())){
                     amountOfResults++;
-                    universityResults.innerHTML +=`<option class="resultsOption" id="inputButton" value="${universities[i].id}" onclick="fetchInstitutionManager(${universities[i].id}, 'university')">  <button>${universities[i].name}</button> </option>`;
+                    universityResults.innerHTML +=`<option class="resultsOption" id="inputButton" value="${universities[i].id}" onclick="fetchInstitutionManager(${ universities[i].id}, 'university')">  <button>${universities[i].name}</button> </option>`;
                 }
             }
             console.log(amountOfResults);
