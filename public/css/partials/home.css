@@ -6,7 +6,7 @@
 
 .vidContainer{
     width: 100%;
-    height: 500px;
+    height: 80vh;
     margin-bottom: 0;
     position: relative;
     z-index: -100;
@@ -406,18 +406,64 @@ textarea:focus, #opinion:focus{
 
 /*FIN POP UP AYUDA*/
 
+
+.presentation{
+    width: 100%;
+    position: absolute;
+    bottom: 50%;
+}
+.presentation > *{
+    text-align: center;
+    color: white;
+}
+
+.btn-container{
+    padding-top: 5px;
+}
+.btn-container button{
+    padding: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: var(--btn-bg-color);
+    border: none;
+    color: white;
+}
+
+.mission{
+    padding: 20px;
+    padding-top: calc(300px / 4);
+    height: 300px;
+}
+
+.mission h2{
+    font-size: 2.5rem;
+}
+
+.mission-l-text{
+    color: #bdbdbd;
+    font-size: 1.2rem;
+}
+
+.mission .second-text{
+    line-height: 2rem;
+}
+
+
 /*FOOTER*/
 .myFooter{
     background-color: #dddddd;
     margin: 0;
     width: 100%;
-    height: 200px;
+    height: 300px;
 }
 
 footer ul{
     display: flex;
     justify-content: center;
-    padding-top: calc((200px - 126px) / 3);
+    padding-top: calc((300px - 126px) / 3);
 }
 
 footer ul li{
