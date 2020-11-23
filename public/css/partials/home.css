@@ -407,7 +407,7 @@ textarea:focus, #opinion:focus{
 /*FIN POP UP AYUDA*/
 
 /*FOOTER*/
-footer{
+.myFooter{
     background-color: #dddddd;
     margin: 0;
     width: 100%;
