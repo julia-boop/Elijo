@@ -118,7 +118,12 @@ body{
         bottom: 5%;
         right: 4%;
     }
-
+    .presentation{
+        width: 50%;
+        position: absolute;
+        bottom: 45%;
+        left: 25%;
+    }
   
 }
 

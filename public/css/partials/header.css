@@ -202,8 +202,12 @@ div.pcMenu nav ul{
 div.pcMenu nav ul li{
     position: relative;
     display:inline-block;
-    line-height: 60px;
+    line-height: 50px;
     height: 100%;
+}
+
+div.pcMenu nav ul div{
+    height: 50px;
 }
 
 div.pcMenu nav ul li a{
@@ -238,7 +242,7 @@ div.pcMenu nav ul div{
 div.pcMenu nav div li{
     display:inline-block;
     margin-left: 5px;
-    line-height: 60px;
+    line-height: 50px;
     height: 100%;
 }
 
