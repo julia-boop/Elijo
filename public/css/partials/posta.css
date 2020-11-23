@@ -537,6 +537,7 @@ option.resultsOption button{
   border: var(--btn-border);
   border-radius: var(--btn-border-radius);
   padding: 5px;
+  margin: 10px;
 }
 
 .filter-button{

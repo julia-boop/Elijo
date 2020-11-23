@@ -112,7 +112,7 @@ function fetchInstitution(id, institutionType){
         })
         .then(result => {
             let data = result;
-            addToSearchDiv([`${data.name}`]);
+            addToSearchDiv([`${data.name.toUpperCase()}`]);
             /*
             let chartJSContainer = document.querySelector('.chartJS');
             
@@ -181,7 +181,6 @@ function fetchCareerData(careerID, institutionType){
             return response.json();
         }) 
         .then(result => {
-            addToSearchDiv([`${result.name}`]);
             
             updateChart(result);
 
@@ -266,7 +265,7 @@ function fetchTipsCareerOrCourse(id, careerOrCourse) {
 }
 
 function fetchRegionUniversities(region){
-    addToSearchDiv([`${region}`]);
+    addToSearchDiv([`${region.toUpperCase()}`]);
     fetch('/endpoints/byRegion/'+region)
     .then(response => {
         return response.json();
@@ -661,6 +660,8 @@ function updateChart(data){
     }
 
     let title = `${institutionName.toUpperCase()} - ${data.name.toUpperCase()}`;
+
+    addToSearchDiv([title.toUpperCase()]);
 
     let chartJSContainer = document.querySelector('.chartJS');
 
