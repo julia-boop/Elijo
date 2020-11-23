@@ -135,7 +135,7 @@ module.exports = {
     getCourseOpinions: async (req, res) => {
         let opinions = await db.Calification.findAll({
             where: {
-                curse_id: req.params.courseID
+                course_id: req.params.courseID
             },
             include: [{association: 'User'}]
         })

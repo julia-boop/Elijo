@@ -1,7 +1,7 @@
 window.addEventListener('load', function(){
     let popUp = document.querySelector('.pop-up');
     let popUpBg = document.querySelector('.pop-up-background');
-//'homeSession', 'true'
+
     if(window.sessionStorage.getItem('homeSession') == 'true' || window.sessionStorage.getItem('homeSession') == true){
         popUp.classList.remove('show');
         return;

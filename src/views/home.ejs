@@ -40,16 +40,32 @@
             <div class="blur-background">
                 <div class="row mainHomeContainer">
                     <div class="vidContainer homeMedia">
-                        <video autoplay muted loop>
+                        <img src="/images/elijo-fondo.jpeg" alt="">
+                        <!--<video autoplay muted loop>
                             <source src="/videos/Elijo-video.mp4" type="video/mp4">
-                        </video>
+                        </video>-->
                     </div>
-                    <div class="button-container">
-                        <a href="/comingSoon"><button class="home-primary-button col-sm-12"><h2>La Posta</h2></button></a>
-                        <a href="/meet"><button class="home-primary-button col-sm-12"><h2>Conocer Estudiantes</h2></button></a>
+                    <div class="presentation">
+                        <h2>ELIJO</h2>
+                        <p>LA PLATAFORMA HECHA POR Y PARA ESTUDIANTES</p>
+                        <p>TE AYUDAMOS A ELEGIR QUE Y DONDE ESTUDIAR</p>
+                        <div class="btn-container">
+                            <a href="/posta"><button class="">La Posta</button></a>
+                            <a href="/meet"><button class="">Conocer Estudiantes</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mission row">
+                    <div class="col-12 col-md-5">
+                        <h2>QUE HACEMOS:</h2>
+                        <p class="mission-l-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis iusto expedita minima, mollitia saepe atque.</p>
+                    </div>
+                    <div class="col-12 col-md-7">
+                        <p class="second-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas ipsa voluptatibus magnam aspernatur recusandae, iusto expedita molestias beatae doloremque dignissimos, voluptatem, adipisci quisquam praesentium autem? Corrupti amet obcaecati laborum quia?</p>
                     </div>
                 </div>
 
+                <!--
                 <div class="instituteCarousel">
                     <section class="customer-logos slider">
                         <% for(let i=0; i<institutes.length; i++) { %>
@@ -60,7 +76,7 @@
                         <% } %>
                     </section>
                 </div>
-
+                
                 <div class="help">
                     <h3>¿En que te puedo ayudar?</h3>
                     <div class="optionsContainer pop-up-child">
@@ -77,13 +93,19 @@
                             <button type="submit" class="sendBtn"><i class="far fa-paper-plane fa-2x"></i></button>
                         </div>
                     </form>
-                </div>  
+                </div>  -->
             </div>
+
+            
         </div>
+        <footer class="myFooter">
+            <ul>
+                <a href="/"><li> <i class="fab fa-facebook-f fa-3x"></i> </li></a>
+                <a href="/"><li> <i class="fab fa-twitter fa-3x"></i>  </li></a>
+                <a href="/"><li>  <i class="fab fa-instagram fa-3x"></i> </li></a>
+            </ul>
+        </footer>
         <%- include('./partials/scripts.ejs') %> 
-        <script src="/js/instituteCarousel.js"></script>
-        <script src="/js/home.js"></script>
-        <script src="/js/welcome.js"></script>
-        <%- include('./partials/footer') %>
+        <!--<script src="/js/home.js"></script>-->
     </body>
 </html>

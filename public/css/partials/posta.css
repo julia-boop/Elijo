@@ -22,7 +22,7 @@ button.categoryDropDown{
   width: 100%;
   display:flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .posta-filter{
@@ -525,9 +525,7 @@ option.resultsOption button{
 .region-btn{
   margin-top: 2px;
   width: 100%;
-  background-color: var(--btn-bg-color);
-  border: var(--btn-border);
-  border-radius: var(--btn-border-radius);
+  border: solid 1px #DDDDDD;
 }
 
 .regionsResults{
@@ -547,9 +545,10 @@ option.resultsOption button{
 }
 
 .filter-button:hover{
-  text-decoration: none !important;
-  color: black !important;
+  text-decoration: none;
+  color: black;
 }
+
 
 /*-------------------------------------------------------------------------------------*/
 .circle.small {
@@ -596,9 +595,27 @@ option.resultsOption button{
   max-height: 250px;
 }
 
+.universityResults option{
+  white-space: normal;
+  word-break: break-all;
+  margin-top: 2px;
+  padding: 5px;
+  width: 100%;
+  border: solid 1px #DDDDDD;
+}
+
 .instituteResults{
   overflow: auto;
   max-height: 250px;
+}
+
+.instituteResults option{
+  white-space: normal;
+  word-break: break-all;
+  margin-top: 2px;
+  padding: 5px;
+  width: 100%;
+  border: solid 1px #DDDDDD;
 }
 
 .own-img{

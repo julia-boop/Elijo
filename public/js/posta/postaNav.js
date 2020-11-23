@@ -12,6 +12,19 @@ let actualTipsPage = 0;
 
 let questionData = [];
 
+
+let dataOnFilter = [];
+
+
+function addToSearchDiv(dataToAdd){
+    let searchDiv = document.querySelector('.posta-filter');
+    searchDiv.classList.remove('d-none');
+    for(let i = 0; i < dataToAdd.length; i++){
+        dataOnFilter = dataToAdd[i];
+        searchDiv.innerHTML = `<h6><a href='/posta' class="filter-button">${dataToAdd[i]} X</a></h6>`;
+    }
+}
+
 function getColor(calification){
     if(calification < 5){
         return 'makered';
@@ -55,6 +68,9 @@ function cleanDivs(){
         <h3>Preguntas</h3>
         <h5>No hay Preguntas</h5>
     `;
+    //let chartJSContainer = document.querySelector('.chartJS');
+    chartJSContainer.classList.remove('col-12');
+    chartJSContainer.classList.remove('col-md-3');
     
 }
 //#endregion
@@ -75,7 +91,7 @@ function loadInstitutions(){
         institutes =  institutesRepsonse;
     });
 }
-//addToSearchDiv(career.name);-------------------------------------------------------------------------------------
+
 function fetchInstitution(id, institutionType){
     let toFind;
     (institutionType == "university") ?  toFind = "careers" : toFind = "courses";
@@ -96,7 +112,8 @@ function fetchInstitution(id, institutionType){
         })
         .then(result => {
             let data = result;
-            
+            addToSearchDiv([`${data.name}`]);
+            /*
             let chartJSContainer = document.querySelector('.chartJS');
             
             let circleColor = getColor(data.calification);
@@ -105,7 +122,7 @@ function fetchInstitution(id, institutionType){
                 <div class="circle small ${circleColor}">
                     <h2>${data.calification}</h2>
                 </div>
-            `;
+            `;*/
             
 
             changeUsefulInformation(data, career[0]);
@@ -124,6 +141,7 @@ function fetchInstitution(id, institutionType){
 function fetchStudiesManager(id, institutionType) {
     cleanDivs();
     closeButton();
+
     fetchCareerData(id, institutionType);
     fetchAnswersCareerOrCourse(id, institutionType);
     fetchTipsCareerOrCourse(id, institutionType);
@@ -153,7 +171,7 @@ function fetchCareerData(careerID, institutionType){
         return response.json();
     })
     .then(result => {
-        
+
         showStudentsOpinions(result);
         
         let study;
@@ -163,7 +181,28 @@ function fetchCareerData(careerID, institutionType){
             return response.json();
         }) 
         .then(result => {
+            addToSearchDiv([`${result.name}`]);
+            
             updateChart(result);
+
+            let infoContainer = document.querySelector('.information-container');
+    
+            if(institutionType == 'university'){
+                infoContainer.innerHTML = `
+                <h3>Informacion útil</h3>
+                <ul id="links-container">
+                <li><a id="web-page-link" href="${result.Universities.link}">Sitio web</a></li>
+                <li id="address-data"><a id="map-link" href="">Mapa</a></li>
+                </ul>`
+            
+            }else{
+                infoContainer.innerHTML = `
+                <h3>Informacion útil</h3>
+                <ul id="links-container">
+                <li><a id="web-page-link" href="${result.Institutes.link}">Sitio web</a></li>
+                <li id="address-data"><a id="map-link" href="">Mapa</a></li>
+                </ul>`
+            }
 
             let linksContainer = document.querySelector('#links-container');
             
@@ -227,7 +266,7 @@ function fetchTipsCareerOrCourse(id, careerOrCourse) {
 }
 
 function fetchRegionUniversities(region){
-    addToSearchDiv(`Region: ${region}`);
+    addToSearchDiv([`${region}`]);
     fetch('/endpoints/byRegion/'+region)
     .then(response => {
         return response.json();
@@ -268,11 +307,28 @@ function addToFaqsContainer(result) {
         faqsContainer.innerHTML += '<h5>No se han realizado preguntas</h5>'
     }else{
         for(let i=0; i<result.length; i++){
-            faqsContainer.innerHTML += `                <div class="question-container">
+            console.log(result[i]);
+            faqsContainer.innerHTML += `  
+                <div class="card mb-3 own-card">
+                    <div class="row no-gutters">
+                        <div class="col-12">
+                          <div class="card-body">
+                            <p class="card-text">Pregunta: ${result[i].Question.text}</p>
+                            <div class="card-image">
+                                <h5 class="card-text">Respuesta: ${result[i].text} - ${result[i].User.name}</h5>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        }
+        /*
+        <div class="question-container">
             <h5><img src="/images/users/${result[i].User.photo}" alt=""><b>${result[i].User.name}:</b>${result[i].Question.text} (PREGUNTA)</h5>
             <h6>${result[i].text} (RESPUESTA)</h6>
-            </div>`
-        }
+            </div>
+        */
     }
     
     //console.log(userLoggedIn);
@@ -342,11 +398,19 @@ function changeAnswerPage(moveTo){
     faqs.innerHTML = '';
     
     for(let i = 0; i < answerArray[actualAnswerPage].length; i++){
-        faqs.innerHTML += `<div class="question-container">
-        <img src="/images/users/${answerArray[actualAnswerPage][i].User.photo}" alt="">
-        <h5>P: <b>${answerArray[actualAnswerPage][i].User.name}:</b>${answerArray[actualAnswerPage][i].Question.text}</h5>
-        <h5 class="response-h5">R: ${answerArray[actualAnswerPage][i].text}</h5>
-        </div>
+        faqs.innerHTML += `
+            <div class="card mb-3 own-card">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                      <div class="card-body">
+                        <p class="card-text">Pregunta: ${answerArray[actualAnswerPage][i].Question.text}</p>
+                        <div class="card-image">
+                            <h5 class="card-text">Respuesta: ${answerArray[actualAnswerPage][i].text} - ${answerArray[actualAnswerPage][i].User.name}</h5>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
         `;
     }
     let questionForm = document.querySelector('#question-form');
@@ -378,9 +442,20 @@ function addToTipsContainer(result) {
         tipsContainer.innerHTML += '<h5>Todavía no se han publicado tips</h5>'
     }else{
         for(let i=0; i<result.length; i++){
-            tipsContainer.innerHTML += `<div class="tips">
-                <p><img src="/images/users/${result[i].User.photo}" alt=""><b>${result[i].User.name}:</b></p>
-                <p>${result[i].tip}</p>
+            tipsContainer.innerHTML += `
+            <div class="card mb-3 own-card-tip">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                      <div class="card-body">
+                        <p class="card-text">${result[i].tip}</p>
+                        <div class="card-image">
+                            <img src="/images/users/${result[i].User.photo}" alt="...">
+                            <h5 class="title-image">${result[i].User.name}</h5>
+                        </div>
+                      </div>
+
+                    </div>
+                </div>
             </div>
             `;
         }
@@ -415,11 +490,21 @@ function changeTipsPage(moveTo){
     tips.innerHTML = '';
     
     for(let i = 0; i < tipsArray[actualTipsPage].length; i++){
-        tips.innerHTML += `<div class="tips">
-        <img src="/images/users/${tipsArray[actualTipsPage][i].User.photo}" alt="">
-        <h5>${tipsArray[actualTipsPage][i].User.name}:
-         ${tipsArray[actualTipsPage][i].tip}</h5>
-        </div>
+        tips.innerHTML += `
+            <div class="card mb-3 own-card-tip">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                      <div class="card-body">
+                        <p class="card-text">${tipsArray[actualTipsPage][i].tip}</p>
+                        <div class="card-image">
+                            <img src="/images/users/${tipsArray[actualTipsPage][i].User.photo}" alt="...">
+                            <h5 class="title-image">${tipsArray[actualTipsPage][i].User.name}</h5>
+                        </div>
+                      </div>
+
+                    </div>
+                </div>
+            </div>
         `;
     }
     tips.innerHTML += `<div class="paginationTipsContainer"></div>`;
@@ -448,7 +533,7 @@ function addToContainer(careers, institutionType){
         container.innerHTML+= ` <div class="carreers-h4-container">
         <h4>Carreras Disponibles</h4>
         </div>
-        <div class="carreers-btn" id="careersContainer">         
+        <div class="carreers-btn row" id="careersContainer">         
         </div>`;
     }
     
@@ -456,7 +541,7 @@ function addToContainer(careers, institutionType){
     careersContainer.innerHTML = '';
     
     for(let i = 0; i < careers.length; i++ ){
-        careersContainer.innerHTML += `<button onclick="fetchStudiesManager(${careers[i].id}, '${institutionType}')">${careers[i].name}</button>`
+        careersContainer.innerHTML += `<button class="col-12 col-md-3" onclick="fetchStudiesManager(${careers[i].id}, '${institutionType}')">${careers[i].name}</button>`
     }
     
 }
@@ -464,9 +549,6 @@ function addToContainer(careers, institutionType){
 
 //#region CHANGE RIGHT INFO
 function changeUsefulInformation(data, career){
-    
-    console.log(data);
-
     let infoContainer = document.querySelector('.information-container');
     
     if(data != null){
@@ -478,16 +560,7 @@ function changeUsefulInformation(data, career){
         </ul>`
     
     }
-
-    // <div class="map-container">
-    // <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105083.85891257568!2d-58.51286837494019!3d-34.60743372073798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb430ebd761df%3A0xe3c33a8b19ce6c7!2sUniversidad%20Torcuato%20Di%20Tella!5e0!3m2!1ses-419!2sar!4v1599014780798!5m2!1ses-419!2sar" width="200" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-    // </div>
-    // `;
-    
-
     // https://www.google.com.ar/maps/place/calle+falsa+1234, +Buenos+Aires
-
-
 }
 //#endregion
 
@@ -545,23 +618,18 @@ function changePage(moveTo){
     opinionsContainer.innerHTML = '';
     
     for(let j = 0; j < opinionsOnGeneral[actualGeneralPage].length; j++){
-        /*opinionsContainer.innerHTML += `
-        <article>
-        <h6><img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" alt="">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h6>
-        <p>${opinionsOnGeneral[actualGeneralPage][j].opinion}</p>
-        </article>
-        `;*/
         opinionsContainer.innerHTML += `
-            <div class="card mb-3" >
+            <div class="card mb-3 own-card">
                 <div class="row no-gutters">
-                    <div class="col-sm-4">
-                        <img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" class="card-img own-img" alt="...">
-                    </div>
-                    <div class="col-sm-8">
+                    <div class="col-12">
                       <div class="card-body">
-                        <h5 class="card-title">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h5>
                         <p class="card-text">${opinionsOnGeneral[actualGeneralPage][j].opinion}</p>
+                        <div class="card-image">
+                            <img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" alt="...">
+                            <h5 class="title-image">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h5>
+                        </div>
                       </div>
+
                     </div>
                 </div>
             </div>
@@ -596,6 +664,9 @@ function updateChart(data){
 
     let chartJSContainer = document.querySelector('.chartJS');
 
+    chartJSContainer.classList.add('col-12');
+    chartJSContainer.classList.add('col-md-3');
+
     chartJSContainer.innerHTML = '<canvas id="myChart"></canvas>';
 
     let ctx = document.getElementById('myChart').getContext('2d');
@@ -615,11 +686,6 @@ function updateChart(data){
 }
 //#endregion
 
-function addToSearchDiv(stringToAdd){
-    let searchDiv = document.querySelector('.posta-filter');
-    searchDiv.classList.remove('d-none');
-    searchDiv.innerHTML = `<h6><a href="/posta" class="filter-button">${stringToAdd} X</a></h6>`;
-}
 
 window.addEventListener('load', () => {
     //#region INIT
@@ -636,6 +702,25 @@ window.addEventListener('load', () => {
     let regionResults = document.querySelector('.regionResults');
     //#endregion
     
+    //#region ONPageStart
+    fetch('/endpoints/university').then(resp => resp.json())
+    .then(universitiesToAdd => {
+        universityResults.innerHTML = '';
+        for(let i = 0; i < universitiesToAdd.length; i++){
+            universityResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">${universitiesToAdd[i].name} </option>`;         
+        }
+    })
+
+    fetch('endpoints/institute').then(resp => resp.json())
+    .then(institutesToAdd => {
+        instituteResults.innerHTML = '';
+        for(let i = 0; i < institutesToAdd.length; i++){
+            instituteResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${institutesToAdd[i].id}" onclick="fetchInstitutionManager(${institutesToAdd[i].id}, 'institute')">  ${institutesToAdd[i].name} </option>`;         
+        }
+    })
+    //#endregion
+
+
     //#region NAV INPUTS
     regionButton.addEventListener('click', event => {
         fetch('https://apis.datos.gob.ar/georef/api/provincias')
@@ -654,8 +739,17 @@ window.addEventListener('load', () => {
         let amountOfResults = 0;
         universityResults.innerHTML = ''; 
         if(event.target.value == '' || event.target.value == null){
-            universityResults.innerHTML = '';         
-            return;
+            fetch('/endpoints/university').then(resp => resp.json())
+            .then(universitiesToAdd => {
+                console.log(universitiesToAdd);
+                universityResults.innerHTML = '';
+                for(let i = 0; i < universitiesToAdd.length; i++){
+                    universityResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">  ${universitiesToAdd[i].name} </option>`;         
+                }
+                
+                return;
+            })
+            
         }
         if(universities.length > 0){
             let inputData = event.target.value.toLowerCase();
@@ -665,7 +759,7 @@ window.addEventListener('load', () => {
                 
                 if(univ.includes(inputData.toLowerCase())){
                     amountOfResults++;
-                    universityResults.innerHTML +=`<option class="resultsOption" id="inputButton" value="${universities[i].id}" onclick="fetchInstitutionManager(${ universities[i].id}, 'university')">  <button>${universities[i].name}</button> </option>`;
+                    universityResults.innerHTML +=`<option class="resultsOption" id="inputButton" value="${universities[i].id}" onclick="fetchInstitutionManager(${universities[i].id}, 'university')">  ${universities[i].name} </option>`;
                 }
             }
             console.log(amountOfResults);
@@ -677,7 +771,14 @@ window.addEventListener('load', () => {
         let amountOfResults = 0;
         instituteResults.innerHTML = '';
         if(event.target.value == '' || event.target.value == null){
-            instituteResults.innerHTML = '';         
+            instituteResults.innerHTML = '';  
+            fetch('endpoints/institute').then(resp => resp.json())
+            .then(institutesToAdd => {
+                instituteResults.innerHTML = '';
+                for(let i = 0; i < institutesToAdd.length; i++){
+                    instituteResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${institutesToAdd[i].id}" onclick="fetchInstitutionManager(${institutesToAdd[i].id}, 'institute')">  ${institutesToAdd[i].name} </option>`;         
+                }
+            })       
             return;
         }
         if(institutes.length > 0){
@@ -688,7 +789,7 @@ window.addEventListener('load', () => {
                 
                 if(inst.includes(inputData.toLowerCase())){
                     amountOfResults++;
-                    instituteResults.innerHTML +=`<option class="resultsOption" id="inputButton" value="${institutes[i].id}" onclick="fetchInstitutionManager(${institutes[i].id}, 'institute')">  <button>${institutes[i].name}</button> </option>`;
+                    instituteResults.innerHTML +=`<option class="resultsOption" id="inputButton" value="${institutes[i].id}" onclick="fetchInstitutionManager(${institutes[i].id}, 'institute')">  ${institutes[i].name} </option>`;
                 }
             }
             

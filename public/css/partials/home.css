@@ -1,36 +1,35 @@
 /*----------HOME--------------*/
 
+.mainHomeContainer{
+    /*position: relative;*/
+}
+
 .vidContainer{
     width: 100%;
+    height: 80vh;
     margin-bottom: 0;
     position: relative;
     z-index: -100;
 }
 
-video{
+.homeMedia img{
     width: 100%!important;
-    height: 200px;/*pc 400*/
+    height: 100%;
     object-fit: cover;
+    object-position: 50% 25%;
 }
 
 .button-container {
-    width: 100% !important;
-    margin: 15px;
-    margin-bottom: 0;
-    justify-content: center;
-}
-
-.button-container a {
-    height: 100%;
-    width: 100%;
+    position: absolute;
+    bottom: 2%;
+    text-align: center;
 }
 
 .home-primary-button {
     border-radius: 15px;
-    padding: 15px;
     background-color: var(--color-3);
-    width: 100%;
-    height: 130px;
+    height: 80px;
+    width: 90%;
     margin-bottom: 15px;
 }
 
@@ -407,3 +406,82 @@ textarea:focus, #opinion:focus{
 }
 
 /*FIN POP UP AYUDA*/
+
+
+.presentation{
+    width: 100%;/*px 50*/
+    position: absolute;
+    bottom: 45%;
+    left: 0;/*left 25*/
+}
+.presentation > *{
+    text-align: center;
+    color: white;
+}
+
+.btn-container{
+    padding-top: 5px;
+}
+.btn-container button{
+    padding: 15px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 20px;
+    background-color: var(--btn-bg-color);
+    border: none;
+    color: white;
+}
+
+.btn-container button:hover{
+    background-color:  rgb(14,155,218);;
+}
+
+.mission{
+    padding: 20px;
+    padding-top: calc(300px / 4);
+    min-height: 300px;
+}
+
+.mission h2{
+    font-size: 2.5rem;
+}
+
+.mission-l-text{
+    color: #bdbdbd;
+    font-size: 1.2rem;
+}
+
+.mission .second-text{
+    line-height: 2rem;
+}
+
+
+/*FOOTER*/
+.myFooter{
+    background-color: #dddddd;
+    margin: 0;
+    width: 100%;
+    height: 300px;
+}
+
+footer ul{
+    display: flex;
+    justify-content: center;
+    padding-top: calc((300px - 126px) / 3);
+}
+
+footer ul li{
+    list-style: none;
+    display: inline;
+    color: #777777;
+}
+
+footer ul a{
+    width: fit-content;
+    height: fit-content;
+    margin: 10px;
+    margin-top:calc((300px - 126px) / 3);;
+}
