@@ -326,6 +326,8 @@ div.pcMenu nav div li{
 }
 
 .headerCuenta{
-    left: 125px !important; 
+    top: 0px !important;
+    left: 15px !important; 
+    z-index: 600!important;
 }
 

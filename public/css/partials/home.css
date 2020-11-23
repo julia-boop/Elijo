@@ -1,7 +1,7 @@
 /*----------HOME--------------*/
 
 .mainHomeContainer{
-    position: relative;
+    /*position: relative;*/
 }
 
 .vidContainer{
@@ -408,9 +408,10 @@ textarea:focus, #opinion:focus{
 
 
 .presentation{
-    width: 100%;
+    width: 50%;
     position: absolute;
-    bottom: 10%;
+    bottom: 25%;
+    left: 25%;
 }
 .presentation > *{
     text-align: center;
