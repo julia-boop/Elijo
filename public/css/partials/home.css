@@ -435,7 +435,7 @@ textarea:focus, #opinion:focus{
 .mission{
     padding: 20px;
     padding-top: calc(300px / 4);
-    height: 300px;
+    min-height: 300px;
 }
 
 .mission h2{
