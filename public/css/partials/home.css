@@ -410,7 +410,7 @@ textarea:focus, #opinion:focus{
 .presentation{
     width: 100%;
     position: absolute;
-    bottom: 50%;
+    bottom: 10%;
 }
 .presentation > *{
     text-align: center;
@@ -472,7 +472,9 @@ footer ul li{
     color: #777777;
 }
 
-footer ul li a{
+footer ul a{
     width: fit-content;
     height: fit-content;
+    margin: 10px;
+    margin-top:calc((300px - 126px) / 3);;
 }
