@@ -55,14 +55,14 @@
 .wrapper-title p {
     display: inline;
     text-align: center;
-    border: solid 1px #435A64;
-    background-color: #FFFFFF;
     padding: 4px;
+    margin-bottom: 0;
 }
 
 .wrapper-title p i {
     font-weight: bold;
     color: #4FCE5D;
+    font-size: 2rem;
 }
 
 .detail-title-labels {

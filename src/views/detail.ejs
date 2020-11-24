@@ -15,7 +15,7 @@
             </div>
                
             <% if(typeof userLoggedIn != 'undefined') { %>
-                <a href="https://api.whatsapp.com/send?phone=<%= user.telephone %>" class="d-flex"><p class="conditional-whatsapp"><i class="fab fa-whatsapp"><%= user.telephone %></i></p></a> 
+                <a href="https://api.whatsapp.com/send?phone=<%= user.telephone %>" class="d-flex"><p class="conditional-whatsapp"><i class="fab fa-whatsapp"></i></p></a> 
             <% }else{ %>
                 <a href="/user/login">Ingresa para contactarte</a>
             <% } %>
