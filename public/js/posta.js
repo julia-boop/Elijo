@@ -62,6 +62,10 @@ window.addEventListener('load', function() {
   let lessonsView = document.querySelector('.tips-container');
 
   genBtn.addEventListener('click', function(){
+    genBtn.classList.add('selected');
+    faqsTipsBtn.classList.remove('selected');
+    lessonsBtn.classList.remove('selected');
+
     generalView.classList.remove('d-none');
     faqsTipsView.classList.add('d-none');
     lessonsView.classList.add('d-none');
@@ -69,14 +73,28 @@ window.addEventListener('load', function() {
   });
 
   faqsTipsBtn.addEventListener('click', function(){
+    genBtn.classList.remove('selected');
+    faqsTipsBtn.classList.add('selected');
+    lessonsBtn.classList.remove('selected');
+
     faqsTipsView.classList.remove('d-none');
     generalView.classList.add('d-none');
     lessonsView.classList.add('d-none');
   });
 
   lessonsBtn.addEventListener('click', function(){
+    genBtn.classList.remove('selected');
+    faqsTipsBtn.classList.remove('selected');
+    lessonsBtn.classList.add('selected');
+
     generalView.classList.add('d-none');
     faqsTipsView.classList.add('d-none');
     lessonsView.classList.remove('d-none');
   });
 })
+
+
+// clases 
+// lessons-btn-click
+// faqs-tips-btn-click
+// general-btn-click
