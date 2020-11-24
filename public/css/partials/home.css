@@ -419,7 +419,9 @@ textarea:focus, #opinion:focus{
     text-align: center;
     color: white;
 }
-
+.presentation h2{
+    font-size: 3.5rem;
+}
 .btn-container{
     padding-top: 5px;
 }
