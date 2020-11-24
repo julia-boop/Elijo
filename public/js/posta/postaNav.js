@@ -112,7 +112,7 @@ function fetchInstitution(id, institutionType){
         })
         .then(result => {
             let data = result;
-            addToSearchDiv([`${data.name}`]);
+            addToSearchDiv([`${data.name.toUpperCase()}`]);
             /*
             let chartJSContainer = document.querySelector('.chartJS');
             
@@ -181,7 +181,6 @@ function fetchCareerData(careerID, institutionType){
             return response.json();
         }) 
         .then(result => {
-            addToSearchDiv([`${result.name}`]);
             
             updateChart(result);
 
@@ -266,7 +265,7 @@ function fetchTipsCareerOrCourse(id, careerOrCourse) {
 }
 
 function fetchRegionUniversities(region){
-    addToSearchDiv([`${region}`]);
+    addToSearchDiv([`${region.toUpperCase()}`]);
     fetch('/endpoints/byRegion/'+region)
     .then(response => {
         return response.json();
@@ -616,7 +615,7 @@ function changePage(moveTo){
     
     let opinionsContainer = document.querySelector('#opinionsContainer');
     opinionsContainer.innerHTML = '';
-    
+    console.log(opinionsOnGeneral);
     for(let j = 0; j < opinionsOnGeneral[actualGeneralPage].length; j++){
         opinionsContainer.innerHTML += `
             <div class="card mb-3 own-card">
@@ -626,7 +625,7 @@ function changePage(moveTo){
                         <p class="card-text">${opinionsOnGeneral[actualGeneralPage][j].opinion}</p>
                         <div class="card-image">
                             <img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" alt="...">
-                            <h5 class="title-image">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h5>
+                            <h5 class="title-image"><a href="/meet/detail/${opinionsOnGeneral[actualGeneralPage][j].User.id}">${opinionsOnGeneral[actualGeneralPage][j].User.name}</a></h5>
                         </div>
                       </div>
 
@@ -661,6 +660,8 @@ function updateChart(data){
     }
 
     let title = `${institutionName.toUpperCase()} - ${data.name.toUpperCase()}`;
+
+    addToSearchDiv([title.toUpperCase()]);
 
     let chartJSContainer = document.querySelector('.chartJS');
 

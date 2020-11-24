@@ -27,7 +27,7 @@ button.categoryDropDown{
 
 .posta-filter{
   border-top: 2px solid black;
-  height: 50px;
+  min-height: 50px;
   padding: 15px;
   margin-bottom: 10px;
 }
@@ -398,6 +398,7 @@ button.tipsPhoneBtn p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 auto;
 }
 
 .carreers-btn button{
@@ -537,6 +538,7 @@ option.resultsOption button{
   border: var(--btn-border);
   border-radius: var(--btn-border-radius);
   padding: 5px;
+  margin: 10px;
 }
 
 .filter-button{
@@ -623,6 +625,13 @@ option.resultsOption button{
   object-fit: cover;
 }
 
+.title-image a{
+  color: black;
+}
+
+.title-image a:hover{
+  color: black;
+}
 
 @media(min-width: 768px){
   .carreers-btn button{
