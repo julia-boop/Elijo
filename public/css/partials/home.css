@@ -6,19 +6,26 @@
 }
 
 .vidContainer{
-    width: 100%;
+    width: 100%!important;
     height: 80vh;
     margin-bottom: 0;
     position: relative;
     z-index: -100;
 }
 
-.homeMedia img{
+.vidContainer video {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* .homeMedia img{
     width: 100%!important;
     height: 100%;
     object-fit: cover;
     object-position: 50% 25%;
-}
+} */
 
 .button-container {
     position: absolute;
@@ -441,6 +448,7 @@ textarea:focus, #opinion:focus{
 }
 
 .mission{
+    margin-top: 100px;
     padding: 20px;
     padding-top: calc(300px / 4);
     min-height: 300px;
@@ -465,13 +473,14 @@ textarea:focus, #opinion:focus{
     background-color: #dddddd;
     margin: 0;
     width: 100%;
-    height: 300px;
+    /* height: 100px; */
+    padding: 30px;
 }
 
 footer ul{
     display: flex;
     justify-content: center;
-    padding-top: calc((300px - 126px) / 3);
+    margin: 0;
 }
 
 footer ul li{
@@ -480,7 +489,7 @@ footer ul li{
     color: #777777;
 }
 
-footer ul a{
+footer ul li a{
     width: fit-content;
     height: fit-content;
     margin: 10px;

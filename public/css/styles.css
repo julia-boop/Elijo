@@ -40,7 +40,7 @@ body{
         height: 50px;
     }
     video{
-        width: 100%;
+        width: 100%!important;
         height: 100%;/*pc 400*/
         object-fit: cover;
     }
