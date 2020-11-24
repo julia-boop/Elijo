@@ -625,6 +625,13 @@ option.resultsOption button{
   object-fit: cover;
 }
 
+.title-image a{
+  color: black;
+}
+
+.title-image a:hover{
+  color: black;
+}
 
 @media(min-width: 768px){
   .carreers-btn button{

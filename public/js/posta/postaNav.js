@@ -615,7 +615,7 @@ function changePage(moveTo){
     
     let opinionsContainer = document.querySelector('#opinionsContainer');
     opinionsContainer.innerHTML = '';
-    
+    console.log(opinionsOnGeneral);
     for(let j = 0; j < opinionsOnGeneral[actualGeneralPage].length; j++){
         opinionsContainer.innerHTML += `
             <div class="card mb-3 own-card">
@@ -625,7 +625,7 @@ function changePage(moveTo){
                         <p class="card-text">${opinionsOnGeneral[actualGeneralPage][j].opinion}</p>
                         <div class="card-image">
                             <img src="/images/users/${opinionsOnGeneral[actualGeneralPage][j].User.photo}" alt="...">
-                            <h5 class="title-image">${opinionsOnGeneral[actualGeneralPage][j].User.name}</h5>
+                            <h5 class="title-image"><a href="/meet/detail/${opinionsOnGeneral[actualGeneralPage][j].User.id}">${opinionsOnGeneral[actualGeneralPage][j].User.name}</a></h5>
                         </div>
                       </div>
 
