@@ -6,11 +6,17 @@
 }
 
 .vidContainer{
-    width: 100%;
+    width: 100vw;
     height: 80vh;
     margin-bottom: 0;
     position: relative;
     z-index: -100;
+}
+
+video{
+    width: 100%!important;
+    height: 100%;
+    object-fit: cover;
 }
 
 .homeMedia img{
