@@ -21,7 +21,7 @@ function addToSearchDiv(dataToAdd){
     searchDiv.classList.remove('d-none');
     for(let i = 0; i < dataToAdd.length; i++){
         dataOnFilter = dataToAdd[i];
-        searchDiv.innerHTML = `<h6><a href='/posta' class="filter-button">${dataToAdd[i]} <i class="far fa-times-circle make-red"></i></a></h6>`;
+        searchDiv.innerHTML = `<h6><a href='/posta' class="filter-button">${dataToAdd[i]} <i class="far fa-times-circle makered"></i></a></h6>`;
     }
 }
 
