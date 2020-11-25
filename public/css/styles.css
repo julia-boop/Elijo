@@ -128,12 +128,9 @@ body{
 }
 
 @media (min-width: 560px) {
-    /*.presentation{
-        width: 50%;
-        position: absolute;
-        bottom: 45%;
-        left: 25%;
-    }*/
+    .presentation{
+        bottom: 18vh;
+    }
 }
 
 @media (min-width: 430px) {
