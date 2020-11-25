@@ -127,6 +127,15 @@ body{
   
 }
 
+@media (min-width: 560px) {
+    .presentation{
+        width: 50%;
+        position: absolute;
+        bottom: 45%;
+        left: 25%;
+    }
+}
+
 @media (min-width: 430px) {
     div.help .orderList button{
         height: 40px;

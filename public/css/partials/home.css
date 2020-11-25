@@ -418,7 +418,7 @@ textarea:focus, #opinion:focus{
 .presentation{
     width: 100%;/*px 50*/
     position: absolute;
-    bottom: 20%;/*45%*/
+    bottom: 25%;/*45%*//*antes 20%*/
     left: 0;/*left 25*/
 }
 .presentation > *{
