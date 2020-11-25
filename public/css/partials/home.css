@@ -497,5 +497,6 @@ footer ul li a{
     width: fit-content;
     height: fit-content;
     margin: 10px;
-    margin-top:calc((300px - 126px) / 3);;
+    margin-top:calc((300px - 126px) / 3);
+    color: #777777;
 }
