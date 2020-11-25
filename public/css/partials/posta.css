@@ -593,6 +593,10 @@ option.resultsOption button{
 	border: 8px solid #ff2e2e;
 }
 
+.makered {
+	color:#ff2e2e;
+}
+
 .circle.small.makeyellow {
 	border: 8px solid #f6fa2d;
 }
