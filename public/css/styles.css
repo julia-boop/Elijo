@@ -47,7 +47,7 @@ body{
     div.homeMedia{
         margin-top: 0;
         width: 100vw;
-        height: 85vh;/*pc 400*/
+        height: 100vh;/*pc 400*/
         padding: 0 0;
     }
     div.homeImg img{

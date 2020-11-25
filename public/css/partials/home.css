@@ -1,13 +1,13 @@
 /*----------HOME--------------*/
 
 .mainHomeContainer{
-    height: 85vh;
+    height: 100vh;
     /*position: relative;*/
 }
 
 .vidContainer{
     width: 100%!important;
-    height: 80vh;
+    height: 100vh;
     margin-bottom: 0;
     position: relative;
     z-index: -100;
@@ -428,6 +428,10 @@ textarea:focus, #opinion:focus{
 .presentation h2{
     font-size: 3.5rem;
 }
+.presentation p{
+    margin-bottom: 50px;
+}
+
 .btn-container{
     padding-top: 5px;
 }
