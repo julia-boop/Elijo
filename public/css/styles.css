@@ -127,9 +127,9 @@ body{
   
 }
 
-@media (min-width: 560px) {
+@media (min-height: 580px) {
     .presentation{
-        bottom: 18vh;
+        bottom: 25vh;
     }
 }
 
