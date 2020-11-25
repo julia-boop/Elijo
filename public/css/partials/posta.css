@@ -131,6 +131,13 @@ button.categoryDropDown{
   background-color: var(--btn-bg-color-scnd);
   border: var(--btn-border-scnd);
   padding: 5px;
+  margin-left: 25px;
+  margin-right: 25px;
+  border-radius: var(--btn-border-radius);
+}
+
+.faqs-tips-btn-click{
+  background-color: red;
 }
 
 .postaBtn button:hover {
@@ -307,8 +314,12 @@ button.tipsPhoneBtn p {
 /* ---------GENERAL FLAP----------- */
 
 .general-btn{
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
+  /* border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px; */
+}
+
+.selected{
+  background-color: var(--btn-bg-color-scnd-focus) !important;
 }
 
 
@@ -349,10 +360,13 @@ button.tipsPhoneBtn p {
 }
 
 .lessons-btn{
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
+  /* border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px; */
 }
 
+.lessons-btn-click{
+  background-color: red;
+}
 
 .materias-container {
   margin-top: 25px;
