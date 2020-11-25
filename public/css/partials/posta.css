@@ -532,18 +532,33 @@ option.resultsOption button{
 }
 
 
-.regionResults{
+.regionResults, .dropdown-content{
   overflow: auto;
   max-height: 150px;
 }
 
-.region-btn{
-  margin-top: 2px;
-  width: 100%;
-  border: solid 1px #DDDDDD;
+.regionResults::-webkit-scrollbar, .dropdown-content::-webkit-scrollbar{
+  display: none;
 }
 
-.regionsResults{
+.regionResults, .dropdown-content{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.region-btn, .resultsOption{
+  margin: 0px;
+  width: 100%;
+  border: solid 1px #DDDDDD;
+  padding: 2px;
+}
+
+.region-btn:hover, .resultsOption:hover{
+  background-color: #DDDDDD
+  ;
+}
+
+.regionsResults, .dropdown-content{
   width: 100%;
 }
 
@@ -614,10 +629,14 @@ option.resultsOption button{
 .universityResults option{
   white-space: normal;
   word-break: break-all;
-  margin-top: 2px;
+  margin-top: 0px;
   padding: 5px;
   width: 100%;
   border: solid 1px #DDDDDD;
+}
+
+.universityResults option:first-child{
+  margin-top: 2px;
 }
 
 .instituteResults{
@@ -628,10 +647,14 @@ option.resultsOption button{
 .instituteResults option{
   white-space: normal;
   word-break: break-all;
-  margin-top: 2px;
+  margin-top: 0px;
   padding: 5px;
   width: 100%;
   border: solid 1px #DDDDDD;
+}
+
+.instituteResults option:first-child{
+  margin-top: 2px;
 }
 
 .own-img{
