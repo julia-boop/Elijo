@@ -299,7 +299,6 @@ module.exports = {
         .catch(error => {
             return res.send(error);
         })
-        return res.send(req.body);
     },
     confirmUser: (req, res) => {
         db.User.findAll()
