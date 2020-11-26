@@ -223,3 +223,12 @@
     z-index: 700;
 }
 
+.meet-filter{
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.meet-filter h6{
+    margin: 10px;
+}
+

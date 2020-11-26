@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');   
 const db = require('../database/models');
 const usersFilter = require('../ownModules/filterUsers.js');
+const meetSearch = require('../ownModules/meetSearch.js');
 
 
 function duplicateCleaner(careers, courses){
@@ -117,6 +118,10 @@ module.exports = {
         let careers = await db.Career.findAll();
         
         [careers, courses] = duplicateCleaner(careers, courses);
+
+        let searchDisplay = await meetSearch(req.query);
+
+        return res.send(searchDisplay)
 
         res.render('meet', {userStudies:usersFiltered, universityCareers, instituteCourses, interests, institutes, courses, universities, careers});
     },
