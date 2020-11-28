@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');   
 const db = require('../database/models');
 
+const usersFilter = require('../ownModules/filterUsersV2.js');
+
 module.exports = {
     getCareers: async (req, res) => {
         console.log(req.params.universityOwner);
@@ -374,14 +376,6 @@ module.exports = {
         }); 
     },
     publishQuestion: async (req, res) => {
-        /*let ids = req.body.ids;
-
-        ids = ids.split(',');
-        console.log(ids);
-
-        for(let i = 0; i < ids.length; i++){
-            let tempData = ids[i].split(':');
-        }*/
         let question = {
             university_id: (req.body.questionData[0] == 'university') ? req.body.questionData[1] : null,
             institute_id: (req.body.questionData[0] == 'institute') ? req.body.questionData[1] : null,
@@ -396,5 +390,48 @@ module.exports = {
         .catch(function(e){
             return res.send(e);
         })
+    },
+    getMeetUsers: async (req, res) => {
+        let userStudies = await db.User.findAll({
+            where: {rol: 2},
+            include: [{
+                association: 'User_careers',
+                include: [{association: 'Universities'}]
+            }, {
+                association: 'User_courses',
+                include: [{association: 'Institutes'}]
+            }]
+        })
+        .catch(error => {
+            res.send(error)
+        })
+
+        return res.status(200).json(userStudies);
+    },
+    getMeetUsersFiltered: async (req, res) => {
+
+        let userStudies = await db.User.findAll({
+            where: {
+                rol: 2
+            },
+            include: [{
+                association: 'User_careers',
+                include: [{association: 'Universities'}]
+            }, {
+                association: 'User_courses',
+                include: [{association: 'Institutes'}]
+            },
+                {
+                    model: db.Interest,
+                    as: 'Interest',
+                    through: {
+                        model: db.User_interest
+                    }
+                }
+            ]
+        })
+        let usersFiltered = await usersFilter(userStudies, req.body);
+
+        return res.status(200).json(usersFiltered);
     }
 };

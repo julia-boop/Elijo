@@ -11,7 +11,6 @@ router.get('/', mainController.home);
 //MEET
 router.get('/meet', mainController.meet);
 router.get('/meet/detail/:ProfileId', mainController.detail);
-router.get('/meet/filters?', mainController.filterMeet);
 //WHY
 // router.get('/why', mainController.why);
 

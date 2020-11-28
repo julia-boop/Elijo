@@ -13,7 +13,7 @@
                             <div class="card">
                                 <% if(typeof universities != 'undefined'){ %>
                                     <% for(let i = 0; i < universities.length; i++){ %>
-                                        <label for="<%=universities[i].name%>"><input onclick="addInputChecked('university<%= i %>')" type="checkbox" name="university" id="university" value="<%=universities[i].id%>"><%=universities[i].name%></label>    
+                                        <label for="<%=universities[i].name%>"><input onclick="addInputChecked('university,<%=universities[i].id%>')" type="checkbox" name="university" id="university" value="<%=universities[i].id%>"><%=universities[i].name%></label>    
                                     <% } %>                                
                                 <% } %>
                             </div>
@@ -25,7 +25,7 @@
                                 <% if(typeof careers != 'undefined'){ %>
                                     <% for(let i = 0; i < careers.length; i++){ %>
 
-                                        <label for="<%=careers[i].name%>"><input onclick="addInputChecked('career<%= i %>')" type="checkbox" name="career" id="career" value="<%=careers[i].name%>"><%=careers[i].name%></label>    
+                                        <label for="<%=careers[i].name%>"><input onclick="addInputChecked('career,<%=careers[i].name%>')" type="checkbox" name="career" id="career" value="<%=careers[i].name%>"><%=careers[i].name%></label>    
 
                                     <% } %>                                
                                 <% } %>
@@ -37,7 +37,7 @@
                             <div class="card">
                                 <% if(typeof institutes != 'undefined'){ %>
                                     <% for(let i = 0; i < institutes.length; i++){ %>
-                                        <label for="<%=institutes[i].name%>"><input onclick="addInputChecked('institute<%= i %>')" type="checkbox" name="institutes" id="institutes" value="<%=institutes[i].id%>"><%=institutes[i].name%></label>    
+                                        <label for="<%=institutes[i].name%>"><input onclick="addInputChecked('institute,<%=institutes[i].id %>')" type="checkbox" name="institutes" id="institutes" value="<%=institutes[i].id%>"><%=institutes[i].name%></label>    
                                     <% } %>                                
                                 <% } %>
                             </div>
@@ -48,7 +48,7 @@
                             <div class="card">
                                 <% if(typeof courses != 'undefined'){ %> 
                                     <% for (let i=0; i<courses.length; i++){ %>
-                                    <label for="<%=courses[i].name%>"><input onclick="addInputChecked('course<%= i %>')" type="checkbox" name="courses" id="courses" value="<%=courses[i].name%>"><%=courses[i].name%></label> 
+                                    <label for="<%=courses[i].name%>"><input onclick="addInputChecked('course,<%=courses[i].name%>')" type="checkbox" name="courses" id="courses" value="<%=courses[i].name%>"><%=courses[i].name%></label> 
                                     <% } %> 
                                 <% } %>
                             </div>
@@ -60,7 +60,7 @@
                             <div class="card">
                                 <% if(typeof interests != 'undefined'){ %>
                                     <% for(let i = 0; i < interests.length; i++){ %>
-                                        <label for="<%=interests[i].interest_name%>"><input onclick="addInputChecked('interest<%= i %>')" type="checkbox" name="interest" id="interest" value="<%= interests[i].interest_name %>" ><%=interests[i].interest_name%></label>    
+                                        <label for="<%=interests[i].interest_name%>"><input onclick="addInputChecked('interest,<%=interests[i].interest_name%>')" type="checkbox" name="interest" id="interest" value="<%= interests[i].interest_name %>" ><%=interests[i].interest_name%></label>    
                                     <% } %>                                
                                 <% } %>  
                             </div>
@@ -76,17 +76,17 @@
                     <a href="#anio" data-toggle="collapse" ><p>Año de Universidad</p></a>
                         <div class="collapse" id="anio">
                             <div class="card">
-                                <label for=""><input onclick="addInputChecked('year1')" type="checkbox" name="year" value="1" id="">1</label>
+                                <label for=""><input onclick="addInputChecked('year,1')" type="checkbox" name="year" value="1" id="">1</label>
                                 
-                                <label for=""><input onclick="addInputChecked('year2')" type="checkbox" name="year" value="2" id="">2</label>
+                                <label for=""><input onclick="addInputChecked('year,2')" type="checkbox" name="year" value="2" id="">2</label>
                                 
-                                <label for=""><input onclick="addInputChecked('year3')" type="checkbox" name="year" value="3" id="">3</label>
+                                <label for=""><input onclick="addInputChecked('year,3')" type="checkbox" name="year" value="3" id="">3</label>
                                 
-                                <label for=""><input onclick="addInputChecked('year4')" type="checkbox" name="year" value="4" id="">4</label>
+                                <label for=""><input onclick="addInputChecked('year,4')" type="checkbox" name="year" value="4" id="">4</label>
                                 
-                                <label for=""><input onclick="addInputChecked('year5')" type="checkbox" name="year" value="5" id="">5</label>
+                                <label for=""><input onclick="addInputChecked('year,5')" type="checkbox" name="year" value="5" id="">5</label>
                                 
-                                <label for=""><input onclick="addInputChecked('year6')" type="checkbox" name="year" value="6" id="">6</label>
+                                <label for=""><input onclick="addInputChecked('year,6')" type="checkbox" name="year" value="6" id="">6</label>
                                 
                             </div>
                         </div>
@@ -94,24 +94,24 @@
                         <div class="collapse" id="genero">
                             <div class="card">
                                 
-                                <label for="genre"><input onclick="addInputChecked('genre1')" type="checkbox" name="genero" value="1" id="1">Femenino</label>
+                                <label for="genre"><input onclick="addInputChecked('genre,1')" type="checkbox" name="genero" value="1" id="1">Femenino</label>
                                 
-                                <label for="genre"><input onclick="addInputChecked('genre2')" type="checkbox" name="genero" value="2" id="2">Masculino</label>
+                                <label for="genre"><input onclick="addInputChecked('genre,2')" type="checkbox" name="genero" value="2" id="2">Masculino</label>
                                 
-                                <label for="genre"><input onclick="addInputChecked('genre3')" type="checkbox" name="genero" value="3" id="3">Otro</label>
+                                <label for="genre"><input onclick="addInputChecked('genre,3')" type="checkbox" name="genero" value="3" id="3">Otro</label>
                                 
                             </div>
                         </div>
                     <a href="#edad" data-toggle="collapse" ><p>Edad</p></a>
                         <div class="collapse" id="edad">
                             <div class="card">
-                                <label for="age"><input onclick="addInputChecked('age1')" type="checkbox" name="age" value="18-23" id="age">18-23</label>
+                                <label for="age"><input onclick="addInputChecked('age,18-23')" type="checkbox" name="age" value="18-23" id="age">18-23</label>
                                 
-                                <label for="age"><input onclick="addInputChecked('age2')" type="checkbox" name="age" value="24-29" id="age">24-29</label>
+                                <label for="age"><input onclick="addInputChecked('age,24-29')" type="checkbox" name="age" value="24-29" id="age">24-29</label>
                                 
-                                <label for="age"><input onclick="addInputChecked('age3')" type="checkbox" name="age" value="30-35" id="age">30-35</label>
+                                <label for="age"><input onclick="addInputChecked('age,30-35')" type="checkbox" name="age" value="30-35" id="age">30-35</label>
 
-                                <label for="age"><input onclick="addInputChecked('age4')" type="checkbox" name="age" value="35" id="age">35+</label>
+                                <label for="age"><input onclick="addInputChecked('age,35')" type="checkbox" name="age" value="35" id="age">35+</label>
                             </div>
                         </div>
                         <button type="submit" class="filter-btn">Filtrar</button>
@@ -132,35 +132,9 @@
             <h6> Busqueda <i class="far fa-times-circle makered"></i></h6>
         </div>
         <button class="btn-filter" id="toggle">Filtrar</button>
-            <div class="row d-flex justify-content-center">                              
-
-                <% for( let i = 0; i < userStudies.length; i++) { %>
-                    <div class="col-10 col-md-3 estudiante">
-                        <img src="/images/users/<%= userStudies[i].photo %>" alt="">
-                        <h3><%= userStudies[i].name %></h3> 
-
-                        <% if(userStudies[i].User_careers.length > 0) { %>
-                            <p><%=  userStudies[i].User_careers[0].name %></p>
-                            <% for(let j = 0; j < universityCareers.length; j++) { %>
-                                <% if(userStudies[i].User_careers[0].id == universityCareers[j].id) { %>
-                                    <p><%= universityCareers[j].Universities.name %></p>
-                                <% } %>
-                            <% } %> 
-                        <% } else if(userStudies[i].User_courses.length > 0) { %>
-                            <p><%= userStudies[i].User_courses[0].name %></p>
-                            <% for(let j = 0; j < instituteCourses.length; j++) { %>
-                                <% if(userStudies[i].User_courses[0].id == instituteCourses[j].id) { %>
-                                    <p><%= instituteCourses[j].Institutes.name %></p>
-                                <% } %>
-                            <% } %>
-                        <% } %>
-
-                        <a href="/meet/detail/<%= userStudies[i].id %>"><button> Ver Perfil</button></a>
-                    </div>
-                <% } %>
-
-                
-            </div>
+        <div class="row d-flex justify-content-center" id="users-container">  
+                                        
+        </div>
 
     </div>
 

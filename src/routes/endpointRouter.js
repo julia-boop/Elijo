@@ -57,4 +57,7 @@ router.post('/sendOpinion', endpointController.onNewOpinion);
 //PUBLISH QUESTION
 router.post('/publishQuestion', endpointController.publishQuestion);
 
+router.get('/meetusers', endpointController.getMeetUsers);
+router.post('/meetusers/filter', endpointController.getMeetUsersFiltered);
+
 module.exports = router;

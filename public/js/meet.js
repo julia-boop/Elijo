@@ -13,7 +13,111 @@ function addInputChecked(data){
     }
 }
 
+function fetchUsers(){
+    fetch('/endpoints/meetusers').then(res => res.json())
+    .then(users => {
+        fillUsersContainer(users);
+    })
+}
+
+function fillUsersContainer(users){
+    let usersContainer = document.querySelector('#users-container');
+    let usersDataContainer;
+    
+    usersContainer.innerHTML = '';
+
+    if(users.length <= 0){
+        usersContainer.innerHTML = '<h2 class="text-center">No se encontraron usuarios.</h2>';
+    }
+
+    for(let i = 0; i < users.length; i++){
+        usersContainer.innerHTML += `
+            <div class="col-10 col-md-3 estudiante">
+                <img src="/images/users/${users[i].photo}" alt="">
+                <h3>${users[i].name}</h3> 
+                <div id="user-studies-data"></div>
+                <a href="/meet/detail/${users[i].id}"><button> Ver Perfil</button></a>
+            </div>
+        `;
+
+        usersDataContainer = document.querySelectorAll('#user-studies-data');
+        if(users[i].User_careers.length > 0){
+            usersDataContainer[i].innerHTML += `
+                <p>${users[i].User_careers[0].name}</p>
+                <p>${users[i].User_careers[0].Universities.name}</p>
+            `;
+        }else if(users[i].User_courses.length > 0){
+            usersDataContainer[i].innerHTML += `
+                <p>${users[i].User_courses[0].name}</p>
+                <p>${users[i].User_courses[0].Institutes.name}</p>
+            `;
+        }
+        
+    }
+    
+}
+
+function sendFilters(){
+    let dataToSend = {
+        university: [],
+        career: [],
+        institutes: [],
+        courses: [],
+        interest: [],
+        year: [],
+        genero: [],
+        age: [],
+        province: []
+    };
+
+    for(let i = 0; i < inputsChecked.length; i++){
+        let tempData = inputsChecked[i].split(',');
+        switch(tempData[0]){
+            case 'university':
+                dataToSend.university.push(tempData[1]);
+                break;
+            case 'career':
+                dataToSend.career.push(tempData[1]);
+                break;
+            case 'institute':
+                dataToSend.institutes.push(tempData[1]);
+                break;
+            case 'course':
+                dataToSend.courses.push(tempData[1]);
+                break;
+            case 'interest':
+                dataToSend.interest.push(tempData[1]);
+                break;
+            case 'year':
+                dataToSend.year.push(tempData[1]);
+                break;
+            case 'genre':
+                dataToSend.genero.push(tempData[1]);
+                break;
+            case 'age':
+                dataToSend.age.push(tempData[1]);
+                break;
+            case 'province':
+                dataToSend.province.push(tempData[1]);
+                break;
+        }
+    }
+    
+    fetch('/endpoints/meetusers/filter', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend)
+    }).then(res => res.json())
+    .then(usersFiltered => {
+        fillUsersContainer(usersFiltered);
+    })
+}
+
 window.addEventListener('load', function() {
+    fetchUsers();
+
     let btnFilter = document.querySelector('.btn-filter');
     let divFilter = document.querySelector('.div-filter');
     let header = document.querySelector('header');
@@ -67,7 +171,8 @@ window.addEventListener('load', function() {
     formFilter.addEventListener('submit', function(e){        
         e.preventDefault();        
         if(inputsChecked.length > 0) {
-            formFilter.submit();
+            sendFilters();
+            //formFilter.submit();
         }
     })
     let regionCard = document.querySelector('#regionCard')
@@ -78,7 +183,7 @@ window.addEventListener('load', function() {
     .then(provinces => {
         provinces.provincias.sort((a, b) => a.nombre < b.nombre ? -1 : a.nombre === b.nombre ? 0 : 1)
         for(let i = 0; i < provinces.provincias.length; i++){
-            regionCard.innerHTML += `<label for=""><input onclick="addInputChecked('province')" type="checkbox" name="province" value="${provinces.provincias[i].nombre}" id="">${provinces.provincias[i].nombre}</label>`
+            regionCard.innerHTML += `<label for=""><input onclick="addInputChecked('province,${provinces.provincias[i].nombre}')" type="checkbox" name="province" value="${provinces.provincias[i].nombre}" id="">${provinces.provincias[i].nombre}</label>`
         }
     })
 })

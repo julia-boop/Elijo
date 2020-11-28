@@ -39,26 +39,6 @@ module.exports = {
         res.render('home', {institutes, universities});
     },
     meet: async function(req, res){
-        let userStudies = await db.User.findAll({
-            where: {rol: 2},//'2' debe ser reemplazado por el rol que corresponda a estudiantes
-            include: [{association: 'User_careers'}, {association: 'User_courses'}]
-        })
-        .catch(error => {
-            res.send(error)
-        })
-        
-        let universityCareers = await db.Career.findAll({
-            include: [{association: 'Universities'}]
-        })
-        .catch(error => {
-            res.send(error)
-        })
-        let instituteCourses = await db.Course.findAll({
-            include: [{association: 'Institutes'}]
-        })
-        .catch(error => {
-            res.send(error)
-        })
         
         let interests = await db.Interest.findAll().catch(error => {res.send(error)});
         let institutes = await db.Institute.findAll().catch(error => {res.send(error)});
@@ -67,63 +47,8 @@ module.exports = {
         let careers = await db.Career.findAll().catch(error => {res.send(error)});
         
         [careers, courses] = duplicateCleaner(careers, courses);
-
-        res.render('meet', {userStudies, universityCareers, instituteCourses, interests, institutes, courses, universities, careers});
-    },
-    filterMeet: async (req, res) => {
         
-        let userStudies = await db.User.findAll({
-            where: {
-                rol: 2
-            },
-            include: [
-                {
-                    model: db.Career,
-                    as: 'User_careers',
-                    through: {
-                        model: db.User_career_study
-                    }
-                }, 
-                {
-                    model: db.Course,
-                    as: 'User_courses',
-                    through: {
-                        model: db.User_course_study
-                    }
-                },
-                {
-                    model: db.Interest,
-                    as: 'Interest',
-                    through: {
-                        model: db.User_interest
-                    }
-                }
-            ]
-        })
-        let usersFiltered = await usersFilter(userStudies, req.query);
-        
-        let users = await db.User_career_study.findAll();
-        
-        let universityCareers = await db.Career.findAll({
-            include: [{association: 'Universities'}]
-        })
-        let instituteCourses = await db.Course.findAll({
-            include: [{association: 'Institutes'}]
-        })
-        
-        let interests = await db.Interest.findAll();
-        let institutes = await db.Institute.findAll();
-        let courses = await db.Course.findAll();
-        let universities = await db.University.findAll();
-        let careers = await db.Career.findAll();
-        
-        [careers, courses] = duplicateCleaner(careers, courses);
-
-        let searchDisplay = await meetSearch(req.query);
-
-        return res.send(searchDisplay)
-
-        res.render('meet', {userStudies:usersFiltered, universityCareers, instituteCourses, interests, institutes, courses, universities, careers});
+        res.render('meet', {interests, institutes, courses, universities, careers});
     },
     detail: async function(req, res) {
         let user = await db.User.findOne({
