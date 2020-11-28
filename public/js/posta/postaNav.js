@@ -313,9 +313,9 @@ function addToFaqsContainer(result) {
                     <div class="row no-gutters">
                         <div class="col-12">
                           <div class="card-body">
-                            <p class="card-text">Pregunta: ${result[i].Question.text}</p>
+                            <h4 class="card-text text-center question-format">¿${result[i].Question.text}</h4>
                             <div class="card-image">
-                                <h5 class="card-text">Respuesta: ${result[i].text} - ${result[i].User.name}</h5>
+                                <p class="card-text answer-format">${result[i].text} - ${result[i].User.name}</p>
                             </div>
                           </div>
                         </div>
@@ -404,9 +404,9 @@ function changeAnswerPage(moveTo){
                 <div class="row no-gutters">
                     <div class="col-12">
                       <div class="card-body">
-                        <p class="card-text">Pregunta: ${answerArray[actualAnswerPage][i].Question.text}</p>
+                        <h4 class="card-text text-center question-format">¿${answerArray[actualAnswerPage][i].Question.text}</h4>
                         <div class="card-image">
-                            <h5 class="card-text">Respuesta: ${answerArray[actualAnswerPage][i].text} - ${answerArray[actualAnswerPage][i].User.name}</h5>
+                            <p class="card-text answer-format">${answerArray[actualAnswerPage][i].text} - <a href="/meet/detail/${answerArray[actualAnswerPage][i].User.id}">${answerArray[actualAnswerPage][i].User.name}</a></p>
                         </div>
                       </div>
                     </div>

@@ -711,7 +711,13 @@ module.exports = {
         let questions = await db.Question.findAll({
             where: {
                 state: 0
-            }
+            },
+            include: [
+                {association: 'Univeristy'}, 
+                {association: 'Career'}, 
+                {association: 'Institute'}, 
+                {association: 'Course'}
+            ]
         })
         .catch(err => {
             return res.send(err);
@@ -734,6 +740,7 @@ module.exports = {
             }
         }
         questions = cleanQuestions;
+        
         res.render('answersForm', {user, questions});
     },
     uploadAnswer: async (req, res) => {

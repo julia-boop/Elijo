@@ -674,6 +674,18 @@ option.resultsOption button{
   color: black;
 }
 
+.question-format{
+  font-style: bold;
+}
+
+.answer-format{
+  font-style: italic;
+}
+
+.answer-format a{
+  color: black;
+}
+
 @media(min-width: 768px){
   .carreers-btn button{
     width: min-content;

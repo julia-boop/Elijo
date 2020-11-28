@@ -13,7 +13,13 @@
                 <select class="select-answer ansSelect" name="question" id="">
                 <option value="" hidden>Seleccione una pregunta para responder</option>
                 <% for(let i = 0; i < questions.length; i++) { %>
-                    <option value="<%=questions[i].id%>"><%=questions[i].text%></option>
+                    <option value="<%=questions[i].id%>">
+                        <%=questions[i].text%>
+                        <%= (questions[i].Career != undefined) ? '('+questions[i].Career.name+')' : '' %>
+                        <%= (questions[i].Univeristy != undefined) ? '('+questions[i].Univeristy.name+')' : '' %>
+                        <%= (questions[i].Institute != undefined) ? '('+questions[i].Institute.name+')' : '' %>
+                        <%= (questions[i].Course != undefined) ? '('+questions[i].Course.name+')' : '' %>
+                    </option>
                 <% } %>
                 </select>
                 <small class="text-danger erSel"></small>
