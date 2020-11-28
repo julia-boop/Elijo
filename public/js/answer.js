@@ -27,7 +27,7 @@ window.addEventListener('load', function(){
             erSel.innerText = (errors.select != '') ? errors.select : '     '
             erAns.innerText = (errors.text != '') ? errors.text : '    '
         } else {
-            calForm.submit();
+            ansForm.submit();
         }        
 
     })
