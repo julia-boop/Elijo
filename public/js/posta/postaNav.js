@@ -166,7 +166,8 @@ function fetchCareerData(careerID, institutionType){
     (institutionType == "university") ?  tempData = "careers" : tempData = "courses";
     questionData[0] = tempData;
     questionData[1] = careerID;
-
+    console.log('data: ');
+    console.log(questionData);
     fetch(`/endpoints/${institutionType}/study/${careerID}/opinions`).then(response => {
         return response.json();
     })
@@ -353,6 +354,7 @@ function addToFaqsContainer(result) {
 function sendQuestion(){
     let formData = document.querySelector('#textarea-question');
     let postSuccess = document.querySelector('#question-success');
+
     if(formData.value.trim() !== ''){
         fetch('/endpoints/publishQuestion', {
             method: 'POST',

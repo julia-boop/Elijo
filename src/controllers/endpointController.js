@@ -385,8 +385,8 @@ module.exports = {
         let question = {
             university_id: (req.body.questionData[0] == 'university') ? req.body.questionData[1] : null,
             institute_id: (req.body.questionData[0] == 'institute') ? req.body.questionData[1] : null,
-            career_id: (req.body.questionData[0] == 'career') ? req.body.questionData[1] : null,
-            course_id: (req.body.questionData[0] == 'course') ? req.body.questionData[1] : null,
+            career_id: (req.body.questionData[0] == 'careers') ? req.body.questionData[1] : null,
+            course_id: (req.body.questionData[0] == 'courses') ? req.body.questionData[1] : null,
             user_id: req.session.userSession,
             state: 0,
             text: req.body.data
