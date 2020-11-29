@@ -1,4 +1,8 @@
 let inputsChecked = [];
+const usersPerPage = 8;
+let usersForPagination = [];
+let actualPage = 0;
+
 function addInputChecked(data){
     if(inputsChecked.length == 0){
         inputsChecked.push(data)
@@ -16,7 +20,13 @@ function addInputChecked(data){
 function fetchUsers(){
     fetch('/endpoints/meetusers').then(res => res.json())
     .then(users => {
-        fillUsersContainer(users);
+        //fillUsersContainer(users);
+        if(users.length <= 0){
+            usersContainer.innerHTML = '<h2 class="text-center">No se encontraron usuarios.</h2>';
+        }else{
+            makeMeetPagination(users);
+            changeMeetPage(0);
+        }        
     })
 }
 
@@ -25,10 +35,6 @@ function fillUsersContainer(users){
     let usersDataContainer;
     
     usersContainer.innerHTML = '';
-
-    if(users.length <= 0){
-        usersContainer.innerHTML = '<h2 class="text-center">No se encontraron usuarios.</h2>';
-    }
 
     for(let i = 0; i < users.length; i++){
         usersContainer.innerHTML += `
@@ -53,6 +59,19 @@ function fillUsersContainer(users){
             `;
         }
         
+    }
+
+    let paginationContainer = document.querySelector('.paginationContainer');
+    paginationContainer.innerHTML = '';
+    if(actualPage > 0){
+        paginationContainer.innerHTML += `
+        <button onclick="changeMeetPage(-1)">Anterior</button>
+        `;
+    }
+    if(actualPage < usersForPagination.length-1){
+        paginationContainer.innerHTML += `
+        <button onclick="changeMeetPage(1)">Siguiente</button>
+        `;
     }
     
 }
@@ -115,6 +134,33 @@ function sendFilters(){
     })
 }
 
+function makeMeetPagination(results){
+    let amountOfPages = Math.ceil(results.length / usersPerPage);
+    let index = 0;
+    let condition = usersPerPage;
+    usersForPagination = [];
+    for(let i = 0; i < amountOfPages; i++){
+        let page = [];
+        for(let j = index; j <= condition - 1; j++){
+            if(results[j] != undefined){
+                page.push(results[j]);
+                
+            }
+        }
+        condition += usersPerPage;
+        index += usersPerPage;
+        usersForPagination.push(page);
+    }
+}
+
+function changeMeetPage(moveTo){
+    if(usersForPagination[actualPage] == null || usersForPagination[actualPage] == undefined) return ;
+    (moveTo > 0) ? actualPage++ : actualPage--;
+    if(moveTo == 0) actualPage = 0;
+
+    fillUsersContainer(usersForPagination[actualPage]);
+}
+
 window.addEventListener('load', function() {
     fetchUsers();
 
@@ -172,9 +218,14 @@ window.addEventListener('load', function() {
         e.preventDefault();        
         if(inputsChecked.length > 0) {
             sendFilters();
-            //formFilter.submit();
         }
-    })
+        divFilter.classList.remove('slide-in')
+        divFilter.classList.add('slide-out')
+        header.classList.remove('move-up')
+        pcmenu.classList.remove('d-none')
+    });
+
+
     let regionCard = document.querySelector('#regionCard')
     fetch('https://apis.datos.gob.ar/georef/api/provincias')
     .then(response => {
