@@ -202,8 +202,6 @@ function fetchCareerData(careerID, institutionType){
                     <li><a id="web-page-link" href="${result.Institutes.link}">Sitio web</a></li>
                 </ul>`
             }
-            console.log('testing');
-            console.log(result);
 
             let inner = document.querySelector("#links-container");
             if(institutionType == 'university'){
@@ -590,6 +588,7 @@ function buildMap(institution, inner){
         if(institution.adress != '' && institution.adress != null && institution.adress != undefined ){
             let direction = institution.adress.replace(' ', '+');    
             let regionString = institution.region.replace(' ', '+');
+            
             mapLocation = `https://www.google.com.ar/maps/place/${direction}, +${regionString}`;
             inner.innerHTML += `<li id="address-data"><a id="map-link" href="${mapLocation}"><i class="fas fa-map-marked-alt"></i> ${institution.adress}</a></li>`;
         }
