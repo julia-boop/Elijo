@@ -54,6 +54,10 @@ module.exports = {
         type: Sequelize.DataTypes.INTEGER(10),
         allowNull: false
       },
+      google_id:{
+        type: Sequelize.DataTypes.TEXT,
+        allowNull: true
+      },
       created_at: Sequelize.DataTypes.DATE,
       updated_at: Sequelize.DataTypes.DATE
     })

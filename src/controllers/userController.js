@@ -58,6 +58,7 @@ module.exports = {
                 photo: 'user.png',
                 rol: req.body.rol,
                 user_confirm: 0, 
+                google_id: null,
                 created_at: new Date,
                 updated_at: new Date
             }
@@ -800,6 +801,39 @@ module.exports = {
             res.render('answersForm', {errors:errors.errors, user:user, questions:questions})
         }
         
+    },
+    saveRegisterWithGoogle: (req, res) => {
+        let newUser = {
+            email: req.body.registerData.email,
+            password: bcrypt.hashSync('genericPassword', 10),
+            name: req.body.registerData.name,
+            last_name: '',
+            age: null, 
+            telephone: '',
+            experiences: " ",
+            province: " ", 
+            genre_id: 3, 
+            photo: 'user.png',
+            rol: 0,
+            user_confirm: 0, 
+            google_id: req.body.registerData.user_id,
+            created_at: new Date,
+            updated_at: new Date
+        }
+        
+        db.User.create(newUser)
+        .then(function(result){
+            res.redirect('/');
+        })
+        .catch(function(e){
+            console.log(e);
+        })        
+    },
+    renderCompleteGoogleRegister: (req, res) => {
+        res.render('googleExtraInfo');
+    },
+    saveCompleteGoogleRegister: (req, res) => {
+        return res.send(req.body);
     },
     logout: (req, res) => {
         req.session.destroy();

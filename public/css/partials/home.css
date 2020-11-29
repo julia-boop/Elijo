@@ -444,13 +444,13 @@ textarea:focus, #opinion:focus{
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 20px;
-    background-color: var(--btn-bg-color);
+    background-color:  rgb(14,155,218);
     border: none;
     color: white;
 }
 
 .btn-container button:hover{
-    background-color:  rgb(14,155,218);;
+    background-color: var(--btn-bg-color)
 }
 
 .mission{

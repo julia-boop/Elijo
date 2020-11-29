@@ -59,7 +59,9 @@
                 </div>
             </div>
 
+            <% if(user.id == '2' || user.id == 2){ %> 
             <div class="extra-info">
+
                 <form autocomplete="off" id="userForm" class="row" action="/user/account/1" method="POST" enctype="multipart/form-data">
                     <div class="col-12">
                         <div class="row">
@@ -369,6 +371,7 @@
                     <button id="submitBtn" type="submit">Guardar información</button>
                 </div>  
             </div>
+        <% } %> 
         </div>
         <%- include('./partials/footer') %>
         <script src="/js/interests.js"></script>

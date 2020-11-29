@@ -116,7 +116,7 @@
                     
                 </form>
                 <!-- Default form register -->
-                
+                <a href="#" onclick="signOut();">Sign out</a>
             </div>
             
             <!-- GOOGLE SCRIPTS -->
@@ -128,9 +128,34 @@
                     console.log('Image URL: ' + profile.getImageUrl());
                     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
                     var id_token = googleUser.getAuthResponse().id_token;
-                    console.log(id_token);
+
+                    let registerData = {
+                        user_id: id_token,
+                        name: profile.getName(),
+                        photo: profile.getImageUrl(),
+                        email: profile.getEmail()
+                    }
+                    console.log(registerData);
+                    fetch('/user/googleregister',{
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({registerData})
+                        });
                 }
-            </script>              
+            </script>  
+            
+            
+            <script>
+              function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                  console.log('User signed out.');
+                });
+              }
+            </script>
+
             <!-- /GOOGLE SCRIPTS -->
             
             

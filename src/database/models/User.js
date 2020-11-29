@@ -47,6 +47,10 @@ module.exports = (sequelize, dataTypes) => {
     user_confirm:{
       type: dataTypes.INTEGER(10),
       allowNull: false
+    },
+    google_id:{
+      type: dataTypes.TEXT,
+      allowNull: true
     }
   };
   const config = {

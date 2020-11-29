@@ -45,6 +45,8 @@ router.post('/createStats/:userID', hasAccess, userController.saveStats );
 router.get('/answerQuestion/:userID', hasAccess, userController.showAnswerForm );
 router.post('/answerQuestion/:userID', hasAccess, userController.uploadAnswer );
 
+router.post('/googleregister', userController.saveRegisterWithGoogle);
+
 //LOGOUT
 router.get('/logout', hasAccess, userController.logout);
 

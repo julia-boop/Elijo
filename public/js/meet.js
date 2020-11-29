@@ -3,7 +3,89 @@ const usersPerPage = 9;
 let usersForPagination = [];
 let actualPage = 0;
 
+//#region HANDLES
+function reinsert(data, toInner){
+    let tempInput = data;
+
+    toInner.removeChild(tempInput);
+    toInner.prepend(tempInput);
+}
+
+function handleUniversityInput(inputRef){
+    let inputUniversity = document.querySelectorAll('#university');
+    addInputChecked(`university, ${inputUniversity[inputRef].value}`);
+    let universityDiv = document.querySelector('#universitiesParent');
+
+    reinsert(inputUniversity[inputRef].parentNode, universityDiv);
+}
+
+function handleCareerInput(inputRef){
+    let inputCareer = document.querySelectorAll('#career');
+    addInputChecked(`career,${inputCareer[inputRef].value}`)
+    let careerDiv = document.querySelector('#careerDiv');
+
+    reinsert(inputCareer[inputRef].parentNode, careerDiv);
+}
+
+function handleInstituteInput(inputRef){
+    let inputInstitute = document.querySelectorAll('#institutes');
+    addInputChecked(`institute, ${inputInstitute[inputRef].value}`);
+    let institutesDiv = document.querySelector('#institutesDiv')
+
+    reinsert(inputInstitute[inputRef].parentNode, institutesDiv);
+}
+
+function handleCourseInput(inputRef){
+    let courseInput = document.querySelectorAll('#courses');
+    addInputChecked(`course,${courseInput[inputRef].value}`);
+    let courseDiv = document.querySelector('#courseDiv');
+
+    reinsert(courseInput[inputRef].parentNode, courseDiv);
+}
+
+function handleInterestInput(inputRef){
+    let interestInput = document.querySelectorAll('#interest');
+    addInputChecked(`interest,${interestInput[inputRef].value}`);
+    let interestDiv = document.querySelector('#interestDiv')
+
+    reinsert(interestInput[inputRef].parentNode, interestDiv)
+}
+
+function handleYearInput(inputRef){
+    let yearInput = document.querySelectorAll('#year');
+    addInputChecked(`year,${yearInput[inputRef].value}`);
+    let yearDiv = document.querySelector('#yearDiv');
+
+    reinsert(yearInput[inputRef].parentNode, yearDiv);
+}
+
+function handleGenreInput(inputRef){
+    let genreInput = document.querySelectorAll('#genre');
+    addInputChecked(`genre, ${genreInput[inputRef].value}`);
+    let genreDiv = document.querySelector('#genreDiv');
+
+    reinsert(genreInput[inputRef].parentNode, genreDiv)
+}
+
+function handleRegionInput(inputRef){
+    let regionInput = document.querySelectorAll('#meetProvince');
+    addInputChecked(`province,${regionInput[inputRef].value}`);
+    let regionDiv = document.querySelector('#regionCard');
+
+    reinsert(regionInput[inputRef].parentNode, regionDiv);
+}
+
+function handleAgeInput(inputRef){
+    let ageInput = document.querySelectorAll('#age');
+    addInputChecked(`age,${ageInput[inputRef].value}`);
+    let ageDiv = document.querySelector('#ageDiv');
+
+    reinsert(ageInput[inputRef].parentNode, ageDiv);
+}
+
+//#endregion
 function addInputChecked(data){
+    console.log(data);
     if(inputsChecked.length == 0){
         inputsChecked.push(data)
     } else {
@@ -20,7 +102,6 @@ function addInputChecked(data){
 function fetchUsers(){
     fetch('/endpoints/meetusers').then(res => res.json())
     .then(users => {
-        //fillUsersContainer(users);
         if(users.length <= 0){
             usersContainer.innerHTML = '<h2 class="text-center">No se encontraron usuarios.</h2>';
         }else{
@@ -234,7 +315,8 @@ window.addEventListener('load', function() {
     .then(provinces => {
         provinces.provincias.sort((a, b) => a.nombre < b.nombre ? -1 : a.nombre === b.nombre ? 0 : 1)
         for(let i = 0; i < provinces.provincias.length; i++){
-            regionCard.innerHTML += `<label for=""><input onclick="addInputChecked('province,${provinces.provincias[i].nombre}')" type="checkbox" name="province" value="${provinces.provincias[i].nombre}" id="">${provinces.provincias[i].nombre}</label>`
+            regionCard.innerHTML += `<label for=""><input onclick="handleRegionInput(${i})" type="checkbox" name="province" value="${provinces.provincias[i].nombre}" id="meetProvince">${provinces.provincias[i].nombre}</label>`
+            //addInputChecked('province,${provinces.provincias[i].nombre}')
         }
     })
 })
