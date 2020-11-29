@@ -199,11 +199,19 @@ function fetchCareerData(careerID, institutionType){
                 infoContainer.innerHTML = `
                 <h3>Informacion útil</h3>
                 <ul id="links-container">
-                <li><a id="web-page-link" href="${result.Institutes.link}">Sitio web</a></li>
-                <li id="address-data"><a id="map-link" href="">Mapa</a></li>
+                    <li><a id="web-page-link" href="${result.Institutes.link}">Sitio web</a></li>
                 </ul>`
             }
+            console.log('testing');
+            console.log(result);
 
+            let inner = document.querySelector("#links-container");
+            if(institutionType == 'university'){
+                buildMap(result.Universities, inner);
+            }else{
+                buildMap(result.Institutes, inner);  
+            }
+            
             let linksContainer = document.querySelector('#links-container');
             
             linksContainer.innerHTML += `<li><a id="study-plan-link" href="">Plan de estudios</a></li>` ;
@@ -557,11 +565,35 @@ function changeUsefulInformation(data, career){
         <h3>Informacion útil</h3>
         <ul id="links-container">
         <li><a id="web-page-link" href="${data.link}">Sitio web</a></li>
-        <li id="address-data"><a id="map-link" href="">Mapa</a></li>
         </ul>`
     
     }
-    // https://www.google.com.ar/maps/place/calle+falsa+1234, +Buenos+Aires
+    console.log(data);
+    let inner = document.querySelector("#links-container");
+    buildMap(data, inner);   
+}
+//#endregion
+
+//#region MAP
+function buildMap(institution, inner){
+    let mapLocation = '';
+
+    if(institution.University_location != undefined && institution.University_location != null){//es universidad
+        for(let i = 0; i < institution.University_location.length; i++){
+            let direction = institution.University_location[i].address.replace(' ', '+');
+            let regionString = institution.University_location[i].province.replace(' ', '+');
+
+            mapLocation = `https://www.google.com.ar/maps/place/${direction}, +${regionString}`;
+            inner.innerHTML += `<li id="address-data"><a id="map-link" href="${mapLocation}"><i class="fas fa-map-marked-alt"></i> ${institution.University_location[i].address}</a></li>`;
+        }
+    }else{//es instituto
+        if(institution.adress != '' && institution.adress != null && institution.adress != undefined ){
+            let direction = institution.adress.replace(' ', '+');    
+            let regionString = institution.region.replace(' ', '+');
+            mapLocation = `https://www.google.com.ar/maps/place/${direction}, +${regionString}`;
+            inner.innerHTML += `<li id="address-data"><a id="map-link" href="${mapLocation}"><i class="fas fa-map-marked-alt"></i> ${institution.adress}</a></li>`;
+        }
+    }
 }
 //#endregion
 
