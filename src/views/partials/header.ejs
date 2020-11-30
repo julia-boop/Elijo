@@ -37,7 +37,7 @@
                                     <div id="collapseAccount" class="collapse" >
                                         <div class="card card-body w-100 p-0 dropMobileAccount">
                                             <a class="dropdown-item text-center w-100 p-0 pt-3" href="/user/account/<%=userLoggedIn.id%>">Perfil</a>
-                                            <% if(user.rol == '2' || user.rol == 2){ %> 
+                                            <% if(userLoggedIn.rol == '2' || userLoggedIn.rol == 2){ %> 
                                                 <a class="dropdown-item text-center w-100 p-0 pt-3" href="/user/createStats/<%=userLoggedIn.id%>">Aporta Datos</a>
                                                 <a class="dropdown-item text-center w-100 p-0 pt-3" href="/user/createQualification/<%=userLoggedIn.id%>">Calificar</a>
                                                 <a class="dropdown-item text-center w-100 p-0 pt-3" href="/user/createTip/<%=userLoggedIn.id%>">Escribir Tip</a>
@@ -85,7 +85,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right headerCuenta dropmenuAccount" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="/user/account/<%=userLoggedIn.id%>">Perfil</a>
-                                    <% if(user.rol == '2' || user.rol == 2){ %> 
+                                    <% if(userLoggedIn.rol == '2' || userLoggedIn.rol == 2){ %> 
                                         <a class="dropdown-item" href="/user/createStats/<%=userLoggedIn.id%>">Aporta Datos</a>
                                         <a class="dropdown-item" href="/user/createQualification/<%=userLoggedIn.id%>">Calificar</a>
                                         <a class="dropdown-item" href="/user/createTip/<%=userLoggedIn.id%>">Escribir Tip</a>

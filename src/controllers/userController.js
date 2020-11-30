@@ -8,6 +8,7 @@ const nodemailer = require('nodemailer');
 const nodemailerMessenger = require('../ownModules/nodemailerMessenger');
 const updateCalification = require('../ownModules/updateCalification');
 const googleVerification = require('../ownModules/verifyWithGoogle');
+const getGoogleID = require('../ownModules/getGoogleId');
 const updateStats = require('../ownModules/updateStats');
 const sequelize = db.sequelize;
 
@@ -803,7 +804,10 @@ module.exports = {
         }
         
     },
-    saveRegisterWithGoogle: (req, res) => {
+    saveRegisterWithGoogle: async (req, res) => {
+
+        let googleID = await getGoogleID(req.body.registerData.user_id);
+        
         let newUser = {
             email: req.body.registerData.email,
             password: bcrypt.hashSync(req.body.registerData.user_id, 10),
@@ -817,7 +821,7 @@ module.exports = {
             photo: 'user.png',
             rol: 0,
             user_confirm: 0, 
-            google_id: req.body.registerData.user_id,
+            google_id: bcrypt.hashSync(googleID.payload.sub, 10),
             created_at: new Date,
             updated_at: new Date
         }
@@ -860,6 +864,8 @@ module.exports = {
     },
     verifyUserWithGoogle: async (req, res) => {
         
+        let googleResponse = await googleVerification(req.body.loginData.user_id).catch(err => console.log(err))
+
         let user = await db.User.findOne({
             where: {
                 email: req.body.loginData.email
@@ -871,23 +877,18 @@ module.exports = {
 
         if(user == null) return res.status(404).json(null);
 
-        if(user.google_id != null){
-            let userResponse = await googleVerification(req.body.loginData.user_id).catch(err => console.log(err))
+        if(!googleResponse.payload) return res.status(404).json(null);
 
-            if(userResponse.payload){
-                req.session.userSession = user.id;
-                res.cookie('Elijo', user.id, {maxAge: 60000*60*24*7*30});
-                res.locals.userLoggedIn = {
-                    id: user.id,
-                    rol: user.rol
-                }
-                return res.status(200).json('success');
-            }else{
-                return res.status(404).json(null);
+        if(bcrypt.compareSync(googleResponse.payload.sub, user.google_id)){
+            req.session.userSession = user.id;
+            res.cookie('Elijo', user.id, {maxAge: 60000*60*24*7*30});
+            res.locals.userLoggedIn = {
+                id: user.id,
+                rol: user.rol
             }
+            return res.status(200).json('success');
+        }
             
-            
-        }       
         return res.status(404).json(null);
     },
     logout: (req, res) => {
