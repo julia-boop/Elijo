@@ -211,6 +211,7 @@ function sendFilters(){
         body: JSON.stringify(dataToSend)
     }).then(res => res.json())
     .then(usersFiltered => {
+        let usersContainer = document.querySelector('#users-container');
         if(usersFiltered.length <= 0){
             usersContainer.innerHTML = '<h2 class="text-center">No se encontraron usuarios.</h2>';
         }else{
