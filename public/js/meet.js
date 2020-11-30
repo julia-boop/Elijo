@@ -211,10 +211,12 @@ function sendFilters(){
         body: JSON.stringify(dataToSend)
     }).then(res => res.json())
     .then(usersFiltered => {
-        //fillUsersContainer(usersFiltered);
-        makeMeetPagination(usersFiltered);
-        changeMeetPage(0);
-
+        if(usersFiltered.length <= 0){
+            usersContainer.innerHTML = '<h2 class="text-center">No se encontraron usuarios.</h2>';
+        }else{
+            makeMeetPagination(usersFiltered);
+            changeMeetPage(0);
+        }     
     })
 }
 
