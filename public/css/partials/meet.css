@@ -239,3 +239,13 @@
     flex-wrap: wrap;
     justify-content: end;
 }
+
+.meetPaginationContainer button{
+    margin: 2px;
+    margin-top: 2px;
+    padding: 5px;
+    height: 46px;
+    background-color: var(--btn-bg-color);
+    border: var(--btn-border);
+    border-radius: var(--btn-border-radius);
+}
