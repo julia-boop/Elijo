@@ -6,17 +6,19 @@
 
         <div class="container">
             <h1>Hola, <b><%= user.name %> </b></h1>
-            <div class="notifications dropdown">
-                <button class="btn btn-secondary action-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ACCIONES <i class="fas fa-exclamation-circle "></i>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="/user/createQualification/<%=user.id%>">CALIFICAR</a>
-                    <a class="dropdown-item" href="/user/createTip/<%=user.id%>">ESCRIBIR TIP</a>
-                    <a class="dropdown-item" href="/user/createStats/<%=user.id%>">APORTA DATOS</a>
-                    <a class="dropdown-item" href="/user/answerQuestion/<%=user.id%>">RESPONDER PREGUNTA</a>
+            <% if(user.rol == '2' || user.rol == 2){ %> 
+                <div class="notifications dropdown">
+                    <button class="btn btn-secondary action-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ACCIONES <i class="fas fa-exclamation-circle "></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/user/createQualification/<%=user.id%>">CALIFICAR</a>
+                        <a class="dropdown-item" href="/user/createTip/<%=user.id%>">ESCRIBIR TIP</a>
+                        <a class="dropdown-item" href="/user/createStats/<%=user.id%>">APORTA DATOS</a>
+                        <a class="dropdown-item" href="/user/answerQuestion/<%=user.id%>">RESPONDER PREGUNTA</a>
+                    </div>
                 </div>
-            </div>
+            <% } %> 
 
             <div class="main-info row">
                 <div class="img-container col-6 col-md-4">
