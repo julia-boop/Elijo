@@ -211,7 +211,10 @@ function sendFilters(){
         body: JSON.stringify(dataToSend)
     }).then(res => res.json())
     .then(usersFiltered => {
-        fillUsersContainer(usersFiltered);
+        //fillUsersContainer(usersFiltered);
+        makeMeetPagination(usersFiltered);
+        changeMeetPage(0);
+
     })
 }
 
