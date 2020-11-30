@@ -142,7 +142,7 @@ function fillUsersContainer(users){
         
     }
 
-    let paginationContainer = document.querySelector('.paginationContainer');
+    let paginationContainer = document.querySelector('.meetPaginationContainer');
     paginationContainer.innerHTML = '';
     if(actualPage > 0){
         paginationContainer.innerHTML += `

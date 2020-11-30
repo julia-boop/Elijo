@@ -233,3 +233,9 @@
     display: inline-block;
 }
 
+.meetPaginationContainer{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+}
