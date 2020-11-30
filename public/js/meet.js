@@ -212,8 +212,10 @@ function sendFilters(){
     }).then(res => res.json())
     .then(usersFiltered => {
         let usersContainer = document.querySelector('#users-container');
+        let paginationContainer = document.querySelector('.meetPaginationContainer');
         if(usersFiltered.length <= 0){
             usersContainer.innerHTML = '<h2 class="text-center">No se encontraron usuarios.</h2>';
+            paginationContainer.innerHTML = '';
         }else{
             makeMeetPagination(usersFiltered);
             changeMeetPage(0);
@@ -231,7 +233,6 @@ function makeMeetPagination(results){
         for(let j = index; j <= condition - 1; j++){
             if(results[j] != undefined){
                 page.push(results[j]);
-                
             }
         }
         condition += usersPerPage;
