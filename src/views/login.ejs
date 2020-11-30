@@ -63,7 +63,7 @@
         </p>
         
     </form>
-    <a href="#" onclick="signOut();">Sign out</a>
+    
 
     </div>
     <!-- Default form login -->
@@ -73,7 +73,7 @@
         function onSignIn(googleUser) {
             var profile = googleUser.getBasicProfile();
             var id_token = googleUser.getAuthResponse().id_token;
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            
             let loginData = {
                 user_id: id_token,
                 name: profile.getName(),
