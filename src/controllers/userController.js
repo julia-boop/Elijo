@@ -7,6 +7,7 @@ const {check, validationResult, body} = require('express-validator');
 const nodemailer = require('nodemailer');
 const nodemailerMessenger = require('../ownModules/nodemailerMessenger');
 const updateCalification = require('../ownModules/updateCalification');
+const googleVerification = require('../ownModules/verifyWithGoogle');
 const updateStats = require('../ownModules/updateStats');
 const sequelize = db.sequelize;
 
@@ -805,7 +806,7 @@ module.exports = {
     saveRegisterWithGoogle: (req, res) => {
         let newUser = {
             email: req.body.registerData.email,
-            password: bcrypt.hashSync('genericPassword', 10),
+            password: bcrypt.hashSync(req.body.registerData.user_id, 10),
             name: req.body.registerData.name,
             last_name: '',
             age: null, 
@@ -823,17 +824,71 @@ module.exports = {
         
         db.User.create(newUser)
         .then(function(result){
-            res.redirect('/');
+            req.session.userSession = result.id;            
+            return res.status(200).json(result);
         })
         .catch(function(e){
-            console.log(e);
+            return res.status(404).json(e);
         })        
     },
     renderCompleteGoogleRegister: (req, res) => {
         res.render('googleExtraInfo');
     },
-    saveCompleteGoogleRegister: (req, res) => {
-        return res.send(req.body);
+    saveCompleteGoogleRegister: async (req, res) => {
+        let user = await db.User.findOne({where: {id: req.session.userSession}})
+        
+        user.telephone = req.body.telephone; 
+        user.rol = req.body.rol; 
+
+        let userUpdated = await db.User.update({
+            telephone: req.body.telephone,
+            rol: req.body.rol
+        },{
+            where: {
+                id: user.id
+            }
+        })
+        .catch(function(e){
+            return res.send(e);
+        })
+        
+        res.locals.userLoggedIn = {
+            id: user.id,
+            rol: user.rol
+        } 
+        res.redirect('/user/account/' + user.id);
+    },
+    verifyUserWithGoogle: async (req, res) => {
+        
+        let user = await db.User.findOne({
+            where: {
+                email: req.body.loginData.email
+            }
+        })
+        .catch(err => {
+            return res.status(404).json(null);
+        })
+
+        if(user == null) return res.status(404).json(null);
+
+        if(user.google_id != null){
+            let userResponse = await googleVerification(req.body.loginData.user_id).catch(err => console.log(err))
+
+            if(userResponse.payload){
+                req.session.userSession = user.id;
+                res.cookie('Elijo', user.id, {maxAge: 60000*60*24*7*30});
+                res.locals.userLoggedIn = {
+                    id: user.id,
+                    rol: user.rol
+                }
+                return res.status(200).json('success');
+            }else{
+                return res.status(404).json(null);
+            }
+            
+            
+        }       
+        return res.status(404).json(null);
     },
     logout: (req, res) => {
         req.session.destroy();

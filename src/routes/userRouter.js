@@ -46,7 +46,9 @@ router.get('/answerQuestion/:userID', hasAccess, userController.showAnswerForm )
 router.post('/answerQuestion/:userID', hasAccess, userController.uploadAnswer );
 
 router.post('/googleregister', userController.saveRegisterWithGoogle);
-
+router.get('/googleregister/completeregister/:userID', userController.renderCompleteGoogleRegister);
+router.post('/googleregister/completeregister', userController.saveCompleteGoogleRegister);
+router.post('/googleVerification', userController.verifyUserWithGoogle)
 //LOGOUT
 router.get('/logout', hasAccess, userController.logout);
 

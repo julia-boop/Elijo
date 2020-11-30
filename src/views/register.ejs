@@ -8,7 +8,9 @@
     <body>
         <%- include('./partials/header') %>
             <div class="container register-container">
-
+                <div class="alert alert-danger d-none" role="alert" id="google-error">
+                    Error en el registro!
+                </div>
                 <!-- Default form register -->
                 <form class="text-center border border-light p-5 sign-up-form" action="/user/register" method="POST">
                 
@@ -116,17 +118,17 @@
                     
                 </form>
                 <!-- Default form register -->
-                <a href="#" onclick="signOut();">Sign out</a>
+                
             </div>
             
             <!-- GOOGLE SCRIPTS -->
             <script>
                 function onSignIn(googleUser) {
                     var profile = googleUser.getBasicProfile();
-                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                    console.log('Name: ' + profile.getName());
-                    console.log('Image URL: ' + profile.getImageUrl());
-                    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                    //console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                    //console.log('Name: ' + profile.getName());
+                    //console.log('Image URL: ' + profile.getImageUrl());
+                    //console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
                     var id_token = googleUser.getAuthResponse().id_token;
 
                     let registerData = {
@@ -135,26 +137,38 @@
                         photo: profile.getImageUrl(),
                         email: profile.getEmail()
                     }
-                    console.log(registerData);
+
                     fetch('/user/googleregister',{
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({registerData})
-                        });
+                    })
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(newUser => {
+                        console.log(newUser.errors == undefined);
+                        if(newUser.errors != undefined){
+                            signOut();
+                            let googleError = document.querySelector('#google-error');
+                            googleError.classList.remove('d-none');
+                            return;
+                        }
+                        signOut();
+                        window.location.href= '/user/googleregister/completeregister/'+newUser.id;
+                    })
+
                 }
-            </script>  
-            
-            
-            <script>
-              function signOut() {
+
+                function signOut() {
                 var auth2 = gapi.auth2.getAuthInstance();
                 auth2.signOut().then(function () {
                   console.log('User signed out.');
                 });
               }
-            </script>
+            </script>  
 
             <!-- /GOOGLE SCRIPTS -->
             
