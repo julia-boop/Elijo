@@ -72,6 +72,8 @@ body{
     .pcMenu{
         display: inherit;
         height: 50px;
+        position: relative;
+        z-index: 800;
     }
     .phoneMenu{
         display: none;
