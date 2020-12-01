@@ -1,5 +1,5 @@
 let inputsChecked = [];
-const usersPerPage = 9;
+const usersPerPage = 3;
 let usersForPagination = [];
 let actualPage = 0;
 
@@ -144,17 +144,21 @@ function fillUsersContainer(users){
 
     let paginationContainer = document.querySelector('.meetPaginationContainer');
     paginationContainer.innerHTML = '';
+
     if(actualPage > 0){
         paginationContainer.innerHTML += `
-        <button onclick="changeMeetPage(-1)">Anterior</button>
+        <div class="btn-container-meet  meet-to-left">
+        <button class="before-btn" onclick="changeMeetPage(-1)">Anterior</button>
+        </div>
         `;
     }
     if(actualPage < usersForPagination.length-1){
         paginationContainer.innerHTML += `
-        <button onclick="changeMeetPage(1)">Siguiente</button>
+        <div class="btn-container-meet  meet-to-right">
+        <button class="after-btn" onclick="changeMeetPage(1)">Siguiente</button>
+        </div>
         `;
-    }
-    
+    }    
 }
 
 function sendFilters(){
