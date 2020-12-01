@@ -1,5 +1,5 @@
 let inputsChecked = [];
-const usersPerPage = 3;
+const usersPerPage = 9;
 let usersForPagination = [];
 let actualPage = 0;
 
