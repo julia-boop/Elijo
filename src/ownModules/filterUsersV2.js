@@ -140,7 +140,7 @@ function filterByCareerYear(users, query){
     
     for(let i = 0 ; i < users.length ; i++){
         for(let k = 0 ; k < users[i].User_careers.start_year.length ; k++){
-            if(users[i].User_careers[j].start_year == Number(query[j])){
+            if(users[i].User_careers[j].start_year == Number(query[j]) || users[i].User_careers[j].start_year == query[j]){
                 usersByYear.push(users[i])
             }
         }
@@ -200,7 +200,7 @@ module.exports = function (users, queries){
     
     if(queries.genero.length > 0) usersFiltered = filterByGenre(usersFiltered, queries.genero);
     
-    //if(queries.year.length > 0) usersFiltered = filterByCareerYear(usersFiltered, queries.year);
+    if(queries.year.length > 0) usersFiltered = filterByCareerYear(usersFiltered, queries.year);
     
     if(queries.province.length > 0) usersFiltered = filterByProvince(usersFiltered, queries.province);
     
