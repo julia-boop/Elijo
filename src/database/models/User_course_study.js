@@ -15,7 +15,7 @@ module.exports = (sequelize, dataTypes) => {
         allowNull: false
       },
       start_year: {
-        type: dataTypes.INTEGER(40).UNSIGNED
+        type: dataTypes.STRING(20)
       }
     };
     const config = {

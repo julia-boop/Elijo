@@ -420,13 +420,23 @@ module.exports = {
             where: {
                 rol: 2
             },
-            include: [{
-                association: 'User_careers',
-                include: [{association: 'Universities'}]
-            }, {
-                association: 'User_courses',
-                include: [{association: 'Institutes'}]
-            },
+            include: [
+                {
+                    model: db.Career,
+                    as: 'User_careers',
+                    through: {
+                        model: db.User_career_study
+                    },
+                    include: [{association: 'Universities'}]
+                }, 
+                {
+                    model: db.Course,
+                    as: 'User_courses',
+                    through: {
+                        model: db.User_course_study
+                    },
+                    include: [{association: 'Institutes'}]
+                },
                 {
                     model: db.Interest,
                     as: 'Interest',
