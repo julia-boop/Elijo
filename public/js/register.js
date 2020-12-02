@@ -48,8 +48,8 @@ window.addEventListener('load', function(){
             errors.password = 'La constraseña debe tener al menos 8 caractéres'
         }
 
-        if(telephone.value.length < 1){
-            errors.telephone = 'Ingresar un telefono'
+        if(telephone.value.length < 11){
+            errors.telephone = 'Ingresar un telefono válido, por ejemplo +5491122334455'
         }
 
         if(rol.value.length < 1){
