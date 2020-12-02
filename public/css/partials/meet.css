@@ -236,8 +236,8 @@
 .meetPaginationContainer{
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: end;
+    flex-wrap: nowrap!important;
+    justify-content: space-between;
 }
 
 .meetPaginationContainer button{
@@ -249,3 +249,27 @@
     border: var(--btn-border);
     border-radius: var(--btn-border-radius);
 }
+
+.btn-container-meet{
+    display: flex;
+    width: 100%;
+}
+
+.meetPaginationContainer .after-btn{
+    align-self: flex-end;
+}
+
+.meetPaginationContainer .before-btn{
+    align-self: flex-start;
+}
+
+.meet-to-right{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.meet-to-left{
+    display: flex;
+    justify-content: flex-start;
+}
+

@@ -144,17 +144,21 @@ function fillUsersContainer(users){
 
     let paginationContainer = document.querySelector('.meetPaginationContainer');
     paginationContainer.innerHTML = '';
+
     if(actualPage > 0){
         paginationContainer.innerHTML += `
-        <button onclick="changeMeetPage(-1)">Anterior</button>
+        <div class="btn-container-meet  meet-to-left">
+        <button class="before-btn" onclick="changeMeetPage(-1)">Anterior</button>
+        </div>
         `;
     }
     if(actualPage < usersForPagination.length-1){
         paginationContainer.innerHTML += `
-        <button onclick="changeMeetPage(1)">Siguiente</button>
+        <div class="btn-container-meet  meet-to-right">
+        <button class="after-btn" onclick="changeMeetPage(1)">Siguiente</button>
+        </div>
         `;
-    }
-    
+    }    
 }
 
 function sendFilters(){
@@ -211,7 +215,15 @@ function sendFilters(){
         body: JSON.stringify(dataToSend)
     }).then(res => res.json())
     .then(usersFiltered => {
-        fillUsersContainer(usersFiltered);
+        let usersContainer = document.querySelector('#users-container');
+        let paginationContainer = document.querySelector('.meetPaginationContainer');
+        if(usersFiltered.length <= 0){
+            usersContainer.innerHTML = '<h2 class="text-center">No se encontraron usuarios.</h2>';
+            paginationContainer.innerHTML = '';
+        }else{
+            makeMeetPagination(usersFiltered);
+            changeMeetPage(0);
+        }     
     })
 }
 
@@ -225,7 +237,6 @@ function makeMeetPagination(results){
         for(let j = index; j <= condition - 1; j++){
             if(results[j] != undefined){
                 page.push(results[j]);
-                
             }
         }
         condition += usersPerPage;

@@ -211,3 +211,18 @@ button.interest-btn{
     list-style: none;
     text-transform: capitalize;
 }
+
+.add-btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.add-btn{
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    background-color: var(--btn-bg-color);
+    border: none;
+}

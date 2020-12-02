@@ -1,5 +1,25 @@
 window.addEventListener('load', function(){
     
+    //#region ACTIVATE NEW INPUTS
+    let newUniversityInputs = document.querySelector('#new-university');
+    let newInstituteInputs = document.querySelectorAll('#new-institute');
+    let addForUniversity = document.querySelector('#university-add-btn');
+    let addForInstitute = document.querySelector('#institute-add-btn');
+    let instituteIndex = 0;
+    let instituteLimits = 3;
+
+    addForUniversity.addEventListener('click', event => {
+        newUniversityInputs.classList.remove('d-none');
+        addForUniversity.classList.add('d-none');
+    });
+
+    addForInstitute.addEventListener('click', event => {
+        newInstituteInputs[instituteIndex].classList.remove('d-none');
+        instituteIndex++;
+        if(instituteIndex >= instituteLimits) addForInstitute.classList.add('d-none');
+    });
+    //#endregion
+
     //#region STUDIES SELECTION
     let universitySelected = document.querySelectorAll('#universitySelector');
     let careerSelected = document.querySelectorAll('#career');

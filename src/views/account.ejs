@@ -165,12 +165,21 @@
                                         </div>
                                     
                                         <div class="col-12 col-md-4" id="careerStartDiv">
-                                            <label class="col-12" for="startDate">Año de inicio:</label>
-                                            <input class="ml-3 an-account-input" type="number" name="startDate" placeholder="xxxx" value="<%=(typeof user_careers[0] != 'undefined') ? user_careers[0].start_year : '' %>">
+                                            <label class="col-12" for="startDate">Año de carrera:</label>
+                                            <select class="ml-3 an-account-select" name="startDate" id="">
+                                                <option value="" hidden>Selecciona un año</option>
+                                                <option <%=(typeof user_careers[0] != 'undefined' && user_careers[0].start_year == '1') ? 'checked' : '' %> value="1">1°</option>
+                                                <option <%=(typeof user_careers[0] != 'undefined' && user_careers[0].start_year == '2') ? 'checked' : '' %> value="2">2°</option>
+                                                <option <%=(typeof user_careers[0] != 'undefined' && user_careers[0].start_year == '3') ? 'checked' : '' %> value="3">3°</option>
+                                                <option <%=(typeof user_careers[0] != 'undefined' && user_careers[0].start_year == '4') ? 'checked' : '' %> value="4">4°</option>
+                                                <option <%=(typeof user_careers[0] != 'undefined' && user_careers[0].start_year == '5') ? 'checked' : '' %> value="5">5°</option>
+                                                <option <%=(typeof user_careers[0] != 'undefined' && user_careers[0].start_year == '6') ? 'checked' : '' %> value="6">6°</option>
+                                                <option <%=(typeof user_careers[0] != 'undefined' && user_careers[0].start_year == 'terminado') ? 'checked' : '' %> value="terminado">terminado</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 d-none" id="new-university">
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="universitySelect">
                                             <label class="col-12" for="university">Universidad:</label>
@@ -198,10 +207,22 @@
                                         </div>
                                     
                                         <div class="col-12 col-md-4" id="careerStartDiv">
-                                            <label class="col-12" for="startDate">Año de inicio:</label>
-                                            <input class="ml-3 an-account-input" type="number" name="startDate" placeholder="xxxx" value="<%=(typeof user_careers[1] != 'undefined') ? user_careers[1].start_year : '' %>">
+                                            <label class="col-12" for="startDate">Año de carrera:</label>
+                                            <select class="ml-3 an-account-select" name="startDate" id="">
+                                                <option value="" hidden>Selecciona un año</option>
+                                                <option <%=(typeof user_careers[1] != 'undefined' && user_careers[1].start_year == '1') ? 'checked' : '' %> value="1">1°</option>
+                                                <option <%=(typeof user_careers[1] != 'undefined' && user_careers[1].start_year == '2') ? 'checked' : '' %> value="2">2°</option>
+                                                <option <%=(typeof user_careers[1] != 'undefined' && user_careers[1].start_year == '3') ? 'checked' : '' %> value="3">3°</option>
+                                                <option <%=(typeof user_careers[1] != 'undefined' && user_careers[1].start_year == '4') ? 'checked' : '' %> value="4">4°</option>
+                                                <option <%=(typeof user_careers[1] != 'undefined' && user_careers[1].start_year == '5') ? 'checked' : '' %> value="5">5°</option>
+                                                <option <%=(typeof user_careers[1] != 'undefined' && user_careers[1].start_year == '6') ? 'checked' : '' %> value="6">6°</option>
+                                                <option <%=(typeof user_careers[1] != 'undefined' && user_careers[1].start_year == 'terminado') ? 'checked' : '' %> value="terminado">terminado</option>
+                                            </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="add-btn-container">
+                                    <button class="add-btn" id="university-add-btn"><i class="fas fa-plus fa-2x"></i></button>
                                 </div>
                                 <a class="ml-3 col-12" href="/user/requestInstitution">¿No encontras la universidad o la carrera que hiciste? haz click aqui</a>
                             </div>
@@ -236,12 +257,16 @@
                                         </div>
                 
                                         <div class="col-12 col-md-4" id="courseStartDiv">
-                                            <label class="col-12" for="courseStartDate">Año de inicio (curso):</label>
-                                            <input class="ml-3 an-account-input" type="number" name="courseStartDate" placeholder="xxxx" value="<%=(typeof user_courses[0] != 'undefined') ? user_courses[0].start_year : '' %>">
+                                            <label class="col-12" for="courseStartDate">Estado del curso:</label>
+                                            <select name="courseStartDate" class="ml-3 an-account-select" id="">
+                                                <option value="" hidden>Selecciona un estado</option>
+                                                <option value="en proceso" <%=(typeof user_courses[0] != 'undefined' && user_courses[0].start_year == 'en proceso') ? 'checked' : ''%>>En proceso</option>
+                                                <option value="terminado" <%=(typeof user_courses[0] != 'undefined' && user_courses[0].start_year == 'terminado') ? 'checked' : ''%>>Terminado</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 d-none" id="new-institute">
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="instituteSelect">
                                             <label class="col-12" for="institute">Instituto del curso:</label>
@@ -268,12 +293,16 @@
                                         </div>
                 
                                         <div class="col-12 col-md-4" id="courseStartDiv">
-                                            <label class="col-12" for="courseStartDate">Año de inicio (curso):</label>
-                                            <input class="ml-3 an-account-input" type="number" name="courseStartDate" placeholder="xxxx" value="<%=(typeof user_courses[1] != 'undefined') ? user_courses[1].start_year : '' %>">
+                                            <label class="col-12" for="courseStartDate">Estado del curso:</label>
+                                            <select name="courseStartDate" class="ml-3 an-account-select" id="">
+                                                <option value="" hidden>Selecciona un estado</option>
+                                                <option value="en proceso" <%=(typeof user_courses[1] != 'undefined' && user_courses[1].start_year == 'en proceso') ? 'checked' : ''%>>En proceso</option>
+                                                <option value="terminado" <%=(typeof user_courses[1] != 'undefined' && user_courses[1].start_year == 'terminado') ? 'checked' : ''%>>Terminado</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 d-none" id="new-institute">
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="instituteSelect">
                                             <label class="col-12" for="institute">Instituto del curso:</label>
@@ -300,12 +329,16 @@
                                         </div>
                 
                                         <div class="col-12 col-md-4" id="courseStartDiv">
-                                            <label class="col-12" for="courseStartDate">Año de inicio (curso):</label>
-                                            <input class="ml-3 an-account-input" type="number" name="courseStartDate" placeholder="xxxx" value="<%=(typeof user_courses[2] != 'undefined') ? user_courses[2].start_year : '' %>">
+                                            <label class="col-12" for="courseStartDate">Estado del curso:</label>
+                                            <select name="courseStartDate" class="ml-3 an-account-select" id="">
+                                                <option value="" hidden>Selecciona un estado</option>
+                                                <option value="en proceso" <%=(typeof user_courses[2] != 'undefined' && user_courses[2].start_year == 'en proceso') ? 'checked' : ''%>>En proceso</option>
+                                                <option value="terminado" <%=(typeof user_courses[2] != 'undefined' && user_courses[2].start_year == 'terminado') ? 'checked' : ''%>>Terminado</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 d-none" id="new-institute">
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="instituteSelect">
                                             <label class="col-12" for="institute">Instituto del curso:</label>
@@ -332,12 +365,18 @@
                                         </div>
                 
                                         <div class="col-12 col-md-4" id="courseStartDiv">
-                                            <label class="col-12" for="courseStartDate">Año de inicio (curso):</label>
-                                            <input class="ml-3 an-account-input" type="number" name="courseStartDate" placeholder="xxxx" value="<%=(typeof user_courses[3] != 'undefined') ? user_courses[3].start_year : '' %>">
+                                            <label class="col-12" for="courseStartDate">Estado del curso:</label>
+                                            <select name="courseStartDate" class="ml-3 an-account-select" id="">
+                                                <option value="" hidden>Selecciona un estado</option>
+                                                <option value="en proceso" <%=(typeof user_courses[3] != 'undefined' && user_courses[3].start_year == 'en proceso') ? 'checked' : ''%>>En proceso</option>
+                                                <option value="terminado" <%=(typeof user_courses[3] != 'undefined' && user_courses[3].start_year == 'terminado') ? 'checked' : ''%>>Terminado</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                
+                                <div class="add-btn-container">
+                                    <button class="add-btn" id="institute-add-btn"><i class="fas fa-plus fa-2x"></i></button>
+                                </div>
                                 <a class="ml-3 col-12" href="/user/requestInstitution">¿No encontras el instituto o el curso que hiciste? haz click aqui</a>
                             </div>
                         </div>
