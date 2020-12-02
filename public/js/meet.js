@@ -13,35 +13,56 @@ function reinsert(data, toInner){
 
 function handleUniversityInput(inputRef){
     let inputUniversity = document.querySelectorAll('#university');
-    addInputChecked(`university, ${inputUniversity[inputRef].value}`);
-    let universityDiv = document.querySelector('#universitiesParent');
 
-    reinsert(inputUniversity[inputRef].parentNode, universityDiv);
+    for(let i = 0; i < inputUniversity.length; i++){
+        if(inputUniversity[i].value == inputRef){
+            addInputChecked(`university, ${inputUniversity[i].value}`);
+            let universityDiv = document.querySelector('#universitiesParent');
+        
+            reinsert(inputUniversity[i].parentNode, universityDiv);    
+        }
+    }
 }
 
 function handleCareerInput(inputRef){
     let inputCareer = document.querySelectorAll('#career');
-    addInputChecked(`career,${inputCareer[inputRef].value}`)
-    let careerDiv = document.querySelector('#careerDiv');
 
-    reinsert(inputCareer[inputRef].parentNode, careerDiv);
+    for(let i = 0; i < inputCareer.length; i++){
+        if(inputCareer[i].value == inputRef){
+            addInputChecked(`career,${inputCareer[i].value}`)
+            let careerDiv = document.querySelector('#careerDiv');
+        
+            reinsert(inputCareer[i].parentNode, careerDiv);
+        }
+    }
+    
 }
 
 function handleInstituteInput(inputRef){
     let inputInstitute = document.querySelectorAll('#institutes');
-    addInputChecked(`institute, ${inputInstitute[inputRef].value}`);
-    let institutesDiv = document.querySelector('#institutesDiv')
 
-    reinsert(inputInstitute[inputRef].parentNode, institutesDiv);
+    for(let i = 0; i < inputInstitute.length; i++){
+        if(inputInstitute[i].value == inputRef){
+            addInputChecked(`institute, ${inputInstitute[i].value}`);
+            let institutesDiv = document.querySelector('#institutesDiv')
+        
+            reinsert(inputInstitute[i].parentNode, institutesDiv);
+        }
+    }
+    
 }
 
 function handleCourseInput(inputRef){
     let courseInput = document.querySelectorAll('#courses');
-
-    addInputChecked(`course,${input.value}`);
-    let courseDiv = document.querySelector('#courseDiv');
-
-    reinsert(courseInput[inputRef].parentNode, courseDiv);
+    for(let i = 0; i < courseInput.length; i++){
+        if(courseInput[i].value == inputRef){
+            addInputChecked(`course,${courseInput[i].value}`);
+            let courseDiv = document.querySelector('#courseDiv');
+        
+            reinsert(courseInput[i].parentNode, courseDiv);
+        }
+    }
+    
 }
 
 function handleInterestInput(inputRef){
@@ -86,9 +107,14 @@ function handleGenreInput(inputRef){
 
 function handleRegionInput(inputRef){
     let regionInput = document.querySelectorAll('#meetProvince');
-    addInputChecked(`province,${regionInput[inputRef].value}`);
-    let regionDiv = document.querySelector('#regionCard');
-    reinsert(regionInput[inputRef].parentNode, regionDiv);
+
+    for(let i = 0; i < regionInput.length; i++){
+        if(regionInput[i].value == inputRef){
+            addInputChecked(`province,${regionInput[i].value}`);
+            let regionDiv = document.querySelector('#regionCard');
+            reinsert(regionInput[i].parentNode, regionDiv);
+        }
+    }
 }
 
 function handleAgeInput(inputRef){
@@ -346,7 +372,7 @@ window.addEventListener('load', function() {
     .then(provinces => {
         provinces.provincias.sort((a, b) => a.nombre < b.nombre ? -1 : a.nombre === b.nombre ? 0 : 1)
         for(let i = 0; i < provinces.provincias.length; i++){
-            regionCard.innerHTML += `<label for=""><input onclick="handleRegionInput(${i})" type="checkbox" name="province" value="${provinces.provincias[i].nombre}" id="meetProvince">${provinces.provincias[i].nombre}</label>`
+            regionCard.innerHTML += `<label for=""><input onclick="handleRegionInput('${provinces.provincias[i].nombre}')" type="checkbox" name="province" value="${provinces.provincias[i].nombre}" id="meetProvince">${provinces.provincias[i].nombre}</label>`
         }
     })
 })

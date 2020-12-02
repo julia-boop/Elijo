@@ -13,7 +13,7 @@
                             <div class="card" id="universitiesParent">
                                 <% if(typeof universities != 'undefined'){ %>
                                     <% for(let i = 0; i < universities.length; i++){ %>
-                                        <label for="<%=universities[i].name%>"><input onclick="handleUniversityInput('<%= i %>')" type="checkbox" name="university" id="university" value="<%=universities[i].id%>"><%=universities[i].name%></label>
+                                        <label for="<%=universities[i].name%>"><input onclick="handleUniversityInput('<%= universities[i].id %>')" type="checkbox" name="university" id="university" value="<%=universities[i].id%>"><%=universities[i].name%></label>
                                     <% } %>                                
                                 <% } %>
                             </div>
@@ -25,7 +25,7 @@
                                 <% if(typeof careers != 'undefined'){ %>
                                     <% for(let i = 0; i < careers.length; i++){ %>
 
-                                        <label for="<%=careers[i].name%>"><input onclick="handleCareerInput('<%= i %>')" type="checkbox" name="career" id="career" value="<%=careers[i].name%>"><%=careers[i].name%></label>    
+                                        <label for="<%=careers[i].name%>"><input onclick="handleCareerInput('<%=careers[i].name%>')" type="checkbox" name="career" id="career" value="<%=careers[i].name%>"><%=careers[i].name%></label>    
                                         
                                     <% } %>                                
                                 <% } %>
@@ -37,7 +37,7 @@
                             <div class="card" id="institutesDiv">
                                 <% if(typeof institutes != 'undefined'){ %>
                                     <% for(let i = 0; i < institutes.length; i++){ %>
-                                        <label for="<%=institutes[i].name%>"><input onclick="handleInstituteInput('<%= i %>')" type="checkbox" name="institute" id="institutes" value="<%=institutes[i].id%>"><%=institutes[i].name%></label>    
+                                        <label for="<%=institutes[i].name%>"><input onclick="handleInstituteInput('<%=institutes[i].id%>')" type="checkbox" name="institute" id="institutes" value="<%=institutes[i].id%>"><%=institutes[i].name%></label>    
                                     <% } %>                                
                                 <% } %>
                                 
@@ -49,7 +49,7 @@
                             <div class="card" id="courseDiv">
                                 <% if(typeof courses != 'undefined'){ %> 
                                     <% for (let i=0; i<courses.length; i++){ %>
-                                    <label for="<%=courses[i].name%>"><input onclick="handleCourseInput('<%= i %>')" type="checkbox" name="course" id="courses" value="<%=courses[i].name%>"><%=courses[i].name%></label> 
+                                    <label for="<%=courses[i].name%>"><input onclick="handleCourseInput('<%=courses[i].name%>')" type="checkbox" name="course" id="courses" value="<%=courses[i].name%>"><%=courses[i].name%></label> 
                                     <% } %> 
                                 <% } %>
                                 
@@ -62,7 +62,7 @@
                             <div class="card" id="interestDiv">
                                 <% if(typeof interests != 'undefined'){ %>
                                     <% for(let i = 0; i < interests.length; i++){ %>
-                                        <label for="<%=interests[i].interest_name%>"><input onclick="handleInterestInput('<%= i %>')" type="checkbox" name="interest" id="interest" value="<%= interests[i].interest_name %>" ><%=interests[i].interest_name%></label>    
+                                        <label for="<%=interests[i].interest_name%>"><input onclick="handleInterestInput('<%= interests[i].interest_name %>')" type="checkbox" name="interest" id="interest" value="<%= interests[i].interest_name %>" ><%=interests[i].interest_name%></label>    
                                     <% } %>    
                                 <% } %>  
                             </div>
