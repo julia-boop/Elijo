@@ -168,7 +168,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 d-none" id="new-university">
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="universitySelect">
                                             <label class="col-12" for="university">Universidad:</label>
@@ -200,6 +200,9 @@
                                             <input class="ml-3 an-account-input" type="number" name="startDate" placeholder="xxxx" value="<%=(typeof user_careers[1] != 'undefined') ? user_careers[1].start_year : '' %>">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="add-btn-container">
+                                    <button class="add-btn" id="university-add-btn"><i class="fas fa-plus fa-2x"></i></button>
                                 </div>
                                 <a class="ml-3 col-12" href="/user/requestInstitution">¿No encontras la universidad o la carrera que hiciste? haz click aqui</a>
                             </div>
@@ -239,7 +242,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 d-none" id="new-institute">
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="instituteSelect">
                                             <label class="col-12" for="institute">Instituto del curso:</label>
@@ -271,7 +274,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 d-none" id="new-institute">
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="instituteSelect">
                                             <label class="col-12" for="institute">Instituto del curso:</label>
@@ -303,7 +306,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 d-none" id="new-institute">
                                     <div class="row">
                                         <div class="col-12 col-md-4" id="instituteSelect">
                                             <label class="col-12" for="institute">Instituto del curso:</label>
@@ -335,7 +338,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+                                <div class="add-btn-container">
+                                    <button class="add-btn" id="institute-add-btn"><i class="fas fa-plus fa-2x"></i></button>
+                                </div>
                                 <a class="ml-3 col-12" href="/user/requestInstitution">¿No encontras el instituto o el curso que hiciste? haz click aqui</a>
                             </div>
                         </div>
