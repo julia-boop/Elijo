@@ -505,7 +505,7 @@ function changeTipsPage(moveTo){
                         <p class="card-text">${tipsArray[actualTipsPage][i].tip}</p>
                         <div class="card-image">
                             <img src="/images/users/${tipsArray[actualTipsPage][i].User.photo}" alt="...">
-                            <h5 class="title-image">${tipsArray[actualTipsPage][i].User.name}</h5>
+                            <h5 class="title-image"><a href="/meet/detail/${tipsArray[actualTipsPage][i].User.id}">${tipsArray[actualTipsPage][i].User.name}</a></h5>
                         </div>
                       </div>
 
@@ -513,6 +513,7 @@ function changeTipsPage(moveTo){
                 </div>
             </div>
         `;
+        //<a href="/meet/detail/${opinionsOnGeneral[actualGeneralPage][j].User.id}">${opinionsOnGeneral[actualGeneralPage][j].User.name}</a>
     }
     tips.innerHTML += `<div class="paginationTipsContainer"></div>`;
     
