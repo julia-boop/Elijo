@@ -156,10 +156,17 @@ window.addEventListener('load', function(){
     //#region PHOTO
     let botonSeleccionarImg = qs('#visualBtn');
     let inputSeleccionarArchivo = qs('.inputSeleccionarArchivo');
+    let imagePreview = qs('.image-preview');
 
     botonSeleccionarImg.addEventListener('click', function() {
-        inputSeleccionarArchivo.click()
+        inputSeleccionarArchivo.click();
     })
+
+    inputSeleccionarArchivo.addEventListener('change', e => {
+        let fileData = e.currentTarget;
+        imagePreview.src = window.URL.createObjectURL(fileData.files[0]);
+    });
+
     //#endregion
 
     //#region SEARCH FILTER
