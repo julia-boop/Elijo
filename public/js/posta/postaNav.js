@@ -708,11 +708,11 @@ function updateChart(data){
     let priceLabel = 'Precio';
     let priceData = data.price;
     if(data.price < 10000){
-        let priceLabel = 'Precio (x100)';
-        let priceData = data.price/100;    
+        priceLabel = 'Precio (x100)';
+        priceData = data.price/100;    
     }else if(data.price > 10000){
-        let priceLabel = 'Precio (x1000)';
-        let priceData = data.price/1000;
+        priceLabel = 'Precio (x1000)';
+        priceData = data.price/1000;
     }
 
     
