@@ -704,16 +704,29 @@ function updateChart(data){
 
     chartJSContainer.innerHTML = '<canvas id="myChart"></canvas>';
 
+
+    let priceLabel = 'Precio';
+    let priceData = data.price;
+    if(data.price < 10000){
+        let priceLabel = 'Precio (x100)';
+        let priceData = data.price/100;    
+    }else if(data.price > 10000){
+        let priceLabel = 'Precio (x1000)';
+        let priceData = data.price/1000;
+    }
+
+    
+
     let ctx = document.getElementById('myChart').getContext('2d');
     let chart = new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: ['Precio', 'Salida Laboral', 'Horas de Estudio', 'Dificultad', 'Duracion'],
+            labels: [priceLabel, 'Salida Laboral', 'Horas de Estudio', 'Dificultad', 'Duracion'],
             datasets: [{
                 label: `${title}`,
                 backgroundColor: 'rgb(14,155,218)',
                 borderColor: 'rgb(124,191,182)',
-                data: [data.price, data.job_exit, data.study_hours, data.difficulty, data.duration]
+                data: [priceData, data.job_exit, data.study_hours, data.difficulty, data.duration]
             }]
         },
         options: {}
