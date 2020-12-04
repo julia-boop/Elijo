@@ -722,17 +722,17 @@ function updateChart(data){
         type: 'radar',
         data: {
             labels: [priceLabel, 'Salida Laboral', 'Horas de Estudio', 'Dificultad', 'Duracion'],
-            datasets: [{
-                label: `${title}`,
-                backgroundColor: 'rgb(14,155,218)',
-                borderColor: 'rgb(124,191,182)',
-                data: [priceData, data.job_exit, data.study_hours, data.difficulty, data.duration]
-            }]
+            datasets: [
+                {
+                    label: `${title}`,
+                    backgroundColor: 'rgb(14,155,218, 0.534)',
+                    borderColor: 'rgb(124,191,182)',
+                    data: [priceData, data.job_exit, data.study_hours, data.difficulty, data.duration]
+                }
+            ]
         },
         options: {}
     });
-
-    console.log(chart);
 }
 //#endregion
 
