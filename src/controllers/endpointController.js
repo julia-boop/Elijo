@@ -461,5 +461,26 @@ module.exports = {
         })
 
         return res.status(200).json(usersEmails);
+    },
+    changeStudentType: async (req, res) => {
+        let userToUpdate = await db.User.findByPk(req.session.userSession);
+        
+        userToUpdate.rol = 2;
+
+        if(userToUpdate){
+            let update = db.User.update({rol: 2}, {
+                where: {
+                    id: userToUpdate.id
+                }
+            })
+            .catch(err => {
+                return res.status(400).json({msg: 'error al actualizar usuario'});
+            })
+
+            return res.status(200).json({msg: 'success'});
+
+        }else{
+            return res.status(400).json({msg: 'no se encontro usuario'});
+        }
     }
 };

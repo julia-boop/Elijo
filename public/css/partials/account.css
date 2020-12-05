@@ -230,3 +230,30 @@ button.interest-btn{
 .email-error{
     border-color: red !important;
 }
+
+.confirm-div{
+    width: 50%;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    right: 25%;
+    z-index: 250;
+    padding: 25px;
+    background-color: white;
+    border: black solid 1px;
+    text-align: center;
+}
+.confirm-div button{
+    width: 40px;
+    padding: 5px;
+    height: 40px;
+    border: none;
+}
+
+.confirm-div button#positive{
+    background-color: greenyellow;
+}
+
+.confirm-div button#negative{
+    background-color: red;
+}

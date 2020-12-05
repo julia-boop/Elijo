@@ -251,4 +251,30 @@ window.addEventListener('load', function(){
     });
 
     //#endregion
+
+    //#region CAHNGE USER TPYE
+    let changeTypeBtn = document.querySelector('#changeUserType');
+    let confirmDiv = document.querySelector('.confirm-div');
+    let confirmBtn = document.querySelector('#positive');
+    let notConfirmBtn = document.querySelector('#negative');
+
+    changeTypeBtn.addEventListener('click', event => {
+        confirmDiv.classList.remove('d-none');
+    });
+
+    notConfirmBtn.addEventListener('click', event => {
+        confirmDiv.classList.add('d-none');
+    });
+
+    confirmBtn.addEventListener('click', event => {
+        fetch('/endpoints/changeStudentType')
+        .then(serverResponse => {
+            return serverResponse.json()
+        })
+        .then(result => {
+            window.location = window.location;
+        })
+        .catch(err => console.log(err))
+    });    
+    //#endregion
 });
