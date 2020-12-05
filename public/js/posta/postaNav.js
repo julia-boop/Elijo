@@ -733,11 +733,12 @@ function updateChart(data){
         },
         options: {
             scale: {
-                angleLines: {
-                    display: false
-                },
-                suggestedMin: 50,
-                suggestedMax: 100
+                ticks: {
+                    beginAtZero: 0,
+                    max: 10,
+                    min: 0,
+                    stepSize: 1
+                }
             }
         }
     });
