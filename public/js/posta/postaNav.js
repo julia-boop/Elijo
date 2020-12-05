@@ -733,6 +733,7 @@ function updateChart(data){
         },
         options: {}
     });
+    console.log(chart);  
 }
 //#endregion
 
