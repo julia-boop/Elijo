@@ -727,7 +727,7 @@ function updateChart(data){
                     label: `${title}`,
                     backgroundColor: 'rgb(14,155,218, 0.534)',
                     borderColor: 'rgb(124,191,182)',
-                    data: [priceData, data.job_exit, data.study_hours, data.difficulty, data.duration]
+                    data: [/*priceData, data.job_exit, data.study_hours, data.difficulty, data.duration*/3, 5, 7, 10, 6]
                 }
             ]
         },
