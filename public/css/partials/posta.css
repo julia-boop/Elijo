@@ -534,7 +534,7 @@ option.resultsOption button{
 
 .regionResults, .dropdown-content{
   overflow: auto;
-  max-height: 150px;
+  max-height: 450px;
 }
 
 .regionResults::-webkit-scrollbar, .dropdown-content::-webkit-scrollbar{
