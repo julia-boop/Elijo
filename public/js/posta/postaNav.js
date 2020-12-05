@@ -711,7 +711,7 @@ function updateChart(data){
         priceLabel = 'Precio (x100)';
         priceData = data.price/100;    
     }else if(data.price > 10000){
-        priceLabel = 'Precio (x1000)';
+        priceLabel = 'Precio (x10000)';
         priceData = data.price/10000;
     }
 
