@@ -715,7 +715,7 @@ function updateChart(data){
         priceData = data.price/10000;
     }
 
-    
+    console.log(data);    
 
     let ctx = document.getElementById('myChart').getContext('2d');
     let chart = new Chart(ctx, {
