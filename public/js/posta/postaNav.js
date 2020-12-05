@@ -724,7 +724,7 @@ function updateChart(data){
             labels: [priceLabel, 'Salida Laboral', 'Horas de Estudio', 'Dificultad', 'Duracion'],
             datasets: [
                 {
-                    label: `${title}`,
+                    labels: `${title}`,
                     backgroundColor: 'rgb(14,155,218, 0.534)',
                     borderColor: 'rgb(124,191,182)',
                     data: [priceData, data.job_exit, data.study_hours, data.difficulty, data.duration]
@@ -734,7 +734,7 @@ function updateChart(data){
         options: {
             scale: {
                 ticks: {
-                    beginAtZero: 0,
+                    beginAtZero: true,
                     max: 10,
                     min: 0,
                     stepSize: 1
