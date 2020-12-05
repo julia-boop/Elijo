@@ -226,3 +226,7 @@ button.interest-btn{
     background-color: var(--btn-bg-color);
     border: none;
 }
+
+.email-error{
+    border-color: red !important;
+}

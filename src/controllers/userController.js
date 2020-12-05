@@ -222,37 +222,41 @@ module.exports = {
         //#endregion
 
         //#region User_career_study
-        let destroyCareerStudies = await db.User_career_study.destroy({
-            where: {
-                user_id: req.session.userSession
+        if(req.body.career){
+            let destroyCareerStudies = await db.User_career_study.destroy({
+                where: {
+                    user_id: req.session.userSession
+                }
+            })
+            for(let i = 0; i < req.body.career.length; i++){
+                if(req.body.career[i] != "Selecciona una Carrera" && req.body.career[i] != '' && req.body.career[i] != null){
+                    let newCareer = await db.User_career_study.create({
+                        career_id: req.body.career[i],
+                        user_id: req.session.userSession,
+                        start_year: req.body.startDate[i],
+                        updated_at: Date.now()
+                    })
+                }                    
             }
-        })
-        for(let i = 0; i < req.body.career.length; i++){
-            if(req.body.career[i] != "Selecciona una Carrera" && req.body.career[i] != '' && req.body.career[i] != null){
-                let newCareer = await db.User_career_study.create({
-                    career_id: req.body.career[i],
-                    user_id: req.session.userSession,
-                    start_year: req.body.startDate[i],
-                    updated_at: Date.now()
-                })
-            }                    
-        }
+        }        
         //#endregion
 
         //#region User_course_study
-        let destroyCourseStudies = await db.User_course_study.destroy({
-            where: {
-                user_id: req.session.userSession
-            }
-        })
-        for(let i = 0; i < req.body.course.length; i++){
-            if(req.body.course[i] != "Selecciona un Curso" && req.body.course[i] != null && req.body.course[i] != ''){
-                let newCourse = await db.User_course_study.create({
-                    course_id: req.body.course[i],
-                    user_id: req.session.userSession,
-                    start_year: req.body.courseStartDate[i],
-                    updated_at: Date.now()
-                })
+        if(req.body.course){
+            let destroyCourseStudies = await db.User_course_study.destroy({
+                where: {
+                    user_id: req.session.userSession
+                }
+            })
+            for(let i = 0; i < req.body.course.length; i++){
+                if(req.body.course[i] != "Selecciona un Curso" && req.body.course[i] != null && req.body.course[i] != ''){
+                    let newCourse = await db.User_course_study.create({
+                        course_id: req.body.course[i],
+                        user_id: req.session.userSession,
+                        start_year: req.body.courseStartDate[i],
+                        updated_at: Date.now()
+                    })
+                }
             }
         }
         //#endregion

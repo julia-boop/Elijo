@@ -20,28 +20,30 @@ window.addEventListener('load', function(){
     
     //#region ADDING BUTTON
     //CUANDO SE TOCA EL BOTON DE AGREGAR
-    addInterestButton.addEventListener('click', event => {
-        //AGREGO AL CONTAINER DE BOTONES UN BOTON CON UN ID TEMPROAL
-        //'<i class="far fa-times-circle pl-2"></i>'   + 
-        interestsContainer.innerHTML += '<button id="tempID">' + interestsInput.value + '</button>';
-        //interestsContainer.innerHTML += '<input id="tempID">';
-        //GETTEO EL ID TEMPROAL PARA MODIFICARLE LAS COSA SCON LA INFO QUE QUIERO
-        let tempIdBtn = document.querySelector('#tempID');
-        //tempIdBtn.id = interestsInput.value;
-        interestsCounter++;
-        tempIdBtn.id = interestsCounter;
-        tempIdBtn.name = 'interests';
-        tempIdBtn.value = interestsInput.value;
-        tempIdBtn.classList.add('interest-btn');
-        console.log('go');
-        interestsInput.value = '';
-        interestsInput.innerHTML = '';
-    });
+    if(addInterestButton != null){
+        addInterestButton.addEventListener('click', event => {
+            //AGREGO AL CONTAINER DE BOTONES UN BOTON CON UN ID TEMPROAL
+            //'<i class="far fa-times-circle pl-2"></i>'   + 
+            interestsContainer.innerHTML += '<button id="tempID">' + interestsInput.value + '</button>';
+            //interestsContainer.innerHTML += '<input id="tempID">';
+            //GETTEO EL ID TEMPROAL PARA MODIFICARLE LAS COSA SCON LA INFO QUE QUIERO
+            let tempIdBtn = document.querySelector('#tempID');
+            //tempIdBtn.id = interestsInput.value;
+            interestsCounter++;
+            tempIdBtn.id = interestsCounter;
+            tempIdBtn.name = 'interests';
+            tempIdBtn.value = interestsInput.value;
+            tempIdBtn.classList.add('interest-btn');
+            console.log('go');
+            interestsInput.value = '';
+            interestsInput.innerHTML = '';
+        });
+    }    
     //#endregion
     
     //#region BUTTON REMOVER
     document.addEventListener('click', event => {
-        if(event.target.localName == 'button'){
+        if(interestsContainer != null && event.target.localName == 'button'){
             for(let i = 0; i < interestsContainer.childNodes.length; i++){
                 console.log(event.target);
                 if(interestsContainer.childNodes[i].id == event.target.id){
@@ -60,7 +62,7 @@ window.addEventListener('load', function(){
     
     //#region INPUT CREATOR 
     submitBtn.addEventListener('click', event => {
-        if(interestsContainer.childNodes.length > 0){
+        if(interestsContainer != null && interestsContainer.childNodes.length > 0){
             let aux_array = [];
             for(let i = 0; i < interestsContainer.childNodes.length; i++){ //COPIO EL interestsContainer.childNodes EN OTRO ARRAY PARA MANEJARLO MEJOR
                 if(interestsContainer.childNodes[i].value != undefined){
@@ -81,7 +83,10 @@ window.addEventListener('load', function(){
             }
         }
         
-        form.submit();
+        let emailInput = document.querySelector('.email-input');
+        if(emailInput != null && !emailInput.classList.contains('email-error')){
+            form.submit();
+        }        
     });
     //#endregion
 });

@@ -449,5 +449,17 @@ module.exports = {
         let usersFiltered = await usersFilter(userStudies, req.body);
 
         return res.status(200).json(usersFiltered);
+    },
+    getEmails: async (req, res) => {
+        let usersEmails = await db.User.findAll({
+            attributes: [
+                'email'
+            ]
+        })
+        .catch(error => {
+            return res.status(400).json(error);
+        })
+
+        return res.status(200).json(usersEmails);
     }
 };
