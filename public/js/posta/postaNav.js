@@ -732,11 +732,12 @@ function updateChart(data){
             ]
         },
         options: {
-            scales: {
-                ticks: {
-                    suggestedMin: 0,
-                    suggestedMax: 10
-                }
+            scale: {
+                angleLines: {
+                    display: false
+                },
+                suggestedMin: 50,
+                suggestedMax: 100
             }
         }
     });
