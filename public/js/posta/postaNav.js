@@ -734,7 +734,7 @@ function updateChart(data){
         options: {
             scales: {
                 ticks: {
-                    max:100, // Set it to your Max value
+                    max:10, // Set it to your Max value
                     min: 0, // You can also change the Min
                     beginAtZero: false, // in case you change the Min
                 },
