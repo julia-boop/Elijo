@@ -73,7 +73,9 @@ div.notifications button i{
 .extra-info .btn-container button{
     background-color: var(--btn-bg-color);
     border: var(--btn-border);
+    color: black;
     height: 40px;
+    padding: 0px !important;
     padding-left: 5px;
     padding-right: 5px;
 }
@@ -256,4 +258,9 @@ button.interest-btn{
 
 .confirm-div button#negative{
     background-color: red;
+}
+
+#submitBtn{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
 }

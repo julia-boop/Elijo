@@ -11,7 +11,7 @@
                 <button id="positive">Si</button>
                 <button id="negative">No</button>
             </div>
-            <h1>Hola, <b><%= user.name %> </b></h1>
+            <h1>Hola <b><%= user.name %> </b></h1>
             <% if(user.rol == '2' || user.rol == 2){ %> 
                 <div class="notifications dropdown">
                     <button class="btn btn-secondary action-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,20 +27,22 @@
             <% } %> 
 
             <div class="main-info row">
+                <% if(user.rol == '2' || user.rol == 2){ %> 
                 <div class="img-container col-6 col-md-4">
                     <img class="image-preview" src="/images/users/<%=user.photo%>" alt="Avatar">
-                    <% if(user.rol == '2' || user.rol == 2){ %> 
+                    
                     <button id="visualBtn" class="edit-photo-btn"><i class="fas fa-camera fa-3x"></i></button>
-                    <% } %> 
+                    
                 </div>
+                <% } %> 
                 
                 
-                <div class="col-12 col-md-8">
+                <div class="col-12 <%= (user.rol == 3 || user.rol == '3') ? '' : 'col-md-8' %>">
                     <h4><%=(user.name != null) ? user.name : ''%> <%=(user.last_name != null && user.last_name != '') ? user.last_name : ''%></h4>
                     <h5><i class="fab fa-whatsapp"></i> <%= user.telephone %></h5>
                     <h5><i class="fas fa-at"></i> <%= user.email %>  </h5>
                     <% if(user.rol == '3' || user.rol == 3){ %> 
-                        <div class="btn-container mt-2">
+                        <div class="btn-container mt-2 mb-3">
                             <button id="changeUserType">Cambiar perfil a universitario</button>
                         </div>  
                     <% } %>
