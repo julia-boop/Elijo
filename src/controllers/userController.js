@@ -823,7 +823,7 @@ module.exports = {
             province: " ", 
             genre_id: 3, 
             photo: 'user.png',
-            rol: 0,
+            rol: 1,
             user_confirm: 0, 
             google_id: bcrypt.hashSync(googleID.payload.sub, 10),
             created_at: new Date,
