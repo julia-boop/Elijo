@@ -15,7 +15,7 @@
             </div>
                
             <% if(typeof userLoggedIn != 'undefined') { %>
-                <% if(user.telephone == '' || user.telephone == null) { %>
+                <% if(user.telephone != '' || user.telephone != null) { %>
                     <a href="https://api.whatsapp.com/send?phone=<%= user.telephone %>" class="d-flex"><p class="conditional-whatsapp"><i class="fab fa-whatsapp"></i></p></a> 
                 <% } %>
                 <p class="text-center"><%=user.email%></p>
