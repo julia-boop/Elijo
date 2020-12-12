@@ -781,7 +781,7 @@ window.addEventListener('load', () => {
 
 
     //#region NAV INPUTS
-    regionButton.addEventListener('touchstart', event => {
+    regionButton.addEventListener('click', event => {
         fetch('https://apis.datos.gob.ar/georef/api/provincias')
         .then(response => {
             return response.json()
