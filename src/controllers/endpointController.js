@@ -420,13 +420,23 @@ module.exports = {
             where: {
                 rol: 2
             },
-            include: [{
-                association: 'User_careers',
-                include: [{association: 'Universities'}]
-            }, {
-                association: 'User_courses',
-                include: [{association: 'Institutes'}]
-            },
+            include: [
+                {
+                    model: db.Career,
+                    as: 'User_careers',
+                    through: {
+                        model: db.User_career_study
+                    },
+                    include: [{association: 'Universities'}]
+                }, 
+                {
+                    model: db.Course,
+                    as: 'User_courses',
+                    through: {
+                        model: db.User_course_study
+                    },
+                    include: [{association: 'Institutes'}]
+                },
                 {
                     model: db.Interest,
                     as: 'Interest',
@@ -439,5 +449,38 @@ module.exports = {
         let usersFiltered = await usersFilter(userStudies, req.body);
 
         return res.status(200).json(usersFiltered);
+    },
+    getEmails: async (req, res) => {
+        let usersEmails = await db.User.findAll({
+            attributes: [
+                'email'
+            ]
+        })
+        .catch(error => {
+            return res.status(400).json(error);
+        })
+
+        return res.status(200).json(usersEmails);
+    },
+    changeStudentType: async (req, res) => {
+        let userToUpdate = await db.User.findByPk(req.session.userSession);
+        
+        userToUpdate.rol = 2;
+
+        if(userToUpdate){
+            let update = db.User.update({rol: 2}, {
+                where: {
+                    id: userToUpdate.id
+                }
+            })
+            .catch(err => {
+                return res.status(400).json({msg: 'error al actualizar usuario'});
+            })
+
+            return res.status(200).json({msg: 'success'});
+
+        }else{
+            return res.status(400).json({msg: 'no se encontro usuario'});
+        }
     }
 };

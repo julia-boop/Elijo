@@ -13,74 +13,120 @@ function reinsert(data, toInner){
 
 function handleUniversityInput(inputRef){
     let inputUniversity = document.querySelectorAll('#university');
-    addInputChecked(`university, ${inputUniversity[inputRef].value}`);
-    let universityDiv = document.querySelector('#universitiesParent');
 
-    reinsert(inputUniversity[inputRef].parentNode, universityDiv);
+    for(let i = 0; i < inputUniversity.length; i++){
+        if(inputUniversity[i].value == inputRef){
+            addInputChecked(`university, ${inputUniversity[i].value}`);
+            let universityDiv = document.querySelector('#universitiesParent');
+        
+            reinsert(inputUniversity[i].parentNode, universityDiv);    
+        }
+    }
 }
 
 function handleCareerInput(inputRef){
     let inputCareer = document.querySelectorAll('#career');
-    addInputChecked(`career,${inputCareer[inputRef].value}`)
-    let careerDiv = document.querySelector('#careerDiv');
 
-    reinsert(inputCareer[inputRef].parentNode, careerDiv);
+    for(let i = 0; i < inputCareer.length; i++){
+        if(inputCareer[i].value == inputRef){
+            addInputChecked(`career,${inputCareer[i].value}`)
+            let careerDiv = document.querySelector('#careerDiv');
+        
+            reinsert(inputCareer[i].parentNode, careerDiv);
+        }
+    }
+    
 }
 
 function handleInstituteInput(inputRef){
     let inputInstitute = document.querySelectorAll('#institutes');
-    addInputChecked(`institute, ${inputInstitute[inputRef].value}`);
-    let institutesDiv = document.querySelector('#institutesDiv')
 
-    reinsert(inputInstitute[inputRef].parentNode, institutesDiv);
+    for(let i = 0; i < inputInstitute.length; i++){
+        if(inputInstitute[i].value == inputRef){
+            addInputChecked(`institute, ${inputInstitute[i].value}`);
+            let institutesDiv = document.querySelector('#institutesDiv')
+        
+            reinsert(inputInstitute[i].parentNode, institutesDiv);
+        }
+    }
+    
 }
 
 function handleCourseInput(inputRef){
     let courseInput = document.querySelectorAll('#courses');
-    addInputChecked(`course,${courseInput[inputRef].value}`);
-    let courseDiv = document.querySelector('#courseDiv');
-
-    reinsert(courseInput[inputRef].parentNode, courseDiv);
+    for(let i = 0; i < courseInput.length; i++){
+        if(courseInput[i].value == inputRef){
+            addInputChecked(`course,${courseInput[i].value}`);
+            let courseDiv = document.querySelector('#courseDiv');
+        
+            reinsert(courseInput[i].parentNode, courseDiv);
+        }
+    }
+    
 }
 
 function handleInterestInput(inputRef){
     let interestInput = document.querySelectorAll('#interest');
-    addInputChecked(`interest,${interestInput[inputRef].value}`);
-    let interestDiv = document.querySelector('#interestDiv')
-
-    reinsert(interestInput[inputRef].parentNode, interestDiv)
+    
+    for(let i = 0; i < interestInput.length; i++){
+        if(interestInput[i].value == inputRef){
+            addInputChecked(`interest,${interestInput[i].value}`);
+            let interestDiv = document.querySelector('#interestDiv');
+            reinsert(interestInput[i].parentNode, interestDiv);
+            return;
+        }
+    }
+    
 }
 
 function handleYearInput(inputRef){
     let yearInput = document.querySelectorAll('#year');
-    addInputChecked(`year,${yearInput[inputRef].value}`);
-    let yearDiv = document.querySelector('#yearDiv');
 
-    reinsert(yearInput[inputRef].parentNode, yearDiv);
+    for(let i = 0; i < yearInput.length; i++){
+        if(yearInput[i].value == inputRef){
+            addInputChecked(`year,${yearInput[i].value}`);
+            let yearDiv = document.querySelector('#yearDiv');
+            reinsert(yearInput[i].parentNode, yearDiv);
+            return;
+        }
+    }
 }
 
 function handleGenreInput(inputRef){
     let genreInput = document.querySelectorAll('#genre');
-    addInputChecked(`genre, ${genreInput[inputRef].value}`);
-    let genreDiv = document.querySelector('#genreDiv');
 
-    reinsert(genreInput[inputRef].parentNode, genreDiv)
+    for(let i = 0; i < genreInput.length; i++){
+        if(genreInput[i].value == inputRef){
+            addInputChecked(`genre, ${genreInput[i].value}`);
+            let genreDiv = document.querySelector('#genreDiv');
+            reinsert(genreInput[i].parentNode, genreDiv);
+            return;
+        }        
+    }
 }
 
 function handleRegionInput(inputRef){
     let regionInput = document.querySelectorAll('#meetProvince');
-    addInputChecked(`province,${regionInput[inputRef].value}`);
-    let regionDiv = document.querySelector('#regionCard');
 
-    reinsert(regionInput[inputRef].parentNode, regionDiv);
+    for(let i = 0; i < regionInput.length; i++){
+        if(regionInput[i].value == inputRef){
+            addInputChecked(`province,${regionInput[i].value}`);
+            let regionDiv = document.querySelector('#regionCard');
+            reinsert(regionInput[i].parentNode, regionDiv);
+        }
+    }
 }
 
 function handleAgeInput(inputRef){
     let ageInput = document.querySelectorAll('#age');
-    addInputChecked(`age,${ageInput[inputRef].value}`);
-    let ageDiv = document.querySelector('#ageDiv');
 
-    reinsert(ageInput[inputRef].parentNode, ageDiv);
+    for(let i = 0; i < ageInput.length; i++){
+        if(ageInput[i].value == inputRef){
+            addInputChecked(`age,${ageInput[i].value}`);
+            let ageDiv = document.querySelector('#ageDiv');
+            reinsert(ageInput[i].parentNode, ageDiv);   
+        }
+    }    
 }
 
 //#endregion
@@ -126,7 +172,7 @@ function fillUsersContainer(users){
                 <a href="/meet/detail/${users[i].id}"><button> Ver Perfil</button></a>
             </div>
         `;
-
+        
         usersDataContainer = document.querySelectorAll('#user-studies-data');
         if(users[i].User_careers.length > 0){
             usersDataContainer[i].innerHTML += `
@@ -206,7 +252,7 @@ function sendFilters(){
                 break;
         }
     }
-    
+    console.log(dataToSend);
     fetch('/endpoints/meetusers/filter', {
         method: 'POST',
         headers: {
@@ -326,8 +372,7 @@ window.addEventListener('load', function() {
     .then(provinces => {
         provinces.provincias.sort((a, b) => a.nombre < b.nombre ? -1 : a.nombre === b.nombre ? 0 : 1)
         for(let i = 0; i < provinces.provincias.length; i++){
-            regionCard.innerHTML += `<label for=""><input onclick="handleRegionInput(${i})" type="checkbox" name="province" value="${provinces.provincias[i].nombre}" id="meetProvince">${provinces.provincias[i].nombre}</label>`
-            //addInputChecked('province,${provinces.provincias[i].nombre}')
+            regionCard.innerHTML += `<label for=""><input onclick="handleRegionInput('${provinces.provincias[i].nombre}')" type="checkbox" name="province" value="${provinces.provincias[i].nombre}" id="meetProvince">${provinces.provincias[i].nombre}</label>`
         }
     })
 })

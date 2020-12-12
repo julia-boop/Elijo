@@ -23,7 +23,10 @@ function filterByAge(users, query){
     let usersByAge = [];
     for(let i = 0; i < newQuery.length;i++){
         for(let j = 0; j < users.length; j++){
-            if(Number(newQuery[i][0]) < users[j].age && Number(newQuery[i][1]) > users[j].age){
+            if(Number(newQuery[i][0]) <= users[j].age && Number(newQuery[i][1]) >= users[j].age){
+                usersByAge.push(users[j]);
+            }
+            if(newQuery[i][0] == '35' && Number(newQuery[i][0]) <  users[j].age){
                 usersByAge.push(users[j]);
             }
         }
@@ -137,14 +140,17 @@ function filterByGenre(users, query){
 //FILTER BY CAREER YEAR
 function filterByCareerYear(users, query){
     let usersByYear = [];
-    
+    console.log();
     for(let i = 0 ; i < users.length ; i++){
-        for(let k = 0 ; k < users[i].User_careers.start_year.length ; k++){
-            if(users[i].User_careers[j].start_year == Number(query[j]) || users[i].User_careers[j].start_year == query[j]){
+        for(let j = 0 ; j < users[i].User_careers.length ; j++){
+            let start_year = users[i].dataValues.User_careers[j].dataValues.user_careers.dataValues.start_year;
+            console.log(start_year == Number(query[j]) || start_year == query[j]);
+            if(start_year == Number(query[j]) || start_year == query[j]){
                 usersByYear.push(users[i])
             }
         }
     }
+    return usersByYear;
     //Creo que es  users[i].User_careers[j].user_careers.start_year (no trae start_year ATT!!!)
 }
 // /FILTER BY CAREER YEAR

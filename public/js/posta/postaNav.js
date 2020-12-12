@@ -505,7 +505,7 @@ function changeTipsPage(moveTo){
                         <p class="card-text">${tipsArray[actualTipsPage][i].tip}</p>
                         <div class="card-image">
                             <img src="/images/users/${tipsArray[actualTipsPage][i].User.photo}" alt="...">
-                            <h5 class="title-image">${tipsArray[actualTipsPage][i].User.name}</h5>
+                            <h5 class="title-image"><a href="/meet/detail/${tipsArray[actualTipsPage][i].User.id}">${tipsArray[actualTipsPage][i].User.name}</a></h5>
                         </div>
                       </div>
 
@@ -513,6 +513,7 @@ function changeTipsPage(moveTo){
                 </div>
             </div>
         `;
+        //<a href="/meet/detail/${opinionsOnGeneral[actualGeneralPage][j].User.id}">${opinionsOnGeneral[actualGeneralPage][j].User.name}</a>
     }
     tips.innerHTML += `<div class="paginationTipsContainer"></div>`;
     
@@ -703,19 +704,43 @@ function updateChart(data){
 
     chartJSContainer.innerHTML = '<canvas id="myChart"></canvas>';
 
+
+    let priceLabel = 'Precio';
+    let priceData = data.price;
+    if(data.price < 10000){
+        priceLabel = 'Precio (x100)';
+        priceData = data.price/100;    
+    }else if(data.price > 10000){
+        priceLabel = 'Precio (x10000)';
+        priceData = data.price/10000;
+    }
+
+    console.log(data);    
+
     let ctx = document.getElementById('myChart').getContext('2d');
     let chart = new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: ['Precio', 'Salida Laboral', 'Horas de Estudio', 'Dificultad', 'Duracion'],
-            datasets: [{
-                label: `${title}`,
-                backgroundColor: 'rgb(14,155,218)',
-                borderColor: 'rgb(124,191,182)',
-                data: [data.price, data.job_exit, data.study_hours, data.difficulty, data.duration]
-            }]
+            labels: [priceLabel, 'Salida Laboral', 'Horas de Estudio', 'Dificultad', 'Duracion'],
+            datasets: [
+                {
+                    label: `${title}`,
+                    backgroundColor: 'rgb(14,155,218, 0.534)',
+                    borderColor: 'rgb(124,191,182)',
+                    data: [priceData, data.job_exit, data.study_hours, data.difficulty, data.duration]
+                }
+            ]
         },
-        options: {}
+        options: {
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    max: 10,
+                    min: 0,
+                    stepSize: 1
+                }
+            }
+        }
     });
 }
 //#endregion

@@ -25,7 +25,7 @@ module.exports = {
         }
       },
       start_year: {
-        type: Sequelize.DataTypes.INTEGER(40).UNSIGNED
+        type: Sequelize.DataTypes.STRING(20)
       },
       created_at: Sequelize.DataTypes.DATE,
       updated_at: Sequelize.DataTypes.DATE

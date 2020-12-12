@@ -60,4 +60,9 @@ router.post('/publishQuestion', endpointController.publishQuestion);
 router.get('/meetusers', endpointController.getMeetUsers);
 router.post('/meetusers/filter', endpointController.getMeetUsersFiltered);
 
+router.post('/useremails', endpointController.getEmails);
+
+//STUDENT TYPE CHANGE
+router.get('/changeStudentType', endpointController.changeStudentType);
+
 module.exports = router;

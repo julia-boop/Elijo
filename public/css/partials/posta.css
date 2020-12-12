@@ -534,7 +534,7 @@ option.resultsOption button{
 
 .regionResults, .dropdown-content{
   overflow: auto;
-  max-height: 150px;
+  max-height: 450px;
 }
 
 .regionResults::-webkit-scrollbar, .dropdown-content::-webkit-scrollbar{
@@ -627,7 +627,7 @@ option.resultsOption button{
 
 .universityResults{
   overflow: auto;
-  max-height: 250px;
+  max-height: 450px;
 }
 
 .universityResults option{
@@ -645,7 +645,7 @@ option.resultsOption button{
 
 .instituteResults{
   overflow: auto;
-  max-height: 250px;
+  max-height: 450px;
 }
 
 .instituteResults option{
