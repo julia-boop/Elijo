@@ -446,11 +446,11 @@ button.search-btn{
   border: var(--btn-border);
 }
 
-option.resultsOption button{
+button.resultsOption{
   padding: 5px;
-  height: 46px;
+  /*height: 46px;*/
   width: 100%;
-  text-align: start;
+  text-align: left;
   background-color: var(--btn-bg-color-focus);
   border: var(--btn-border-focus);
 }
