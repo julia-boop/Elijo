@@ -14,6 +14,7 @@ const createLocals = require('./middlewares/createLocals');
 const hasCookie = require('./middlewares/hasCookie');
 const isAdmin = require('./middlewares/isAdmin');
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
