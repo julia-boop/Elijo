@@ -1,7 +1,5 @@
-//import axios from ('axios');
-
-let universities = [];
-let institutes = [];
+let universities;
+let institutes;
 let opinionsOnGeneral = [];
 let actualGeneralPage = 0;
 const amountByPage = 5;
@@ -83,14 +81,14 @@ function loadInstitutions(){
         return response.json();
     })
     .then( universitiesRepsonse => {
-        univerisites = universitiesRepsonse;
+        universities =  universitiesRepsonse;
     });
     
     fetch('/endpoints/institute').then(response => {
         return response.json();
     })
     .then( institutesRepsonse => {
-        institutes = institutesRepsonse;
+        institutes =  institutesRepsonse;
     });
 }
 
@@ -462,7 +460,6 @@ function addToTipsContainer(result) {
                             <h5 class="title-image">${result[i].User.name}</h5>
                         </div>
                       </div>
-
                     </div>
                 </div>
             </div>
@@ -510,7 +507,6 @@ function changeTipsPage(moveTo){
                             <h5 class="title-image"><a href="/meet/detail/${tipsArray[actualTipsPage][i].User.id}">${tipsArray[actualTipsPage][i].User.name}</a></h5>
                         </div>
                       </div>
-
                     </div>
                 </div>
             </div>
@@ -664,7 +660,6 @@ function changePage(moveTo){
                             <h5 class="title-image"><a href="/meet/detail/${opinionsOnGeneral[actualGeneralPage][j].User.id}">${opinionsOnGeneral[actualGeneralPage][j].User.name}</a></h5>
                         </div>
                       </div>
-
                     </div>
                 </div>
             </div>
@@ -761,28 +756,24 @@ window.addEventListener('load', () => {
 
     let regionButton = document.querySelector('#regionButton');
     let regionResults = document.querySelector('.regionResults');
-
-    let testing = document.querySelector('.pcDropDown');
     //#endregion
     
     //#region ONPageStart
     fetch('/endpoints/university').then(resp => resp.json())
     .then(universitiesToAdd => {
-        console.log(universitiesToAdd);
         universityResults.innerHTML = '';
         for(let i = 0; i < universitiesToAdd.length; i++){
-            universityResults.innerHTML += `<button class="resultsOption" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">${universitiesToAdd[i].name} </button>`;         
+            universityResults.innerHTML += `<button class="resultsOption" id="inputButton" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">${universitiesToAdd[i].name} </button>`;         
         }
     })
-    //id="inputButton"
+
     fetch('/endpoints/institute').then(resp => resp.json())
     .then(institutesToAdd => {
         instituteResults.innerHTML = '';
         for(let i = 0; i < institutesToAdd.length; i++){
-            instituteResults.innerHTML += `<button class="resultsOption" value="${institutesToAdd[i].id}" onclick="fetchInstitutionManager(${institutesToAdd[i].id}, 'institute')">  ${institutesToAdd[i].name} </button>`;         
+            instituteResults.innerHTML += `<button class="resultsOption" id="inputButton" value="${institutesToAdd[i].id}" onclick="fetchInstitutionManager(${institutesToAdd[i].id}, 'institute')">  ${institutesToAdd[i].name} </button>`;         
         }
     })
-    // id="inputButton"
     //#endregion
 
 
@@ -800,7 +791,7 @@ window.addEventListener('load', () => {
         });
     });
 
-    universityInput.addEventListener('keyup', event => {
+    universityInput.addEventListener('change', event => {
         let amountOfResults = 0;
         universityResults.innerHTML = ''; 
         if(event.target.value == '' || event.target.value == null){
@@ -832,12 +823,12 @@ window.addEventListener('load', () => {
         }
     });
     
-    instituteInput.addEventListener('keyup', event => {
+    instituteInput.addEventListener('change', event => {
         let amountOfResults = 0;
         instituteResults.innerHTML = '';
         if(event.target.value == '' || event.target.value == null){
             instituteResults.innerHTML = '';  
-            fetch('/endpoints/institute').then(resp => resp.json())
+            fetch('endpoints/institute').then(resp => resp.json())
             .then(institutesToAdd => {
                 instituteResults.innerHTML = '';
                 for(let i = 0; i < institutesToAdd.length; i++){
@@ -863,4 +854,3 @@ window.addEventListener('load', () => {
     });
     //#endregion    
 });
-
