@@ -1,11 +1,15 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const cors = require('cors');
+app.use(cors());
+
 const path = require('path');
 const methodOverride =  require('method-override'); 
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+
 const createLocals = require('./middlewares/createLocals');
 const hasCookie = require('./middlewares/hasCookie');
 const isAdmin = require('./middlewares/isAdmin');
