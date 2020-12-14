@@ -1,4 +1,4 @@
-/*function filterFunction() {
+function filterFunction() {
   var input, filter, ul, li, a, i;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
@@ -12,7 +12,7 @@
       a[i].style.display = "none";
     }
   }
-}*/
+}
 
 function closeButton(){
   let universityInput = document.querySelector('#universities');

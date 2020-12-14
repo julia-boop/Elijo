@@ -47,7 +47,7 @@ button.categoryDropDown{
 }
 
 /* The search field */
-#myInputUni, #myInputInst {
+#myInput/*Uni, #myInputInst */{
   box-sizing: border-box;
   background-position: 14px 12px;
   background-repeat: no-repeat;
