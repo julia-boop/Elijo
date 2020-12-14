@@ -16,6 +16,34 @@ let questionData = [];
 let dataOnFilter = [];
 
 
+function addToSearchDiv(dataToAdd){
+    let searchDiv = document.querySelector('.posta-filter');
+    searchDiv.classList.remove('d-none');
+    for(let i = 0; i < dataToAdd.length; i++){
+        dataOnFilter = dataToAdd[i];
+        searchDiv.innerHTML = `<h6><a href='/posta' class="filter-button">${dataToAdd[i]} <i class="far fa-times-circle makered"></i></a></h6>`;
+    }
+}
+
+
+//#region  FETCHS
+function loadInstitutions(){
+    fetch('/endpoints/university').then(response => {
+        return response.json();
+    })
+    .then( universitiesRepsonse => {
+        universities =  universitiesRepsonse;
+    });
+    
+    fetch('/endpoints/institute').then(response => {
+        return response.json();
+    })
+    .then( institutesRepsonse => {
+        institutes =  institutesRepsonse;
+    });
+}
+
+
 window.addEventListener('load', () => {
     //#region INIT
     loadInstitutions();
