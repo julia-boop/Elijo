@@ -9,12 +9,10 @@ const methodOverride =  require('method-override');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-
 const createLocals = require('./middlewares/createLocals');
 const hasCookie = require('./middlewares/hasCookie');
 const isAdmin = require('./middlewares/isAdmin');
 
-app.use(cors());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
@@ -36,11 +34,10 @@ const userRouter = require('./routes/userRouter');
 const populationRouter = require('./routes/populationRouter');
 const endpointRouter = require('./routes/endpointRouter');
 
-app.use('/', mainRouter);
-app.use('/user', userRouter);
-app.use('/population', isAdmin, populationRouter);
-app.use('/endpoints', endpointRouter);
+app.use('/', cors(), mainRouter);
+app.use('/user', cors(), userRouter);
+app.use('/population', cors(), isAdmin, populationRouter);
+app.use('/endpoints', cors(), endpointRouter);
 
-app.use(cors());
 
 app.listen(3000, () => console.log("Servidor corriendo en el puerto 3000"));
