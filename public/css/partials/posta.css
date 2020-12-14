@@ -626,7 +626,6 @@ button.resultsOption{
 
 
 .universityResults{
-  overflow: auto;
   max-height: 450px;
 }
 
@@ -644,7 +643,6 @@ button.resultsOption{
 }
 
 .instituteResults{
-  overflow: auto;
   max-height: 450px;
 }
 
