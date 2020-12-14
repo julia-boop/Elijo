@@ -2,8 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
-app.use(cors());
-
 const path = require('path');
 const methodOverride =  require('method-override'); 
 const session = require('express-session');
@@ -14,6 +12,7 @@ const createLocals = require('./middlewares/createLocals');
 const hasCookie = require('./middlewares/hasCookie');
 const isAdmin = require('./middlewares/isAdmin');
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(cookieParser());
 app.use(express.urlencoded({extended: false}));
