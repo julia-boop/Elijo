@@ -1,7 +1,7 @@
 //import axios from ('axios');
 
-let universities;
-let institutes;
+let universities = [];
+let institutes = [];
 let opinionsOnGeneral = [];
 let actualGeneralPage = 0;
 const amountByPage = 5;
@@ -83,15 +83,14 @@ function loadInstitutions(){
         return response.json();
     })
     .then( universitiesRepsonse => {
-        universities =  universitiesRepsonse;
-        console.log(universities);
+        univerisites = universitiesRepsonse;
     });
     
     fetch('/endpoints/institute').then(response => {
         return response.json();
     })
     .then( institutesRepsonse => {
-        institutes =  institutesRepsonse;
+        institutes = institutesRepsonse;
     });
 }
 
@@ -767,6 +766,7 @@ window.addEventListener('load', () => {
     //#region ONPageStart
     fetch('/endpoints/university').then(resp => resp.json())
     .then(universitiesToAdd => {
+        console.log(universitiesToAdd);
         universityResults.innerHTML = '';
         for(let i = 0; i < universitiesToAdd.length; i++){
             universityResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">${universitiesToAdd[i].name} </option>`;         
