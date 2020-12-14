@@ -1,3 +1,5 @@
+//import axios from ('axios');
+
 let universities;
 let institutes;
 let opinionsOnGeneral = [];
@@ -77,12 +79,13 @@ function cleanDivs(){
 
 //#region  FETCHS
 function loadInstitutions(){
-    fetch('/endpoints/university').then(response => {
-        return response.json();
-    })
+    axios.get('/endpoints/university').then(response => {
+        console.log(response);
+    })/*
     .then( universitiesRepsonse => {
         universities =  universitiesRepsonse;
-    });
+        console.log(universities);
+    });*/
     
     fetch('/endpoints/institute').then(response => {
         return response.json();
