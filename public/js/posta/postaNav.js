@@ -771,7 +771,7 @@ window.addEventListener('load', () => {
         console.log(universitiesToAdd);
         universityResults.innerHTML = '';
         for(let i = 0; i < universitiesToAdd.length; i++){
-            testing.innerHTML += `<option class="resultsOption" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">${universitiesToAdd[i].name} </option>`;         
+            universityResults.innerHTML += `<option class="resultsOption" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">${universitiesToAdd[i].name} </option>`;         
         }
     })
     //id="inputButton"
