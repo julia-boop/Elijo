@@ -770,7 +770,7 @@ window.addEventListener('load', () => {
         }
     })
 
-    fetch('endpoints/institute').then(resp => resp.json())
+    fetch('/endpoints/institute').then(resp => resp.json())
     .then(institutesToAdd => {
         instituteResults.innerHTML = '';
         for(let i = 0; i < institutesToAdd.length; i++){
