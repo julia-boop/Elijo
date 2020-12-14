@@ -79,13 +79,13 @@ function cleanDivs(){
 
 //#region  FETCHS
 function loadInstitutions(){
-    axios.get('/endpoints/university').then(response => {
-        console.log(response);
-    })/*
+    fetch('/endpoints/university').then(response => {
+        return response.json();
+    })
     .then( universitiesRepsonse => {
         universities =  universitiesRepsonse;
         console.log(universities);
-    });*/
+    });
     
     fetch('/endpoints/institute').then(response => {
         return response.json();
