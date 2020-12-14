@@ -777,9 +777,10 @@ window.addEventListener('load', () => {
     .then(institutesToAdd => {
         instituteResults.innerHTML = '';
         for(let i = 0; i < institutesToAdd.length; i++){
-            instituteResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${institutesToAdd[i].id}" onclick="fetchInstitutionManager(${institutesToAdd[i].id}, 'institute')">  ${institutesToAdd[i].name} </option>`;         
+            instituteResults.innerHTML += `<option class="resultsOption" value="${institutesToAdd[i].id}" onclick="fetchInstitutionManager(${institutesToAdd[i].id}, 'institute')">  ${institutesToAdd[i].name} </option>`;         
         }
     })
+    // id="inputButton"
     //#endregion
 
 
