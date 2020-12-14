@@ -800,7 +800,7 @@ window.addEventListener('load', () => {
         });
     });
 
-    universityInput.addEventListener('change', event => {
+    universityInput.addEventListener('keyup', event => {
         let amountOfResults = 0;
         universityResults.innerHTML = ''; 
         if(event.target.value == '' || event.target.value == null){
@@ -832,7 +832,7 @@ window.addEventListener('load', () => {
         }
     });
     
-    instituteInput.addEventListener('change', event => {
+    instituteInput.addEventListener('keyup', event => {
         let amountOfResults = 0;
         instituteResults.innerHTML = '';
         if(event.target.value == '' || event.target.value == null){
