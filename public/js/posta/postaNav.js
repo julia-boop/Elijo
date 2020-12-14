@@ -769,10 +769,10 @@ window.addEventListener('load', () => {
         console.log(universitiesToAdd);
         universityResults.innerHTML = '';
         for(let i = 0; i < universitiesToAdd.length; i++){
-            universityResults.innerHTML += `<option class="resultsOption" id="inputButton" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">${universitiesToAdd[i].name} </option>`;         
+            universityResults.innerHTML += `<option class="resultsOption" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">${universitiesToAdd[i].name} </option>`;         
         }
     })
-
+    //id="inputButton"
     fetch('/endpoints/institute').then(resp => resp.json())
     .then(institutesToAdd => {
         instituteResults.innerHTML = '';
