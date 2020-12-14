@@ -762,7 +762,7 @@ window.addEventListener('load', () => {
     //#endregion
     
     //#region ONPageStart
-    fetch('/endpoints/university').then(resp => resp.json())
+    fetch('https://elijo.org/endpoints/university').then(resp => resp.json())
     .then(universitiesToAdd => {
         universityResults.innerHTML = '';
         for(let i = 0; i < universitiesToAdd.length; i++){
