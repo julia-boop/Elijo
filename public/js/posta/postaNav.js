@@ -761,6 +761,8 @@ window.addEventListener('load', () => {
 
     let regionButton = document.querySelector('#regionButton');
     let regionResults = document.querySelector('.regionResults');
+
+    let testing = document.querySelector('.pcDropDown');
     //#endregion
     
     //#region ONPageStart
@@ -769,7 +771,7 @@ window.addEventListener('load', () => {
         console.log(universitiesToAdd);
         universityResults.innerHTML = '';
         for(let i = 0; i < universitiesToAdd.length; i++){
-            universityResults.innerHTML += `<option class="resultsOption" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">${universitiesToAdd[i].name} </option>`;         
+            testing.innerHTML += `<option class="resultsOption" value="${universitiesToAdd[i].id}" onclick="fetchInstitutionManager(${universitiesToAdd[i].id}, 'university')">${universitiesToAdd[i].name} </option>`;         
         }
     })
     //id="inputButton"
