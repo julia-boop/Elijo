@@ -35,7 +35,7 @@ window.addEventListener('load', function() {
   let institutesBtn = document.querySelector('.institute');
   let programsBtn = document.querySelector('.region');
 
-  universityBtn.addEventListener('touchstart', function(){
+  universityBtn.addEventListener('click', function(){
     universityInput.classList.toggle("show");
     institutesInput.classList.remove("show");
     programsInput.classList.remove("show");
